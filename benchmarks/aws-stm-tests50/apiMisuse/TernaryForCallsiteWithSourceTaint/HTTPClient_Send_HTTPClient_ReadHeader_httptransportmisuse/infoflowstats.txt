@@ -1,0 +1,20 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=27172
+Total number of formal out/ret w outgoing edge=6440
+Total number of formal out/ret w incoming formalin wo deref=8606
+Total number of formal out/ret w incoming formalin (relaxed)=11965
+Sumarization time=234
+Query: TernaryForCallsiteWithSourceTaint, source=HTTPClient_Send sink=HTTPClient_ReadHeader desc=httptransportmisuse sanitizeOnReturn=0
+Label=somegeneric_label solution size=0 time=0
+Label=HTTPClient_Sendarg1_label solution size=0 time=0
+Label=HTTPClient_Sendcs1_label solution size=6 time=1
+Label=HTTPClient_Sendargpby1 solution size=1038 time=1
+Label=HTTPClient_ReadHeaderarg1_label solution size=0 time=0
+Label=HTTPClient_ReadHeadercs1_label solution size=3 time=1
+Label=HTTPClient_ReadHeaderargpby1 solution size=511 time=1
+Label=HTTPClient_Send_HTTPClient_ReadHeader_httptransportmisuse solution size=0 time=180
+Total number of solutions=9
+Total number of cached solutions=1
+Total query solving time=184
+Average query solving time=20

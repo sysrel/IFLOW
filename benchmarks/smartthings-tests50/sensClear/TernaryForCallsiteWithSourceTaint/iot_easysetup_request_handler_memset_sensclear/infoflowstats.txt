@@ -1,0 +1,1125 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=20449
+Total number of formal out/ret w outgoing edge=4049
+Total number of formal out/ret w incoming formalin wo deref=6806
+Total number of formal out/ret w incoming formalin (relaxed)=11014
+Sumarization time=24
+Query: TernaryForCallsiteWithSourceTaint, source=iot_easysetup_request_handler sink=memset desc=sensclear sanitizeOnReturn=0
+Label=somegeneric_label solution size=0 time=0
+Label=iot_easysetup_request_handlerarg1_label solution size=0 time=0
+Label=iot_easysetup_request_handlercs1_label solution size=1 time=151
+Label=iot_easysetup_request_handlerargpby1 solution size=106 time=151
+Label=memsetarg1_label solution size=0 time=0
+Label=memsetcs1_label solution size=294 time=150
+Label=memsetargpby1 solution size=294 time=150
+ vs 
+Node1=260700 Inst1=  %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ Loc1=ln: 1145 fl: src/iot_main.c
+Node2=144215 Inst2=  call void @llvm.memset.p0i8.i64(i8* align 8 %4, i8 0, i64 16, i1 false), !dbg !6667
+ Loc2=ln: 367 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c
+Source svfgnode=260700 0x36fd590 (AIN)   %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ ln: 1145 fl: src/iot_main.c within _iot_main_task(ID: 260700)
+Dest svfgnode=144215 0x3763948 (APAR)   call void @llvm.memset.p0i8.i64(i8* align 8 %4, i8 0, i64 16, i1 false), !dbg !6667
+ln: 367 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c(ID: 144215)
+
+================ICFG PATH================
+(64913)(STMT)  %82 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %easysetup_req, i32 0, i32 0, !dbg !6745
+ ln: 1143 fl: src/iot_main.c in _iot_main_task ,(64923)(STMT)  %83 = load i32, i32* %82, align 8, !dbg !6745
+ ln: 1143 fl: src/iot_main.c in _iot_main_task ,(64929)(STMT)  %84 = getelementptr [6 x i8], [6 x i8]* @.str.28, i32 0, i32 0
+  in _iot_main_task ,(64934)(STMT)  %85 = getelementptr [27 x i8], [27 x i8]* @.str.55, i32 0, i32 0
+  in _iot_main_task ,(64941)(STMT)  %86 = getelementptr [15 x i8], [15 x i8]* @__FUNCTION__._iot_main_task, i32 0, i32 0
+  in _iot_main_task ,(64950)(  call void (i32, i8*, i8*, ...) @iot_bsp_debug(i32 4, i8* %84, i8* %85, i8* %86, i32 1143, i32 %83), !dbg !6747
+ Callsite) ,(64951)(  call void (i32, i8*, i8*, ...) @iot_bsp_debug(i32 4, i8* %84, i8* %85, i8* %86, i32 1143, i32 %83), !dbg !6747
+ Ret) ,(64958)(STMT)  %87 = load %struct.iot_context*, %struct.iot_context** %1, align 8, !dbg !6748
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64966)(STMT)  %88 = bitcast %struct.iot_easysetup_payload* %easysetup_req to { i64, i8* }*, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64973)(STMT)  %89 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %88, i32 0, i32 0, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64981)(STMT)  %90 = load i64, i64* %89, align 8, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64991)(STMT)  %91 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %88, i32 0, i32 1, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64997)(STMT)  %92 = load i8*, i8** %91, align 8, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(65003)(  %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ Callsite) ,(65005)(iot_easysetup_request_handler Entry) ,(108507)(STMT)  %1 = alloca i32, align 4
+  in iot_easysetup_request_handler ,(108508)(STMT)  %request = alloca %struct.iot_easysetup_payload, align 8
+ ln: 1544 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108509)(STMT)  %2 = alloca %struct.iot_context*, align 8
+ ln: 1544 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108510)(STMT)  %err = alloca i32, align 4
+ ln: 1546 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108511)(STMT)  %ret = alloca i32, align 4
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108512)(STMT)  %response = alloca %struct.iot_easysetup_payload, align 8
+ ln: 1548 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108513)(STMT)  %3 = bitcast %struct.iot_easysetup_payload* %request to { i64, i8* }*
+  in iot_easysetup_request_handler ,(108514)(STMT)  %4 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %3, i32 0, i32 0
+  in iot_easysetup_request_handler ,(108515)(STMT)  store i64 %request.coerce0, i64* %4, align 8
+  in iot_easysetup_request_handler ,(108516)(STMT)  %5 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %3, i32 0, i32 1
+  in iot_easysetup_request_handler ,(108517)(STMT)  store i8* %request.coerce1, i8** %5, align 8
+  in iot_easysetup_request_handler ,(108518)(STMT)  store %struct.iot_context* %ctx, %struct.iot_context** %2, align 8
+  in iot_easysetup_request_handler ,(108519)(STMT)  store i32 0, i32* %err, align 4, !dbg !6651
+ ln: 1546 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108520)(STMT)  %6 = load i32, i32* @iot_os_true, align 4, !dbg !6654
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108521)(STMT)  store i32 %6, i32* %ret, align 4, !dbg !6653
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108522)(STMT)  %7 = load %struct.iot_context*, %struct.iot_context** %2, align 8, !dbg !6657
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108523)(STMT)  %8 = icmp ne %struct.iot_context* %7, null, !dbg !6657
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108524)(STMT)  br i1 %8, label %10, label %9, !dbg !6659
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108525)(STMT)  %11 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 0, !dbg !6661
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108527)(STMT)  %12 = load i32, i32* %11, align 8, !dbg !6661
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108529)(STMT)  %13 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 0, !dbg !6662
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108531)(STMT)  store i32 %12, i32* %13, align 8, !dbg !6663
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108533)(STMT)  %14 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 2, !dbg !6664
+ ln: 1554 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108534)(STMT)  store i8* null, i8** %14, align 8, !dbg !6665
+ ln: 1554 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108535)(STMT)  %15 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 0, !dbg !6666
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108536)(STMT)  %16 = load i32, i32* %15, align 8, !dbg !6666
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108537)(STMT)  switch i32 %16, label %69 [
+    i32 0, label %17
+    i32 4, label %21
+    i32 1, label %25
+    i32 2, label %31
+    i32 3, label %37
+    i32 5, label %43
+    i32 6, label %49
+    i32 7, label %55
+    i32 8, label %59
+    i32 9, label %65
+  ], !dbg !6667
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108539)(STMT)  %18 = load %struct.iot_context*, %struct.iot_context** %2, align 8, !dbg !6668
+ ln: 1558 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108550)(STMT)  %19 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 2, !dbg !6670
+ ln: 1558 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108561)(  %20 = call i32 @_es_deviceinfo_handler(%struct.iot_context* %18, i8** %19), !dbg !6671
+ Callsite) ,
+================================
+ vs 
+Node1=260700 Inst1=  %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ Loc1=ln: 1145 fl: src/iot_main.c
+Node2=151170 Inst2=  call void @llvm.memset.p0i8.i64(i8* align 16 %7, i8 0, i64 65, i1 false), !dbg !6688
+ Loc2=ln: 455 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c
+Source svfgnode=260700 0x36fd590 (AIN)   %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ ln: 1145 fl: src/iot_main.c within _iot_main_task(ID: 260700)
+Dest svfgnode=151170 0x3e44d58 (APAR)   call void @llvm.memset.p0i8.i64(i8* align 16 %7, i8 0, i64 65, i1 false), !dbg !6688
+ln: 455 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c(ID: 151170)
+
+================ICFG PATH================
+(64913)(STMT)  %82 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %easysetup_req, i32 0, i32 0, !dbg !6745
+ ln: 1143 fl: src/iot_main.c in _iot_main_task ,(64923)(STMT)  %83 = load i32, i32* %82, align 8, !dbg !6745
+ ln: 1143 fl: src/iot_main.c in _iot_main_task ,(64929)(STMT)  %84 = getelementptr [6 x i8], [6 x i8]* @.str.28, i32 0, i32 0
+  in _iot_main_task ,(64934)(STMT)  %85 = getelementptr [27 x i8], [27 x i8]* @.str.55, i32 0, i32 0
+  in _iot_main_task ,(64941)(STMT)  %86 = getelementptr [15 x i8], [15 x i8]* @__FUNCTION__._iot_main_task, i32 0, i32 0
+  in _iot_main_task ,(64950)(  call void (i32, i8*, i8*, ...) @iot_bsp_debug(i32 4, i8* %84, i8* %85, i8* %86, i32 1143, i32 %83), !dbg !6747
+ Callsite) ,(64951)(  call void (i32, i8*, i8*, ...) @iot_bsp_debug(i32 4, i8* %84, i8* %85, i8* %86, i32 1143, i32 %83), !dbg !6747
+ Ret) ,(64958)(STMT)  %87 = load %struct.iot_context*, %struct.iot_context** %1, align 8, !dbg !6748
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64966)(STMT)  %88 = bitcast %struct.iot_easysetup_payload* %easysetup_req to { i64, i8* }*, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64973)(STMT)  %89 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %88, i32 0, i32 0, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64981)(STMT)  %90 = load i64, i64* %89, align 8, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64991)(STMT)  %91 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %88, i32 0, i32 1, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64997)(STMT)  %92 = load i8*, i8** %91, align 8, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(65003)(  %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ Callsite) ,(65005)(iot_easysetup_request_handler Entry) ,(108507)(STMT)  %1 = alloca i32, align 4
+  in iot_easysetup_request_handler ,(108508)(STMT)  %request = alloca %struct.iot_easysetup_payload, align 8
+ ln: 1544 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108509)(STMT)  %2 = alloca %struct.iot_context*, align 8
+ ln: 1544 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108510)(STMT)  %err = alloca i32, align 4
+ ln: 1546 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108511)(STMT)  %ret = alloca i32, align 4
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108512)(STMT)  %response = alloca %struct.iot_easysetup_payload, align 8
+ ln: 1548 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108513)(STMT)  %3 = bitcast %struct.iot_easysetup_payload* %request to { i64, i8* }*
+  in iot_easysetup_request_handler ,(108514)(STMT)  %4 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %3, i32 0, i32 0
+  in iot_easysetup_request_handler ,(108515)(STMT)  store i64 %request.coerce0, i64* %4, align 8
+  in iot_easysetup_request_handler ,(108516)(STMT)  %5 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %3, i32 0, i32 1
+  in iot_easysetup_request_handler ,(108517)(STMT)  store i8* %request.coerce1, i8** %5, align 8
+  in iot_easysetup_request_handler ,(108518)(STMT)  store %struct.iot_context* %ctx, %struct.iot_context** %2, align 8
+  in iot_easysetup_request_handler ,(108519)(STMT)  store i32 0, i32* %err, align 4, !dbg !6651
+ ln: 1546 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108520)(STMT)  %6 = load i32, i32* @iot_os_true, align 4, !dbg !6654
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108521)(STMT)  store i32 %6, i32* %ret, align 4, !dbg !6653
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108522)(STMT)  %7 = load %struct.iot_context*, %struct.iot_context** %2, align 8, !dbg !6657
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108523)(STMT)  %8 = icmp ne %struct.iot_context* %7, null, !dbg !6657
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108524)(STMT)  br i1 %8, label %10, label %9, !dbg !6659
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108525)(STMT)  %11 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 0, !dbg !6661
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108527)(STMT)  %12 = load i32, i32* %11, align 8, !dbg !6661
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108529)(STMT)  %13 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 0, !dbg !6662
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108531)(STMT)  store i32 %12, i32* %13, align 8, !dbg !6663
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108533)(STMT)  %14 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 2, !dbg !6664
+ ln: 1554 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108534)(STMT)  store i8* null, i8** %14, align 8, !dbg !6665
+ ln: 1554 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108535)(STMT)  %15 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 0, !dbg !6666
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108536)(STMT)  %16 = load i32, i32* %15, align 8, !dbg !6666
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108537)(STMT)  switch i32 %16, label %69 [
+    i32 0, label %17
+    i32 4, label %21
+    i32 1, label %25
+    i32 2, label %31
+    i32 3, label %37
+    i32 5, label %43
+    i32 6, label %49
+    i32 7, label %55
+    i32 8, label %59
+    i32 9, label %65
+  ], !dbg !6667
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108541)(STMT)  %26 = load %struct.iot_context*, %struct.iot_context** %2, align 8, !dbg !6679
+ ln: 1564 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108552)(STMT)  %27 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 2, !dbg !6680
+ ln: 1564 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108569)(STMT)  %28 = load i8*, i8** %27, align 8, !dbg !6680
+ ln: 1564 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108586)(STMT)  %29 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 2, !dbg !6681
+ ln: 1564 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108597)(  %30 = call i32 @_es_keyinfo_handler(%struct.iot_context* %26, i8* %28, i8** %29), !dbg !6682
+ Callsite) ,
+================================
+ vs 
+Node1=260701 Inst1=  %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ Loc1=ln: 1145 fl: src/iot_main.c
+Node2=144215 Inst2=  call void @llvm.memset.p0i8.i64(i8* align 8 %4, i8 0, i64 16, i1 false), !dbg !6667
+ Loc2=ln: 367 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c
+Source svfgnode=260701 0x36fd590 (AIN)   %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ ln: 1145 fl: src/iot_main.c within _iot_main_task(ID: 260701)
+Dest svfgnode=144215 0x3763948 (APAR)   call void @llvm.memset.p0i8.i64(i8* align 8 %4, i8 0, i64 16, i1 false), !dbg !6667
+ln: 367 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c(ID: 144215)
+
+================ICFG PATH================
+(64913)(STMT)  %82 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %easysetup_req, i32 0, i32 0, !dbg !6745
+ ln: 1143 fl: src/iot_main.c in _iot_main_task ,(64923)(STMT)  %83 = load i32, i32* %82, align 8, !dbg !6745
+ ln: 1143 fl: src/iot_main.c in _iot_main_task ,(64929)(STMT)  %84 = getelementptr [6 x i8], [6 x i8]* @.str.28, i32 0, i32 0
+  in _iot_main_task ,(64934)(STMT)  %85 = getelementptr [27 x i8], [27 x i8]* @.str.55, i32 0, i32 0
+  in _iot_main_task ,(64941)(STMT)  %86 = getelementptr [15 x i8], [15 x i8]* @__FUNCTION__._iot_main_task, i32 0, i32 0
+  in _iot_main_task ,(64950)(  call void (i32, i8*, i8*, ...) @iot_bsp_debug(i32 4, i8* %84, i8* %85, i8* %86, i32 1143, i32 %83), !dbg !6747
+ Callsite) ,(64951)(  call void (i32, i8*, i8*, ...) @iot_bsp_debug(i32 4, i8* %84, i8* %85, i8* %86, i32 1143, i32 %83), !dbg !6747
+ Ret) ,(64958)(STMT)  %87 = load %struct.iot_context*, %struct.iot_context** %1, align 8, !dbg !6748
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64966)(STMT)  %88 = bitcast %struct.iot_easysetup_payload* %easysetup_req to { i64, i8* }*, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64973)(STMT)  %89 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %88, i32 0, i32 0, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64981)(STMT)  %90 = load i64, i64* %89, align 8, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64991)(STMT)  %91 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %88, i32 0, i32 1, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64997)(STMT)  %92 = load i8*, i8** %91, align 8, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(65003)(  %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ Callsite) ,(65005)(iot_easysetup_request_handler Entry) ,(108507)(STMT)  %1 = alloca i32, align 4
+  in iot_easysetup_request_handler ,(108508)(STMT)  %request = alloca %struct.iot_easysetup_payload, align 8
+ ln: 1544 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108509)(STMT)  %2 = alloca %struct.iot_context*, align 8
+ ln: 1544 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108510)(STMT)  %err = alloca i32, align 4
+ ln: 1546 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108511)(STMT)  %ret = alloca i32, align 4
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108512)(STMT)  %response = alloca %struct.iot_easysetup_payload, align 8
+ ln: 1548 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108513)(STMT)  %3 = bitcast %struct.iot_easysetup_payload* %request to { i64, i8* }*
+  in iot_easysetup_request_handler ,(108514)(STMT)  %4 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %3, i32 0, i32 0
+  in iot_easysetup_request_handler ,(108515)(STMT)  store i64 %request.coerce0, i64* %4, align 8
+  in iot_easysetup_request_handler ,(108516)(STMT)  %5 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %3, i32 0, i32 1
+  in iot_easysetup_request_handler ,(108517)(STMT)  store i8* %request.coerce1, i8** %5, align 8
+  in iot_easysetup_request_handler ,(108518)(STMT)  store %struct.iot_context* %ctx, %struct.iot_context** %2, align 8
+  in iot_easysetup_request_handler ,(108519)(STMT)  store i32 0, i32* %err, align 4, !dbg !6651
+ ln: 1546 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108520)(STMT)  %6 = load i32, i32* @iot_os_true, align 4, !dbg !6654
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108521)(STMT)  store i32 %6, i32* %ret, align 4, !dbg !6653
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108522)(STMT)  %7 = load %struct.iot_context*, %struct.iot_context** %2, align 8, !dbg !6657
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108523)(STMT)  %8 = icmp ne %struct.iot_context* %7, null, !dbg !6657
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108524)(STMT)  br i1 %8, label %10, label %9, !dbg !6659
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108525)(STMT)  %11 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 0, !dbg !6661
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108527)(STMT)  %12 = load i32, i32* %11, align 8, !dbg !6661
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108529)(STMT)  %13 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 0, !dbg !6662
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108531)(STMT)  store i32 %12, i32* %13, align 8, !dbg !6663
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108533)(STMT)  %14 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 2, !dbg !6664
+ ln: 1554 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108534)(STMT)  store i8* null, i8** %14, align 8, !dbg !6665
+ ln: 1554 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108535)(STMT)  %15 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 0, !dbg !6666
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108536)(STMT)  %16 = load i32, i32* %15, align 8, !dbg !6666
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108537)(STMT)  switch i32 %16, label %69 [
+    i32 0, label %17
+    i32 4, label %21
+    i32 1, label %25
+    i32 2, label %31
+    i32 3, label %37
+    i32 5, label %43
+    i32 6, label %49
+    i32 7, label %55
+    i32 8, label %59
+    i32 9, label %65
+  ], !dbg !6667
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108539)(STMT)  %18 = load %struct.iot_context*, %struct.iot_context** %2, align 8, !dbg !6668
+ ln: 1558 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108550)(STMT)  %19 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 2, !dbg !6670
+ ln: 1558 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108561)(  %20 = call i32 @_es_deviceinfo_handler(%struct.iot_context* %18, i8** %19), !dbg !6671
+ Callsite) ,
+================================
+ vs 
+Node1=260701 Inst1=  %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ Loc1=ln: 1145 fl: src/iot_main.c
+Node2=151170 Inst2=  call void @llvm.memset.p0i8.i64(i8* align 16 %7, i8 0, i64 65, i1 false), !dbg !6688
+ Loc2=ln: 455 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c
+Source svfgnode=260701 0x36fd590 (AIN)   %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ ln: 1145 fl: src/iot_main.c within _iot_main_task(ID: 260701)
+Dest svfgnode=151170 0x3e44d58 (APAR)   call void @llvm.memset.p0i8.i64(i8* align 16 %7, i8 0, i64 65, i1 false), !dbg !6688
+ln: 455 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c(ID: 151170)
+
+================ICFG PATH================
+(64913)(STMT)  %82 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %easysetup_req, i32 0, i32 0, !dbg !6745
+ ln: 1143 fl: src/iot_main.c in _iot_main_task ,(64923)(STMT)  %83 = load i32, i32* %82, align 8, !dbg !6745
+ ln: 1143 fl: src/iot_main.c in _iot_main_task ,(64929)(STMT)  %84 = getelementptr [6 x i8], [6 x i8]* @.str.28, i32 0, i32 0
+  in _iot_main_task ,(64934)(STMT)  %85 = getelementptr [27 x i8], [27 x i8]* @.str.55, i32 0, i32 0
+  in _iot_main_task ,(64941)(STMT)  %86 = getelementptr [15 x i8], [15 x i8]* @__FUNCTION__._iot_main_task, i32 0, i32 0
+  in _iot_main_task ,(64950)(  call void (i32, i8*, i8*, ...) @iot_bsp_debug(i32 4, i8* %84, i8* %85, i8* %86, i32 1143, i32 %83), !dbg !6747
+ Callsite) ,(64951)(  call void (i32, i8*, i8*, ...) @iot_bsp_debug(i32 4, i8* %84, i8* %85, i8* %86, i32 1143, i32 %83), !dbg !6747
+ Ret) ,(64958)(STMT)  %87 = load %struct.iot_context*, %struct.iot_context** %1, align 8, !dbg !6748
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64966)(STMT)  %88 = bitcast %struct.iot_easysetup_payload* %easysetup_req to { i64, i8* }*, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64973)(STMT)  %89 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %88, i32 0, i32 0, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64981)(STMT)  %90 = load i64, i64* %89, align 8, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64991)(STMT)  %91 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %88, i32 0, i32 1, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64997)(STMT)  %92 = load i8*, i8** %91, align 8, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(65003)(  %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ Callsite) ,(65005)(iot_easysetup_request_handler Entry) ,(108507)(STMT)  %1 = alloca i32, align 4
+  in iot_easysetup_request_handler ,(108508)(STMT)  %request = alloca %struct.iot_easysetup_payload, align 8
+ ln: 1544 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108509)(STMT)  %2 = alloca %struct.iot_context*, align 8
+ ln: 1544 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108510)(STMT)  %err = alloca i32, align 4
+ ln: 1546 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108511)(STMT)  %ret = alloca i32, align 4
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108512)(STMT)  %response = alloca %struct.iot_easysetup_payload, align 8
+ ln: 1548 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108513)(STMT)  %3 = bitcast %struct.iot_easysetup_payload* %request to { i64, i8* }*
+  in iot_easysetup_request_handler ,(108514)(STMT)  %4 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %3, i32 0, i32 0
+  in iot_easysetup_request_handler ,(108515)(STMT)  store i64 %request.coerce0, i64* %4, align 8
+  in iot_easysetup_request_handler ,(108516)(STMT)  %5 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %3, i32 0, i32 1
+  in iot_easysetup_request_handler ,(108517)(STMT)  store i8* %request.coerce1, i8** %5, align 8
+  in iot_easysetup_request_handler ,(108518)(STMT)  store %struct.iot_context* %ctx, %struct.iot_context** %2, align 8
+  in iot_easysetup_request_handler ,(108519)(STMT)  store i32 0, i32* %err, align 4, !dbg !6651
+ ln: 1546 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108520)(STMT)  %6 = load i32, i32* @iot_os_true, align 4, !dbg !6654
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108521)(STMT)  store i32 %6, i32* %ret, align 4, !dbg !6653
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108522)(STMT)  %7 = load %struct.iot_context*, %struct.iot_context** %2, align 8, !dbg !6657
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108523)(STMT)  %8 = icmp ne %struct.iot_context* %7, null, !dbg !6657
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108524)(STMT)  br i1 %8, label %10, label %9, !dbg !6659
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108525)(STMT)  %11 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 0, !dbg !6661
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108527)(STMT)  %12 = load i32, i32* %11, align 8, !dbg !6661
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108529)(STMT)  %13 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 0, !dbg !6662
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108531)(STMT)  store i32 %12, i32* %13, align 8, !dbg !6663
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108533)(STMT)  %14 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 2, !dbg !6664
+ ln: 1554 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108534)(STMT)  store i8* null, i8** %14, align 8, !dbg !6665
+ ln: 1554 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108535)(STMT)  %15 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 0, !dbg !6666
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108536)(STMT)  %16 = load i32, i32* %15, align 8, !dbg !6666
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108537)(STMT)  switch i32 %16, label %69 [
+    i32 0, label %17
+    i32 4, label %21
+    i32 1, label %25
+    i32 2, label %31
+    i32 3, label %37
+    i32 5, label %43
+    i32 6, label %49
+    i32 7, label %55
+    i32 8, label %59
+    i32 9, label %65
+  ], !dbg !6667
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108541)(STMT)  %26 = load %struct.iot_context*, %struct.iot_context** %2, align 8, !dbg !6679
+ ln: 1564 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108552)(STMT)  %27 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 2, !dbg !6680
+ ln: 1564 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108569)(STMT)  %28 = load i8*, i8** %27, align 8, !dbg !6680
+ ln: 1564 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108586)(STMT)  %29 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 2, !dbg !6681
+ ln: 1564 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108597)(  %30 = call i32 @_es_keyinfo_handler(%struct.iot_context* %26, i8* %28, i8** %29), !dbg !6682
+ Callsite) ,
+================================
+ vs 
+Node1=260702 Inst1=  %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ Loc1=ln: 1145 fl: src/iot_main.c
+Node2=144215 Inst2=  call void @llvm.memset.p0i8.i64(i8* align 8 %4, i8 0, i64 16, i1 false), !dbg !6667
+ Loc2=ln: 367 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c
+Source svfgnode=260702 0x36fd590 (AIN)   %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ ln: 1145 fl: src/iot_main.c within _iot_main_task(ID: 260702)
+Dest svfgnode=144215 0x3763948 (APAR)   call void @llvm.memset.p0i8.i64(i8* align 8 %4, i8 0, i64 16, i1 false), !dbg !6667
+ln: 367 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c(ID: 144215)
+
+================ICFG PATH================
+(64913)(STMT)  %82 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %easysetup_req, i32 0, i32 0, !dbg !6745
+ ln: 1143 fl: src/iot_main.c in _iot_main_task ,(64923)(STMT)  %83 = load i32, i32* %82, align 8, !dbg !6745
+ ln: 1143 fl: src/iot_main.c in _iot_main_task ,(64929)(STMT)  %84 = getelementptr [6 x i8], [6 x i8]* @.str.28, i32 0, i32 0
+  in _iot_main_task ,(64934)(STMT)  %85 = getelementptr [27 x i8], [27 x i8]* @.str.55, i32 0, i32 0
+  in _iot_main_task ,(64941)(STMT)  %86 = getelementptr [15 x i8], [15 x i8]* @__FUNCTION__._iot_main_task, i32 0, i32 0
+  in _iot_main_task ,(64950)(  call void (i32, i8*, i8*, ...) @iot_bsp_debug(i32 4, i8* %84, i8* %85, i8* %86, i32 1143, i32 %83), !dbg !6747
+ Callsite) ,(64951)(  call void (i32, i8*, i8*, ...) @iot_bsp_debug(i32 4, i8* %84, i8* %85, i8* %86, i32 1143, i32 %83), !dbg !6747
+ Ret) ,(64958)(STMT)  %87 = load %struct.iot_context*, %struct.iot_context** %1, align 8, !dbg !6748
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64966)(STMT)  %88 = bitcast %struct.iot_easysetup_payload* %easysetup_req to { i64, i8* }*, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64973)(STMT)  %89 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %88, i32 0, i32 0, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64981)(STMT)  %90 = load i64, i64* %89, align 8, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64991)(STMT)  %91 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %88, i32 0, i32 1, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64997)(STMT)  %92 = load i8*, i8** %91, align 8, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(65003)(  %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ Callsite) ,(65005)(iot_easysetup_request_handler Entry) ,(108507)(STMT)  %1 = alloca i32, align 4
+  in iot_easysetup_request_handler ,(108508)(STMT)  %request = alloca %struct.iot_easysetup_payload, align 8
+ ln: 1544 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108509)(STMT)  %2 = alloca %struct.iot_context*, align 8
+ ln: 1544 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108510)(STMT)  %err = alloca i32, align 4
+ ln: 1546 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108511)(STMT)  %ret = alloca i32, align 4
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108512)(STMT)  %response = alloca %struct.iot_easysetup_payload, align 8
+ ln: 1548 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108513)(STMT)  %3 = bitcast %struct.iot_easysetup_payload* %request to { i64, i8* }*
+  in iot_easysetup_request_handler ,(108514)(STMT)  %4 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %3, i32 0, i32 0
+  in iot_easysetup_request_handler ,(108515)(STMT)  store i64 %request.coerce0, i64* %4, align 8
+  in iot_easysetup_request_handler ,(108516)(STMT)  %5 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %3, i32 0, i32 1
+  in iot_easysetup_request_handler ,(108517)(STMT)  store i8* %request.coerce1, i8** %5, align 8
+  in iot_easysetup_request_handler ,(108518)(STMT)  store %struct.iot_context* %ctx, %struct.iot_context** %2, align 8
+  in iot_easysetup_request_handler ,(108519)(STMT)  store i32 0, i32* %err, align 4, !dbg !6651
+ ln: 1546 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108520)(STMT)  %6 = load i32, i32* @iot_os_true, align 4, !dbg !6654
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108521)(STMT)  store i32 %6, i32* %ret, align 4, !dbg !6653
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108522)(STMT)  %7 = load %struct.iot_context*, %struct.iot_context** %2, align 8, !dbg !6657
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108523)(STMT)  %8 = icmp ne %struct.iot_context* %7, null, !dbg !6657
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108524)(STMT)  br i1 %8, label %10, label %9, !dbg !6659
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108525)(STMT)  %11 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 0, !dbg !6661
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108527)(STMT)  %12 = load i32, i32* %11, align 8, !dbg !6661
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108529)(STMT)  %13 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 0, !dbg !6662
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108531)(STMT)  store i32 %12, i32* %13, align 8, !dbg !6663
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108533)(STMT)  %14 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 2, !dbg !6664
+ ln: 1554 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108534)(STMT)  store i8* null, i8** %14, align 8, !dbg !6665
+ ln: 1554 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108535)(STMT)  %15 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 0, !dbg !6666
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108536)(STMT)  %16 = load i32, i32* %15, align 8, !dbg !6666
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108537)(STMT)  switch i32 %16, label %69 [
+    i32 0, label %17
+    i32 4, label %21
+    i32 1, label %25
+    i32 2, label %31
+    i32 3, label %37
+    i32 5, label %43
+    i32 6, label %49
+    i32 7, label %55
+    i32 8, label %59
+    i32 9, label %65
+  ], !dbg !6667
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108539)(STMT)  %18 = load %struct.iot_context*, %struct.iot_context** %2, align 8, !dbg !6668
+ ln: 1558 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108550)(STMT)  %19 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 2, !dbg !6670
+ ln: 1558 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108561)(  %20 = call i32 @_es_deviceinfo_handler(%struct.iot_context* %18, i8** %19), !dbg !6671
+ Callsite) ,
+================================
+ vs 
+Node1=260702 Inst1=  %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ Loc1=ln: 1145 fl: src/iot_main.c
+Node2=151170 Inst2=  call void @llvm.memset.p0i8.i64(i8* align 16 %7, i8 0, i64 65, i1 false), !dbg !6688
+ Loc2=ln: 455 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c
+Source svfgnode=260702 0x36fd590 (AIN)   %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ ln: 1145 fl: src/iot_main.c within _iot_main_task(ID: 260702)
+Dest svfgnode=151170 0x3e44d58 (APAR)   call void @llvm.memset.p0i8.i64(i8* align 16 %7, i8 0, i64 65, i1 false), !dbg !6688
+ln: 455 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c(ID: 151170)
+
+================ICFG PATH================
+(64913)(STMT)  %82 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %easysetup_req, i32 0, i32 0, !dbg !6745
+ ln: 1143 fl: src/iot_main.c in _iot_main_task ,(64923)(STMT)  %83 = load i32, i32* %82, align 8, !dbg !6745
+ ln: 1143 fl: src/iot_main.c in _iot_main_task ,(64929)(STMT)  %84 = getelementptr [6 x i8], [6 x i8]* @.str.28, i32 0, i32 0
+  in _iot_main_task ,(64934)(STMT)  %85 = getelementptr [27 x i8], [27 x i8]* @.str.55, i32 0, i32 0
+  in _iot_main_task ,(64941)(STMT)  %86 = getelementptr [15 x i8], [15 x i8]* @__FUNCTION__._iot_main_task, i32 0, i32 0
+  in _iot_main_task ,(64950)(  call void (i32, i8*, i8*, ...) @iot_bsp_debug(i32 4, i8* %84, i8* %85, i8* %86, i32 1143, i32 %83), !dbg !6747
+ Callsite) ,(64951)(  call void (i32, i8*, i8*, ...) @iot_bsp_debug(i32 4, i8* %84, i8* %85, i8* %86, i32 1143, i32 %83), !dbg !6747
+ Ret) ,(64958)(STMT)  %87 = load %struct.iot_context*, %struct.iot_context** %1, align 8, !dbg !6748
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64966)(STMT)  %88 = bitcast %struct.iot_easysetup_payload* %easysetup_req to { i64, i8* }*, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64973)(STMT)  %89 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %88, i32 0, i32 0, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64981)(STMT)  %90 = load i64, i64* %89, align 8, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64991)(STMT)  %91 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %88, i32 0, i32 1, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64997)(STMT)  %92 = load i8*, i8** %91, align 8, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(65003)(  %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ Callsite) ,(65005)(iot_easysetup_request_handler Entry) ,(108507)(STMT)  %1 = alloca i32, align 4
+  in iot_easysetup_request_handler ,(108508)(STMT)  %request = alloca %struct.iot_easysetup_payload, align 8
+ ln: 1544 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108509)(STMT)  %2 = alloca %struct.iot_context*, align 8
+ ln: 1544 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108510)(STMT)  %err = alloca i32, align 4
+ ln: 1546 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108511)(STMT)  %ret = alloca i32, align 4
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108512)(STMT)  %response = alloca %struct.iot_easysetup_payload, align 8
+ ln: 1548 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108513)(STMT)  %3 = bitcast %struct.iot_easysetup_payload* %request to { i64, i8* }*
+  in iot_easysetup_request_handler ,(108514)(STMT)  %4 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %3, i32 0, i32 0
+  in iot_easysetup_request_handler ,(108515)(STMT)  store i64 %request.coerce0, i64* %4, align 8
+  in iot_easysetup_request_handler ,(108516)(STMT)  %5 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %3, i32 0, i32 1
+  in iot_easysetup_request_handler ,(108517)(STMT)  store i8* %request.coerce1, i8** %5, align 8
+  in iot_easysetup_request_handler ,(108518)(STMT)  store %struct.iot_context* %ctx, %struct.iot_context** %2, align 8
+  in iot_easysetup_request_handler ,(108519)(STMT)  store i32 0, i32* %err, align 4, !dbg !6651
+ ln: 1546 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108520)(STMT)  %6 = load i32, i32* @iot_os_true, align 4, !dbg !6654
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108521)(STMT)  store i32 %6, i32* %ret, align 4, !dbg !6653
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108522)(STMT)  %7 = load %struct.iot_context*, %struct.iot_context** %2, align 8, !dbg !6657
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108523)(STMT)  %8 = icmp ne %struct.iot_context* %7, null, !dbg !6657
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108524)(STMT)  br i1 %8, label %10, label %9, !dbg !6659
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108525)(STMT)  %11 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 0, !dbg !6661
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108527)(STMT)  %12 = load i32, i32* %11, align 8, !dbg !6661
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108529)(STMT)  %13 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 0, !dbg !6662
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108531)(STMT)  store i32 %12, i32* %13, align 8, !dbg !6663
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108533)(STMT)  %14 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 2, !dbg !6664
+ ln: 1554 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108534)(STMT)  store i8* null, i8** %14, align 8, !dbg !6665
+ ln: 1554 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108535)(STMT)  %15 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 0, !dbg !6666
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108536)(STMT)  %16 = load i32, i32* %15, align 8, !dbg !6666
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108537)(STMT)  switch i32 %16, label %69 [
+    i32 0, label %17
+    i32 4, label %21
+    i32 1, label %25
+    i32 2, label %31
+    i32 3, label %37
+    i32 5, label %43
+    i32 6, label %49
+    i32 7, label %55
+    i32 8, label %59
+    i32 9, label %65
+  ], !dbg !6667
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108541)(STMT)  %26 = load %struct.iot_context*, %struct.iot_context** %2, align 8, !dbg !6679
+ ln: 1564 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108552)(STMT)  %27 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 2, !dbg !6680
+ ln: 1564 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108569)(STMT)  %28 = load i8*, i8** %27, align 8, !dbg !6680
+ ln: 1564 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108586)(STMT)  %29 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 2, !dbg !6681
+ ln: 1564 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108597)(  %30 = call i32 @_es_keyinfo_handler(%struct.iot_context* %26, i8* %28, i8** %29), !dbg !6682
+ Callsite) ,
+================================
+ vs 
+Node1=260703 Inst1=  %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ Loc1=ln: 1145 fl: src/iot_main.c
+Node2=144215 Inst2=  call void @llvm.memset.p0i8.i64(i8* align 8 %4, i8 0, i64 16, i1 false), !dbg !6667
+ Loc2=ln: 367 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c
+Source svfgnode=260703 0x36fd590 (AIN)   %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ ln: 1145 fl: src/iot_main.c within _iot_main_task(ID: 260703)
+Dest svfgnode=144215 0x3763948 (APAR)   call void @llvm.memset.p0i8.i64(i8* align 8 %4, i8 0, i64 16, i1 false), !dbg !6667
+ln: 367 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c(ID: 144215)
+
+================ICFG PATH================
+(64913)(STMT)  %82 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %easysetup_req, i32 0, i32 0, !dbg !6745
+ ln: 1143 fl: src/iot_main.c in _iot_main_task ,(64923)(STMT)  %83 = load i32, i32* %82, align 8, !dbg !6745
+ ln: 1143 fl: src/iot_main.c in _iot_main_task ,(64929)(STMT)  %84 = getelementptr [6 x i8], [6 x i8]* @.str.28, i32 0, i32 0
+  in _iot_main_task ,(64934)(STMT)  %85 = getelementptr [27 x i8], [27 x i8]* @.str.55, i32 0, i32 0
+  in _iot_main_task ,(64941)(STMT)  %86 = getelementptr [15 x i8], [15 x i8]* @__FUNCTION__._iot_main_task, i32 0, i32 0
+  in _iot_main_task ,(64950)(  call void (i32, i8*, i8*, ...) @iot_bsp_debug(i32 4, i8* %84, i8* %85, i8* %86, i32 1143, i32 %83), !dbg !6747
+ Callsite) ,(64951)(  call void (i32, i8*, i8*, ...) @iot_bsp_debug(i32 4, i8* %84, i8* %85, i8* %86, i32 1143, i32 %83), !dbg !6747
+ Ret) ,(64958)(STMT)  %87 = load %struct.iot_context*, %struct.iot_context** %1, align 8, !dbg !6748
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64966)(STMT)  %88 = bitcast %struct.iot_easysetup_payload* %easysetup_req to { i64, i8* }*, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64973)(STMT)  %89 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %88, i32 0, i32 0, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64981)(STMT)  %90 = load i64, i64* %89, align 8, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64991)(STMT)  %91 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %88, i32 0, i32 1, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64997)(STMT)  %92 = load i8*, i8** %91, align 8, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(65003)(  %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ Callsite) ,(65005)(iot_easysetup_request_handler Entry) ,(108507)(STMT)  %1 = alloca i32, align 4
+  in iot_easysetup_request_handler ,(108508)(STMT)  %request = alloca %struct.iot_easysetup_payload, align 8
+ ln: 1544 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108509)(STMT)  %2 = alloca %struct.iot_context*, align 8
+ ln: 1544 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108510)(STMT)  %err = alloca i32, align 4
+ ln: 1546 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108511)(STMT)  %ret = alloca i32, align 4
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108512)(STMT)  %response = alloca %struct.iot_easysetup_payload, align 8
+ ln: 1548 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108513)(STMT)  %3 = bitcast %struct.iot_easysetup_payload* %request to { i64, i8* }*
+  in iot_easysetup_request_handler ,(108514)(STMT)  %4 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %3, i32 0, i32 0
+  in iot_easysetup_request_handler ,(108515)(STMT)  store i64 %request.coerce0, i64* %4, align 8
+  in iot_easysetup_request_handler ,(108516)(STMT)  %5 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %3, i32 0, i32 1
+  in iot_easysetup_request_handler ,(108517)(STMT)  store i8* %request.coerce1, i8** %5, align 8
+  in iot_easysetup_request_handler ,(108518)(STMT)  store %struct.iot_context* %ctx, %struct.iot_context** %2, align 8
+  in iot_easysetup_request_handler ,(108519)(STMT)  store i32 0, i32* %err, align 4, !dbg !6651
+ ln: 1546 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108520)(STMT)  %6 = load i32, i32* @iot_os_true, align 4, !dbg !6654
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108521)(STMT)  store i32 %6, i32* %ret, align 4, !dbg !6653
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108522)(STMT)  %7 = load %struct.iot_context*, %struct.iot_context** %2, align 8, !dbg !6657
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108523)(STMT)  %8 = icmp ne %struct.iot_context* %7, null, !dbg !6657
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108524)(STMT)  br i1 %8, label %10, label %9, !dbg !6659
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108525)(STMT)  %11 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 0, !dbg !6661
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108527)(STMT)  %12 = load i32, i32* %11, align 8, !dbg !6661
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108529)(STMT)  %13 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 0, !dbg !6662
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108531)(STMT)  store i32 %12, i32* %13, align 8, !dbg !6663
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108533)(STMT)  %14 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 2, !dbg !6664
+ ln: 1554 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108534)(STMT)  store i8* null, i8** %14, align 8, !dbg !6665
+ ln: 1554 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108535)(STMT)  %15 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 0, !dbg !6666
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108536)(STMT)  %16 = load i32, i32* %15, align 8, !dbg !6666
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108537)(STMT)  switch i32 %16, label %69 [
+    i32 0, label %17
+    i32 4, label %21
+    i32 1, label %25
+    i32 2, label %31
+    i32 3, label %37
+    i32 5, label %43
+    i32 6, label %49
+    i32 7, label %55
+    i32 8, label %59
+    i32 9, label %65
+  ], !dbg !6667
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108539)(STMT)  %18 = load %struct.iot_context*, %struct.iot_context** %2, align 8, !dbg !6668
+ ln: 1558 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108550)(STMT)  %19 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 2, !dbg !6670
+ ln: 1558 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108561)(  %20 = call i32 @_es_deviceinfo_handler(%struct.iot_context* %18, i8** %19), !dbg !6671
+ Callsite) ,
+================================
+ vs 
+Node1=260703 Inst1=  %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ Loc1=ln: 1145 fl: src/iot_main.c
+Node2=151170 Inst2=  call void @llvm.memset.p0i8.i64(i8* align 16 %7, i8 0, i64 65, i1 false), !dbg !6688
+ Loc2=ln: 455 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c
+Source svfgnode=260703 0x36fd590 (AIN)   %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ ln: 1145 fl: src/iot_main.c within _iot_main_task(ID: 260703)
+Dest svfgnode=151170 0x3e44d58 (APAR)   call void @llvm.memset.p0i8.i64(i8* align 16 %7, i8 0, i64 65, i1 false), !dbg !6688
+ln: 455 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c(ID: 151170)
+
+================ICFG PATH================
+(64913)(STMT)  %82 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %easysetup_req, i32 0, i32 0, !dbg !6745
+ ln: 1143 fl: src/iot_main.c in _iot_main_task ,(64923)(STMT)  %83 = load i32, i32* %82, align 8, !dbg !6745
+ ln: 1143 fl: src/iot_main.c in _iot_main_task ,(64929)(STMT)  %84 = getelementptr [6 x i8], [6 x i8]* @.str.28, i32 0, i32 0
+  in _iot_main_task ,(64934)(STMT)  %85 = getelementptr [27 x i8], [27 x i8]* @.str.55, i32 0, i32 0
+  in _iot_main_task ,(64941)(STMT)  %86 = getelementptr [15 x i8], [15 x i8]* @__FUNCTION__._iot_main_task, i32 0, i32 0
+  in _iot_main_task ,(64950)(  call void (i32, i8*, i8*, ...) @iot_bsp_debug(i32 4, i8* %84, i8* %85, i8* %86, i32 1143, i32 %83), !dbg !6747
+ Callsite) ,(64951)(  call void (i32, i8*, i8*, ...) @iot_bsp_debug(i32 4, i8* %84, i8* %85, i8* %86, i32 1143, i32 %83), !dbg !6747
+ Ret) ,(64958)(STMT)  %87 = load %struct.iot_context*, %struct.iot_context** %1, align 8, !dbg !6748
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64966)(STMT)  %88 = bitcast %struct.iot_easysetup_payload* %easysetup_req to { i64, i8* }*, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64973)(STMT)  %89 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %88, i32 0, i32 0, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64981)(STMT)  %90 = load i64, i64* %89, align 8, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64991)(STMT)  %91 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %88, i32 0, i32 1, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64997)(STMT)  %92 = load i8*, i8** %91, align 8, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(65003)(  %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ Callsite) ,(65005)(iot_easysetup_request_handler Entry) ,(108507)(STMT)  %1 = alloca i32, align 4
+  in iot_easysetup_request_handler ,(108508)(STMT)  %request = alloca %struct.iot_easysetup_payload, align 8
+ ln: 1544 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108509)(STMT)  %2 = alloca %struct.iot_context*, align 8
+ ln: 1544 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108510)(STMT)  %err = alloca i32, align 4
+ ln: 1546 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108511)(STMT)  %ret = alloca i32, align 4
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108512)(STMT)  %response = alloca %struct.iot_easysetup_payload, align 8
+ ln: 1548 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108513)(STMT)  %3 = bitcast %struct.iot_easysetup_payload* %request to { i64, i8* }*
+  in iot_easysetup_request_handler ,(108514)(STMT)  %4 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %3, i32 0, i32 0
+  in iot_easysetup_request_handler ,(108515)(STMT)  store i64 %request.coerce0, i64* %4, align 8
+  in iot_easysetup_request_handler ,(108516)(STMT)  %5 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %3, i32 0, i32 1
+  in iot_easysetup_request_handler ,(108517)(STMT)  store i8* %request.coerce1, i8** %5, align 8
+  in iot_easysetup_request_handler ,(108518)(STMT)  store %struct.iot_context* %ctx, %struct.iot_context** %2, align 8
+  in iot_easysetup_request_handler ,(108519)(STMT)  store i32 0, i32* %err, align 4, !dbg !6651
+ ln: 1546 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108520)(STMT)  %6 = load i32, i32* @iot_os_true, align 4, !dbg !6654
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108521)(STMT)  store i32 %6, i32* %ret, align 4, !dbg !6653
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108522)(STMT)  %7 = load %struct.iot_context*, %struct.iot_context** %2, align 8, !dbg !6657
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108523)(STMT)  %8 = icmp ne %struct.iot_context* %7, null, !dbg !6657
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108524)(STMT)  br i1 %8, label %10, label %9, !dbg !6659
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108525)(STMT)  %11 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 0, !dbg !6661
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108527)(STMT)  %12 = load i32, i32* %11, align 8, !dbg !6661
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108529)(STMT)  %13 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 0, !dbg !6662
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108531)(STMT)  store i32 %12, i32* %13, align 8, !dbg !6663
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108533)(STMT)  %14 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 2, !dbg !6664
+ ln: 1554 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108534)(STMT)  store i8* null, i8** %14, align 8, !dbg !6665
+ ln: 1554 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108535)(STMT)  %15 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 0, !dbg !6666
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108536)(STMT)  %16 = load i32, i32* %15, align 8, !dbg !6666
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108537)(STMT)  switch i32 %16, label %69 [
+    i32 0, label %17
+    i32 4, label %21
+    i32 1, label %25
+    i32 2, label %31
+    i32 3, label %37
+    i32 5, label %43
+    i32 6, label %49
+    i32 7, label %55
+    i32 8, label %59
+    i32 9, label %65
+  ], !dbg !6667
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108541)(STMT)  %26 = load %struct.iot_context*, %struct.iot_context** %2, align 8, !dbg !6679
+ ln: 1564 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108552)(STMT)  %27 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 2, !dbg !6680
+ ln: 1564 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108569)(STMT)  %28 = load i8*, i8** %27, align 8, !dbg !6680
+ ln: 1564 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108586)(STMT)  %29 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 2, !dbg !6681
+ ln: 1564 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108597)(  %30 = call i32 @_es_keyinfo_handler(%struct.iot_context* %26, i8* %28, i8** %29), !dbg !6682
+ Callsite) ,
+================================
+ vs 
+Node1=260704 Inst1=  %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ Loc1=ln: 1145 fl: src/iot_main.c
+Node2=144215 Inst2=  call void @llvm.memset.p0i8.i64(i8* align 8 %4, i8 0, i64 16, i1 false), !dbg !6667
+ Loc2=ln: 367 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c
+Source svfgnode=260704 0x36fd590 (AIN)   %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ ln: 1145 fl: src/iot_main.c within _iot_main_task(ID: 260704)
+Dest svfgnode=144215 0x3763948 (APAR)   call void @llvm.memset.p0i8.i64(i8* align 8 %4, i8 0, i64 16, i1 false), !dbg !6667
+ln: 367 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c(ID: 144215)
+
+================ICFG PATH================
+(64913)(STMT)  %82 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %easysetup_req, i32 0, i32 0, !dbg !6745
+ ln: 1143 fl: src/iot_main.c in _iot_main_task ,(64923)(STMT)  %83 = load i32, i32* %82, align 8, !dbg !6745
+ ln: 1143 fl: src/iot_main.c in _iot_main_task ,(64929)(STMT)  %84 = getelementptr [6 x i8], [6 x i8]* @.str.28, i32 0, i32 0
+  in _iot_main_task ,(64934)(STMT)  %85 = getelementptr [27 x i8], [27 x i8]* @.str.55, i32 0, i32 0
+  in _iot_main_task ,(64941)(STMT)  %86 = getelementptr [15 x i8], [15 x i8]* @__FUNCTION__._iot_main_task, i32 0, i32 0
+  in _iot_main_task ,(64950)(  call void (i32, i8*, i8*, ...) @iot_bsp_debug(i32 4, i8* %84, i8* %85, i8* %86, i32 1143, i32 %83), !dbg !6747
+ Callsite) ,(64951)(  call void (i32, i8*, i8*, ...) @iot_bsp_debug(i32 4, i8* %84, i8* %85, i8* %86, i32 1143, i32 %83), !dbg !6747
+ Ret) ,(64958)(STMT)  %87 = load %struct.iot_context*, %struct.iot_context** %1, align 8, !dbg !6748
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64966)(STMT)  %88 = bitcast %struct.iot_easysetup_payload* %easysetup_req to { i64, i8* }*, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64973)(STMT)  %89 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %88, i32 0, i32 0, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64981)(STMT)  %90 = load i64, i64* %89, align 8, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64991)(STMT)  %91 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %88, i32 0, i32 1, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64997)(STMT)  %92 = load i8*, i8** %91, align 8, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(65003)(  %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ Callsite) ,(65005)(iot_easysetup_request_handler Entry) ,(108507)(STMT)  %1 = alloca i32, align 4
+  in iot_easysetup_request_handler ,(108508)(STMT)  %request = alloca %struct.iot_easysetup_payload, align 8
+ ln: 1544 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108509)(STMT)  %2 = alloca %struct.iot_context*, align 8
+ ln: 1544 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108510)(STMT)  %err = alloca i32, align 4
+ ln: 1546 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108511)(STMT)  %ret = alloca i32, align 4
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108512)(STMT)  %response = alloca %struct.iot_easysetup_payload, align 8
+ ln: 1548 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108513)(STMT)  %3 = bitcast %struct.iot_easysetup_payload* %request to { i64, i8* }*
+  in iot_easysetup_request_handler ,(108514)(STMT)  %4 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %3, i32 0, i32 0
+  in iot_easysetup_request_handler ,(108515)(STMT)  store i64 %request.coerce0, i64* %4, align 8
+  in iot_easysetup_request_handler ,(108516)(STMT)  %5 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %3, i32 0, i32 1
+  in iot_easysetup_request_handler ,(108517)(STMT)  store i8* %request.coerce1, i8** %5, align 8
+  in iot_easysetup_request_handler ,(108518)(STMT)  store %struct.iot_context* %ctx, %struct.iot_context** %2, align 8
+  in iot_easysetup_request_handler ,(108519)(STMT)  store i32 0, i32* %err, align 4, !dbg !6651
+ ln: 1546 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108520)(STMT)  %6 = load i32, i32* @iot_os_true, align 4, !dbg !6654
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108521)(STMT)  store i32 %6, i32* %ret, align 4, !dbg !6653
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108522)(STMT)  %7 = load %struct.iot_context*, %struct.iot_context** %2, align 8, !dbg !6657
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108523)(STMT)  %8 = icmp ne %struct.iot_context* %7, null, !dbg !6657
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108524)(STMT)  br i1 %8, label %10, label %9, !dbg !6659
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108525)(STMT)  %11 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 0, !dbg !6661
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108527)(STMT)  %12 = load i32, i32* %11, align 8, !dbg !6661
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108529)(STMT)  %13 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 0, !dbg !6662
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108531)(STMT)  store i32 %12, i32* %13, align 8, !dbg !6663
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108533)(STMT)  %14 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 2, !dbg !6664
+ ln: 1554 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108534)(STMT)  store i8* null, i8** %14, align 8, !dbg !6665
+ ln: 1554 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108535)(STMT)  %15 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 0, !dbg !6666
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108536)(STMT)  %16 = load i32, i32* %15, align 8, !dbg !6666
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108537)(STMT)  switch i32 %16, label %69 [
+    i32 0, label %17
+    i32 4, label %21
+    i32 1, label %25
+    i32 2, label %31
+    i32 3, label %37
+    i32 5, label %43
+    i32 6, label %49
+    i32 7, label %55
+    i32 8, label %59
+    i32 9, label %65
+  ], !dbg !6667
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108539)(STMT)  %18 = load %struct.iot_context*, %struct.iot_context** %2, align 8, !dbg !6668
+ ln: 1558 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108550)(STMT)  %19 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 2, !dbg !6670
+ ln: 1558 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108561)(  %20 = call i32 @_es_deviceinfo_handler(%struct.iot_context* %18, i8** %19), !dbg !6671
+ Callsite) ,
+================================
+ vs 
+Node1=260704 Inst1=  %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ Loc1=ln: 1145 fl: src/iot_main.c
+Node2=151170 Inst2=  call void @llvm.memset.p0i8.i64(i8* align 16 %7, i8 0, i64 65, i1 false), !dbg !6688
+ Loc2=ln: 455 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c
+Source svfgnode=260704 0x36fd590 (AIN)   %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ ln: 1145 fl: src/iot_main.c within _iot_main_task(ID: 260704)
+Dest svfgnode=151170 0x3e44d58 (APAR)   call void @llvm.memset.p0i8.i64(i8* align 16 %7, i8 0, i64 65, i1 false), !dbg !6688
+ln: 455 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c(ID: 151170)
+
+================ICFG PATH================
+(64913)(STMT)  %82 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %easysetup_req, i32 0, i32 0, !dbg !6745
+ ln: 1143 fl: src/iot_main.c in _iot_main_task ,(64923)(STMT)  %83 = load i32, i32* %82, align 8, !dbg !6745
+ ln: 1143 fl: src/iot_main.c in _iot_main_task ,(64929)(STMT)  %84 = getelementptr [6 x i8], [6 x i8]* @.str.28, i32 0, i32 0
+  in _iot_main_task ,(64934)(STMT)  %85 = getelementptr [27 x i8], [27 x i8]* @.str.55, i32 0, i32 0
+  in _iot_main_task ,(64941)(STMT)  %86 = getelementptr [15 x i8], [15 x i8]* @__FUNCTION__._iot_main_task, i32 0, i32 0
+  in _iot_main_task ,(64950)(  call void (i32, i8*, i8*, ...) @iot_bsp_debug(i32 4, i8* %84, i8* %85, i8* %86, i32 1143, i32 %83), !dbg !6747
+ Callsite) ,(64951)(  call void (i32, i8*, i8*, ...) @iot_bsp_debug(i32 4, i8* %84, i8* %85, i8* %86, i32 1143, i32 %83), !dbg !6747
+ Ret) ,(64958)(STMT)  %87 = load %struct.iot_context*, %struct.iot_context** %1, align 8, !dbg !6748
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64966)(STMT)  %88 = bitcast %struct.iot_easysetup_payload* %easysetup_req to { i64, i8* }*, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64973)(STMT)  %89 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %88, i32 0, i32 0, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64981)(STMT)  %90 = load i64, i64* %89, align 8, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64991)(STMT)  %91 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %88, i32 0, i32 1, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64997)(STMT)  %92 = load i8*, i8** %91, align 8, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(65003)(  %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ Callsite) ,(65005)(iot_easysetup_request_handler Entry) ,(108507)(STMT)  %1 = alloca i32, align 4
+  in iot_easysetup_request_handler ,(108508)(STMT)  %request = alloca %struct.iot_easysetup_payload, align 8
+ ln: 1544 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108509)(STMT)  %2 = alloca %struct.iot_context*, align 8
+ ln: 1544 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108510)(STMT)  %err = alloca i32, align 4
+ ln: 1546 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108511)(STMT)  %ret = alloca i32, align 4
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108512)(STMT)  %response = alloca %struct.iot_easysetup_payload, align 8
+ ln: 1548 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108513)(STMT)  %3 = bitcast %struct.iot_easysetup_payload* %request to { i64, i8* }*
+  in iot_easysetup_request_handler ,(108514)(STMT)  %4 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %3, i32 0, i32 0
+  in iot_easysetup_request_handler ,(108515)(STMT)  store i64 %request.coerce0, i64* %4, align 8
+  in iot_easysetup_request_handler ,(108516)(STMT)  %5 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %3, i32 0, i32 1
+  in iot_easysetup_request_handler ,(108517)(STMT)  store i8* %request.coerce1, i8** %5, align 8
+  in iot_easysetup_request_handler ,(108518)(STMT)  store %struct.iot_context* %ctx, %struct.iot_context** %2, align 8
+  in iot_easysetup_request_handler ,(108519)(STMT)  store i32 0, i32* %err, align 4, !dbg !6651
+ ln: 1546 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108520)(STMT)  %6 = load i32, i32* @iot_os_true, align 4, !dbg !6654
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108521)(STMT)  store i32 %6, i32* %ret, align 4, !dbg !6653
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108522)(STMT)  %7 = load %struct.iot_context*, %struct.iot_context** %2, align 8, !dbg !6657
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108523)(STMT)  %8 = icmp ne %struct.iot_context* %7, null, !dbg !6657
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108524)(STMT)  br i1 %8, label %10, label %9, !dbg !6659
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108525)(STMT)  %11 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 0, !dbg !6661
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108527)(STMT)  %12 = load i32, i32* %11, align 8, !dbg !6661
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108529)(STMT)  %13 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 0, !dbg !6662
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108531)(STMT)  store i32 %12, i32* %13, align 8, !dbg !6663
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108533)(STMT)  %14 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 2, !dbg !6664
+ ln: 1554 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108534)(STMT)  store i8* null, i8** %14, align 8, !dbg !6665
+ ln: 1554 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108535)(STMT)  %15 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 0, !dbg !6666
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108536)(STMT)  %16 = load i32, i32* %15, align 8, !dbg !6666
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108537)(STMT)  switch i32 %16, label %69 [
+    i32 0, label %17
+    i32 4, label %21
+    i32 1, label %25
+    i32 2, label %31
+    i32 3, label %37
+    i32 5, label %43
+    i32 6, label %49
+    i32 7, label %55
+    i32 8, label %59
+    i32 9, label %65
+  ], !dbg !6667
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108541)(STMT)  %26 = load %struct.iot_context*, %struct.iot_context** %2, align 8, !dbg !6679
+ ln: 1564 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108552)(STMT)  %27 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 2, !dbg !6680
+ ln: 1564 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108569)(STMT)  %28 = load i8*, i8** %27, align 8, !dbg !6680
+ ln: 1564 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108586)(STMT)  %29 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 2, !dbg !6681
+ ln: 1564 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108597)(  %30 = call i32 @_es_keyinfo_handler(%struct.iot_context* %26, i8* %28, i8** %29), !dbg !6682
+ Callsite) ,
+================================
+ vs 
+Node1=260705 Inst1=  %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ Loc1=ln: 1145 fl: src/iot_main.c
+Node2=144215 Inst2=  call void @llvm.memset.p0i8.i64(i8* align 8 %4, i8 0, i64 16, i1 false), !dbg !6667
+ Loc2=ln: 367 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c
+Source svfgnode=260705 0x36fd590 (AIN)   %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ ln: 1145 fl: src/iot_main.c within _iot_main_task(ID: 260705)
+Dest svfgnode=144215 0x3763948 (APAR)   call void @llvm.memset.p0i8.i64(i8* align 8 %4, i8 0, i64 16, i1 false), !dbg !6667
+ln: 367 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c(ID: 144215)
+
+================ICFG PATH================
+(64913)(STMT)  %82 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %easysetup_req, i32 0, i32 0, !dbg !6745
+ ln: 1143 fl: src/iot_main.c in _iot_main_task ,(64923)(STMT)  %83 = load i32, i32* %82, align 8, !dbg !6745
+ ln: 1143 fl: src/iot_main.c in _iot_main_task ,(64929)(STMT)  %84 = getelementptr [6 x i8], [6 x i8]* @.str.28, i32 0, i32 0
+  in _iot_main_task ,(64934)(STMT)  %85 = getelementptr [27 x i8], [27 x i8]* @.str.55, i32 0, i32 0
+  in _iot_main_task ,(64941)(STMT)  %86 = getelementptr [15 x i8], [15 x i8]* @__FUNCTION__._iot_main_task, i32 0, i32 0
+  in _iot_main_task ,(64950)(  call void (i32, i8*, i8*, ...) @iot_bsp_debug(i32 4, i8* %84, i8* %85, i8* %86, i32 1143, i32 %83), !dbg !6747
+ Callsite) ,(64951)(  call void (i32, i8*, i8*, ...) @iot_bsp_debug(i32 4, i8* %84, i8* %85, i8* %86, i32 1143, i32 %83), !dbg !6747
+ Ret) ,(64958)(STMT)  %87 = load %struct.iot_context*, %struct.iot_context** %1, align 8, !dbg !6748
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64966)(STMT)  %88 = bitcast %struct.iot_easysetup_payload* %easysetup_req to { i64, i8* }*, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64973)(STMT)  %89 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %88, i32 0, i32 0, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64981)(STMT)  %90 = load i64, i64* %89, align 8, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64991)(STMT)  %91 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %88, i32 0, i32 1, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64997)(STMT)  %92 = load i8*, i8** %91, align 8, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(65003)(  %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ Callsite) ,(65005)(iot_easysetup_request_handler Entry) ,(108507)(STMT)  %1 = alloca i32, align 4
+  in iot_easysetup_request_handler ,(108508)(STMT)  %request = alloca %struct.iot_easysetup_payload, align 8
+ ln: 1544 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108509)(STMT)  %2 = alloca %struct.iot_context*, align 8
+ ln: 1544 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108510)(STMT)  %err = alloca i32, align 4
+ ln: 1546 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108511)(STMT)  %ret = alloca i32, align 4
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108512)(STMT)  %response = alloca %struct.iot_easysetup_payload, align 8
+ ln: 1548 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108513)(STMT)  %3 = bitcast %struct.iot_easysetup_payload* %request to { i64, i8* }*
+  in iot_easysetup_request_handler ,(108514)(STMT)  %4 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %3, i32 0, i32 0
+  in iot_easysetup_request_handler ,(108515)(STMT)  store i64 %request.coerce0, i64* %4, align 8
+  in iot_easysetup_request_handler ,(108516)(STMT)  %5 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %3, i32 0, i32 1
+  in iot_easysetup_request_handler ,(108517)(STMT)  store i8* %request.coerce1, i8** %5, align 8
+  in iot_easysetup_request_handler ,(108518)(STMT)  store %struct.iot_context* %ctx, %struct.iot_context** %2, align 8
+  in iot_easysetup_request_handler ,(108519)(STMT)  store i32 0, i32* %err, align 4, !dbg !6651
+ ln: 1546 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108520)(STMT)  %6 = load i32, i32* @iot_os_true, align 4, !dbg !6654
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108521)(STMT)  store i32 %6, i32* %ret, align 4, !dbg !6653
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108522)(STMT)  %7 = load %struct.iot_context*, %struct.iot_context** %2, align 8, !dbg !6657
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108523)(STMT)  %8 = icmp ne %struct.iot_context* %7, null, !dbg !6657
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108524)(STMT)  br i1 %8, label %10, label %9, !dbg !6659
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108525)(STMT)  %11 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 0, !dbg !6661
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108527)(STMT)  %12 = load i32, i32* %11, align 8, !dbg !6661
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108529)(STMT)  %13 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 0, !dbg !6662
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108531)(STMT)  store i32 %12, i32* %13, align 8, !dbg !6663
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108533)(STMT)  %14 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 2, !dbg !6664
+ ln: 1554 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108534)(STMT)  store i8* null, i8** %14, align 8, !dbg !6665
+ ln: 1554 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108535)(STMT)  %15 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 0, !dbg !6666
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108536)(STMT)  %16 = load i32, i32* %15, align 8, !dbg !6666
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108537)(STMT)  switch i32 %16, label %69 [
+    i32 0, label %17
+    i32 4, label %21
+    i32 1, label %25
+    i32 2, label %31
+    i32 3, label %37
+    i32 5, label %43
+    i32 6, label %49
+    i32 7, label %55
+    i32 8, label %59
+    i32 9, label %65
+  ], !dbg !6667
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108539)(STMT)  %18 = load %struct.iot_context*, %struct.iot_context** %2, align 8, !dbg !6668
+ ln: 1558 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108550)(STMT)  %19 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 2, !dbg !6670
+ ln: 1558 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108561)(  %20 = call i32 @_es_deviceinfo_handler(%struct.iot_context* %18, i8** %19), !dbg !6671
+ Callsite) ,
+================================
+ vs 
+Node1=260705 Inst1=  %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ Loc1=ln: 1145 fl: src/iot_main.c
+Node2=151170 Inst2=  call void @llvm.memset.p0i8.i64(i8* align 16 %7, i8 0, i64 65, i1 false), !dbg !6688
+ Loc2=ln: 455 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c
+Source svfgnode=260705 0x36fd590 (AIN)   %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ ln: 1145 fl: src/iot_main.c within _iot_main_task(ID: 260705)
+Dest svfgnode=151170 0x3e44d58 (APAR)   call void @llvm.memset.p0i8.i64(i8* align 16 %7, i8 0, i64 65, i1 false), !dbg !6688
+ln: 455 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c(ID: 151170)
+
+================ICFG PATH================
+(64913)(STMT)  %82 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %easysetup_req, i32 0, i32 0, !dbg !6745
+ ln: 1143 fl: src/iot_main.c in _iot_main_task ,(64923)(STMT)  %83 = load i32, i32* %82, align 8, !dbg !6745
+ ln: 1143 fl: src/iot_main.c in _iot_main_task ,(64929)(STMT)  %84 = getelementptr [6 x i8], [6 x i8]* @.str.28, i32 0, i32 0
+  in _iot_main_task ,(64934)(STMT)  %85 = getelementptr [27 x i8], [27 x i8]* @.str.55, i32 0, i32 0
+  in _iot_main_task ,(64941)(STMT)  %86 = getelementptr [15 x i8], [15 x i8]* @__FUNCTION__._iot_main_task, i32 0, i32 0
+  in _iot_main_task ,(64950)(  call void (i32, i8*, i8*, ...) @iot_bsp_debug(i32 4, i8* %84, i8* %85, i8* %86, i32 1143, i32 %83), !dbg !6747
+ Callsite) ,(64951)(  call void (i32, i8*, i8*, ...) @iot_bsp_debug(i32 4, i8* %84, i8* %85, i8* %86, i32 1143, i32 %83), !dbg !6747
+ Ret) ,(64958)(STMT)  %87 = load %struct.iot_context*, %struct.iot_context** %1, align 8, !dbg !6748
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64966)(STMT)  %88 = bitcast %struct.iot_easysetup_payload* %easysetup_req to { i64, i8* }*, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64973)(STMT)  %89 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %88, i32 0, i32 0, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64981)(STMT)  %90 = load i64, i64* %89, align 8, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64991)(STMT)  %91 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %88, i32 0, i32 1, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64997)(STMT)  %92 = load i8*, i8** %91, align 8, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(65003)(  %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ Callsite) ,(65005)(iot_easysetup_request_handler Entry) ,(108507)(STMT)  %1 = alloca i32, align 4
+  in iot_easysetup_request_handler ,(108508)(STMT)  %request = alloca %struct.iot_easysetup_payload, align 8
+ ln: 1544 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108509)(STMT)  %2 = alloca %struct.iot_context*, align 8
+ ln: 1544 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108510)(STMT)  %err = alloca i32, align 4
+ ln: 1546 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108511)(STMT)  %ret = alloca i32, align 4
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108512)(STMT)  %response = alloca %struct.iot_easysetup_payload, align 8
+ ln: 1548 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108513)(STMT)  %3 = bitcast %struct.iot_easysetup_payload* %request to { i64, i8* }*
+  in iot_easysetup_request_handler ,(108514)(STMT)  %4 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %3, i32 0, i32 0
+  in iot_easysetup_request_handler ,(108515)(STMT)  store i64 %request.coerce0, i64* %4, align 8
+  in iot_easysetup_request_handler ,(108516)(STMT)  %5 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %3, i32 0, i32 1
+  in iot_easysetup_request_handler ,(108517)(STMT)  store i8* %request.coerce1, i8** %5, align 8
+  in iot_easysetup_request_handler ,(108518)(STMT)  store %struct.iot_context* %ctx, %struct.iot_context** %2, align 8
+  in iot_easysetup_request_handler ,(108519)(STMT)  store i32 0, i32* %err, align 4, !dbg !6651
+ ln: 1546 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108520)(STMT)  %6 = load i32, i32* @iot_os_true, align 4, !dbg !6654
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108521)(STMT)  store i32 %6, i32* %ret, align 4, !dbg !6653
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108522)(STMT)  %7 = load %struct.iot_context*, %struct.iot_context** %2, align 8, !dbg !6657
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108523)(STMT)  %8 = icmp ne %struct.iot_context* %7, null, !dbg !6657
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108524)(STMT)  br i1 %8, label %10, label %9, !dbg !6659
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108525)(STMT)  %11 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 0, !dbg !6661
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108527)(STMT)  %12 = load i32, i32* %11, align 8, !dbg !6661
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108529)(STMT)  %13 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 0, !dbg !6662
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108531)(STMT)  store i32 %12, i32* %13, align 8, !dbg !6663
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108533)(STMT)  %14 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 2, !dbg !6664
+ ln: 1554 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108534)(STMT)  store i8* null, i8** %14, align 8, !dbg !6665
+ ln: 1554 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108535)(STMT)  %15 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 0, !dbg !6666
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108536)(STMT)  %16 = load i32, i32* %15, align 8, !dbg !6666
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108537)(STMT)  switch i32 %16, label %69 [
+    i32 0, label %17
+    i32 4, label %21
+    i32 1, label %25
+    i32 2, label %31
+    i32 3, label %37
+    i32 5, label %43
+    i32 6, label %49
+    i32 7, label %55
+    i32 8, label %59
+    i32 9, label %65
+  ], !dbg !6667
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108541)(STMT)  %26 = load %struct.iot_context*, %struct.iot_context** %2, align 8, !dbg !6679
+ ln: 1564 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108552)(STMT)  %27 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 2, !dbg !6680
+ ln: 1564 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108569)(STMT)  %28 = load i8*, i8** %27, align 8, !dbg !6680
+ ln: 1564 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108586)(STMT)  %29 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 2, !dbg !6681
+ ln: 1564 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108597)(  %30 = call i32 @_es_keyinfo_handler(%struct.iot_context* %26, i8* %28, i8** %29), !dbg !6682
+ Callsite) ,
+================================
+ vs 
+Node1=260707 Inst1=  %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ Loc1=ln: 1145 fl: src/iot_main.c
+Node2=144215 Inst2=  call void @llvm.memset.p0i8.i64(i8* align 8 %4, i8 0, i64 16, i1 false), !dbg !6667
+ Loc2=ln: 367 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c
+Source svfgnode=260707 0x36fd590 (AIN)   %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ ln: 1145 fl: src/iot_main.c within _iot_main_task(ID: 260707)
+Dest svfgnode=144215 0x3763948 (APAR)   call void @llvm.memset.p0i8.i64(i8* align 8 %4, i8 0, i64 16, i1 false), !dbg !6667
+ln: 367 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c(ID: 144215)
+
+================ICFG PATH================
+(64913)(STMT)  %82 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %easysetup_req, i32 0, i32 0, !dbg !6745
+ ln: 1143 fl: src/iot_main.c in _iot_main_task ,(64923)(STMT)  %83 = load i32, i32* %82, align 8, !dbg !6745
+ ln: 1143 fl: src/iot_main.c in _iot_main_task ,(64929)(STMT)  %84 = getelementptr [6 x i8], [6 x i8]* @.str.28, i32 0, i32 0
+  in _iot_main_task ,(64934)(STMT)  %85 = getelementptr [27 x i8], [27 x i8]* @.str.55, i32 0, i32 0
+  in _iot_main_task ,(64941)(STMT)  %86 = getelementptr [15 x i8], [15 x i8]* @__FUNCTION__._iot_main_task, i32 0, i32 0
+  in _iot_main_task ,(64950)(  call void (i32, i8*, i8*, ...) @iot_bsp_debug(i32 4, i8* %84, i8* %85, i8* %86, i32 1143, i32 %83), !dbg !6747
+ Callsite) ,(64951)(  call void (i32, i8*, i8*, ...) @iot_bsp_debug(i32 4, i8* %84, i8* %85, i8* %86, i32 1143, i32 %83), !dbg !6747
+ Ret) ,(64958)(STMT)  %87 = load %struct.iot_context*, %struct.iot_context** %1, align 8, !dbg !6748
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64966)(STMT)  %88 = bitcast %struct.iot_easysetup_payload* %easysetup_req to { i64, i8* }*, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64973)(STMT)  %89 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %88, i32 0, i32 0, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64981)(STMT)  %90 = load i64, i64* %89, align 8, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64991)(STMT)  %91 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %88, i32 0, i32 1, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64997)(STMT)  %92 = load i8*, i8** %91, align 8, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(65003)(  %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ Callsite) ,(65005)(iot_easysetup_request_handler Entry) ,(108507)(STMT)  %1 = alloca i32, align 4
+  in iot_easysetup_request_handler ,(108508)(STMT)  %request = alloca %struct.iot_easysetup_payload, align 8
+ ln: 1544 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108509)(STMT)  %2 = alloca %struct.iot_context*, align 8
+ ln: 1544 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108510)(STMT)  %err = alloca i32, align 4
+ ln: 1546 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108511)(STMT)  %ret = alloca i32, align 4
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108512)(STMT)  %response = alloca %struct.iot_easysetup_payload, align 8
+ ln: 1548 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108513)(STMT)  %3 = bitcast %struct.iot_easysetup_payload* %request to { i64, i8* }*
+  in iot_easysetup_request_handler ,(108514)(STMT)  %4 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %3, i32 0, i32 0
+  in iot_easysetup_request_handler ,(108515)(STMT)  store i64 %request.coerce0, i64* %4, align 8
+  in iot_easysetup_request_handler ,(108516)(STMT)  %5 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %3, i32 0, i32 1
+  in iot_easysetup_request_handler ,(108517)(STMT)  store i8* %request.coerce1, i8** %5, align 8
+  in iot_easysetup_request_handler ,(108518)(STMT)  store %struct.iot_context* %ctx, %struct.iot_context** %2, align 8
+  in iot_easysetup_request_handler ,(108519)(STMT)  store i32 0, i32* %err, align 4, !dbg !6651
+ ln: 1546 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108520)(STMT)  %6 = load i32, i32* @iot_os_true, align 4, !dbg !6654
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108521)(STMT)  store i32 %6, i32* %ret, align 4, !dbg !6653
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108522)(STMT)  %7 = load %struct.iot_context*, %struct.iot_context** %2, align 8, !dbg !6657
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108523)(STMT)  %8 = icmp ne %struct.iot_context* %7, null, !dbg !6657
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108524)(STMT)  br i1 %8, label %10, label %9, !dbg !6659
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108525)(STMT)  %11 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 0, !dbg !6661
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108527)(STMT)  %12 = load i32, i32* %11, align 8, !dbg !6661
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108529)(STMT)  %13 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 0, !dbg !6662
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108531)(STMT)  store i32 %12, i32* %13, align 8, !dbg !6663
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108533)(STMT)  %14 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 2, !dbg !6664
+ ln: 1554 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108534)(STMT)  store i8* null, i8** %14, align 8, !dbg !6665
+ ln: 1554 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108535)(STMT)  %15 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 0, !dbg !6666
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108536)(STMT)  %16 = load i32, i32* %15, align 8, !dbg !6666
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108537)(STMT)  switch i32 %16, label %69 [
+    i32 0, label %17
+    i32 4, label %21
+    i32 1, label %25
+    i32 2, label %31
+    i32 3, label %37
+    i32 5, label %43
+    i32 6, label %49
+    i32 7, label %55
+    i32 8, label %59
+    i32 9, label %65
+  ], !dbg !6667
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108539)(STMT)  %18 = load %struct.iot_context*, %struct.iot_context** %2, align 8, !dbg !6668
+ ln: 1558 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108550)(STMT)  %19 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 2, !dbg !6670
+ ln: 1558 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108561)(  %20 = call i32 @_es_deviceinfo_handler(%struct.iot_context* %18, i8** %19), !dbg !6671
+ Callsite) ,
+================================
+ vs 
+Node1=260707 Inst1=  %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ Loc1=ln: 1145 fl: src/iot_main.c
+Node2=151170 Inst2=  call void @llvm.memset.p0i8.i64(i8* align 16 %7, i8 0, i64 65, i1 false), !dbg !6688
+ Loc2=ln: 455 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c
+Source svfgnode=260707 0x36fd590 (AIN)   %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ ln: 1145 fl: src/iot_main.c within _iot_main_task(ID: 260707)
+Dest svfgnode=151170 0x3e44d58 (APAR)   call void @llvm.memset.p0i8.i64(i8* align 16 %7, i8 0, i64 65, i1 false), !dbg !6688
+ln: 455 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c(ID: 151170)
+
+================ICFG PATH================
+(64913)(STMT)  %82 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %easysetup_req, i32 0, i32 0, !dbg !6745
+ ln: 1143 fl: src/iot_main.c in _iot_main_task ,(64923)(STMT)  %83 = load i32, i32* %82, align 8, !dbg !6745
+ ln: 1143 fl: src/iot_main.c in _iot_main_task ,(64929)(STMT)  %84 = getelementptr [6 x i8], [6 x i8]* @.str.28, i32 0, i32 0
+  in _iot_main_task ,(64934)(STMT)  %85 = getelementptr [27 x i8], [27 x i8]* @.str.55, i32 0, i32 0
+  in _iot_main_task ,(64941)(STMT)  %86 = getelementptr [15 x i8], [15 x i8]* @__FUNCTION__._iot_main_task, i32 0, i32 0
+  in _iot_main_task ,(64950)(  call void (i32, i8*, i8*, ...) @iot_bsp_debug(i32 4, i8* %84, i8* %85, i8* %86, i32 1143, i32 %83), !dbg !6747
+ Callsite) ,(64951)(  call void (i32, i8*, i8*, ...) @iot_bsp_debug(i32 4, i8* %84, i8* %85, i8* %86, i32 1143, i32 %83), !dbg !6747
+ Ret) ,(64958)(STMT)  %87 = load %struct.iot_context*, %struct.iot_context** %1, align 8, !dbg !6748
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64966)(STMT)  %88 = bitcast %struct.iot_easysetup_payload* %easysetup_req to { i64, i8* }*, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64973)(STMT)  %89 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %88, i32 0, i32 0, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64981)(STMT)  %90 = load i64, i64* %89, align 8, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64991)(STMT)  %91 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %88, i32 0, i32 1, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64997)(STMT)  %92 = load i8*, i8** %91, align 8, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(65003)(  %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ Callsite) ,(65005)(iot_easysetup_request_handler Entry) ,(108507)(STMT)  %1 = alloca i32, align 4
+  in iot_easysetup_request_handler ,(108508)(STMT)  %request = alloca %struct.iot_easysetup_payload, align 8
+ ln: 1544 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108509)(STMT)  %2 = alloca %struct.iot_context*, align 8
+ ln: 1544 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108510)(STMT)  %err = alloca i32, align 4
+ ln: 1546 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108511)(STMT)  %ret = alloca i32, align 4
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108512)(STMT)  %response = alloca %struct.iot_easysetup_payload, align 8
+ ln: 1548 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108513)(STMT)  %3 = bitcast %struct.iot_easysetup_payload* %request to { i64, i8* }*
+  in iot_easysetup_request_handler ,(108514)(STMT)  %4 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %3, i32 0, i32 0
+  in iot_easysetup_request_handler ,(108515)(STMT)  store i64 %request.coerce0, i64* %4, align 8
+  in iot_easysetup_request_handler ,(108516)(STMT)  %5 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %3, i32 0, i32 1
+  in iot_easysetup_request_handler ,(108517)(STMT)  store i8* %request.coerce1, i8** %5, align 8
+  in iot_easysetup_request_handler ,(108518)(STMT)  store %struct.iot_context* %ctx, %struct.iot_context** %2, align 8
+  in iot_easysetup_request_handler ,(108519)(STMT)  store i32 0, i32* %err, align 4, !dbg !6651
+ ln: 1546 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108520)(STMT)  %6 = load i32, i32* @iot_os_true, align 4, !dbg !6654
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108521)(STMT)  store i32 %6, i32* %ret, align 4, !dbg !6653
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108522)(STMT)  %7 = load %struct.iot_context*, %struct.iot_context** %2, align 8, !dbg !6657
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108523)(STMT)  %8 = icmp ne %struct.iot_context* %7, null, !dbg !6657
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108524)(STMT)  br i1 %8, label %10, label %9, !dbg !6659
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108525)(STMT)  %11 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 0, !dbg !6661
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108527)(STMT)  %12 = load i32, i32* %11, align 8, !dbg !6661
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108529)(STMT)  %13 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 0, !dbg !6662
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108531)(STMT)  store i32 %12, i32* %13, align 8, !dbg !6663
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108533)(STMT)  %14 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 2, !dbg !6664
+ ln: 1554 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108534)(STMT)  store i8* null, i8** %14, align 8, !dbg !6665
+ ln: 1554 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108535)(STMT)  %15 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 0, !dbg !6666
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108536)(STMT)  %16 = load i32, i32* %15, align 8, !dbg !6666
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108537)(STMT)  switch i32 %16, label %69 [
+    i32 0, label %17
+    i32 4, label %21
+    i32 1, label %25
+    i32 2, label %31
+    i32 3, label %37
+    i32 5, label %43
+    i32 6, label %49
+    i32 7, label %55
+    i32 8, label %59
+    i32 9, label %65
+  ], !dbg !6667
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108541)(STMT)  %26 = load %struct.iot_context*, %struct.iot_context** %2, align 8, !dbg !6679
+ ln: 1564 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108552)(STMT)  %27 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 2, !dbg !6680
+ ln: 1564 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108569)(STMT)  %28 = load i8*, i8** %27, align 8, !dbg !6680
+ ln: 1564 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108586)(STMT)  %29 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 2, !dbg !6681
+ ln: 1564 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108597)(  %30 = call i32 @_es_keyinfo_handler(%struct.iot_context* %26, i8* %28, i8** %29), !dbg !6682
+ Callsite) ,
+================================
+ vs 
+Node1=260708 Inst1=  %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ Loc1=ln: 1145 fl: src/iot_main.c
+Node2=144215 Inst2=  call void @llvm.memset.p0i8.i64(i8* align 8 %4, i8 0, i64 16, i1 false), !dbg !6667
+ Loc2=ln: 367 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c
+Source svfgnode=260708 0x36fd590 (AIN)   %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ ln: 1145 fl: src/iot_main.c within _iot_main_task(ID: 260708)
+Dest svfgnode=144215 0x3763948 (APAR)   call void @llvm.memset.p0i8.i64(i8* align 8 %4, i8 0, i64 16, i1 false), !dbg !6667
+ln: 367 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c(ID: 144215)
+
+================ICFG PATH================
+(64913)(STMT)  %82 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %easysetup_req, i32 0, i32 0, !dbg !6745
+ ln: 1143 fl: src/iot_main.c in _iot_main_task ,(64923)(STMT)  %83 = load i32, i32* %82, align 8, !dbg !6745
+ ln: 1143 fl: src/iot_main.c in _iot_main_task ,(64929)(STMT)  %84 = getelementptr [6 x i8], [6 x i8]* @.str.28, i32 0, i32 0
+  in _iot_main_task ,(64934)(STMT)  %85 = getelementptr [27 x i8], [27 x i8]* @.str.55, i32 0, i32 0
+  in _iot_main_task ,(64941)(STMT)  %86 = getelementptr [15 x i8], [15 x i8]* @__FUNCTION__._iot_main_task, i32 0, i32 0
+  in _iot_main_task ,(64950)(  call void (i32, i8*, i8*, ...) @iot_bsp_debug(i32 4, i8* %84, i8* %85, i8* %86, i32 1143, i32 %83), !dbg !6747
+ Callsite) ,(64951)(  call void (i32, i8*, i8*, ...) @iot_bsp_debug(i32 4, i8* %84, i8* %85, i8* %86, i32 1143, i32 %83), !dbg !6747
+ Ret) ,(64958)(STMT)  %87 = load %struct.iot_context*, %struct.iot_context** %1, align 8, !dbg !6748
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64966)(STMT)  %88 = bitcast %struct.iot_easysetup_payload* %easysetup_req to { i64, i8* }*, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64973)(STMT)  %89 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %88, i32 0, i32 0, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64981)(STMT)  %90 = load i64, i64* %89, align 8, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64991)(STMT)  %91 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %88, i32 0, i32 1, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64997)(STMT)  %92 = load i8*, i8** %91, align 8, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(65003)(  %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ Callsite) ,(65005)(iot_easysetup_request_handler Entry) ,(108507)(STMT)  %1 = alloca i32, align 4
+  in iot_easysetup_request_handler ,(108508)(STMT)  %request = alloca %struct.iot_easysetup_payload, align 8
+ ln: 1544 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108509)(STMT)  %2 = alloca %struct.iot_context*, align 8
+ ln: 1544 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108510)(STMT)  %err = alloca i32, align 4
+ ln: 1546 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108511)(STMT)  %ret = alloca i32, align 4
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108512)(STMT)  %response = alloca %struct.iot_easysetup_payload, align 8
+ ln: 1548 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108513)(STMT)  %3 = bitcast %struct.iot_easysetup_payload* %request to { i64, i8* }*
+  in iot_easysetup_request_handler ,(108514)(STMT)  %4 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %3, i32 0, i32 0
+  in iot_easysetup_request_handler ,(108515)(STMT)  store i64 %request.coerce0, i64* %4, align 8
+  in iot_easysetup_request_handler ,(108516)(STMT)  %5 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %3, i32 0, i32 1
+  in iot_easysetup_request_handler ,(108517)(STMT)  store i8* %request.coerce1, i8** %5, align 8
+  in iot_easysetup_request_handler ,(108518)(STMT)  store %struct.iot_context* %ctx, %struct.iot_context** %2, align 8
+  in iot_easysetup_request_handler ,(108519)(STMT)  store i32 0, i32* %err, align 4, !dbg !6651
+ ln: 1546 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108520)(STMT)  %6 = load i32, i32* @iot_os_true, align 4, !dbg !6654
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108521)(STMT)  store i32 %6, i32* %ret, align 4, !dbg !6653
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108522)(STMT)  %7 = load %struct.iot_context*, %struct.iot_context** %2, align 8, !dbg !6657
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108523)(STMT)  %8 = icmp ne %struct.iot_context* %7, null, !dbg !6657
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108524)(STMT)  br i1 %8, label %10, label %9, !dbg !6659
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108525)(STMT)  %11 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 0, !dbg !6661
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108527)(STMT)  %12 = load i32, i32* %11, align 8, !dbg !6661
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108529)(STMT)  %13 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 0, !dbg !6662
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108531)(STMT)  store i32 %12, i32* %13, align 8, !dbg !6663
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108533)(STMT)  %14 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 2, !dbg !6664
+ ln: 1554 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108534)(STMT)  store i8* null, i8** %14, align 8, !dbg !6665
+ ln: 1554 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108535)(STMT)  %15 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 0, !dbg !6666
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108536)(STMT)  %16 = load i32, i32* %15, align 8, !dbg !6666
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108537)(STMT)  switch i32 %16, label %69 [
+    i32 0, label %17
+    i32 4, label %21
+    i32 1, label %25
+    i32 2, label %31
+    i32 3, label %37
+    i32 5, label %43
+    i32 6, label %49
+    i32 7, label %55
+    i32 8, label %59
+    i32 9, label %65
+  ], !dbg !6667
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108539)(STMT)  %18 = load %struct.iot_context*, %struct.iot_context** %2, align 8, !dbg !6668
+ ln: 1558 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108550)(STMT)  %19 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 2, !dbg !6670
+ ln: 1558 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108561)(  %20 = call i32 @_es_deviceinfo_handler(%struct.iot_context* %18, i8** %19), !dbg !6671
+ Callsite) ,
+================================
+ vs 
+Node1=260708 Inst1=  %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ Loc1=ln: 1145 fl: src/iot_main.c
+Node2=151170 Inst2=  call void @llvm.memset.p0i8.i64(i8* align 16 %7, i8 0, i64 65, i1 false), !dbg !6688
+ Loc2=ln: 455 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c
+Source svfgnode=260708 0x36fd590 (AIN)   %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ ln: 1145 fl: src/iot_main.c within _iot_main_task(ID: 260708)
+Dest svfgnode=151170 0x3e44d58 (APAR)   call void @llvm.memset.p0i8.i64(i8* align 16 %7, i8 0, i64 65, i1 false), !dbg !6688
+ln: 455 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c(ID: 151170)
+
+================ICFG PATH================
+(64913)(STMT)  %82 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %easysetup_req, i32 0, i32 0, !dbg !6745
+ ln: 1143 fl: src/iot_main.c in _iot_main_task ,(64923)(STMT)  %83 = load i32, i32* %82, align 8, !dbg !6745
+ ln: 1143 fl: src/iot_main.c in _iot_main_task ,(64929)(STMT)  %84 = getelementptr [6 x i8], [6 x i8]* @.str.28, i32 0, i32 0
+  in _iot_main_task ,(64934)(STMT)  %85 = getelementptr [27 x i8], [27 x i8]* @.str.55, i32 0, i32 0
+  in _iot_main_task ,(64941)(STMT)  %86 = getelementptr [15 x i8], [15 x i8]* @__FUNCTION__._iot_main_task, i32 0, i32 0
+  in _iot_main_task ,(64950)(  call void (i32, i8*, i8*, ...) @iot_bsp_debug(i32 4, i8* %84, i8* %85, i8* %86, i32 1143, i32 %83), !dbg !6747
+ Callsite) ,(64951)(  call void (i32, i8*, i8*, ...) @iot_bsp_debug(i32 4, i8* %84, i8* %85, i8* %86, i32 1143, i32 %83), !dbg !6747
+ Ret) ,(64958)(STMT)  %87 = load %struct.iot_context*, %struct.iot_context** %1, align 8, !dbg !6748
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64966)(STMT)  %88 = bitcast %struct.iot_easysetup_payload* %easysetup_req to { i64, i8* }*, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64973)(STMT)  %89 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %88, i32 0, i32 0, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64981)(STMT)  %90 = load i64, i64* %89, align 8, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64991)(STMT)  %91 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %88, i32 0, i32 1, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(64997)(STMT)  %92 = load i8*, i8** %91, align 8, !dbg !6749
+ ln: 1145 fl: src/iot_main.c in _iot_main_task ,(65003)(  %93 = call i32 @iot_easysetup_request_handler(%struct.iot_context* %87, i64 %90, i8* %92), !dbg !6749
+ Callsite) ,(65005)(iot_easysetup_request_handler Entry) ,(108507)(STMT)  %1 = alloca i32, align 4
+  in iot_easysetup_request_handler ,(108508)(STMT)  %request = alloca %struct.iot_easysetup_payload, align 8
+ ln: 1544 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108509)(STMT)  %2 = alloca %struct.iot_context*, align 8
+ ln: 1544 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108510)(STMT)  %err = alloca i32, align 4
+ ln: 1546 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108511)(STMT)  %ret = alloca i32, align 4
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108512)(STMT)  %response = alloca %struct.iot_easysetup_payload, align 8
+ ln: 1548 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108513)(STMT)  %3 = bitcast %struct.iot_easysetup_payload* %request to { i64, i8* }*
+  in iot_easysetup_request_handler ,(108514)(STMT)  %4 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %3, i32 0, i32 0
+  in iot_easysetup_request_handler ,(108515)(STMT)  store i64 %request.coerce0, i64* %4, align 8
+  in iot_easysetup_request_handler ,(108516)(STMT)  %5 = getelementptr inbounds { i64, i8* }, { i64, i8* }* %3, i32 0, i32 1
+  in iot_easysetup_request_handler ,(108517)(STMT)  store i8* %request.coerce1, i8** %5, align 8
+  in iot_easysetup_request_handler ,(108518)(STMT)  store %struct.iot_context* %ctx, %struct.iot_context** %2, align 8
+  in iot_easysetup_request_handler ,(108519)(STMT)  store i32 0, i32* %err, align 4, !dbg !6651
+ ln: 1546 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108520)(STMT)  %6 = load i32, i32* @iot_os_true, align 4, !dbg !6654
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108521)(STMT)  store i32 %6, i32* %ret, align 4, !dbg !6653
+ ln: 1547 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108522)(STMT)  %7 = load %struct.iot_context*, %struct.iot_context** %2, align 8, !dbg !6657
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108523)(STMT)  %8 = icmp ne %struct.iot_context* %7, null, !dbg !6657
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108524)(STMT)  br i1 %8, label %10, label %9, !dbg !6659
+ ln: 1550 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108525)(STMT)  %11 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 0, !dbg !6661
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108527)(STMT)  %12 = load i32, i32* %11, align 8, !dbg !6661
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108529)(STMT)  %13 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 0, !dbg !6662
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108531)(STMT)  store i32 %12, i32* %13, align 8, !dbg !6663
+ ln: 1553 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108533)(STMT)  %14 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 2, !dbg !6664
+ ln: 1554 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108534)(STMT)  store i8* null, i8** %14, align 8, !dbg !6665
+ ln: 1554 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108535)(STMT)  %15 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 0, !dbg !6666
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108536)(STMT)  %16 = load i32, i32* %15, align 8, !dbg !6666
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108537)(STMT)  switch i32 %16, label %69 [
+    i32 0, label %17
+    i32 4, label %21
+    i32 1, label %25
+    i32 2, label %31
+    i32 3, label %37
+    i32 5, label %43
+    i32 6, label %49
+    i32 7, label %55
+    i32 8, label %59
+    i32 9, label %65
+  ], !dbg !6667
+ ln: 1556 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108541)(STMT)  %26 = load %struct.iot_context*, %struct.iot_context** %2, align 8, !dbg !6679
+ ln: 1564 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108552)(STMT)  %27 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %request, i32 0, i32 2, !dbg !6680
+ ln: 1564 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108569)(STMT)  %28 = load i8*, i8** %27, align 8, !dbg !6680
+ ln: 1564 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108586)(STMT)  %29 = getelementptr inbounds %struct.iot_easysetup_payload, %struct.iot_easysetup_payload* %response, i32 0, i32 2, !dbg !6681
+ ln: 1564 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c in iot_easysetup_request_handler ,(108597)(  %30 = call i32 @_es_keyinfo_handler(%struct.iot_context* %26, i8* %28, i8** %29), !dbg !6682
+ Callsite) ,
+================================
+Label=iot_easysetup_request_handler_memset_sensclear solution size=16 time=332
+Total number of solutions=9
+Total number of cached solutions=1
+Total query solving time=934
+Average query solving time=103
+SVFG stats: nodes=287124 edges=433924

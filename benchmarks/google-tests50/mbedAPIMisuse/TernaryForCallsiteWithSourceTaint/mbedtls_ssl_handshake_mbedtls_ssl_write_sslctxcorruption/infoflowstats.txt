@@ -1,0 +1,21 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=9410
+Total number of formal out/ret w outgoing edge=1548
+Total number of formal out/ret w incoming formalin wo deref=2596
+Total number of formal out/ret w incoming formalin (relaxed)=4354
+Sumarization time=2
+Query: TernaryForCallsiteWithSourceTaint, source=mbedtls_ssl_handshake sink=mbedtls_ssl_write desc=sslctxcorruption sanitizeOnReturn=0
+Label=somegeneric_label solution size=0 time=0
+Label=mbedtls_ssl_handshakearg1_label solution size=0 time=0
+Label=mbedtls_ssl_handshakecs1_label solution size=9 time=7
+Label=mbedtls_ssl_handshakeargpby1 solution size=122 time=7
+Label=mbedtls_ssl_writearg1_label solution size=0 time=0
+Label=mbedtls_ssl_writecs1_label solution size=17 time=8
+Label=mbedtls_ssl_writeargpby1 solution size=128 time=8
+Label=mbedtls_ssl_handshake_mbedtls_ssl_write_sslctxcorruption solution size=0 time=34
+Total number of solutions=9
+Total number of cached solutions=1
+Total query solving time=64
+Average query solving time=7
+SVFG stats: nodes=137452 edges=202328

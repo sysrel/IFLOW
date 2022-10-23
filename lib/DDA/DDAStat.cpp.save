@@ -1,0 +1,760 @@
+/*
+ * DDAStat.cpp
+ *
+ *  Created on: Sep 15, 2014
+ *      Author: Yulei Sui
+ */
+
+#include "DDA/DDAStat.h"
+#include "DDA/FlowDDA.h"
+#include "DDA/ContextDDA.h"
+#include "Util/SVFUtil.h"
+#include "Util/ICFGNode.h"
+#include "MSSA/SVFGStat.h"
+
+#include <iomanip>
+
+#define DBGP 0
+
+using namespace SVFUtil;
+
+DDAStat::DDAStat(FlowDDA* pta) : PTAStat(pta), flowDDA(pta), contextDDA(NULL) {
+    initDefault();
+}
+DDAStat::DDAStat(ContextDDA* pta) : PTAStat(pta), flowDDA(NULL), contextDDA(pta) {
+    initDefault();
+}
+
+void DDAStat::initDefault() {
+    _TotalNumOfQuery = 0;
+    _TotalNumOfOutOfBudgetQuery = 0;
+    _TotalNumOfDPM = 0;
+    _TotalNumOfStrongUpdates = 0;
+    _TotalNumOfMustAliases = 0;
+    _TotalNumOfInfeasiblePath = 0;
+    _TotalNumOfStep = 0;
+    _TotalNumOfStepInCycle = 0;
+
+    _NumOfIndCallEdgeSolved = 0;
+    _MaxCPtsSize = _MaxPtsSize = 0;
+    _TotalCPtsSize = _TotalPtsSize = 0;
+    _NumOfNullPtr = 0;
+    _NumOfConstantPtr = 0;
+    _NumOfBlackholePtr = 0;
+    _AvgNumOfDPMAtSVFGNode = 0;
+    _MaxNumOfDPMAtSVFGNode = 0;
+    _TotalTimeOfQueries = 0;
+    _AnaTimePerQuery = 0;
+    _AnaTimeCyclePerQuery = 0;
+
+
+    _NumOfDPM = 0;
+    _NumOfStrongUpdates = 0;
+    _NumOfMustAliases = 0;
+    _NumOfInfeasiblePath = 0;
+
+    _NumOfStep = 0;
+    _NumOfStepInCycle = 0;
+    _AnaTimePerQuery = 0;
+    _AnaTimeCyclePerQuery = 0;
+    _TotalTimeOfQueries = 0;
+
+    _vmrssUsageBefore = _vmrssUsageAfter = 0;
+    _vmsizeUsageBefore = _vmsizeUsageAfter = 0;
+}
+
+SVFG* DDAStat::getSVFG() const {
+    if(flowDDA)
+        return flowDDA->getSVFG();
+    else
+        return contextDDA->getSVFG();
+
+}
+
+PointerAnalysis* DDAStat::getPTA() const {
+    if(flowDDA)
+        return flowDDA;
+    else
+        return contextDDA;
+}
+
+void DDAStat::performStatPerQuery(NodeID ptr) {
+
+    u32_t NumOfDPM = 0;
+    u32_t NumOfLoc = 0;
+    u32_t maxNumOfDPMPerLoc = 0;
+    u32_t cptsSize = 0;
+    PointsTo pts;
+    if(flowDDA) {
+        for(FlowDDA::LocToDPMVecMap::const_iterator it =  flowDDA->getLocToDPMVecMap().begin(),
+                eit = flowDDA->getLocToDPMVecMap().end(); it!=eit; ++it) {
+            NumOfLoc++;
+            u32_t num = it->second.size();
+            NumOfDPM += num;
+            if(num > maxNumOfDPMPerLoc)
+                maxNumOfDPMPerLoc = num;
+        }
+        cptsSize = flowDDA->getPts(ptr).count();
+        pts = flowDDA->getPts(ptr);
+    }
+    else if(contextDDA) {
+        for(ContextDDA::LocToDPMVecMap::const_iterator it =  contextDDA->getLocToDPMVecMap().begin(),
+                eit = contextDDA->getLocToDPMVecMap().end(); it!=eit; ++it) {
+            NumOfLoc++;
+            u32_t num = it->second.size();
+            NumOfDPM += num;
+            if(num > maxNumOfDPMPerLoc)
+                maxNumOfDPMPerLoc = num;
+        }
+        ContextCond cxt;
+        CxtVar var(cxt,ptr);
+        cptsSize = contextDDA->getPts(var).count();
+        pts = contextDDA->getBVPointsTo(contextDDA->getPts(var));
+    }
+    u32_t ptsSize = pts.count();
+
+    double avgDPMAtLoc = NumOfLoc!=0 ? (double)NumOfDPM/NumOfLoc : 0;
+    _AvgNumOfDPMAtSVFGNode += avgDPMAtLoc;
+    if(maxNumOfDPMPerLoc > _MaxNumOfDPMAtSVFGNode)
+        _MaxNumOfDPMAtSVFGNode = maxNumOfDPMPerLoc;
+
+    _TotalCPtsSize += cptsSize;
+    if (_MaxCPtsSize < cptsSize)
+        _MaxCPtsSize = cptsSize;
+
+    _TotalPtsSize += ptsSize;
+    if(_MaxPtsSize < ptsSize)
+        _MaxPtsSize = ptsSize;
+
+    if(cptsSize == 0)
+        _NumOfNullPtr++;
+
+    if(getPTA()->containBlackHoleNode(pts)) {
+        _NumOfConstantPtr++;
+    }
+    if(getPTA()->containConstantNode(pts)) {
+        _NumOfBlackholePtr++;
+    }
+
+    _TotalNumOfQuery++;
+    _TotalNumOfDPM += _NumOfDPM;
+    _TotalNumOfStrongUpdates += _NumOfStrongUpdates;
+    _TotalNumOfMustAliases += _NumOfMustAliases;
+    _TotalNumOfInfeasiblePath += _NumOfInfeasiblePath;
+
+    _TotalNumOfStep += _NumOfStep;
+    _TotalNumOfStepInCycle += _NumOfStepInCycle;
+
+    timeStatMap.clear();
+    NumPerQueryStatMap.clear();
+
+    timeStatMap["TimePerQuery"] = _AnaTimePerQuery/TIMEINTERVAL;
+    timeStatMap["CyleTimePerQuery"] = _AnaTimeCyclePerQuery/TIMEINTERVAL;
+
+    NumPerQueryStatMap["CPtsSize"] = cptsSize;
+    NumPerQueryStatMap["PtsSize"] = ptsSize;
+    NumPerQueryStatMap["NumOfStep"] = _NumOfStep;
+    NumPerQueryStatMap["NumOfStepInCycle"] = _NumOfStepInCycle;
+    NumPerQueryStatMap["NumOfDPM"] = _NumOfDPM;
+    NumPerQueryStatMap["NumOfSU"] = _NumOfStrongUpdates;
+    NumPerQueryStatMap["IndEdgeResolved"] = getPTA()->getNumOfResolvedIndCallEdge() - _NumOfIndCallEdgeSolved;
+    NumPerQueryStatMap["AvgDPMAtLoc"] = avgDPMAtLoc;
+    NumPerQueryStatMap["MaxDPMAtLoc"] = maxNumOfDPMPerLoc;
+    NumPerQueryStatMap["MaxPathPerQuery"] = VFPathCond::maximumPath;
+    NumPerQueryStatMap["MaxCxtPerQuery"] = ContextCond::maximumCxt;
+    NumPerQueryStatMap["NumOfMustAA"] = _NumOfMustAliases;
+    NumPerQueryStatMap["NumOfInfePath"] = _NumOfInfeasiblePath;
+
+    /// reset numbers for next query
+    _NumOfStep = 0;
+    _NumOfStepInCycle = 0;
+    _NumOfDPM = 0;
+    _NumOfStrongUpdates = 0;
+    _NumOfMustAliases = 0;
+    _NumOfInfeasiblePath = 0;
+    _AnaTimeCyclePerQuery = 0;
+    _NumOfIndCallEdgeSolved = getPTA()->getNumOfResolvedIndCallEdge();
+}
+
+void DDAStat::getNumOfOOBQuery()
+{
+    if (flowDDA)
+        _TotalNumOfOutOfBudgetQuery = flowDDA->outOfBudgetDpms.size();
+    else if (contextDDA)
+        _TotalNumOfOutOfBudgetQuery = contextDDA->outOfBudgetDpms.size();
+}
+
+void DDAStat::performStat() {
+
+    generalNumMap.clear();
+    PTNumStatMap.clear();
+    timeStatMap.clear();
+
+    callgraphStat();
+
+    getNumOfOOBQuery();
+
+    for (PAG::const_iterator nodeIt = PAG::getPAG()->begin(), nodeEit = PAG::getPAG()->end(); nodeIt != nodeEit; nodeIt++) {
+        PAGNode* pagNode = nodeIt->second;
+        if(SVFUtil::isa<ObjPN>(pagNode)) {
+            if(getPTA()->isLocalVarInRecursiveFun(nodeIt->first)) {
+                localVarInRecursion.set(nodeIt->first);
+            }
+        }
+    }
+
+    timeStatMap["TotalQueryTime"] =  _TotalTimeOfQueries/TIMEINTERVAL;
+    timeStatMap["AvgTimePerQuery"] =  (_TotalTimeOfQueries/TIMEINTERVAL)/_TotalNumOfQuery;
+    timeStatMap["TotalBKCondTime"] =  (_TotalTimeOfBKCondition/TIMEINTERVAL);
+
+    PTNumStatMap["NumOfQuery"] = _TotalNumOfQuery;
+    PTNumStatMap["NumOfOOBQuery"] = _TotalNumOfOutOfBudgetQuery;
+    PTNumStatMap["NumOfDPM"] = _TotalNumOfDPM;
+    PTNumStatMap["NumOfSU"] = _TotalNumOfStrongUpdates;
+    PTNumStatMap["NumOfStoreSU"] = _StrongUpdateStores.count();
+    PTNumStatMap["NumOfStep"] =  _TotalNumOfStep;
+    PTNumStatMap["NumOfStepInCycle"] =  _TotalNumOfStepInCycle;
+    timeStatMap["AvgDPMAtLoc"] = (double)_AvgNumOfDPMAtSVFGNode/_TotalNumOfQuery;
+    PTNumStatMap["MaxDPMAtLoc"] = _MaxNumOfDPMAtSVFGNode;
+    PTNumStatMap["MaxPathPerQuery"] = VFPathCond::maximumPath;
+    PTNumStatMap["MaxCxtPerQuery"] = ContextCond::maximumCxt;
+    PTNumStatMap["MaxCPtsSize"] = _MaxCPtsSize;
+    PTNumStatMap["MaxPtsSize"] = _MaxPtsSize;
+    timeStatMap["AvgCPtsSize"] = (double)_TotalCPtsSize/_TotalNumOfQuery;
+    timeStatMap["AvgPtsSize"] = (double)_TotalPtsSize/_TotalNumOfQuery;
+    PTNumStatMap["IndEdgeSolved"] = getPTA()->getNumOfResolvedIndCallEdge();
+    PTNumStatMap["NumOfNullPtr"] = _NumOfNullPtr;
+    PTNumStatMap["PointsToConstPtr"] = _NumOfConstantPtr;
+    PTNumStatMap["PointsToBlkPtr"] = _NumOfBlackholePtr;
+    PTNumStatMap["NumOfMustAA"] = _TotalNumOfMustAliases;
+    PTNumStatMap["NumOfInfePath"] = _TotalNumOfInfeasiblePath;
+    PTNumStatMap["NumOfStore"] = PAG::getPAG()->getPTAEdgeSet(PAGEdge::Store).size();
+    PTNumStatMap["MemoryUsageVmrss"] = _vmrssUsageAfter - _vmrssUsageBefore;
+    PTNumStatMap["MemoryUsageVmsize"] = _vmsizeUsageAfter - _vmsizeUsageBefore;
+
+    printStat();
+
+    /* SYSREL exten */
+   featureExtraction();
+    //customStat();
+    /* SYSREL extension */
+
+}
+
+void DDAStat::printStatPerQuery(NodeID ptr, const PointsTo& pts) {
+
+    if (timeStatMap.empty() == false && NumPerQueryStatMap.empty() == false) {
+        std::cout.flags(std::ios::left);
+        unsigned field_width = 20;
+        std::cout << "---------------------Stat Per Query--------------------------------\n";
+        for (TIMEStatMap::iterator it = timeStatMap.begin(), eit = timeStatMap.end(); it != eit; ++it) {
+            // format out put with width 20 space
+            std::cout << std::setw(field_width) << it->first << it->second << "\n";
+        }
+        for (NUMStatMap::iterator it = NumPerQueryStatMap.begin(), eit = NumPerQueryStatMap.end(); it != eit; ++it) {
+            // format out put with width 20 space
+            std::cout << std::setw(field_width) << it->first << it->second << "\n";
+        }
+    }
+    getPTA()->dumpPts(ptr, pts);
+}
+
+
+void DDAStat::printStat() {
+
+    if(flowDDA) {
+        FlowDDA::ConstSVFGEdgeSet edgeSet;
+        flowDDA->getSVFG()->getStat()->performSCCStat(edgeSet);
+    }
+    else if(contextDDA) {
+        contextDDA->getSVFG()->getStat()->performSCCStat(contextDDA->getInsensitiveEdgeSet());
+    }
+
+    std::cout << "\n****Demand-Driven Pointer Analysis Statistics****\n";
+    PTAStat::printStat();
+}
+
+void DDAStat::getDependencies(llvm::User *v, std::set<const Instruction*> &neg, std::set<const Instruction*> var) {
+   llvm::errs() << " getting dependencies for " << (*v) << "\n";
+   for(User::op_iterator it = v->op_begin(); it != v->op_end(); it++) {
+      if (GetElementPtrInst *gep = SVFUtil::dyn_cast<GetElementPtrInst>(&(*it))) {
+         const DataLayout &DL = gep->getParent()->getParent()->getParent()->getDataLayout();
+         unsigned BitWidth = DL.getPointerSizeInBits(DL.getPointerSize());
+         bool offsetmatches = true;
+         llvm::APInt llvmoffset(BitWidth, 0);
+         if (!gep->hasAllConstantIndices()) {
+            var.insert(gep);
+         } 
+         else if (gep->accumulateConstantOffset(DL, llvmoffset)) {
+            if (llvmoffset.getSExtValue() < 0) 
+               neg.insert(gep);
+               return;
+         }
+      }
+      for(Value::user_iterator uit = v->user_begin(); uit != v->user_end(); uit++)  {
+           Value *vv = *uit;
+           if (User *uu = SVFUtil::dyn_cast<User>(vv))
+              getDependencies(uu, neg, var);
+      }
+   }
+  
+}
+
+void DDAStat::printPtsInfo(PAGNode *pn) {
+   if (pn->isPointer()) {
+     SVFG* graph = getSVFG();
+     PAG *pag = graph->getPAG(); 
+     PointerAnalysis *pta = getPTA();
+     NodeID src = pn->getId();
+     const PointsTo& srcPts = pta->getPts(src);
+     bool src_ptsblackhole = false;
+     bool src_fieldinsensitive = false;
+     bool src_isnullptr = false;
+     for (PointsTo::iterator piter = srcPts.begin(); piter != srcPts.end(); ++piter) {
+         NodeID ptd = *piter;
+         #ifdef DBGPR
+         llvm::errs() << "src points to: " << ptd << "\n"; 
+         #endif
+         if (pag->isBlkObj(ptd)) {
+            src_ptsblackhole = true;
+         }
+         if ((flowDDA && flowDDA->isFieldInsensitive(ptd)) || 
+             (contextDDA && contextDDA->isFieldInsensitive(ptd)))
+            src_fieldinsensitive = true;
+         if (pag->isNullPtr(ptd))
+            src_isnullptr = true;
+     }
+     #ifdef DBGPR
+     llvm::errs() << ",srcptssize=" << srcPts.count() 
+                  << ",srcptstoblackhole=" << src_ptsblackhole 
+                  << ",srcnullptr=" << src_isnullptr 
+                  << ",srcfieldinsensitive=" << src_fieldinsensitive 
+                  << "\n";
+     #endif
+   }
+}      
+
+
+bool DDAStat::violatesSoundness(NodeID q, const CallSite &cs, unsigned instanceno) {
+    SVFG* graph = getSVFG();
+    PAG *pag = graph->getPAG();
+    SVFG::SVFGNodeIDToNodeMapTy::iterator it = graph->begin();
+    SVFG::SVFGNodeIDToNodeMapTy::iterator eit = graph->end();
+    for (; it != eit; ++it) {
+        if (SVFUtil::isa<GepSVFGNode>(it->second)) {
+            const GepSVFGNode *gepnode = SVFUtil::dyn_cast<GepSVFGNode>(it->second);
+            #ifdef DBGPR 
+            llvm::errs() << "gepnode: " << (*gepnode) << "\n";
+            #endif
+            NodeID src = gepnode->getPAGSrcNodeID();            
+            PAGNode *srcnode = pag->getPAGNode(src);
+            const Value *vs = srcnode->getValue();
+            NodeID dst = gepnode->getPAGDstNodeID();
+            PAGNode *dstnode = pag->getPAGNode(dst);
+            if (q == src || q == dst) {
+               PointerAnalysis *pta = getPTA();
+               const PointsTo& srcPts = pta->getPts(src);
+               const PointsTo& dstPts = pta->getPts(dst);
+               const Value *vd = dstnode->getValue();
+               bool samePtsSetDiffOffset = false;
+               const GetElementPtrInst *gep = SVFUtil::dyn_cast<GetElementPtrInst>(vd);
+               assert(gep);
+               const Function *csfunc = cs.getInstruction()->getParent()->getParent();
+               const Module *csm = csfunc->getParent();
+               const Function *gfunc = gep->getParent()->getParent();
+               const Module *gm = gfunc->getParent();
+               const DataLayout &DL = gm->getDataLayout();
+               unsigned BitWidth = DL.getPointerSizeInBits(DL.getPointerSize());
+               llvm::APInt llvmoffset(BitWidth, 0);
+               if (gep->accumulateConstantOffset(DL, llvmoffset)) {
+                  if (llvmoffset.getSExtValue() != 0 && srcPts == dstPts) {
+                     // of course ptsto sets may match if offset is a zero
+                     samePtsSetDiffOffset = true;    
+                  }
+               }
+               bool emptyPtsToForDst = srcPts.count() > 0 && dstPts.count() == 0;
+               if (samePtsSetDiffOffset || emptyPtsToForDst) {
+                  std::string violationType = "unknown";
+                  if (samePtsSetDiffOffset)
+                     violationType = "sameSetDiffOffset";
+                  if (emptyPtsToForDst)
+                     violationType = "emptyPtsForDst";
+                  #ifdef DBGPR
+                  llvm::errs() << "dependent flow is part of Gep with identical src-dst pointsto set!\n";
+                  #endif
+                  std::string geptype = "positive";
+                  for(User::const_op_iterator oi = gep->idx_begin(), 
+                               oe = gep->idx_end(); oi != oe; oi++) {
+                     Value *v = oi->get();
+                     if (llvm::ConstantInt* CI = SVFUtil::dyn_cast<llvm::ConstantInt>(v)) {
+                        if (CI->getSExtValue() < 0) {
+                           geptype = "negative";
+                        }
+                     }
+                     else {
+                        geptype = "variable";
+                     }
+                  }
+                  std::string csfilename = csm->getName();
+                  std::string csfuncname = csfunc->getName();
+                  std::string gepfilename = gm->getName();
+                  std::string gepfuncname = gfunc->getName();
+                  unsigned geplineno = 0;
+                  llvm::MDNode *gmd = gep->getMetadata("dbg");
+                  if (gmd) {
+                     llvm::DebugLoc loc(gmd);
+                     geplineno = loc.getLine();
+                  }
+                  unsigned cslineno = 0;
+                  llvm::MDNode *csmd = cs.getInstruction()->getMetadata("dbg");
+                  if (csmd) {
+                     llvm::DebugLoc loc(csmd);
+                     cslineno = loc.getLine();
+                  }
+                  llvm::errs() << instanceno << ","
+                               << "\"" << (*cs.getInstruction()) << "\","
+                               << csfuncname << ","
+                               << csfilename << ","
+                               << cslineno << ","
+                               << "\"" << (*gep) << "\"," 
+                               << violationType << "," 
+                               << geptype << "," 
+                               << gepfuncname << "," 
+                               << gepfilename << ","
+                               << geplineno << "\n"; 
+                  return true;
+               }
+            }
+        }
+    }
+    return false;
+}
+
+void DDAStat::getVFGDependencies(const User *u, const CallSite &cs, unsigned instanceno) {
+   //llvm::errs() << "Value-flow graph dependencies of " << (*u) << "\n";
+   SVFG* graph = getSVFG();
+   PAG *pag = graph->getPAG(); 
+   PAGNode *pn = pag->getPAGNode(pag->getValueNode(u));
+   violatesSoundness(pn->getId(),cs,instanceno);
+   const VFGNode *vn = graph->getDefVFGNode(pn);
+   const SVFGEdge::SVFGEdgeSetTy& inEdges = vn->getInEdges();
+   SVFGEdge::SVFGEdgeSetTy::const_iterator edgeIt = inEdges.begin();
+   SVFGEdge::SVFGEdgeSetTy::const_iterator edgeEit = inEdges.end();
+   for (; edgeIt != edgeEit; ++edgeIt) {
+       const SVFGEdge *edge = *edgeIt;
+       NodeID si = edge->getSrcID();
+       SVFGNode *sn = graph->getSVFGNode(si);
+       if (StmtVFGNode *stn = SVFUtil::dyn_cast<StmtVFGNode>(sn)) {
+          NodeID pi = stn->getPAGSrcNodeID();            
+          PAGNode *srcnode = pag->getPAGNode(pi);
+          const Value *vs = srcnode->getValue();
+          #ifdef DBGPR
+          llvm::errs() << "dependent on:" << (*vs) << "\n";
+          #endif
+          printPtsInfo(srcnode); 
+          if (const User *usucc = SVFUtil::dyn_cast<User>(vs)) {
+              getVFGDependencies(usucc,cs,instanceno);
+          }
+       }
+   }
+}
+
+void visitReachableDefs(SVFGNode* orig, SVFGNode* node, 
+                           std::set<SVFGNode*> visited) {
+   if (visited.find(node) == visited.end())
+      return;
+   visited.insert(node);
+   const SVFGEdge::SVFGEdgeSetTy& inEdges = node->getInEdges();
+   SVFGEdge::SVFGEdgeSetTy::const_iterator edgeIt = inEdges.begin();
+   SVFGEdge::SVFGEdgeSetTy::const_iterator edgeEit = inEdges.end();
+   for (; edgeIt != edgeEit; ++edgeIt)
+   {
+       const SVFGEdge *edge = *edgeIt;
+       VFGNode *src = dyn_cast<VFGNode>(edge->getSrcNode());
+       StmtVFGNode *srcst = dyn_cast<StmtVFGNode>(src);
+       StmtVFGNode *destst = dyn_cast<StmtVFGNode>(orig);
+       assert(srcst);
+       if (!srcst) {
+          visitReachableDefs(orig, src, visited); 
+       }
+       else if (srcst->getInst()->getOpcode() == llvm::Instruction::Store) 
+       {
+          std::string ss = SVFUtil::getSourceLoc(srcst->getInst());
+          std::string ds = SVFUtil::getSourceLoc(destst->getInst());
+          if (ss != ds)
+             llvm::errs() << "[Multistep] source: " << ss 
+                            << " dest: " << ds << "\n";    
+       }  
+   }
+   
+}
+
+void visitReachableUses(SVFGNode* orig, SVFGNode* node, 
+                           std::set<SVFGNode*> visited) {
+   if (visited.find(node) == visited.end())
+      return;
+   visited.insert(node);
+   const SVFGEdge::SVFGEdgeSetTy& outEdges = node->getOutEdges();
+   SVFGEdge::SVFGEdgeSetTy::const_iterator edgeIt = outEdges.begin();
+   SVFGEdge::SVFGEdgeSetTy::const_iterator edgeEit = outEdges.end();
+   for (; edgeIt != edgeEit; ++edgeIt)
+   {
+       const SVFGEdge *edge = *edgeIt;
+       VFGNode *dest = dyn_cast<VFGNode>(edge->getDstNode());
+       StmtVFGNode *srcst = dyn_cast<StmtVFGNode>(orig);
+       StmtVFGNode *destst = dyn_cast<StmtVFGNode>(dest);
+       assert(srcst);
+       if (!destst) {
+          visitReachableUses(orig, dest, visited); 
+       }
+       else if (destst->getInst()->getOpcode() == llvm::Instruction::Load) 
+       {
+          std::string ss = SVFUtil::getSourceLoc(srcst->getInst());
+          std::string ds = SVFUtil::getSourceLoc(destst->getInst());
+          if (ss != ds)
+             llvm::errs() << "[Multistep] source: " << ss 
+                          << " dest: " << ds << "\n";    
+       }  
+   }
+
+
+   
+}
+
+void DDAStat::featureExtraction() {
+        /* Feature Extraction */
+        SVFG *graph = getSVFG();
+        SVFG::SVFGNodeIDToNodeMapTy::iterator it = graph->begin();
+        SVFG::SVFGNodeIDToNodeMapTy::iterator eit = graph->end();
+        for (; it != eit; ++it)
+        {
+            SVFGNode* node = it->second; 
+            const SVFGEdge::SVFGEdgeSetTy& outEdges = node->getOutEdges();
+            SVFGEdge::SVFGEdgeSetTy::const_iterator edgeIt = outEdges.begin();
+            SVFGEdge::SVFGEdgeSetTy::const_iterator edgeEit = outEdges.end();
+            for (; edgeIt != edgeEit; ++edgeIt)
+            {
+                const SVFGEdge *edge = *edgeIt;
+                VFGNode *src = dyn_cast<VFGNode>(edge->getSrcNode());
+                VFGNode *dest = dyn_cast<VFGNode>(edge->getDstNode());
+                assert(src && dest);
+                //const ICFGNode *sicfg = src->getICFGNode();
+                //IntraBlockNode* sn = SVFUtil::dyn_cast<IntraBlockNode>(sicfg);
+                //const ICFGNode *dicfg = dest->getICFGNode();
+                //IntraBlockNode* dn = SVFUtil::dyn_cast<IntraBlockNode>(dicfg);
+                StmtVFGNode *srcst = dyn_cast<StmtVFGNode>(src);
+                StmtVFGNode *destst = dyn_cast<StmtVFGNode>(dest);
+                if (srcst && destst) {
+                   // source loc can be found for IntraBlockNode
+                   std::string ss = SVFUtil::getSourceLoc(srcst->getInst());
+                   std::string ds = SVFUtil::getSourceLoc(destst->getInst());
+                   if (ss != ds)
+                      llvm::errs() << "[Intra] source: " << ss 
+                                   << " dest: " << ds << "\n";
+                }
+                /*else { // transitive closure  between program statements
+                   llvm::errs() << "[Other]\n";
+                   std::set<SVFGNode*> visited;
+                   visitReachableUses(src, dest, visited);
+                }*/
+           }
+        }
+        /*
+        for (; it != eit; ++it)
+        {
+            SVFGNode* node = it->second; 
+            const SVFGEdge::SVFGEdgeSetTy& inEdges = node->getInEdges();
+            SVFGEdge::SVFGEdgeSetTy::const_iterator edgeIt = inEdges.begin();
+            SVFGEdge::SVFGEdgeSetTy::const_iterator edgeEit = inEdges.end();
+            for (; edgeIt != edgeEit; ++edgeIt)
+            {
+                const SVFGEdge *edge = *edgeIt;
+                VFGNode *src = dyn_cast<VFGNode>(edge->getSrcNode());
+                VFGNode *dest = dyn_cast<VFGNode>(edge->getDstNode());
+                assert(src && dest);
+                StmtVFGNode *srcst = dyn_cast<StmtVFGNode>(src);
+                StmtVFGNode *destst = dyn_cast<StmtVFGNode>(dest);
+                if (srcst && destst) {
+                   // source loc can be found for IntraBlockNode
+                   std::string ss = SVFUtil::getSourceLoc(srcst->getInst());
+                   std::string ds = SVFUtil::getSourceLoc(destst->getInst());
+                   if (ss != ds)
+                      llvm::errs() << "[Intra] source: " << ss 
+                                   << " dest: " << ds << "\n";
+                }
+                else { // transitive closure  between program statements
+                   llvm::errs() << "[Other]\n";
+                   std::set<SVFGNode*> visited;
+                   visitReachableDefs(dest, src, visited);
+                }
+           }
+        }*/
+}
+
+void DDAStat::customStat() {
+    #ifdef DBGPR 
+    llvm::errs() << "SYSREL extension on custom stats\n";
+    #endif
+                  llvm::errs() << "instance no,"
+                               << "unresolved callsite,"
+                               << "callsite function," 
+                               << "callsite file," 
+                               << "callsite lineno," 
+                               << "gep instruction," 
+                               << "violation type," 
+                               << "gep type," 
+                               << "gep function," 
+                               << "gep file," 
+                               << "gep lineno\n" ;
+    SVFG* graph = getSVFG();
+    PAG *pag = graph->getPAG(); 
+    PointerAnalysis *pta = getPTA();
+    const PointerAnalysis::CallSiteToFunPtrMap& indCS = pta->getIndirectCallsites();
+    PointerAnalysis::CallSiteToFunPtrMap::const_iterator csIt = indCS.begin();
+    PointerAnalysis::CallSiteToFunPtrMap::const_iterator csEit = indCS.end();
+    unsigned instanceno = 0;
+    for (; csIt != csEit; ++csIt) {
+        const CallSite& cs = csIt->first;
+        if (pta->hasIndCSCallees(cs) == false) {
+           instanceno++;
+           unsigned neggepdep = 0;
+           unsigned vargepdep = 0;
+           std::set<const Instruction*> negGep, varGep;
+           const Function *csfunc = cs.getInstruction()->getParent()->getParent();
+           const Module *csm = csfunc->getParent();
+           std::string csfilename = csm->getName();
+           std::string csfuncname = csfunc->getName();
+           unsigned cslineno = 0;
+           llvm::MDNode *csmd = cs.getInstruction()->getMetadata("dbg");
+           if (csmd) {
+              llvm::DebugLoc loc(csmd);
+              cslineno = loc.getLine();
+           }
+           llvm::errs() << instanceno 
+                        << ",\"" << (*cs.getInstruction()) << "\","
+                        << csfuncname << ","
+                        << csfilename << ","
+                        << cslineno << ","
+                        << ",,,,,\n"; 
+           if (const User *u = SVFUtil::dyn_cast<User>(cs.getCalledValue())) {
+              getVFGDependencies(u,cs,instanceno);
+           }           
+           #ifdef DBGPR
+           llvm::errs() << "unresolved callsite," << (*cs.getInstruction())
+                        << ",negativegep=" << neggepdep 
+                        << ",variablegep=" << vargepdep  
+                        << ",insvfg=" << graph->hasActualINSVFGNodes(cs) 
+                        << ",sourceloc=" << SVFUtil::getSourceLoc(cs.getInstruction()) << "\n";
+           #endif
+           
+        }
+    }
+    /*
+    PointerAnalysis::CallEdgeMap::const_iterator iter = pta->getIndCallMap().begin();
+    PointerAnalysis::CallEdgeMap::const_iterator eiter = pta->getIndCallMap().end();
+    for (; iter != eiter; iter++) {
+	CallSite cs = iter->first;
+	const PointerAnalysis::FunctionSet & functions = iter->second;
+        if (functions.empty()) {
+           llvm::errs() << "unresolved callsite," << (*cs.getInstruction()) << "\n";
+        }
+        else {
+           for (PointerAnalysis::FunctionSet::const_iterator func_iter =
+				functions.begin(); func_iter != functions.end(); func_iter++) {
+	       const Function * callee = *func_iter;
+               llvm::errs() << "callsite " << (*cs.getInstruction()) << " resolved to: " << callee->getName() << "\n";
+           }
+        }
+    }
+    SVFG::SVFGNodeIDToNodeMapTy::iterator it = graph->begin();
+    SVFG::SVFGNodeIDToNodeMapTy::iterator eit = graph->end();
+    for (; it != eit; ++it) {
+        if (SVFUtil::isa<GepSVFGNode>(it->second)) {
+            const GepSVFGNode *gepnode = SVFUtil::dyn_cast<GepSVFGNode>(it->second);
+            llvm::errs() << (*gepnode) << "\n";
+            NodeID src = gepnode->getPAGSrcNodeID();            
+            PAGNode *srcnode = pag->getPAGNode(src);
+            const Value *vs = srcnode->getValue();
+            llvm::errs() << "source : " << (*vs) << "\n";  
+            NodeID dst = gepnode->getPAGDstNodeID();
+            PAGNode *dstnode = pag->getPAGNode(dst);
+            const Value *vd = dstnode->getValue();
+            llvm::errs() << "dest : " << (*vd) << "\n";	                 
+            const GetElementPtrInst *gep = SVFUtil::dyn_cast<GetElementPtrInst>(vd);
+            if (gep) {
+               const PointsTo& srcPts = pta->getPts(src);
+               bool src_ptsblackhole = false;
+               bool src_fieldinsensitive = false;
+               bool src_isnullptr = false;
+               for (PointsTo::iterator piter = srcPts.begin(); piter != srcPts.end(); ++piter) {
+                   NodeID ptd = *piter;
+                   llvm::errs() << "src points to: " << ptd << "\n"; 
+                   if (pag->isBlkObj(ptd)) {
+                      src_ptsblackhole = true;
+                   }
+                   if ((flowDDA && flowDDA->isFieldInsensitive(ptd)) || 
+                            (contextDDA && contextDDA->isFieldInsensitive(ptd)))
+                      src_fieldinsensitive = true;
+                   if (pag->isNullPtr(ptd))
+                      src_isnullptr = true;
+               }      
+               const PointsTo& dstPts = pta->getPts(dst);
+               bool dst_ptsblackhole = false;
+               bool dst_fieldinsensitive = false;
+               bool dst_isnullptr = false;
+               for (PointsTo::iterator piter = dstPts.begin(); piter != dstPts.end(); ++piter) {
+                   NodeID ptd = *piter;
+                   llvm::errs() << "dst points to: " << ptd << "\n"; 
+                   if (pag->isBlkObj(ptd)) {
+                      dst_ptsblackhole = true;
+                   }
+                   if ((flowDDA && flowDDA->isFieldInsensitive(ptd)) || 
+                            (contextDDA && contextDDA->isFieldInsensitive(ptd)))
+                      dst_fieldinsensitive = true;
+                   if (pag->isNullPtr(ptd))
+                      dst_isnullptr = true;
+               }  
+               std::string geptype = "positive";
+               const Function *func = gep->getParent()->getParent();
+               const Module *m = func->getParent();
+               for(User::const_op_iterator oi = gep->idx_begin(), 
+                           oe = gep->idx_end(); oi != oe; oi++) {
+                  Value *v = oi->get();
+                  if (llvm::ConstantInt* CI = SVFUtil::dyn_cast<llvm::ConstantInt>(v)) {
+                     if (CI->getSExtValue() < 0) {
+                        geptype = "negative";
+                     }
+                  }
+                  else {
+                     geptype = "variable";
+                  }
+               }
+               std::string filename = m->getName();
+               std::string funcname = func->getName();
+               std::string lineno = "unknown";
+               int src_ptssize = srcPts.count();
+               int dst_ptssize = dstPts.count();
+               llvm::MDNode *md = gep->getMetadata("dbg");
+               if (md) {
+                  llvm::DebugLoc loc(md);
+                  lineno = loc.getLine();
+               }
+               llvm::errs() << "gep, instr=" << (*gep) << ",type=" << geptype  
+                            << ",srcptssize=" << src_ptssize 
+                            << ",srcptstoblackhole=" << src_ptsblackhole 
+                            << ",srcnullptr=" << src_isnullptr 
+                            << ",srcfieldinsensitive=" << src_fieldinsensitive 
+                            << ",dstptssize=" << dst_ptssize 
+                            << ",dstptstoblackhole=" << dst_ptsblackhole 
+                            << ",dstnullptr=" << dst_isnullptr 
+                            << ",dstfieldinsensitive=" << dst_fieldinsensitive 
+                            //<< ",offsetmatches=" << offsetmatches 
+                            << ",function=" << funcname 
+                            <<",file=" << filename 
+                            << ",lineno=" << lineno << "\n"; 
+            }
+        }
+    }
+    */
+}
+

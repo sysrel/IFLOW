@@ -1,0 +1,18 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=3029
+Total number of formal out/ret w outgoing edge=438
+Total number of formal out/ret w incoming formalin wo deref=792
+Sumarization time=0
+Query: TaintsDataFieldCallsite, data type= iotc_connection_data_s field=2 sink=print desc=google_iot_all.bc
+Label=typeiotc_connection_data_sfield21_label solution size=15 time=3
+Label=printarg1_label solution size=0 time=0
+Label=printcs1_label solution size=3 time=11
+Label=printargpby1 solution size=7 time=11
+typeiotc_connection_data_sfield21 size=15
+printarg1 size=7
+Label=iotc_connection_data_s_print_google_iot_all.bc solution size=0 time=14
+Total number of solutions=5
+Total number of cached solutions=0
+Total query solving time=39
+Average query solving time=7

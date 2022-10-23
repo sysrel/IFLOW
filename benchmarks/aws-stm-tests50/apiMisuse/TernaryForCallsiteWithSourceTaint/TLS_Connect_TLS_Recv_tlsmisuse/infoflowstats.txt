@@ -1,0 +1,21 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=27172
+Total number of formal out/ret w outgoing edge=6440
+Total number of formal out/ret w incoming formalin wo deref=8606
+Total number of formal out/ret w incoming formalin (relaxed)=11965
+Sumarization time=244
+Query: TernaryForCallsiteWithSourceTaint, source=TLS_Connect sink=TLS_Recv desc=tlsmisuse sanitizeOnReturn=0
+Label=somegeneric_label solution size=0 time=0
+Label=TLS_Connectarg1_label solution size=0 time=0
+Label=TLS_Connectcs1_label solution size=0 time=1
+Label=TLS_Connectargpby1 solution size=0 time=1
+Label=TLS_Recvarg1_label solution size=0 time=0
+Label=TLS_Recvcs1_label solution size=0 time=1
+Label=TLS_Recvargpby1 solution size=0 time=1
+Label=TLS_Connect_TLS_Recv_tlsmisuse solution size=0 time=2
+Total number of solutions=9
+Total number of cached solutions=1
+Total query solving time=6
+Average query solving time=0
+SVFG stats: nodes=363108 edges=540581

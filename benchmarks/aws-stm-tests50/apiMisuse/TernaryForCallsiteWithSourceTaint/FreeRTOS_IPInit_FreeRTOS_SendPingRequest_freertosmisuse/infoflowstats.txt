@@ -1,0 +1,21 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=27172
+Total number of formal out/ret w outgoing edge=6440
+Total number of formal out/ret w incoming formalin wo deref=8606
+Total number of formal out/ret w incoming formalin (relaxed)=11965
+Sumarization time=353
+Query: TernaryForCallsiteWithSourceTaint, source=FreeRTOS_IPInit sink=FreeRTOS_SendPingRequest desc=freertosmisuse sanitizeOnReturn=0
+Label=somegeneric_label solution size=0 time=0
+Label=FreeRTOS_IPInitarg1_label solution size=0 time=0
+Label=FreeRTOS_IPInitcs1_label solution size=0 time=2
+Label=FreeRTOS_IPInitargpby1 solution size=0 time=2
+Label=FreeRTOS_SendPingRequestarg1_label solution size=0 time=0
+Label=FreeRTOS_SendPingRequestcs1_label solution size=0 time=2
+Label=FreeRTOS_SendPingRequestargpby1 solution size=0 time=2
+Label=FreeRTOS_IPInit_FreeRTOS_SendPingRequest_freertosmisuse solution size=0 time=4
+Total number of solutions=9
+Total number of cached solutions=1
+Total query solving time=12
+Average query solving time=1
+SVFG stats: nodes=363108 edges=0

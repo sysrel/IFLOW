@@ -1,0 +1,28 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=20449
+Total number of formal out/ret w outgoing edge=4049
+Total number of formal out/ret w incoming formalin wo deref=6806
+Total number of formal out/ret w incoming formalin (relaxed)=11014
+Sumarization time=26
+Query: TaintsDataFieldCallsite, data type= iot_wifi_conf field=2 sink=Print desc=wpleak
+Label=typeiot_wifi_conffield21_label solution size=4 time=18
+Label=Printarg1_label solution size=0 time=0
+Label=Printcs1_label solution size=227 time=171
+Label=Printargpby1 solution size=813 time=172
+typeiot_wifi_conffield21 size=4
+Printarg1 size=741
+Source node=41626 Inst1=  %119 = getelementptr inbounds [65 x i8], [65 x i8]* %118, i32 0, i32 0, !dbg !7008
+ Loc=ln: 148 fl: src/iot_api.c
+
+================SVFG PATH================
+(STMT)  %119 = getelementptr inbounds [65 x i8], [65 x i8]* %118, i32 0, i32 0, !dbg !7008
+ ln: 148 fl: src/iot_api.c(ID: 41626) ,(APAR)   %121 = call i32 (i8*, i64, i8*, ...) @snprintf(i8* %119, i64 65, i8* %120) #3, !dbg !7009
+ln: 148 fl: src/iot_api.c(ID: 144401) ,
+================================
+Label=iot_wifi_conf_Print_wpleak solution size=1 time=190
+Total number of solutions=5
+Total number of cached solutions=0
+Total query solving time=551
+Average query solving time=110
+SVFG stats: nodes=287124 edges=433924

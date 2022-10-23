@@ -1,0 +1,2 @@
+TaintsDataFieldCallsite,iotc_connection_data_s,2,Publish,privleak
+TaintsDataFieldCallsite,iotc_crypto_key_data_t,1,Publish,privleak

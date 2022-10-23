@@ -1,0 +1,15 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=20449
+Total number of formal out/ret w outgoing edge=4049
+Total number of formal out/ret w incoming formalin wo deref=6806
+Total number of formal out/ret w incoming formalin (relaxed)=11014
+Sumarization time=22
+Query: TernaryForCallsiteWithSourceTaint, source=MQTTSerialize_connect sink=MQTTSerialize_unsubscribe desc=smarttmisuse sanitizeOnReturn=0
+Label=somegeneric_label solution size=0 time=0
+Label=MQTTSerialize_connectarg1_label solution size=0 time=0
+Label=MQTTSerialize_connectcs1_label solution size=4 time=151
+Label=MQTTSerialize_connectargpby1 solution size=129 time=151
+Label=MQTTSerialize_unsubscribearg1_label solution size=0 time=0
+Label=MQTTSerialize_unsubscribecs1_label solution size=4 time=149
+Label=MQTTSerialize_unsubscribeargpby1 solution size=89 time=149

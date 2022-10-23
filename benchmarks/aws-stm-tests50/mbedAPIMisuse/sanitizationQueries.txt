@@ -1,0 +1,2 @@
+TernaryForCallsiteWithSourceTaint,mbedtls_ssl_handshake,mbedtls_ssl_read,sslctxcorruption,0
+TernaryForCallsiteWithSourceTaint,mbedtls_ssl_handshake,mbedtls_ssl_write,sslctxcorruption,0

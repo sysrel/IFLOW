@@ -1,0 +1,20 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=20449
+Total number of formal out/ret w outgoing edge=4049
+Total number of formal out/ret w incoming formalin wo deref=6806
+Total number of formal out/ret w incoming formalin (relaxed)=11014
+Sumarization time=26
+Query: TaintsDataFieldCallsite, data type= iot_security_buffer field=1 sink=Send desc=sbufleak
+Label=typeiot_security_bufferfield11_label solution size=176 time=18
+Label=Sendarg1_label solution size=0 time=0
+Label=Sendcs1_label solution size=71 time=180
+Label=Sendargpby1 solution size=6336 time=180
+typeiot_security_bufferfield11 size=176
+Sendarg1 size=348
+Label=iot_security_buffer_Send_sbufleak solution size=0 time=202
+Total number of solutions=5
+Total number of cached solutions=0
+Total query solving time=580
+Average query solving time=116
+SVFG stats: nodes=287124 edges=433924

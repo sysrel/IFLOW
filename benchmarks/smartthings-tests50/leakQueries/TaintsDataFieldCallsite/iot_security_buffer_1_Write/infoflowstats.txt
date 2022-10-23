@@ -1,0 +1,119 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=20449
+Total number of formal out/ret w outgoing edge=4049
+Total number of formal out/ret w incoming formalin wo deref=6806
+Total number of formal out/ret w incoming formalin (relaxed)=11014
+Sumarization time=25
+Query: TaintsDataFieldCallsite, data type= iot_security_buffer field=1 sink=Write desc=sbufleak
+Label=typeiot_security_bufferfield11_label solution size=176 time=18
+Label=Writearg1_label solution size=0 time=0
+Label=Writecs1_label solution size=272 time=181
+Label=Writeargpby1 solution size=13728 time=181
+typeiot_security_bufferfield11 size=176
+Writearg1 size=1261
+Source node=35272 Inst1=  %26 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %25, i32 0, i32 1, !dbg !6682
+ Loc=ln: 235 fl: src/security/backend/software/iot_security_be_bsp.c
+
+================SVFG PATH================
+(STMT)  %26 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %25, i32 0, i32 1, !dbg !6682
+ ln: 235 fl: src/security/backend/software/iot_security_be_bsp.c(ID: 35272) ,(STMT)  %27 = load i8*, i8** %26, align 8, !dbg !6682
+ ln: 235 fl: src/security/backend/software/iot_security_be_bsp.c(ID: 57659) ,(APAR)   %33 = call i32 @iot_bsp_fs_write(%struct.iot_bsp_fs_handle_t* byval align 8 %handle, i8* %27, i64 %32), !dbg !6686
+ln: 235 fl: src/security/backend/software/iot_security_be_bsp.c(ID: 139922) ,
+================================
+Source node=37156 Inst1=  %52 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %pmsecret_buf, i32 0, i32 1, !dbg !6804
+ Loc=ln: 1537 fl: src/security/backend/software/iot_security_be_software.c
+
+================SVFG PATH================
+(STMT)  %52 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %pmsecret_buf, i32 0, i32 1, !dbg !6804
+ ln: 1537 fl: src/security/backend/software/iot_security_be_software.c(ID: 37156) ,(STMT)  store i8* %51, i8** %52, align 8, !dbg !6805
+ ln: 1537 fl: src/security/backend/software/iot_security_be_software.c(ID: 113130) ,(STMT)  %161 = load i8*, i8** %160, align 8, !dbg !6926
+ ln: 1612 fl: src/security/backend/software/iot_security_be_software.c(ID: 64244) ,(APAR)   %164 = call i32 @mbedtls_mpi_write_binary(%struct.mbedtls_mpi* %159, i8* %161, i64 %163), !dbg !6928
+ln: 1612 fl: src/security/backend/software/iot_security_be_software.c(ID: 139616) ,
+================================
+Source node=37158 Inst1=  %160 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %pmsecret_buf, i32 0, i32 1, !dbg !6926
+ Loc=ln: 1612 fl: src/security/backend/software/iot_security_be_software.c
+
+================SVFG PATH================
+(STMT)  %160 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %pmsecret_buf, i32 0, i32 1, !dbg !6926
+ ln: 1612 fl: src/security/backend/software/iot_security_be_software.c(ID: 37158) ,(STMT)  %161 = load i8*, i8** %160, align 8, !dbg !6926
+ ln: 1612 fl: src/security/backend/software/iot_security_be_software.c(ID: 64244) ,(APAR)   %164 = call i32 @mbedtls_mpi_write_binary(%struct.mbedtls_mpi* %159, i8* %161, i64 %163), !dbg !6928
+ln: 1612 fl: src/security/backend/software/iot_security_be_software.c(ID: 139616) ,
+================================
+Source node=41760 Inst1=  %108 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %data_buf, i32 0, i32 1, !dbg !6804
+ Loc=ln: 152 fl: src/iot_nv_data.c
+
+================SVFG PATH================
+(STMT)  %108 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %data_buf, i32 0, i32 1, !dbg !6804
+ ln: 152 fl: src/iot_nv_data.c(ID: 41760) ,(STMT)  store i8* %107, i8** %108, align 8, !dbg !6805
+ ln: 152 fl: src/iot_nv_data.c(ID: 118858) ,(STMT)  store i64 %109, i64* %110, align 8, !dbg !6808
+ ln: 153 fl: src/iot_nv_data.c(ID: 118859) ,(AIN)   %113 = call i32 bitcast (i32 (%struct.iot_security_context.10*, i32, %struct.iot_security_buffer*)* @iot_security_storage_write to i32 (%struct.iot_security_context*, i32, %struct.iot_security_buffer*)*)(%struct.iot_security_context* %111, i32 %112, %struct.iot_security_buffer* %data_buf), !dbg !6811
+ ln: 155 fl: src/iot_nv_data.c within _iot_nv_io_storage(ID: 261198) ,
+================================
+Source node=42683 Inst1=  %119 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %token_buf, i32 0, i32 1, !dbg !6767
+ Loc=ln: 967 fl: src/easysetup/iot_easysetup_st_mqtt.c
+
+================SVFG PATH================
+(STMT)  %119 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %token_buf, i32 0, i32 1, !dbg !6767
+ ln: 967 fl: src/easysetup/iot_easysetup_st_mqtt.c(ID: 42683) ,(STMT)  %120 = load i8*, i8** %119, align 8, !dbg !6767
+ ln: 967 fl: src/easysetup/iot_easysetup_st_mqtt.c(ID: 79004) ,(APAR)   %121 = call i32 @_iot_es_mqtt_connect(%struct.iot_context* %113, i8* %114, i8* %118, i8* %120), !dbg !6768
+ln: 967 fl: src/easysetup/iot_easysetup_st_mqtt.c(ID: 146599) ,(FPARM) _iot_es_mqtt_connect(ID: 174756) ,(STMT)  store i8* %sign_data, i8** %5, align 8
+ (ID: 120856) ,(STMT)  %69 = load i8*, i8** %5, align 8, !dbg !6749
+ ln: 831 fl: src/easysetup/iot_easysetup_st_mqtt.c(ID: 79970) ,(STMT)  store i8* %69, i8** %70, align 8, !dbg !6751
+ ln: 831 fl: src/easysetup/iot_easysetup_st_mqtt.c(ID: 120874) ,(AIN)   %81 = call i32 @st_mqtt_connect(i8* %80, %struct.st_mqtt_broker_info* %broker_info, %struct.st_mqtt_connect_data* %conn_data), !dbg !6757
+ ln: 838 fl: src/easysetup/iot_easysetup_st_mqtt.c within _iot_es_mqtt_connect(ID: 262224) ,(FIN) st_mqtt_connect(ID: 231661) ,(STMT)  %64 = load i8*, i8** %63, align 8, !dbg !6776
+ ln: 1173 fl: src/mqtt/client/iot_mqtt_client.c(ID: 80146) ,(STMT)  store i8* %64, i8** %66, align 8, !dbg !6779
+ ln: 1173 fl: src/mqtt/client/iot_mqtt_client.c(ID: 120983) ,(AIN)   %75 = call i32 @MQTTSerialize_connect_size(%struct.MQTTPacket_connectData* %options), !dbg !6788
+ ln: 1177 fl: src/mqtt/client/iot_mqtt_client.c within st_mqtt_connect(ID: 262288) ,(FIN) MQTTSerialize_connect_size(ID: 220038) ,(AIN)   %90 = call i32 @MQTTSerialize_connect(i8* %88, i32 %89, %struct.MQTTPacket_connectData* %options), !dbg !6804
+ ln: 1184 fl: src/mqtt/client/iot_mqtt_client.c within st_mqtt_connect(ID: 262311) ,(FIN) MQTTSerialize_connect(ID: 219975) ,(AIN)   call void @writeMQTTString(i8** %ptr, %struct.MQTTString* byval align 8 %151), !dbg !6818
+ ln: 106 fl: src/mqtt/packet/iot_mqtt_connect_client.c within MQTTSerialize_connect(ID: 264258) ,
+================================
+Source node=42684 Inst1=  %254 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %token_buf, i32 0, i32 1, !dbg !6888
+ Loc=ln: 1024 fl: src/easysetup/iot_easysetup_st_mqtt.c
+
+================SVFG PATH================
+(STMT)  %254 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %token_buf, i32 0, i32 1, !dbg !6888
+ ln: 1024 fl: src/easysetup/iot_easysetup_st_mqtt.c(ID: 42684) ,(STMT)  %255 = load i8*, i8** %254, align 8, !dbg !6888
+ ln: 1024 fl: src/easysetup/iot_easysetup_st_mqtt.c(ID: 79013) ,(APAR)   %256 = call i32 @_iot_es_mqtt_connect(%struct.iot_context* %250, i8* %251, i8* %253, i8* %255), !dbg !6889
+ln: 1024 fl: src/easysetup/iot_easysetup_st_mqtt.c(ID: 146693) ,(FPARM) _iot_es_mqtt_connect(ID: 174756) ,(STMT)  store i8* %sign_data, i8** %5, align 8
+ (ID: 120856) ,(STMT)  %69 = load i8*, i8** %5, align 8, !dbg !6749
+ ln: 831 fl: src/easysetup/iot_easysetup_st_mqtt.c(ID: 79970) ,(STMT)  store i8* %69, i8** %70, align 8, !dbg !6751
+ ln: 831 fl: src/easysetup/iot_easysetup_st_mqtt.c(ID: 120874) ,(AIN)   %81 = call i32 @st_mqtt_connect(i8* %80, %struct.st_mqtt_broker_info* %broker_info, %struct.st_mqtt_connect_data* %conn_data), !dbg !6757
+ ln: 838 fl: src/easysetup/iot_easysetup_st_mqtt.c within _iot_es_mqtt_connect(ID: 262224) ,(FIN) st_mqtt_connect(ID: 231661) ,(STMT)  %64 = load i8*, i8** %63, align 8, !dbg !6776
+ ln: 1173 fl: src/mqtt/client/iot_mqtt_client.c(ID: 80146) ,(STMT)  store i8* %64, i8** %66, align 8, !dbg !6779
+ ln: 1173 fl: src/mqtt/client/iot_mqtt_client.c(ID: 120983) ,(AIN)   %75 = call i32 @MQTTSerialize_connect_size(%struct.MQTTPacket_connectData* %options), !dbg !6788
+ ln: 1177 fl: src/mqtt/client/iot_mqtt_client.c within st_mqtt_connect(ID: 262288) ,(FIN) MQTTSerialize_connect_size(ID: 220038) ,(AIN)   %90 = call i32 @MQTTSerialize_connect(i8* %88, i32 %89, %struct.MQTTPacket_connectData* %options), !dbg !6804
+ ln: 1184 fl: src/mqtt/client/iot_mqtt_client.c within st_mqtt_connect(ID: 262311) ,(FIN) MQTTSerialize_connect(ID: 219975) ,(AIN)   call void @writeMQTTString(i8** %ptr, %struct.MQTTString* byval align 8 %151), !dbg !6818
+ ln: 106 fl: src/mqtt/packet/iot_mqtt_connect_client.c within MQTTSerialize_connect(ID: 264258) ,
+================================
+Source node=42757 Inst1=  %138 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %137, i32 0, i32 1, !dbg !6833
+ Loc=ln: 1028 fl: src/iot_wt.c
+
+================SVFG PATH================
+(STMT)  %138 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %137, i32 0, i32 1, !dbg !6833
+ ln: 1028 fl: src/iot_wt.c(ID: 42757) ,(STMT)  store i8* %136, i8** %138, align 8, !dbg !6834
+ ln: 1028 fl: src/iot_wt.c(ID: 120401) ,(PHI) in _iot_jwt_create   br label %148, !dbg !6844
+ ln: 1036 fl: src/iot_wt.c(ID: 205195) ,(PHI) in _iot_jwt_create   br label %151, !dbg !6846
+ ln: 1038 fl: src/iot_wt.c(ID: 205175) ,(PHI) in _iot_jwt_create   br label %157, !dbg !6852
+ ln: 1043 fl: src/iot_wt.c(ID: 205228) ,(PHI) in _iot_jwt_create   ret i32 %158, !dbg !6853
+ ln: 1044 fl: src/iot_wt.c(ID: 205294) ,(FOUT) _iot_jwt_create(FOUT)(ID: 244975) ,(AOUT)   %5 = call i32 @_iot_jwt_create(%struct.iot_wt_params* %3, %struct.iot_security_buffer* %4), !dbg !6656
+ ln: 1053 fl: src/iot_wt.c within iot_wt_create(ID: 277631) ,(FOUT) iot_wt_create(FOUT)(ID: 244678) ,(AOUT)   %67 = call i32 @iot_wt_create(%struct.iot_wt_params* %wt_params, %struct.iot_security_buffer* %token_buf), !dbg !6718
+ ln: 940 fl: src/easysetup/iot_easysetup_st_mqtt.c within iot_es_connect(ID: 277579) ,(STMT)  %120 = load i8*, i8** %119, align 8, !dbg !6767
+ ln: 967 fl: src/easysetup/iot_easysetup_st_mqtt.c(ID: 79004) ,(APAR)   %121 = call i32 @_iot_es_mqtt_connect(%struct.iot_context* %113, i8* %114, i8* %118, i8* %120), !dbg !6768
+ln: 967 fl: src/easysetup/iot_easysetup_st_mqtt.c(ID: 146599) ,(FPARM) _iot_es_mqtt_connect(ID: 174756) ,(STMT)  store i8* %sign_data, i8** %5, align 8
+ (ID: 120856) ,(STMT)  %69 = load i8*, i8** %5, align 8, !dbg !6749
+ ln: 831 fl: src/easysetup/iot_easysetup_st_mqtt.c(ID: 79970) ,(STMT)  store i8* %69, i8** %70, align 8, !dbg !6751
+ ln: 831 fl: src/easysetup/iot_easysetup_st_mqtt.c(ID: 120874) ,(AIN)   %81 = call i32 @st_mqtt_connect(i8* %80, %struct.st_mqtt_broker_info* %broker_info, %struct.st_mqtt_connect_data* %conn_data), !dbg !6757
+ ln: 838 fl: src/easysetup/iot_easysetup_st_mqtt.c within _iot_es_mqtt_connect(ID: 262224) ,(FIN) st_mqtt_connect(ID: 231661) ,(STMT)  %64 = load i8*, i8** %63, align 8, !dbg !6776
+ ln: 1173 fl: src/mqtt/client/iot_mqtt_client.c(ID: 80146) ,(STMT)  store i8* %64, i8** %66, align 8, !dbg !6779
+ ln: 1173 fl: src/mqtt/client/iot_mqtt_client.c(ID: 120983) ,(AIN)   %75 = call i32 @MQTTSerialize_connect_size(%struct.MQTTPacket_connectData* %options), !dbg !6788
+ ln: 1177 fl: src/mqtt/client/iot_mqtt_client.c within st_mqtt_connect(ID: 262288) ,(FIN) MQTTSerialize_connect_size(ID: 220038) ,(AIN)   %90 = call i32 @MQTTSerialize_connect(i8* %88, i32 %89, %struct.MQTTPacket_connectData* %options), !dbg !6804
+ ln: 1184 fl: src/mqtt/client/iot_mqtt_client.c within st_mqtt_connect(ID: 262311) ,(FIN) MQTTSerialize_connect(ID: 219975) ,(AIN)   call void @writeMQTTString(i8** %ptr, %struct.MQTTString* byval align 8 %151), !dbg !6818
+ ln: 106 fl: src/mqtt/packet/iot_mqtt_connect_client.c within MQTTSerialize_connect(ID: 264258) ,
+================================
+Label=iot_security_buffer_Write_sbufleak solution size=7 time=207
+Total number of solutions=5
+Total number of cached solutions=0
+Total query solving time=587
+Average query solving time=117
+SVFG stats: nodes=287124 edges=433924

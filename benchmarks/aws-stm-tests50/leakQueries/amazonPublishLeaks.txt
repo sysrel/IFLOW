@@ -1,0 +1,9 @@
+TaintsDataFieldCallsite,IotNetworkCredentials,7,Publish,privleak
+TaintsDataFieldCallsite,P11KeyConfig_t,0,Publish,privkleak
+TaintsDataFieldCallsite,IotHttpsConnectionInfo,9,Publish,wifileak
+TaintsDataFieldCallsite,IotHttpsAsyncInfo_t,1,Publish,privkleak
+TaintsDataFieldCallsite,BTPinCode_t,0,Publish,privkleak
+TaintsDataFieldCallsite,WIFINetworkParams_t,3,Publish,privkleak
+TaintsDataFieldCallsite,WIFINetworkProfile_t,3,Publish,privkleak
+TaintsDataFieldCallsite,WIFIWEPKey_t,0,Publish,privkleak
+TaintsDataFieldCallsite,WIFIWPAPassphrase_t,0,Publish,privkleak

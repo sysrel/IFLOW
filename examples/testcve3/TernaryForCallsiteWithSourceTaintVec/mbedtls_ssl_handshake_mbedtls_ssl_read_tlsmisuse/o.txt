@@ -1,0 +1,493 @@
+
+*********CallGraph Stats***************
+################ (program : )###############
+-------------------------------------------------------
+TotalNode           9
+TotalEdge           9
+TotalCycle          0
+MaxNodeInCycle      0
+NodeInCycle         0
+CalRetPairInCycle   0
+#######################################################
+
+*********General Stats***************
+################ (program : )###############
+BBWith2Succ         6
+BBWith3Succ         0
+BitCastNumber       1
+TotalPTAPAGEdges    56
+TotalCallSite       9
+LocalVarInRecur     0
+IndCallSites        0
+ReturnsNum          7
+CallsNum            6
+GepsNum             4
+CopysNum            9
+StoresNum           21
+LoadsNum            20
+AddrsNum            31
+NonPtrObj           18
+ConstArrayObj       0
+ConstStructObj      0
+VarArrayObj         0
+VarStructObj        0
+FSObjNum            26
+FIObjNum            0
+StackObjs           15
+HeapObjs            2
+GlobalObjs          0
+FunctionObjs        9
+TotalPAGEdges       220
+MaxStructSize       2
+TotalFieldObjects   0
+TotalObjects        27
+TotalPointers       134
+-------------------------------------------------------
+#######################################################
+
+*********Constraint Graph Stats***************
+################ (program : )###############
+-------------------------------------------------------
+AvgIn/OutCopyEdge   0.410959
+AvgIn/OutLoadEdge   0.150685
+AvgIn/OutAddrEdge   0.342466
+AvgIn/OutEdge       0.986301
+NumOfCGNode         173
+TotalValidNode      73
+TotalValidObjNode   25
+NumOfCGEdge         47
+NumOfAddrs          25
+NumOfCopys          26
+NumOfGeps           4
+NumOfLoads          11
+NumOfStores         6
+MaxInCopyEdge       4
+MaxOutCopyEdge      5
+MaxInLoadEdge       1
+MaxOutLoadEdge      5
+MaxInStoreEdge      1
+MaxOutStoreEdge     1
+AvgIn/OutStoreEdge  0
+MaxInAddrEdge       1
+MaxOutAddrEdge      1
+#######################################################
+
+*********Andersen Pointer Analysis Stats***************
+################ (program : )###############
+-------------------------------------------------------
+TotalTime           0.001
+CollapseTime        0
+CopyGepTime         0
+UpdateCGTime        0
+AvgTopLvlPtsSize    0.590909
+AvgPtsSetSize       0.150289
+LoadStoreTime       0
+SCCMergeTime        0
+SCCDetectTime       0
+PointsToConstPtr    0
+PointsToBlkPtr      0
+NullPointer         4
+MaxNodesInSCC       0
+NodesInCycles       0
+TotalPWCCycleNum    0
+TotalCycleNum       0
+NumOfSCCDetect      2
+IndEdgeSolved       0
+IndCallSites        0
+Iterations          2
+MaxPtsSetSize       1
+DYFieldObjs         0
+MemObjects          27
+DYFieldPtrs         0
+NumOfFieldExpand    0
+NumOfSFRs           0
+GepProcessed        0
+CopyProcessed       1
+StoreProcessed      5
+LoadProcessed       11
+AddrProcessed       25
+TotalObjects        27
+TotalPointers       134
+Pointers            134
+#######################################################
+
+****Memory SSA Statistics****
+
+************************
+################ (program : )###############
+-------------------------------------------------------
+AverageRegSize      1
+SSARenameTime       0
+InsertPHITime       0
+GenMUCHITime        0.004
+GenRegionTime       0
+TotalMSSATime       0.004
+BBHasMSSAPhi        2
+MSSAPhi             6
+StoreHasChi         21
+LoadHasMu           20
+CSHasMu             0
+CSHasChi            0
+FunHasRetMu         6
+FunHasEntryChi      6
+StoreChiNode        20
+LoadMuNode          16
+CSMuNode            0
+CSChiNode           0
+FunRetMu            15
+FunEntryChi         15
+MemRegions          15
+MaxRegSize          1
+#######################################################
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=20
+Total number of formal out/ret w outgoing edge=4
+Total number of formal out/ret w incoming formalin wo deref=2
+Total number of formal out/ret w incoming formalin (relaxed)=5
+Sumarization time=0.000000e+00
+Query type: TernaryForCallsiteWithSourceTaintVec
+ in RegExp mbedtls_ssl_handshakearg1 type 22
+ in RegExp mbedtls_ssl_handshakecs1 type 36
+ in RegExp mbedtls_ssl_readarg1 type 22
+ in RegExp mbedtls_ssl_readcs1 type 36
+ in RegExp somegeneric type 37
+Solving relation query label mbedtls_ssl_handshake_mbedtls_ssl_read_tlsmisuse
+Solving regexpression query label somegeneric_label
+generic value expression
+Solution size=0
+DEBUG: Solution for somegeneric_label
+Solution size=0
+Solving relation query label mbedtls_ssl_handshakeargpby1
+Solving regexpression query label mbedtls_ssl_handshakearg1_label
+Function arg exp
+Solution size=0
+DEBUG: Solution for mbedtls_ssl_handshakearg1_label
+Solution size=0
+Solving regexpression query label mbedtls_ssl_handshakecs1_label
+Solution size=1
+mbedtls_ssl_handshake(()
+DEBUG: Solution for mbedtls_ssl_handshakecs1_label
+Solution size=1
+mbedtls_ssl_handshake(()
+DEBUG: Solution for mbedtls_ssl_handshakeargpby1
+Solution size=1
+( inside TLS_Connect arg type=ssl_ctx* callsite   %3 = call i32 @mbedtls_ssl_handshake(%struct.ssl_ctx* %2), !dbg !21
+ ln: 31 fl: cveExample3.c,mbedtls_ssl_handshake(())
+Solving relation query label mbedtls_ssl_readargpby1
+Solving regexpression query label mbedtls_ssl_readarg1_label
+Function arg exp
+Solution size=0
+DEBUG: Solution for mbedtls_ssl_readarg1_label
+Solution size=0
+Solving regexpression query label mbedtls_ssl_readcs1_label
+Solution size=4
+mbedtls_ssl_read(()
+mbedtls_ssl_read(()
+mbedtls_ssl_read(()
+mbedtls_ssl_read(()
+DEBUG: Solution for mbedtls_ssl_readcs1_label
+Solution size=4
+mbedtls_ssl_read(()
+mbedtls_ssl_read(()
+mbedtls_ssl_read(()
+mbedtls_ssl_read(()
+DEBUG: Solution for mbedtls_ssl_readargpby1
+Solution size=4
+( inside SOCKETS_Connect arg type=ssl_ctx* callsite   %9 = call i32 @mbedtls_ssl_read(%struct.ssl_ctx* %8), !dbg !33
+ ln: 39 fl: cveExample3.c,mbedtls_ssl_read(())
+( inside SOCKETS_Connect arg type=ssl_ctx* callsite   %15 = call i32 @mbedtls_ssl_read(%struct.ssl_ctx* %14), !dbg !43
+ ln: 43 fl: cveExample3.c,mbedtls_ssl_read(())
+( inside SOCKETS_Connect arg type=ssl_ctx* callsite   %21 = call i32 @mbedtls_ssl_read(%struct.ssl_ctx* %20), !dbg !53
+ ln: 47 fl: cveExample3.c,mbedtls_ssl_read(())
+( inside SOCKETS_Connect arg type=ssl_ctx* callsite   %24 = call i32 @mbedtls_ssl_read(%struct.ssl_ctx* %23), !dbg !59
+ ln: 51 fl: cveExample3.c,mbedtls_ssl_read(())
+Sanitization value=0
+Closest succ node with a different bb 70 br inst:   br i1 %6, label %7, label %10, !dbg !28 holding a callsite for TLS_Connect
+candidate callsite:   %1 = alloca i32, align 4
+candidate callsite:   %sp = alloca %struct.ssl_ctx*, align 8
+candidate callsite:   %res = alloca i32, align 4
+candidate callsite:   %lengthc = alloca i32, align 4
+candidate callsite:   %lengthc1 = alloca i32, align 4
+candidate callsite:   %lengthc2 = alloca i32, align 4
+candidate callsite:   %lengthcor = alloca i32, align 4
+candidate callsite:   call void @llvm.dbg.declare(metadata %struct.ssl_ctx** %sp, metadata !66, metadata !DIExpression()), !dbg !67
+callee name=llvm.dbg.declare vs TLS_Connect
+candidate callsite:   %2 = call i32 (%struct.ssl_ctx**, ...) bitcast (i32 (...)* @TLS_init to i32 (%struct.ssl_ctx**, ...)*)(%struct.ssl_ctx** %sp), !dbg !20
+callee name=TLS_init vs TLS_Connect
+candidate callsite:   call void @llvm.dbg.declare(metadata i32* %res, metadata !69, metadata !DIExpression()), !dbg !70
+callee name=llvm.dbg.declare vs TLS_Connect
+candidate callsite:   %3 = load %struct.ssl_ctx*, %struct.ssl_ctx** %sp, align 8, !dbg !23
+candidate callsite:   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+callee name=TLS_Connect vs TLS_Connect
+Filtering Sanitization for   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %1 = alloca i32, align 4   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %sp = alloca %struct.ssl_ctx*, align 8   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %res = alloca i32, align 4   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %lengthc = alloca i32, align 4   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %lengthc1 = alloca i32, align 4   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %lengthc2 = alloca i32, align 4   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %lengthcor = alloca i32, align 4   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   call void @llvm.dbg.declare(metadata %struct.ssl_ctx** %sp, metadata !66, metadata !DIExpression()), !dbg !67   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %2 = call i32 (%struct.ssl_ctx**, ...) bitcast (i32 (...)* @TLS_init to i32 (%struct.ssl_ctx**, ...)*)(%struct.ssl_ctx** %sp), !dbg !20   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   call void @llvm.dbg.declare(metadata i32* %res, metadata !69, metadata !DIExpression()), !dbg !70   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %3 = load %struct.ssl_ctx*, %struct.ssl_ctx** %sp, align 8, !dbg !23   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   store i32 %4, i32* %res, align 4, !dbg !22   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Is store   store i32 %4, i32* %res, align 4, !dbg !22 user of   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Finding cases for   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Found store that may lead to branch   store i32 %4, i32* %res, align 4, !dbg !22
+Found load that may lead to branch   %5 = load i32, i32* %res, align 4, !dbg !25
+Comparing in EQ 0 vs 0
+Ret value 0 chooses true cases
+Sanitizer terminated by true branch   br label %25, !dbg !34
+ line no ln: 40 fl: cveExample3.c 
+Sanitization value=2
+Closest succ node with a different bb 70 br inst:   br i1 %6, label %7, label %10, !dbg !28 holding a callsite for TLS_Connect
+candidate callsite:   %1 = alloca i32, align 4
+candidate callsite:   %sp = alloca %struct.ssl_ctx*, align 8
+candidate callsite:   %res = alloca i32, align 4
+candidate callsite:   %lengthc = alloca i32, align 4
+candidate callsite:   %lengthc1 = alloca i32, align 4
+candidate callsite:   %lengthc2 = alloca i32, align 4
+candidate callsite:   %lengthcor = alloca i32, align 4
+candidate callsite:   call void @llvm.dbg.declare(metadata %struct.ssl_ctx** %sp, metadata !66, metadata !DIExpression()), !dbg !67
+callee name=llvm.dbg.declare vs TLS_Connect
+candidate callsite:   %2 = call i32 (%struct.ssl_ctx**, ...) bitcast (i32 (...)* @TLS_init to i32 (%struct.ssl_ctx**, ...)*)(%struct.ssl_ctx** %sp), !dbg !20
+callee name=TLS_init vs TLS_Connect
+candidate callsite:   call void @llvm.dbg.declare(metadata i32* %res, metadata !69, metadata !DIExpression()), !dbg !70
+callee name=llvm.dbg.declare vs TLS_Connect
+candidate callsite:   %3 = load %struct.ssl_ctx*, %struct.ssl_ctx** %sp, align 8, !dbg !23
+candidate callsite:   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+callee name=TLS_Connect vs TLS_Connect
+Filtering Sanitization for   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %1 = alloca i32, align 4   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %sp = alloca %struct.ssl_ctx*, align 8   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %res = alloca i32, align 4   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %lengthc = alloca i32, align 4   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %lengthc1 = alloca i32, align 4   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %lengthc2 = alloca i32, align 4   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %lengthcor = alloca i32, align 4   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   call void @llvm.dbg.declare(metadata %struct.ssl_ctx** %sp, metadata !66, metadata !DIExpression()), !dbg !67   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %2 = call i32 (%struct.ssl_ctx**, ...) bitcast (i32 (...)* @TLS_init to i32 (%struct.ssl_ctx**, ...)*)(%struct.ssl_ctx** %sp), !dbg !20   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   call void @llvm.dbg.declare(metadata i32* %res, metadata !69, metadata !DIExpression()), !dbg !70   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %3 = load %struct.ssl_ctx*, %struct.ssl_ctx** %sp, align 8, !dbg !23   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   store i32 %4, i32* %res, align 4, !dbg !22   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Is store   store i32 %4, i32* %res, align 4, !dbg !22 user of   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Finding cases for   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Found store that may lead to branch   store i32 %4, i32* %res, align 4, !dbg !22
+Found load that may lead to branch   %5 = load i32, i32* %res, align 4, !dbg !25
+Comparing in EQ 0 vs 2
+Ret value 2 chooses false cases
+Sanitizer terminated by false branch   br i1 %12, label %13, label %16, !dbg !38
+ line no ln: 42 fl: cveExample3.c 
+Is a user   %11 = load i32, i32* %res, align 4, !dbg !35
+ line no ln: 42 fl: cveExample3.c  of Sanitizer?   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Is a user   %12 = icmp eq i32 %11, 2, !dbg !37
+ line no ln: 42 fl: cveExample3.c  of Sanitizer?   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Is a user   br i1 %12, label %13, label %16, !dbg !38
+ line no ln: 42 fl: cveExample3.c  of Sanitizer?   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Is a user   %11 = load i32, i32* %res, align 4, !dbg !35
+ line no ln: 42 fl: cveExample3.c  of Sanitizer?   %res = alloca i32, align 4
+User of Sanitizer:   %11 = load i32, i32* %res, align 4, !dbg !35
+Indirect use of Sanitizer   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24 is   %11 = load i32, i32* %res, align 4, !dbg !35
+Filtering Sanitization for   %11 = load i32, i32* %res, align 4, !dbg !35
+Scanning inst   %1 = alloca i32, align 4   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %sp = alloca %struct.ssl_ctx*, align 8   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %res = alloca i32, align 4   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %lengthc = alloca i32, align 4   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %lengthc1 = alloca i32, align 4   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %lengthc2 = alloca i32, align 4   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %lengthcor = alloca i32, align 4   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   call void @llvm.dbg.declare(metadata %struct.ssl_ctx** %sp, metadata !66, metadata !DIExpression()), !dbg !67   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %2 = call i32 (%struct.ssl_ctx**, ...) bitcast (i32 (...)* @TLS_init to i32 (%struct.ssl_ctx**, ...)*)(%struct.ssl_ctx** %sp), !dbg !20   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   call void @llvm.dbg.declare(metadata i32* %res, metadata !69, metadata !DIExpression()), !dbg !70   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %3 = load %struct.ssl_ctx*, %struct.ssl_ctx** %sp, align 8, !dbg !23   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   store i32 %4, i32* %res, align 4, !dbg !22   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Is store   store i32 %4, i32* %res, align 4, !dbg !22 user of   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Finding cases for   %11 = load i32, i32* %res, align 4, !dbg !35
+Comparing in EQ 2 vs 2
+Ret value 2 chooses true cases
+Sanitizer terminated by true branch   br label %25, !dbg !44
+ line no ln: 44 fl: cveExample3.c 
+Sanitization value=-1
+Closest succ node with a different bb 70 br inst:   br i1 %6, label %7, label %10, !dbg !28 holding a callsite for TLS_Connect
+candidate callsite:   %1 = alloca i32, align 4
+candidate callsite:   %sp = alloca %struct.ssl_ctx*, align 8
+candidate callsite:   %res = alloca i32, align 4
+candidate callsite:   %lengthc = alloca i32, align 4
+candidate callsite:   %lengthc1 = alloca i32, align 4
+candidate callsite:   %lengthc2 = alloca i32, align 4
+candidate callsite:   %lengthcor = alloca i32, align 4
+candidate callsite:   call void @llvm.dbg.declare(metadata %struct.ssl_ctx** %sp, metadata !66, metadata !DIExpression()), !dbg !67
+callee name=llvm.dbg.declare vs TLS_Connect
+candidate callsite:   %2 = call i32 (%struct.ssl_ctx**, ...) bitcast (i32 (...)* @TLS_init to i32 (%struct.ssl_ctx**, ...)*)(%struct.ssl_ctx** %sp), !dbg !20
+callee name=TLS_init vs TLS_Connect
+candidate callsite:   call void @llvm.dbg.declare(metadata i32* %res, metadata !69, metadata !DIExpression()), !dbg !70
+callee name=llvm.dbg.declare vs TLS_Connect
+candidate callsite:   %3 = load %struct.ssl_ctx*, %struct.ssl_ctx** %sp, align 8, !dbg !23
+candidate callsite:   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+callee name=TLS_Connect vs TLS_Connect
+Filtering Sanitization for   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %1 = alloca i32, align 4   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %sp = alloca %struct.ssl_ctx*, align 8   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %res = alloca i32, align 4   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %lengthc = alloca i32, align 4   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %lengthc1 = alloca i32, align 4   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %lengthc2 = alloca i32, align 4   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %lengthcor = alloca i32, align 4   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   call void @llvm.dbg.declare(metadata %struct.ssl_ctx** %sp, metadata !66, metadata !DIExpression()), !dbg !67   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %2 = call i32 (%struct.ssl_ctx**, ...) bitcast (i32 (...)* @TLS_init to i32 (%struct.ssl_ctx**, ...)*)(%struct.ssl_ctx** %sp), !dbg !20   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   call void @llvm.dbg.declare(metadata i32* %res, metadata !69, metadata !DIExpression()), !dbg !70   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %3 = load %struct.ssl_ctx*, %struct.ssl_ctx** %sp, align 8, !dbg !23   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   store i32 %4, i32* %res, align 4, !dbg !22   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Is store   store i32 %4, i32* %res, align 4, !dbg !22 user of   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Finding cases for   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Found store that may lead to branch   store i32 %4, i32* %res, align 4, !dbg !22
+Found load that may lead to branch   %5 = load i32, i32* %res, align 4, !dbg !25
+Comparing in EQ 0 vs -1
+Ret value -1 chooses false cases
+Sanitizer terminated by false branch   br i1 %12, label %13, label %16, !dbg !38
+ line no ln: 42 fl: cveExample3.c 
+Is a user   %11 = load i32, i32* %res, align 4, !dbg !35
+ line no ln: 42 fl: cveExample3.c  of Sanitizer?   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Is a user   %12 = icmp eq i32 %11, 2, !dbg !37
+ line no ln: 42 fl: cveExample3.c  of Sanitizer?   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Is a user   br i1 %12, label %13, label %16, !dbg !38
+ line no ln: 42 fl: cveExample3.c  of Sanitizer?   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Is a user   %11 = load i32, i32* %res, align 4, !dbg !35
+ line no ln: 42 fl: cveExample3.c  of Sanitizer?   %res = alloca i32, align 4
+User of Sanitizer:   %11 = load i32, i32* %res, align 4, !dbg !35
+Indirect use of Sanitizer   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24 is   %11 = load i32, i32* %res, align 4, !dbg !35
+Filtering Sanitization for   %11 = load i32, i32* %res, align 4, !dbg !35
+Scanning inst   %1 = alloca i32, align 4   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %sp = alloca %struct.ssl_ctx*, align 8   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %res = alloca i32, align 4   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %lengthc = alloca i32, align 4   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %lengthc1 = alloca i32, align 4   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %lengthc2 = alloca i32, align 4   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %lengthcor = alloca i32, align 4   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   call void @llvm.dbg.declare(metadata %struct.ssl_ctx** %sp, metadata !66, metadata !DIExpression()), !dbg !67   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %2 = call i32 (%struct.ssl_ctx**, ...) bitcast (i32 (...)* @TLS_init to i32 (%struct.ssl_ctx**, ...)*)(%struct.ssl_ctx** %sp), !dbg !20   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   call void @llvm.dbg.declare(metadata i32* %res, metadata !69, metadata !DIExpression()), !dbg !70   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %3 = load %struct.ssl_ctx*, %struct.ssl_ctx** %sp, align 8, !dbg !23   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   store i32 %4, i32* %res, align 4, !dbg !22   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Is store   store i32 %4, i32* %res, align 4, !dbg !22 user of   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Finding cases for   %11 = load i32, i32* %res, align 4, !dbg !35
+Comparing in EQ 2 vs -1
+Ret value -1 chooses false cases
+Sanitizer terminated by false branch   br i1 %18, label %19, label %22, !dbg !48
+ line no ln: 46 fl: cveExample3.c 
+Is a user   %17 = load i32, i32* %res, align 4, !dbg !45
+ line no ln: 46 fl: cveExample3.c  of Sanitizer?   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Is a user   %18 = icmp eq i32 %17, -1, !dbg !47
+ line no ln: 46 fl: cveExample3.c  of Sanitizer?   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Is a user   br i1 %18, label %19, label %22, !dbg !48
+ line no ln: 46 fl: cveExample3.c  of Sanitizer?   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Is a user   %17 = load i32, i32* %res, align 4, !dbg !45
+ line no ln: 46 fl: cveExample3.c  of Sanitizer?   %res = alloca i32, align 4
+User of Sanitizer:   %17 = load i32, i32* %res, align 4, !dbg !45
+Indirect use of Sanitizer   %11 = load i32, i32* %res, align 4, !dbg !35 is   %17 = load i32, i32* %res, align 4, !dbg !45
+Filtering Sanitization for   %17 = load i32, i32* %res, align 4, !dbg !45
+Scanning inst   %1 = alloca i32, align 4   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %sp = alloca %struct.ssl_ctx*, align 8   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %res = alloca i32, align 4   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %lengthc = alloca i32, align 4   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %lengthc1 = alloca i32, align 4   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %lengthc2 = alloca i32, align 4   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %lengthcor = alloca i32, align 4   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   call void @llvm.dbg.declare(metadata %struct.ssl_ctx** %sp, metadata !66, metadata !DIExpression()), !dbg !67   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %2 = call i32 (%struct.ssl_ctx**, ...) bitcast (i32 (...)* @TLS_init to i32 (%struct.ssl_ctx**, ...)*)(%struct.ssl_ctx** %sp), !dbg !20   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   call void @llvm.dbg.declare(metadata i32* %res, metadata !69, metadata !DIExpression()), !dbg !70   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %3 = load %struct.ssl_ctx*, %struct.ssl_ctx** %sp, align 8, !dbg !23   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Scanning inst   store i32 %4, i32* %res, align 4, !dbg !22   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Is store   store i32 %4, i32* %res, align 4, !dbg !22 user of   %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+Finding cases for   %17 = load i32, i32* %res, align 4, !dbg !45
+Comparing in EQ -1 vs -1
+Ret value -1 chooses true cases
+Sanitizer terminated by true branch   br label %25, !dbg !54
+ line no ln: 48 fl: cveExample3.c 
+88 (APAR)   %3 = call i32 @mbedtls_ssl_handshake(%struct.ssl_ctx* %2), !dbg !21
+ln: 31 fl: cveExample3.c(ID: 88)
+Sanitization blocks:
+bb terminated by   br label %25, !dbg !34 at line ln: 40 fl: cveExample3.c
+bb terminated by   br label %25, !dbg !44 at line ln: 44 fl: cveExample3.c
+bb terminated by   br label %25, !dbg !54 at line ln: 48 fl: cveExample3.c
+checking common taint source for 88 and 86?
+pred sizes 11 and 4
+transforming san bb starts with   call void @llvm.dbg.declare(metadata i32* %lengthc, metadata !77, metadata !DIExpression()), !dbg !79 ends with   br label %25, !dbg !34
+sanitization node in ICFG: 77
+transforming san bb starts with   call void @llvm.dbg.declare(metadata i32* %lengthc1, metadata !87, metadata !DIExpression()), !dbg !89 ends with   br label %25, !dbg !44
+sanitization node in ICFG: 90
+transforming san bb starts with   call void @llvm.dbg.declare(metadata i32* %lengthc2, metadata !97, metadata !DIExpression()), !dbg !99 ends with   br label %25, !dbg !54
+sanitization node in ICFG: 104
+Checking if icfg node 49(TLS_Connect Entry) can reach icfg node 90(STMT)  store i32 %15, i32* %lengthc1, align 4, !dbg !41
+ ln: 43 fl: cveExample3.c in SOCKETS_Connect
+checking common taint source for 88 and 91?
+pred sizes 11 and 4
+transforming san bb starts with   call void @llvm.dbg.declare(metadata i32* %lengthc, metadata !77, metadata !DIExpression()), !dbg !79 ends with   br label %25, !dbg !34
+sanitization node in ICFG: 77
+transforming san bb starts with   call void @llvm.dbg.declare(metadata i32* %lengthc1, metadata !87, metadata !DIExpression()), !dbg !89 ends with   br label %25, !dbg !44
+sanitization node in ICFG: 90
+transforming san bb starts with   call void @llvm.dbg.declare(metadata i32* %lengthc2, metadata !97, metadata !DIExpression()), !dbg !99 ends with   br label %25, !dbg !54
+sanitization node in ICFG: 104
+Checking if icfg node 49(TLS_Connect Entry) can reach icfg node 77(  %9 = call i32 @mbedtls_ssl_read(%struct.ssl_ctx* %8), !dbg !33
+ Callsite)
+checking common taint source for 88 and 92?
+pred sizes 11 and 4
+transforming san bb starts with   call void @llvm.dbg.declare(metadata i32* %lengthc, metadata !77, metadata !DIExpression()), !dbg !79 ends with   br label %25, !dbg !34
+sanitization node in ICFG: 77
+transforming san bb starts with   call void @llvm.dbg.declare(metadata i32* %lengthc1, metadata !87, metadata !DIExpression()), !dbg !89 ends with   br label %25, !dbg !44
+sanitization node in ICFG: 90
+transforming san bb starts with   call void @llvm.dbg.declare(metadata i32* %lengthc2, metadata !97, metadata !DIExpression()), !dbg !99 ends with   br label %25, !dbg !54
+sanitization node in ICFG: 104
+Checking if icfg node 49(TLS_Connect Entry) can reach icfg node 104(STMT)  store i32 0, i32* %1, align 4, !dbg !54
+ ln: 48 fl: cveExample3.c in SOCKETS_Connect
+checking common taint source for 88 and 93?
+pred sizes 11 and 4
+transforming san bb starts with   call void @llvm.dbg.declare(metadata i32* %lengthc, metadata !77, metadata !DIExpression()), !dbg !79 ends with   br label %25, !dbg !34
+sanitization node in ICFG: 77
+transforming san bb starts with   call void @llvm.dbg.declare(metadata i32* %lengthc1, metadata !87, metadata !DIExpression()), !dbg !89 ends with   br label %25, !dbg !44
+sanitization node in ICFG: 90
+transforming san bb starts with   call void @llvm.dbg.declare(metadata i32* %lengthc2, metadata !97, metadata !DIExpression()), !dbg !99 ends with   br label %25, !dbg !54
+sanitization node in ICFG: 104
+Checking if icfg node 49(TLS_Connect Entry) can reach icfg node 105(STMT)  store i32 1, i32* %1, align 4, !dbg !60
+ ln: 52 fl: cveExample3.c in SOCKETS_Connect
+taintboth in seq, n1= n2=88 n3=93
+Typecheck=1
+(49)(TLS_Connect Entry), (50)(STMT)  %1 = alloca %struct.ssl_ctx*, align 8
+ ln: 30 fl: cveExample3.c in TLS_Connect, (51)(STMT)  store %struct.ssl_ctx* %p, %struct.ssl_ctx** %1, align 8
+  in TLS_Connect, (52)(STMT)  %2 = load %struct.ssl_ctx*, %struct.ssl_ctx** %1, align 8, !dbg !20
+ ln: 31 fl: cveExample3.c in TLS_Connect, (53)(  %3 = call i32 @mbedtls_ssl_handshake(%struct.ssl_ctx* %2), !dbg !21
+ Callsite), (54)(  %3 = call i32 @mbedtls_ssl_handshake(%struct.ssl_ctx* %2), !dbg !21
+ Ret), (55)(STMT)  ret i32 %3, !dbg !22
+ ln: 31 fl: cveExample3.c in TLS_Connect, (56)(TLS_Connect Exit), (70)(  %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+ Ret), (71)(STMT)  store i32 %4, i32* %res, align 4, !dbg !22
+ ln: 37 fl: cveExample3.c in SOCKETS_Connect, (72)(STMT)  %5 = load i32, i32* %res, align 4, !dbg !25
+ ln: 38 fl: cveExample3.c in SOCKETS_Connect, (73)(STMT)  %6 = icmp eq i32 %5, 0, !dbg !27
+ ln: 38 fl: cveExample3.c in SOCKETS_Connect, (74)(STMT)  br i1 %6, label %7, label %10, !dbg !28
+ ln: 38 fl: cveExample3.c in SOCKETS_Connect, (76)(STMT)  %11 = load i32, i32* %res, align 4, !dbg !35
+ ln: 42 fl: cveExample3.c in SOCKETS_Connect, (79)(STMT)  %12 = icmp eq i32 %11, 2, !dbg !37
+ ln: 42 fl: cveExample3.c in SOCKETS_Connect, (81)(STMT)  br i1 %12, label %13, label %16, !dbg !38
+ ln: 42 fl: cveExample3.c in SOCKETS_Connect, (83)(STMT)  %14 = load %struct.ssl_ctx*, %struct.ssl_ctx** %sp, align 8, !dbg !42
+ ln: 43 fl: cveExample3.c in SOCKETS_Connect, (84)(STMT)  %17 = load i32, i32* %res, align 4, !dbg !45
+ ln: 46 fl: cveExample3.c in SOCKETS_Connect, (88)(STMT)  %18 = icmp eq i32 %17, -1, !dbg !47
+ ln: 46 fl: cveExample3.c in SOCKETS_Connect, (91)(STMT)  br i1 %18, label %19, label %22, !dbg !48
+ ln: 46 fl: cveExample3.c in SOCKETS_Connect, (94)(STMT)  %20 = load %struct.ssl_ctx*, %struct.ssl_ctx** %sp, align 8, !dbg !52
+ ln: 47 fl: cveExample3.c in SOCKETS_Connect, (95)(STMT)  %23 = load %struct.ssl_ctx*, %struct.ssl_ctx** %sp, align 8, !dbg !58
+ ln: 51 fl: cveExample3.c in SOCKETS_Connect, (100)(  %24 = call i32 @mbedtls_ssl_read(%struct.ssl_ctx* %23), !dbg !59
+ Callsite), (101)(  %24 = call i32 @mbedtls_ssl_read(%struct.ssl_ctx* %23), !dbg !59
+ Ret), (103)(STMT)  store i32 %24, i32* %lengthcor, align 4, !dbg !57
+ ln: 51 fl: cveExample3.c in SOCKETS_Connect, DEBUG: Solution for mbedtls_ssl_handshake_mbedtls_ssl_read_tlsmisuse
+Solution size=1
+(Generic value , inside TLS_Connect arg type=ssl_ctx* callsite   %3 = call i32 @mbedtls_ssl_handshake(%struct.ssl_ctx* %2), !dbg !21
+ ln: 31 fl: cveExample3.c, inside SOCKETS_Connect arg type=ssl_ctx* callsite   %24 = call i32 @mbedtls_ssl_read(%struct.ssl_ctx* %23), !dbg !59
+ ln: 51 fl: cveExample3.c)
+Writing 'SVFG_before_opt.dot'...
+Writing 'icfg.dot'...
+Writing 'SVFG_after_prop_indcalls.dot'...

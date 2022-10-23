@@ -1,0 +1,21 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=27172
+Total number of formal out/ret w outgoing edge=6440
+Total number of formal out/ret w incoming formalin wo deref=8606
+Total number of formal out/ret w incoming formalin (relaxed)=11965
+Sumarization time=248
+Query: TernaryForCallsiteWithSourceTaint, source=JSON_Validate sink=JSON_Iterate desc=jsonmisuse sanitizeOnReturn=1
+Label=somegeneric_label solution size=0 time=0
+Label=JSON_Validatearg1_label solution size=0 time=0
+Label=JSON_Validatecs1_label solution size=5 time=1
+Label=JSON_Validateargpby1 solution size=466 time=1
+Label=JSON_Iteratearg1_label solution size=0 time=0
+Label=JSON_Iteratecs1_label solution size=0 time=1
+Label=JSON_Iterateargpby1 solution size=0 time=1
+Label=JSON_Validate_JSON_Iterate_jsonmisuse solution size=0 time=5
+Total number of solutions=9
+Total number of cached solutions=1
+Total query solving time=9
+Average query solving time=1
+SVFG stats: nodes=363108 edges=540581

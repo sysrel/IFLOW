@@ -1,0 +1,627 @@
+
+*********CallGraph Stats***************
+################ (program : )###############
+-------------------------------------------------------
+TotalNode           10
+TotalEdge           12
+TotalCycle          0
+MaxNodeInCycle      0
+NodeInCycle         0
+CalRetPairInCycle   0
+#######################################################
+
+*********General Stats***************
+################ (program : )###############
+BBWith2Succ         0
+BBWith3Succ         0
+BitCastNumber       1
+TotalPTAPAGEdges    94
+TotalCallSite       12
+LocalVarInRecur     0
+IndCallSites        1
+ReturnsNum          0
+CallsNum            8
+GepsNum             7
+CopysNum            5
+StoresNum           23
+LoadsNum            20
+AddrsNum            45
+NonPtrObj           15
+ConstArrayObj       0
+ConstStructObj      0
+VarArrayObj         1
+VarStructObj        1
+FSObjNum            39
+FIObjNum            0
+StackObjs           20
+HeapObjs            6
+GlobalObjs          3
+FunctionObjs        10
+TotalPAGEdges       217
+MaxStructSize       2
+TotalFieldObjects   3
+TotalObjects        40
+TotalPointers       149
+-------------------------------------------------------
+#######################################################
+
+*********Constraint Graph Stats***************
+################ (program : )###############
+-------------------------------------------------------
+AvgIn/OutCopyEdge   0.475
+AvgIn/OutLoadEdge   0.15
+AvgIn/OutAddrEdge   0.325
+AvgIn/OutEdge       1.10833
+NumOfCGNode         206
+TotalValidNode      120
+TotalValidObjNode   42
+NumOfCGEdge         94
+NumOfAddrs          39
+NumOfCopys          50
+NumOfGeps           7
+NumOfLoads          18
+NumOfStores         19
+MaxInCopyEdge       1
+MaxOutCopyEdge      3
+MaxInLoadEdge       1
+MaxOutLoadEdge      2
+MaxInStoreEdge      1
+MaxOutStoreEdge     1
+AvgIn/OutStoreEdge  0
+MaxInAddrEdge       1
+MaxOutAddrEdge      1
+#######################################################
+
+*********Andersen Pointer Analysis Stats***************
+################ (program : )###############
+-------------------------------------------------------
+TotalTime           0.001
+CollapseTime        0
+CopyGepTime         0
+UpdateCGTime        0
+AvgTopLvlPtsSize    1
+AvgPtsSetSize       0.436893
+LoadStoreTime       0
+SCCMergeTime        0
+SCCDetectTime       0
+PointsToConstPtr    0
+PointsToBlkPtr      0
+NullPointer         0
+MaxNodesInSCC       0
+NodesInCycles       0
+TotalPWCCycleNum    0
+TotalCycleNum       0
+NumOfSCCDetect      4
+IndEdgeSolved       1
+IndCallSites        1
+Iterations          4
+MaxPtsSetSize       1
+DYFieldObjs         3
+MemObjects          40
+DYFieldPtrs         2
+NumOfFieldExpand    0
+NumOfSFRs           0
+GepProcessed        7
+CopyProcessed       44
+StoreProcessed      19
+LoadProcessed       18
+AddrProcessed       39
+TotalObjects        43
+TotalPointers       149
+Pointers            147
+#######################################################
+
+****Memory SSA Statistics****
+
+************************
+################ (program : )###############
+-------------------------------------------------------
+AverageRegSize      1
+SSARenameTime       0
+InsertPHITime       0
+GenMUCHITime        0.002
+GenRegionTime       0
+TotalMSSATime       0.002
+BBHasMSSAPhi        0
+MSSAPhi             0
+StoreHasChi         22
+LoadHasMu           20
+CSHasMu             5
+CSHasChi            5
+FunHasRetMu         6
+FunHasEntryChi      6
+StoreChiNode        22
+LoadMuNode          20
+CSMuNode            9
+CSChiNode           6
+FunRetMu            31
+FunEntryChi         31
+MemRegions          22
+MaxRegSize          1
+#######################################################
+Adding intra edge 212-->79
+Adding incoming call edge 101-->212
+Adding intra edge 213-->80
+Adding incoming call edge 102-->213
+Actual in id=197
+Actual in id=198
+Adding intra edge 214-->83
+Adding incoming call edge 112-->214
+Adding intra edge 215-->84
+Adding incoming call edge 113-->215
+Actual in id=201
+Adding intra edge 216-->90
+Adding incoming call edge 120-->216
+Adding intra edge 217-->91
+Adding incoming call edge 121-->217
+Actual in id=204
+Actual in id=205
+Adding intra edge 218-->86
+Adding incoming call edge 105-->218
+Adding intra edge 219-->87
+Adding incoming call edge 106-->219
+Actual in id=199
+Actual in id=200
+Adding intra edge 220-->88
+Adding incoming call edge 118-->220
+Adding intra edge 221-->89
+Adding incoming call edge 119-->221
+Actual in id=202
+Actual in id=203
+Summarizing SVFG
+Summary edge: from 124 to 168
+Summary edge: from 136 to 168
+Summary edge: from 137 to 168
+Summary edge: from 138 to 196
+Summary edge: from 138 to 169
+Summary edge: from 138 to 173
+Summary edge: from 145 to 177
+Summary edge: from 146 to 177
+Summary edge: from 131 to 191
+Summary edge: from 159 to 191
+Summary edge: from 160 to 191
+Statistics on summarization
+Total number of formal out/ret=32
+Total number of formal out/ret w outgoing edge=6
+Total number of formal out/ret w incoming formalin wo deref=9
+Sumarization time=0.000000e+00
+Query type: TaintsPtrArgIndirectCallToPrimValArg
+ in RegExp cb type 4
+ in RegExp datast type 0
+ in RegExp sourcecs type 36
+ in RegExp srcarg type 22
+ in RegExp sinkarg type 21
+ in RegExp sinkcs type 36
+ in RegExp value type 37
+Solving relation query label Network_memcpy_taintedlen
+Solving relation query label pbsrcarg
+Solving regexpression query label value_label
+generic value expression
+Solution size=0
+DEBUG: Solution for value_label
+Solution size=0
+Solving relation query label argsrccs
+Solving regexpression query label srcarg_label
+Function arg exp
+Solution size=0
+DEBUG: Solution for srcarg_label
+Solution size=0
+Solving relation query label indcb
+Solving regexpression query label sourcecs_label
+Solution size=31
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+  call void %5(i8* %6, i32* %i), !dbg !41
+()
+  %9 = call i32 (i8*, ...) @printf(i8* %8, i32 %7), !dbg !45
+()
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+bar(()
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+llvm.memcpy.p0i8.p0i8.i64(()
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+malloc(()
+registerCallback(()
+llvm.dbg.declare(()
+malloc(()
+llvm.dbg.declare(()
+malloc(()
+llvm.dbg.declare(()
+malloc(()
+llvm.dbg.declare(()
+malloc(()
+llvm.dbg.declare(()
+foo(()
+copy(()
+DEBUG: Solution for sourcecs_label
+Solution size=31
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+  call void %5(i8* %6, i32* %i), !dbg !41
+()
+  %9 = call i32 (i8*, ...) @printf(i8* %8, i32 %7), !dbg !45
+()
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+bar(()
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+llvm.memcpy.p0i8.p0i8.i64(()
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+malloc(()
+registerCallback(()
+llvm.dbg.declare(()
+malloc(()
+llvm.dbg.declare(()
+malloc(()
+llvm.dbg.declare(()
+malloc(()
+llvm.dbg.declare(()
+malloc(()
+llvm.dbg.declare(()
+foo(()
+copy(()
+Solving relation query label cbdefin
+Solving regexpression query label cb_label
+Solution size=1
+Network index=1 void(*)(i8*,i32*)
+DEBUG: Solution for cb_label
+Solution size=1
+Network index=1 void(*)(i8*,i32*)
+Solving regexpression query label datast_label
+Solution size=1
+Network
+DEBUG: Solution for datast_label
+Solution size=1
+Network
+DEBUG: Solution for cbdefin
+Solution size=1
+(Network index=1 void(*)(i8*,i32*),Network)
+Candidate struct types: 
+Type Network
+Indirectcallof works for :   call void %5(i8* %6, i32* %i), !dbg !41
+() and Network index=1 void(*)(i8*,i32*)
+Candidate struct types: 
+Type Network
+DEBUG: Solution for indcb
+Solution size=1
+(  call void %5(i8* %6, i32* %i), !dbg !41
+(),Network index=1 void(*)(i8*,i32*))
+actual par: 101
+id name=srcarg type=22 type=i8*
+Checking unique res
+inserting actual par: 101
+actual par: 102
+id name=srcarg type=22 type=i32*
+Checking unique res
+inserting actual par: 102
+actual in: 197
+id name=srcarg type=22 type=i32*
+Checking unique res
+inserting actual in: 197
+actual in: 198
+id name=srcarg type=22 type=i8*
+Checking unique res
+inserting actual in: 198
+DEBUG: Solution for argsrccs
+Solution size=4
+( inside bar arg type=i32* callsite   call void %5(i8* %6, i32* %i), !dbg !41
+ ln: 27 fl: testcb.c,  call void %5(i8* %6, i32* %i), !dbg !41
+())
+( inside main arg type=i8* callsite   call void %5(i8* %6, i32* %i), !dbg !41
+ ln: 27 fl: testcb.c,  call void %5(i8* %6, i32* %i), !dbg !41
+())
+( inside bar arg type=i32* callsite   call void %5(i8* %6, i32* %i), !dbg !41
+ ln: 27 fl: testcb.c,  call void %5(i8* %6, i32* %i), !dbg !41
+())
+( inside bar arg type=i8* callsite   call void %5(i8* %6, i32* %i), !dbg !41
+ ln: 27 fl: testcb.c,  call void %5(i8* %6, i32* %i), !dbg !41
+())
+Solving value pointedby srcarg
+Checking frontiers for 101
+is dereferencing edge 101-->212?
+No, searching for those reachable from 212
+is dereferencing edge 212-->79?
+No, searching for those reachable from 79
+is dereferencing edge 79-->58?
+No, searching for those reachable from 58
+is dereferencing edge 58-->52?
+No, searching for those reachable from 52
+is dereferencing edge 52-->81?
+is dereferencing edge 79-->166?
+No, searching for those reachable from 166
+Checking frontiers for 102
+is dereferencing edge 102-->213?
+No, searching for those reachable from 213
+is dereferencing edge 213-->80?
+No, searching for those reachable from 80
+is dereferencing edge 80-->59?
+No, searching for those reachable from 59
+is dereferencing edge 59-->82?
+No, searching for those reachable from 82
+is dereferencing edge 82-->168?
+No, searching for those reachable from 168
+is dereferencing edge 168-->206?
+No, searching for those reachable from 206
+is dereferencing edge 206-->64?
+No, searching for those reachable from 64
+is dereferencing edge 64-->104?
+No, searching for those reachable from 104
+is dereferencing edge 206-->194?
+No, searching for those reachable from 194
+is dereferencing edge 80-->167?
+No, searching for those reachable from 167
+Checking frontiers for 197
+is dereferencing edge 197-->137?
+No, searching for those reachable from 137
+is dereferencing edge 137-->82?
+No, searching for those reachable from 82
+is dereferencing edge 82-->168?
+No, searching for those reachable from 168
+is dereferencing edge 168-->206?
+No, searching for those reachable from 206
+is dereferencing edge 206-->64?
+No, searching for those reachable from 64
+is dereferencing edge 64-->104?
+No, searching for those reachable from 104
+is dereferencing edge 206-->194?
+No, searching for those reachable from 194
+Checking frontiers for 198
+is dereferencing edge 198-->138?
+No, searching for those reachable from 138
+is dereferencing edge 138-->81?
+No, searching for those reachable from 81
+is dereferencing edge 81-->169?
+No, searching for those reachable from 169
+is dereferencing edge 169-->207?
+No, searching for those reachable from 207
+is dereferencing edge 207-->196?
+No, searching for those reachable from 196
+is dereferencing edge 196-->208?
+No, searching for those reachable from 208
+is dereferencing edge 208-->173?
+No, searching for those reachable from 173
+is dereferencing edge 173-->210?
+No, searching for those reachable from 210
+is dereferencing edge 210-->205?
+No, searching for those reachable from 205
+is dereferencing edge 205-->146?
+No, searching for those reachable from 146
+is dereferencing edge 146-->71?
+No, searching for those reachable from 71
+is dereferencing edge 71-->48?
+No, searching for those reachable from 48
+is dereferencing edge 48-->109?
+No, searching for those reachable from 109
+is dereferencing edge 146-->92?
+No, searching for those reachable from 92
+is dereferencing edge 92-->177?
+No, searching for those reachable from 177
+is dereferencing edge 177-->211?
+No, searching for those reachable from 211
+is dereferencing edge 211-->188?
+No, searching for those reachable from 188
+generic value entity: Generic value with node 81 (STMT)  store i8 98, i8* %4, align 1, !dbg !38
+ ln: 16 fl: testcb.c81 for node (STMT)  store i8 98, i8* %4, align 1, !dbg !38
+ ln: 16 fl: testcb.c81
+Skipping path reachability due to dereferencing edge
+Label pbsrcarg results:
+Generic value with node 81 (STMT)  store i8 98, i8* %4, align 1, !dbg !38
+ ln: 16 fl: testcb.c81 [ POINTED BY ]  inside bar arg type=i8* callsite   call void %5(i8* %6, i32* %i), !dbg !41
+ ln: 27 fl: testcb.c
+DEBUG: Solution for pbsrcarg
+Solution size=1
+(Generic value with node 81 (STMT)  store i8 98, i8* %4, align 1, !dbg !38
+ ln: 16 fl: testcb.c81, inside bar arg type=i8* callsite   call void %5(i8* %6, i32* %i), !dbg !41
+ ln: 27 fl: testcb.c)
+Solving relation query label argsinkcs
+Solving regexpression query label sinkarg_label
+Function arg exp
+Solution size=0
+DEBUG: Solution for sinkarg_label
+Solution size=0
+Solving regexpression query label sinkcs_label
+Solution size=31
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+  call void %5(i8* %6, i32* %i), !dbg !41
+()
+  %9 = call i32 (i8*, ...) @printf(i8* %8, i32 %7), !dbg !45
+()
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+bar(()
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+llvm.memcpy.p0i8.p0i8.i64(()
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+malloc(()
+registerCallback(()
+llvm.dbg.declare(()
+malloc(()
+llvm.dbg.declare(()
+malloc(()
+llvm.dbg.declare(()
+malloc(()
+llvm.dbg.declare(()
+malloc(()
+llvm.dbg.declare(()
+foo(()
+copy(()
+DEBUG: Solution for sinkcs_label
+Solution size=31
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+  call void %5(i8* %6, i32* %i), !dbg !41
+()
+  %9 = call i32 (i8*, ...) @printf(i8* %8, i32 %7), !dbg !45
+()
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+bar(()
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+llvm.memcpy.p0i8.p0i8.i64(()
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+llvm.dbg.declare(()
+malloc(()
+registerCallback(()
+llvm.dbg.declare(()
+malloc(()
+llvm.dbg.declare(()
+malloc(()
+llvm.dbg.declare(()
+malloc(()
+llvm.dbg.declare(()
+malloc(()
+llvm.dbg.declare(()
+foo(()
+copy(()
+actual par: 101
+id name=sinkarg type=21 type=i8*
+actual par: 102
+id name=sinkarg type=21 type=i32*
+actual in: 197
+id name=sinkarg type=21 type=i32*
+actual in: 198
+id name=sinkarg type=21 type=i8*
+actual par: 103
+id name=sinkarg type=21 type=i8*
+actual par: 104
+id name=sinkarg type=21 type=i32
+Checking unique res
+inserting actual par: 104
+actual par: 105
+id name=sinkarg type=21 type=Network*
+actual par: 106
+id name=sinkarg type=21 type=i8*
+actual in: 199
+id name=sinkarg type=21 type=i8*
+actual in: 200
+id name=sinkarg type=21 type=i8*
+actual par: 107
+id name=sinkarg type=21 type=i8*
+actual par: 108
+id name=sinkarg type=21 type=i8*
+actual par: 109
+id name=sinkarg type=21 type=i64
+Checking unique res
+inserting actual par: 109
+actual par: 110
+id name=sinkarg type=21 type=i1
+Checking unique res
+inserting actual par: 110
+actual par: 111
+id name=sinkarg type=21 type=i64
+Checking unique res
+inserting actual par: 111
+actual par: 112
+id name=sinkarg type=21 type=Network*
+actual par: 113
+id name=sinkarg type=21 type=void
+actual in: 201
+id name=sinkarg type=21 type=i8*
+actual par: 114
+id name=sinkarg type=21 type=i64
+Checking unique res
+inserting actual par: 114
+actual par: 115
+id name=sinkarg type=21 type=i64
+Checking unique res
+inserting actual par: 115
+actual par: 116
+id name=sinkarg type=21 type=i64
+Checking unique res
+inserting actual par: 116
+actual par: 117
+id name=sinkarg type=21 type=i64
+Checking unique res
+inserting actual par: 117
+actual par: 118
+id name=sinkarg type=21 type=Network*
+actual par: 119
+id name=sinkarg type=21 type=i8*
+actual in: 202
+id name=sinkarg type=21 type=i8*
+actual in: 203
+id name=sinkarg type=21 type=i8*
+actual par: 120
+id name=sinkarg type=21 type=i8*
+actual par: 121
+id name=sinkarg type=21 type=i8*
+actual in: 204
+id name=sinkarg type=21 type=i8*
+actual in: 205
+id name=sinkarg type=21 type=i8*
+DEBUG: Solution for argsinkcs
+Solution size=8
+( inside bar arg type=i32 callsite   %9 = call i32 (i8*, ...) @printf(i8* %8, i32 %7), !dbg !45
+ ln: 28 fl: testcb.c,  %9 = call i32 (i8*, ...) @printf(i8* %8, i32 %7), !dbg !45
+())
+( inside copy arg type=i64 callsite   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %3, i8* align 1 %4, i64 %8, i1 false), !dbg !42
+ ln: 37 fl: testcb.c,llvm.memcpy.p0i8.p0i8.i64(())
+( arg type=i1 callsite   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %3, i8* align 1 %4, i64 %8, i1 false), !dbg !42
+ ln: 37 fl: testcb.c,llvm.memcpy.p0i8.p0i8.i64(())
+( arg type=i64 callsite   %4 = call noalias i8* @malloc(i64 16) #5, !dbg !42
+ ln: 46 fl: testcb.c,malloc(())
+( arg type=i64 callsite   %7 = call noalias i8* @malloc(i64 10) #5, !dbg !49
+ ln: 48 fl: testcb.c,malloc(())
+( arg type=i64 callsite   %8 = call noalias i8* @malloc(i64 10) #5, !dbg !52
+ ln: 49 fl: testcb.c,malloc(())
+( arg type=i64 callsite   %9 = call noalias i8* @malloc(i64 10) #5, !dbg !55
+ ln: 50 fl: testcb.c,malloc(())
+( arg type=i64 callsite   %10 = call noalias i8* @malloc(i64 10) #5, !dbg !58
+ ln: 51 fl: testcb.c,malloc(())
+Solving value taints sinkarg
+Solving for taint label=Network_memcpy_taintedlen
+value size=1
+sinkarg size=8
+isavalidcfp?
+Yes!, path:
+(81)(STMT)  store i8 98, i8* %4, align 1, !dbg !38
+ ln: 16 fl: testcb.c81, (169)(FOUT) iot_receive(FOUT), (207)(AOUT)   call void %5(i8* %6, i32* %i), !dbg !41
+ ln: 27 fl: testcb.c within bar, (196)(FOUT) bar(FOUT), (208)(AOUT)   call void @bar(%struct.Network* %3, i8* %4), !dbg !41
+ ln: 32 fl: testcb.c within foo, (173)(FOUT) foo(FOUT), (210)(AOUT)   call void @foo(%struct.Network* %11, i8* %12), !dbg !63
+ ln: 53 fl: testcb.c within main, (205)(AIN)   call void @copy(i8* %13, i8* %14), !dbg !66
+ ln: 54 fl: testcb.c within main, (146)(FIN) copy, (71)(STMT)  %7 = load i8, i8* %6, align 1, !dbg !41
+ ln: 37 fl: testcb.c71, (48)(STMT)  %8 = sext i8 %7 to i64, !dbg !41
+ ln: 37 fl: testcb.c48, (109)(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %3, i8* align 1 %4, i64 %8, i1 false), !dbg !42
+ln: 37 fl: testcb.c, DEBUG: Solution for Network_memcpy_taintedlen
+Solution size=1
+(Generic value with node 81 (STMT)  store i8 98, i8* %4, align 1, !dbg !38
+ ln: 16 fl: testcb.c81, inside copy arg type=i64 callsite   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %3, i8* align 1 %4, i64 %8, i1 false), !dbg !42
+ ln: 37 fl: testcb.c)
+Resolved indirect callsite:,ln: 27 fl: testcb.c  call void %5(i8* %6, i32* %i), !dbg !41 in function bar num targets=1
+Target: iot_receive
+Writing 'SVFG_before_opt.dot'...
+Writing 'icfg.dot'...
+Writing 'SVFG_after_prop_indcalls.dot'...

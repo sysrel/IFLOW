@@ -1,0 +1,56 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=20
+Total number of formal out/ret w outgoing edge=4
+Total number of formal out/ret w incoming formalin wo deref=2
+Total number of formal out/ret w incoming formalin (relaxed)=5
+Sumarization time=0
+Query: TernaryForCallsiteWithSourceTaintVec, source=mbedtls_ssl_handshake sink=mbedtls_ssl_read desc=tlsmisuse sanitizeOnReturn=0 2 -1
+Label=somegeneric_label solution size=0 time=0
+Label=mbedtls_ssl_handshakearg1_label solution size=0 time=0
+Label=mbedtls_ssl_handshakecs1_label solution size=1 time=0
+Label=mbedtls_ssl_handshakeargpby1 solution size=1 time=0
+Label=mbedtls_ssl_readarg1_label solution size=0 time=0
+Label=mbedtls_ssl_readcs1_label solution size=4 time=0
+Label=mbedtls_ssl_readargpby1 solution size=4 time=0
+ vs 
+Node1=88 Inst1=  %3 = call i32 @mbedtls_ssl_handshake(%struct.ssl_ctx* %2), !dbg !21
+ Loc1=ln: 31 fl: cveExample3.c
+Node2=93 Inst2=  %24 = call i32 @mbedtls_ssl_read(%struct.ssl_ctx* %23), !dbg !59
+ Loc2=ln: 51 fl: cveExample3.c
+Source svfgnode=88 0x1f08f10 (APAR)   %3 = call i32 @mbedtls_ssl_handshake(%struct.ssl_ctx* %2), !dbg !21
+ln: 31 fl: cveExample3.c(ID: 88)
+Dest svfgnode=93 0x1f0b9e0 (APAR)   %24 = call i32 @mbedtls_ssl_read(%struct.ssl_ctx* %23), !dbg !59
+ln: 51 fl: cveExample3.c(ID: 93)
+
+================ICFG PATH================
+(49)(TLS_Connect Entry) ,(50)(STMT)  %1 = alloca %struct.ssl_ctx*, align 8
+ ln: 30 fl: cveExample3.c in TLS_Connect ,(51)(STMT)  store %struct.ssl_ctx* %p, %struct.ssl_ctx** %1, align 8
+  in TLS_Connect ,(52)(STMT)  %2 = load %struct.ssl_ctx*, %struct.ssl_ctx** %1, align 8, !dbg !20
+ ln: 31 fl: cveExample3.c in TLS_Connect ,(53)(  %3 = call i32 @mbedtls_ssl_handshake(%struct.ssl_ctx* %2), !dbg !21
+ Callsite) ,(54)(  %3 = call i32 @mbedtls_ssl_handshake(%struct.ssl_ctx* %2), !dbg !21
+ Ret) ,(55)(STMT)  ret i32 %3, !dbg !22
+ ln: 31 fl: cveExample3.c in TLS_Connect ,(56)(TLS_Connect Exit) ,(70)(  %4 = call i32 @TLS_Connect(%struct.ssl_ctx* %3), !dbg !24
+ Ret) ,(71)(STMT)  store i32 %4, i32* %res, align 4, !dbg !22
+ ln: 37 fl: cveExample3.c in SOCKETS_Connect ,(72)(STMT)  %5 = load i32, i32* %res, align 4, !dbg !25
+ ln: 38 fl: cveExample3.c in SOCKETS_Connect ,(73)(STMT)  %6 = icmp eq i32 %5, 0, !dbg !27
+ ln: 38 fl: cveExample3.c in SOCKETS_Connect ,(74)(STMT)  br i1 %6, label %7, label %10, !dbg !28
+ ln: 38 fl: cveExample3.c in SOCKETS_Connect ,(76)(STMT)  %11 = load i32, i32* %res, align 4, !dbg !35
+ ln: 42 fl: cveExample3.c in SOCKETS_Connect ,(79)(STMT)  %12 = icmp eq i32 %11, 2, !dbg !37
+ ln: 42 fl: cveExample3.c in SOCKETS_Connect ,(81)(STMT)  br i1 %12, label %13, label %16, !dbg !38
+ ln: 42 fl: cveExample3.c in SOCKETS_Connect ,(83)(STMT)  %14 = load %struct.ssl_ctx*, %struct.ssl_ctx** %sp, align 8, !dbg !42
+ ln: 43 fl: cveExample3.c in SOCKETS_Connect ,(84)(STMT)  %17 = load i32, i32* %res, align 4, !dbg !45
+ ln: 46 fl: cveExample3.c in SOCKETS_Connect ,(88)(STMT)  %18 = icmp eq i32 %17, -1, !dbg !47
+ ln: 46 fl: cveExample3.c in SOCKETS_Connect ,(91)(STMT)  br i1 %18, label %19, label %22, !dbg !48
+ ln: 46 fl: cveExample3.c in SOCKETS_Connect ,(94)(STMT)  %20 = load %struct.ssl_ctx*, %struct.ssl_ctx** %sp, align 8, !dbg !52
+ ln: 47 fl: cveExample3.c in SOCKETS_Connect ,(95)(STMT)  %23 = load %struct.ssl_ctx*, %struct.ssl_ctx** %sp, align 8, !dbg !58
+ ln: 51 fl: cveExample3.c in SOCKETS_Connect ,(100)(  %24 = call i32 @mbedtls_ssl_read(%struct.ssl_ctx* %23), !dbg !59
+ Callsite) ,(101)(  %24 = call i32 @mbedtls_ssl_read(%struct.ssl_ctx* %23), !dbg !59
+ Ret) ,(103)(STMT)  store i32 %24, i32* %lengthcor, align 4, !dbg !57
+ ln: 51 fl: cveExample3.c in SOCKETS_Connect ,
+================================
+Label=mbedtls_ssl_handshake_mbedtls_ssl_read_tlsmisuse solution size=1 time=0
+Total number of solutions=9
+Total number of cached solutions=1
+Total query solving time=0
+Average query solving time=0

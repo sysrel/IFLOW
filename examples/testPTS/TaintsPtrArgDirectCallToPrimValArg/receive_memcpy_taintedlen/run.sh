@@ -1,0 +1,1 @@
+/home/tuba/Documents/tools/IFLOW/iflow/Release-build/bin/wpa -ander -stat -svfg -svfgWithIndCall=true -dump-svfg=true -info-flow=true -info-flow-bound=20 -genicfg -dump-icfg=true -info-flow-query-type=TaintsPtrArgDirectCallToPrimValArg -info-flow-query-ops receive memcpy taintedlen testPts.bc

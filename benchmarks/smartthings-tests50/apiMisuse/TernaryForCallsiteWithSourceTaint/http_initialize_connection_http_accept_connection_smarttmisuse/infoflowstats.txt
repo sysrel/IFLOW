@@ -1,0 +1,21 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=20449
+Total number of formal out/ret w outgoing edge=4049
+Total number of formal out/ret w incoming formalin wo deref=6806
+Total number of formal out/ret w incoming formalin (relaxed)=11014
+Sumarization time=23
+Query: TernaryForCallsiteWithSourceTaint, source=http_initialize_connection sink=http_accept_connection desc=smarttmisuse sanitizeOnReturn=0
+Label=somegeneric_label solution size=0 time=0
+Label=http_initialize_connectionarg1_label solution size=0 time=0
+Label=http_initialize_connectioncs1_label solution size=1 time=151
+Label=http_initialize_connectionargpby1 solution size=3 time=151
+Label=http_accept_connectionarg1_label solution size=0 time=0
+Label=http_accept_connectioncs1_label solution size=1 time=155
+Label=http_accept_connectionargpby1 solution size=3 time=155
+Label=http_initialize_connection_http_accept_connection_smarttmisuse solution size=0 time=307
+Total number of solutions=9
+Total number of cached solutions=1
+Total query solving time=919
+Average query solving time=102
+SVFG stats: nodes=287124 edges=433924

@@ -1,0 +1,56 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=20449
+Total number of formal out/ret w outgoing edge=4049
+Total number of formal out/ret w incoming formalin wo deref=6806
+Total number of formal out/ret w incoming formalin (relaxed)=11014
+Sumarization time=27
+Query: TaintsDataFieldCallsite, data type= st_mqtt_connect_data field=2 sink=memcpy desc=mqttleak
+Label=typest_mqtt_connect_datafield21_label solution size=3 time=17
+Label=memcpyarg1_label solution size=0 time=0
+Label=memcpycs1_label solution size=316 time=177
+Label=memcpyargpby1 solution size=632 time=177
+typest_mqtt_connect_datafield21 size=3
+memcpyarg1 size=632
+Source node=43062 Inst1=  %70 = getelementptr inbounds %struct.st_mqtt_connect_data, %struct.st_mqtt_connect_data* %conn_data, i32 0, i32 2, !dbg !6750
+ Loc=ln: 831 fl: src/easysetup/iot_easysetup_st_mqtt.c
+
+================SVFG PATH================
+(STMT)  %70 = getelementptr inbounds %struct.st_mqtt_connect_data, %struct.st_mqtt_connect_data* %conn_data, i32 0, i32 2, !dbg !6750
+ ln: 831 fl: src/easysetup/iot_easysetup_st_mqtt.c(ID: 43062) ,(STMT)  store i8* %69, i8** %70, align 8, !dbg !6751
+ ln: 831 fl: src/easysetup/iot_easysetup_st_mqtt.c(ID: 120874) ,(AIN)   %81 = call i32 @st_mqtt_connect(i8* %80, %struct.st_mqtt_broker_info* %broker_info, %struct.st_mqtt_connect_data* %conn_data), !dbg !6757
+ ln: 838 fl: src/easysetup/iot_easysetup_st_mqtt.c within _iot_es_mqtt_connect(ID: 262241) ,(FIN) st_mqtt_connect(ID: 229941) ,(STMT)  %64 = load i8*, i8** %63, align 8, !dbg !6776
+ ln: 1173 fl: src/mqtt/client/iot_mqtt_client.c(ID: 80146) ,(STMT)  store i8* %64, i8** %66, align 8, !dbg !6779
+ ln: 1173 fl: src/mqtt/client/iot_mqtt_client.c(ID: 120983) ,(AIN)   %75 = call i32 @MQTTSerialize_connect_size(%struct.MQTTPacket_connectData* %options), !dbg !6788
+ ln: 1177 fl: src/mqtt/client/iot_mqtt_client.c within st_mqtt_connect(ID: 262305) ,(FIN) MQTTSerialize_connect_size(ID: 229793) ,(AIN)   %90 = call i32 @MQTTSerialize_connect(i8* %88, i32 %89, %struct.MQTTPacket_connectData* %options), !dbg !6804
+ ln: 1184 fl: src/mqtt/client/iot_mqtt_client.c within st_mqtt_connect(ID: 262328) ,(FIN) MQTTSerialize_connect(ID: 229572) ,(AIN)   call void @writeMQTTString(i8** %ptr, %struct.MQTTString* byval align 8 %151), !dbg !6818
+ ln: 106 fl: src/mqtt/packet/iot_mqtt_connect_client.c within MQTTSerialize_connect(ID: 264275) ,(FIN) writeMQTTString(ID: 230054) ,(STMT)  %34 = load i8*, i8** %33, align 8, !dbg !6683
+ ln: 202 fl: src/mqtt/packet/iot_mqtt_packet.c(ID: 85975) ,(APAR)   call void @writeCString(i8** %32, i8* %34), !dbg !6684
+ln: 202 fl: src/mqtt/packet/iot_mqtt_packet.c(ID: 150157) ,(FPARM) writeCString(ID: 174374) ,(STMT)  store i8* %string, i8** %2, align 8
+ (ID: 123676) ,(STMT)  %10 = load i8*, i8** %2, align 8, !dbg !6654
+ ln: 181 fl: src/mqtt/packet/iot_mqtt_packet.c(ID: 85956) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %9, i8* align 1 %10, i64 %12, i1 false), !dbg !6656
+ln: 181 fl: src/mqtt/packet/iot_mqtt_packet.c(ID: 150151) ,
+================================
+Source node=43175 Inst1=  %63 = getelementptr inbounds %struct.st_mqtt_connect_data, %struct.st_mqtt_connect_data* %62, i32 0, i32 2, !dbg !6776
+ Loc=ln: 1173 fl: src/mqtt/client/iot_mqtt_client.c
+
+================SVFG PATH================
+(STMT)  %63 = getelementptr inbounds %struct.st_mqtt_connect_data, %struct.st_mqtt_connect_data* %62, i32 0, i32 2, !dbg !6776
+ ln: 1173 fl: src/mqtt/client/iot_mqtt_client.c(ID: 43175) ,(STMT)  %64 = load i8*, i8** %63, align 8, !dbg !6776
+ ln: 1173 fl: src/mqtt/client/iot_mqtt_client.c(ID: 80146) ,(STMT)  store i8* %64, i8** %66, align 8, !dbg !6779
+ ln: 1173 fl: src/mqtt/client/iot_mqtt_client.c(ID: 120983) ,(AIN)   %75 = call i32 @MQTTSerialize_connect_size(%struct.MQTTPacket_connectData* %options), !dbg !6788
+ ln: 1177 fl: src/mqtt/client/iot_mqtt_client.c within st_mqtt_connect(ID: 262305) ,(FIN) MQTTSerialize_connect_size(ID: 229793) ,(AIN)   %90 = call i32 @MQTTSerialize_connect(i8* %88, i32 %89, %struct.MQTTPacket_connectData* %options), !dbg !6804
+ ln: 1184 fl: src/mqtt/client/iot_mqtt_client.c within st_mqtt_connect(ID: 262328) ,(FIN) MQTTSerialize_connect(ID: 229572) ,(AIN)   call void @writeMQTTString(i8** %ptr, %struct.MQTTString* byval align 8 %151), !dbg !6818
+ ln: 106 fl: src/mqtt/packet/iot_mqtt_connect_client.c within MQTTSerialize_connect(ID: 264275) ,(FIN) writeMQTTString(ID: 230054) ,(STMT)  %34 = load i8*, i8** %33, align 8, !dbg !6683
+ ln: 202 fl: src/mqtt/packet/iot_mqtt_packet.c(ID: 85975) ,(APAR)   call void @writeCString(i8** %32, i8* %34), !dbg !6684
+ln: 202 fl: src/mqtt/packet/iot_mqtt_packet.c(ID: 150157) ,(FPARM) writeCString(ID: 174374) ,(STMT)  store i8* %string, i8** %2, align 8
+ (ID: 123676) ,(STMT)  %10 = load i8*, i8** %2, align 8, !dbg !6654
+ ln: 181 fl: src/mqtt/packet/iot_mqtt_packet.c(ID: 85956) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %9, i8* align 1 %10, i64 %12, i1 false), !dbg !6656
+ln: 181 fl: src/mqtt/packet/iot_mqtt_packet.c(ID: 150151) ,
+================================
+Label=st_mqtt_connect_data_memcpy_mqttleak solution size=2 time=194
+Total number of solutions=5
+Total number of cached solutions=0
+Total query solving time=565
+Average query solving time=113
+SVFG stats: nodes=287124 edges=433924

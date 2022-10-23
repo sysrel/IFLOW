@@ -1,0 +1,1 @@
+/home/tuba/Documents/tools/IFLOW/iflow/Release-build/bin/wpa -ander -stat -svfg -svfgWithIndCall=true -dump-svfg=true -info-flow=true -info-flow-bound=50 -genicfg -dump-icfg=true -info-flow-query-type=TernaryForCallsiteWithSourceTaint -info-flow-query-ops iotc_control_topic_layer_connect iotc_control_topic_layer_push giotmisuse 0 google_iot_all.bc

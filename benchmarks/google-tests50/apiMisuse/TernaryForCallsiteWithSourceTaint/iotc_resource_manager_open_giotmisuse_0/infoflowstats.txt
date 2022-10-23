@@ -1,0 +1,7 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=3029
+Total number of formal out/ret w outgoing edge=438
+Total number of formal out/ret w incoming formalin wo deref=787
+Total number of formal out/ret w incoming formalin (relaxed)=1063
+Sumarization time=0

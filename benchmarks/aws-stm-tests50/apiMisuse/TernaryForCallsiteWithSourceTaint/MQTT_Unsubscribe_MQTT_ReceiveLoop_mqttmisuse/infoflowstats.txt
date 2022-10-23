@@ -1,0 +1,20 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=27172
+Total number of formal out/ret w outgoing edge=6440
+Total number of formal out/ret w incoming formalin wo deref=8606
+Total number of formal out/ret w incoming formalin (relaxed)=11965
+Sumarization time=246
+Query: TernaryForCallsiteWithSourceTaint, source=MQTT_Unsubscribe sink=MQTT_ReceiveLoop desc=mqttmisuse sanitizeOnReturn=0
+Label=somegeneric_label solution size=0 time=0
+Label=MQTT_Unsubscribearg1_label solution size=0 time=0
+Label=MQTT_Unsubscribecs1_label solution size=4 time=1
+Label=MQTT_Unsubscribeargpby1 solution size=624 time=1
+Label=MQTT_ReceiveLooparg1_label solution size=0 time=0
+Label=MQTT_ReceiveLoopcs1_label solution size=0 time=1
+Label=MQTT_ReceiveLoopargpby1 solution size=0 time=1
+Label=MQTT_Unsubscribe_MQTT_ReceiveLoop_mqttmisuse solution size=0 time=12
+Total number of solutions=9
+Total number of cached solutions=1
+Total query solving time=16
+Average query solving time=1

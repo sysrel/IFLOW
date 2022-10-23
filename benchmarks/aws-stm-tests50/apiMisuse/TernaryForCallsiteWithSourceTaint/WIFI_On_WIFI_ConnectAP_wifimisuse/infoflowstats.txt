@@ -1,0 +1,20 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=27172
+Total number of formal out/ret w outgoing edge=6440
+Total number of formal out/ret w incoming formalin wo deref=8606
+Total number of formal out/ret w incoming formalin (relaxed)=11965
+Sumarization time=228
+Query: TernaryForCallsiteWithSourceTaint, source=WIFI_On sink=WIFI_ConnectAP desc=wifimisuse sanitizeOnReturn=0
+Label=somegeneric_label solution size=0 time=0
+Label=WIFI_Onarg1_label solution size=0 time=0
+Label=WIFI_Oncs1_label solution size=2 time=1
+Label=WIFI_Onargpby1 solution size=306 time=1
+Label=WIFI_ConnectAParg1_label solution size=0 time=0
+Label=WIFI_ConnectAPcs1_label solution size=1 time=2
+Label=WIFI_ConnectAPargpby1 solution size=157 time=2
+Label=WIFI_On_WIFI_ConnectAP_wifimisuse solution size=0 time=9
+Total number of solutions=9
+Total number of cached solutions=1
+Total query solving time=15
+Average query solving time=1

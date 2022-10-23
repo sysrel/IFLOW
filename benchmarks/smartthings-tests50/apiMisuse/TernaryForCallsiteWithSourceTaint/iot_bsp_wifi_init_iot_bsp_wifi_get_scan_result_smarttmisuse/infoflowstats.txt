@@ -1,0 +1,21 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=20449
+Total number of formal out/ret w outgoing edge=4049
+Total number of formal out/ret w incoming formalin wo deref=6806
+Total number of formal out/ret w incoming formalin (relaxed)=11014
+Sumarization time=23
+Query: TernaryForCallsiteWithSourceTaint, source=iot_bsp_wifi_init sink=iot_bsp_wifi_get_scan_result desc=smarttmisuse sanitizeOnReturn=0
+Label=somegeneric_label solution size=0 time=0
+Label=iot_bsp_wifi_initarg1_label solution size=0 time=0
+Label=iot_bsp_wifi_initcs1_label solution size=1 time=159
+Label=iot_bsp_wifi_initargpby1 solution size=0 time=159
+Label=iot_bsp_wifi_get_scan_resultarg1_label solution size=0 time=0
+Label=iot_bsp_wifi_get_scan_resultcs1_label solution size=1 time=150
+Label=iot_bsp_wifi_get_scan_resultargpby1 solution size=1 time=150
+Label=iot_bsp_wifi_init_iot_bsp_wifi_get_scan_result_smarttmisuse solution size=0 time=309
+Total number of solutions=9
+Total number of cached solutions=1
+Total query solving time=927
+Average query solving time=103
+SVFG stats: nodes=287124 edges=433924

@@ -1,0 +1,1 @@
+TernaryForCallsiteWithSourceTaint,iot_nv_set_wifi_prov_data,iot_nv_get_wifi_prov_data,smarttmisuse,0

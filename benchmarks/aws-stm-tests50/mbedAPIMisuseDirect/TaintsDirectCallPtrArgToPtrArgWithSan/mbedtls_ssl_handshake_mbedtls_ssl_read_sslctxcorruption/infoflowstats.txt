@@ -1,0 +1,37 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=27172
+Total number of formal out/ret w outgoing edge=6440
+Total number of formal out/ret w incoming formalin wo deref=8606
+Total number of formal out/ret w incoming formalin (relaxed)=11965
+Sumarization time=205
+Query: TaintsDirectCallPtrArgToPtrArgWithSan, source=mbedtls_ssl_handshake sink=mbedtls_ssl_read desc=sslctxcorruption sanitizeOnReturn=0
+Label=srcarg_label solution size=0 time=0
+Label=sourcecs_label solution size=8 time=1
+Label=argsrccs solution size=1094 time=1
+Label=sinkarg_label solution size=0 time=0
+Label=sinkcs_label solution size=11 time=1
+Label=argsinkcs solution size=934 time=1
+srcarg size=45
+sinkarg size=67
+Source node=315974 Inst1=  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Loc=
+
+================SVFG PATH================
+(AIN)   %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+  within mbedtls_ssl_handshake(ID: 315974) ,(FIN) mbedtls_ssl_handshake_step(ID: 267167) ,(PHI) in mbedtls_ssl_handshake_step   br label %25
+ in mbedtls_ssl_handshake_step (ID: 239555) ,(PHI) in mbedtls_ssl_handshake_step   ret i32 %26
+ in mbedtls_ssl_handshake_step (ID: 239562) ,(FOUT) mbedtls_ssl_handshake_step(FOUT)(ID: 282909) ,(AOUT)   %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+  within mbedtls_ssl_handshake(ID: 346546) ,(PHI) in mbedtls_ssl_handshake   br label %27
+ in mbedtls_ssl_handshake (ID: 236424) ,(PHI) in mbedtls_ssl_handshake   ret i32 %31
+ in mbedtls_ssl_handshake (ID: 236479) ,(FOUT) mbedtls_ssl_handshake(FOUT)(ID: 283012) ,(AOUT)   %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+  within mbedtls_ssl_read(ID: 346547) ,(PHI) in mbedtls_ssl_read   br label %34
+ in mbedtls_ssl_read (ID: 237472) ,(AIN)   %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+  within mbedtls_ssl_read(ID: 315984) ,
+================================
+Label=mbedtls_ssl_handshake_mbedtls_ssl_read_sslctxcorruption solution size=1 time=3
+Total number of solutions=8
+Total number of cached solutions=1
+Total query solving time=7
+Average query solving time=0
+SVFG stats: nodes=363108 edges=540581

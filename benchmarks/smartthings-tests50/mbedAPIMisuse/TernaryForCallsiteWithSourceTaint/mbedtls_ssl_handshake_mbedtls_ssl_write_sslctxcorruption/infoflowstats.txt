@@ -1,0 +1,952 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=20449
+Total number of formal out/ret w outgoing edge=4049
+Total number of formal out/ret w incoming formalin wo deref=6806
+Total number of formal out/ret w incoming formalin (relaxed)=11014
+Sumarization time=21
+Query: TernaryForCallsiteWithSourceTaint, source=mbedtls_ssl_handshake sink=mbedtls_ssl_write desc=sslctxcorruption sanitizeOnReturn=0
+Label=somegeneric_label solution size=0 time=0
+Label=mbedtls_ssl_handshakearg1_label solution size=0 time=0
+Label=mbedtls_ssl_handshakecs1_label solution size=9 time=152
+Label=mbedtls_ssl_handshakeargpby1 solution size=787 time=152
+Label=mbedtls_ssl_writearg1_label solution size=0 time=0
+Label=mbedtls_ssl_writecs1_label solution size=16 time=147
+Label=mbedtls_ssl_writeargpby1 solution size=1494 time=147
+ vs 
+Node1=150121 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Loc1=ln: 8697 fl: mbedtls/library/ssl_tls.c
+Node2=150111 Inst2=  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Loc2=ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c
+Source svfgnode=150121 0x40e3a00 (APAR)   %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ln: 8697 fl: mbedtls/library/ssl_tls.c(ID: 150121)
+Dest svfgnode=150111 0x40e06b0 (APAR)   %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c(ID: 150111)
+
+================ICFG PATH================
+(105190)(STMT)  %21 = load %struct.mbedtls_ssl_context.27*, %struct.mbedtls_ssl_context.27** %2, align 8, !dbg !7073
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105192)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Callsite) ,(105193)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Ret) ,(105195)(STMT)  store i32 %22, i32* %ret, align 4, !dbg !7077
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105197)(STMT)  %23 = icmp ne i32 %22, 0, !dbg !7078
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105202)(STMT)  br i1 %23, label %24, label %28, !dbg !7079
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105204)(STMT)  br label %25, !dbg !7080
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105207)(STMT)  br label %26, !dbg !7082
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105209)(STMT)  %27 = load i32, i32* %ret, align 4, !dbg !7084
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105211)(STMT)  store i32 %27, i32* %1, align 4, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105213)(STMT)  br label %37, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105180)(STMT)  %38 = load i32, i32* %1, align 4, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105182)(STMT)  ret i32 %38, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105120)(mbedtls_ssl_write Exit) ,(105118)(  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Ret) ,(105121)(STMT)  store i32 %29, i32* %ret, align 4, !dbg !7056
+ ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105122)(STMT)  %30 = load i32, i32* %ret, align 4, !dbg !7057
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105123)(STMT)  %31 = icmp sgt i32 %30, 0, !dbg !7059
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105124)(STMT)  br i1 %31, label %32, label %36, !dbg !7060
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105125)(STMT)  %33 = load i32, i32* %ret, align 4, !dbg !7061
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105127)(STMT)  %34 = load i32, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105129)(STMT)  %35 = add nsw i32 %34, %33, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105131)(STMT)  store i32 %35, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105134)(STMT)  br label %50, !dbg !7064
+ ln: 501 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105136)(STMT)  br label %51, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105138)(STMT)  %52 = load i32, i32* %sentLen, align 4, !dbg !7080
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105140)(STMT)  %53 = load i32, i32* %4, align 4, !dbg !7081
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105142)(STMT)  %54 = icmp slt i32 %52, %53, !dbg !7082
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105144)(STMT)  br i1 %54, label %55, label %60, !dbg !7083
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105146)(STMT)  %56 = load i8*, i8** %5, align 8, !dbg !7084
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105149)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Callsite) ,(105150)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Ret) ,(105154)(STMT)  %58 = icmp ne i8 %57, 0, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105157)(STMT)  %59 = xor i1 %58, true, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105160)(STMT)  br label %60
+  in _iot_net_tls_write ,(105147)(STMT)  %61 = phi i1 [ false, %51 ], [ %59, %55 ]
+  in _iot_net_tls_write ,(105151)(STMT)  br i1 %61, label %16, label %62, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,
+================================
+ vs 
+Node1=150121 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Loc1=ln: 8697 fl: mbedtls/library/ssl_tls.c
+Node2=264190 Inst2=  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Loc2=ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c
+Source svfgnode=150121 0x40e3a00 (APAR)   %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ln: 8697 fl: mbedtls/library/ssl_tls.c(ID: 150121)
+Dest svfgnode=264190 0x40e06b0 (AIN)   %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c within _iot_net_tls_write(ID: 264190)
+
+================ICFG PATH================
+(105190)(STMT)  %21 = load %struct.mbedtls_ssl_context.27*, %struct.mbedtls_ssl_context.27** %2, align 8, !dbg !7073
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105192)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Callsite) ,(105193)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Ret) ,(105195)(STMT)  store i32 %22, i32* %ret, align 4, !dbg !7077
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105197)(STMT)  %23 = icmp ne i32 %22, 0, !dbg !7078
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105202)(STMT)  br i1 %23, label %24, label %28, !dbg !7079
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105204)(STMT)  br label %25, !dbg !7080
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105207)(STMT)  br label %26, !dbg !7082
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105209)(STMT)  %27 = load i32, i32* %ret, align 4, !dbg !7084
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105211)(STMT)  store i32 %27, i32* %1, align 4, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105213)(STMT)  br label %37, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105180)(STMT)  %38 = load i32, i32* %1, align 4, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105182)(STMT)  ret i32 %38, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105120)(mbedtls_ssl_write Exit) ,(105118)(  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Ret) ,(105121)(STMT)  store i32 %29, i32* %ret, align 4, !dbg !7056
+ ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105122)(STMT)  %30 = load i32, i32* %ret, align 4, !dbg !7057
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105123)(STMT)  %31 = icmp sgt i32 %30, 0, !dbg !7059
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105124)(STMT)  br i1 %31, label %32, label %36, !dbg !7060
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105125)(STMT)  %33 = load i32, i32* %ret, align 4, !dbg !7061
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105127)(STMT)  %34 = load i32, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105129)(STMT)  %35 = add nsw i32 %34, %33, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105131)(STMT)  store i32 %35, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105134)(STMT)  br label %50, !dbg !7064
+ ln: 501 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105136)(STMT)  br label %51, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105138)(STMT)  %52 = load i32, i32* %sentLen, align 4, !dbg !7080
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105140)(STMT)  %53 = load i32, i32* %4, align 4, !dbg !7081
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105142)(STMT)  %54 = icmp slt i32 %52, %53, !dbg !7082
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105144)(STMT)  br i1 %54, label %55, label %60, !dbg !7083
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105146)(STMT)  %56 = load i8*, i8** %5, align 8, !dbg !7084
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105149)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Callsite) ,(105150)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Ret) ,(105154)(STMT)  %58 = icmp ne i8 %57, 0, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105157)(STMT)  %59 = xor i1 %58, true, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105160)(STMT)  br label %60
+  in _iot_net_tls_write ,(105147)(STMT)  %61 = phi i1 [ false, %51 ], [ %59, %55 ]
+  in _iot_net_tls_write ,(105151)(STMT)  br i1 %61, label %16, label %62, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,
+================================
+ vs 
+Node1=150121 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Loc1=ln: 8697 fl: mbedtls/library/ssl_tls.c
+Node2=264191 Inst2=  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Loc2=ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c
+Source svfgnode=150121 0x40e3a00 (APAR)   %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ln: 8697 fl: mbedtls/library/ssl_tls.c(ID: 150121)
+Dest svfgnode=264191 0x40e06b0 (AIN)   %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c within _iot_net_tls_write(ID: 264191)
+
+================ICFG PATH================
+(105190)(STMT)  %21 = load %struct.mbedtls_ssl_context.27*, %struct.mbedtls_ssl_context.27** %2, align 8, !dbg !7073
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105192)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Callsite) ,(105193)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Ret) ,(105195)(STMT)  store i32 %22, i32* %ret, align 4, !dbg !7077
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105197)(STMT)  %23 = icmp ne i32 %22, 0, !dbg !7078
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105202)(STMT)  br i1 %23, label %24, label %28, !dbg !7079
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105204)(STMT)  br label %25, !dbg !7080
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105207)(STMT)  br label %26, !dbg !7082
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105209)(STMT)  %27 = load i32, i32* %ret, align 4, !dbg !7084
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105211)(STMT)  store i32 %27, i32* %1, align 4, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105213)(STMT)  br label %37, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105180)(STMT)  %38 = load i32, i32* %1, align 4, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105182)(STMT)  ret i32 %38, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105120)(mbedtls_ssl_write Exit) ,(105118)(  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Ret) ,(105121)(STMT)  store i32 %29, i32* %ret, align 4, !dbg !7056
+ ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105122)(STMT)  %30 = load i32, i32* %ret, align 4, !dbg !7057
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105123)(STMT)  %31 = icmp sgt i32 %30, 0, !dbg !7059
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105124)(STMT)  br i1 %31, label %32, label %36, !dbg !7060
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105125)(STMT)  %33 = load i32, i32* %ret, align 4, !dbg !7061
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105127)(STMT)  %34 = load i32, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105129)(STMT)  %35 = add nsw i32 %34, %33, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105131)(STMT)  store i32 %35, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105134)(STMT)  br label %50, !dbg !7064
+ ln: 501 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105136)(STMT)  br label %51, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105138)(STMT)  %52 = load i32, i32* %sentLen, align 4, !dbg !7080
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105140)(STMT)  %53 = load i32, i32* %4, align 4, !dbg !7081
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105142)(STMT)  %54 = icmp slt i32 %52, %53, !dbg !7082
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105144)(STMT)  br i1 %54, label %55, label %60, !dbg !7083
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105146)(STMT)  %56 = load i8*, i8** %5, align 8, !dbg !7084
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105149)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Callsite) ,(105150)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Ret) ,(105154)(STMT)  %58 = icmp ne i8 %57, 0, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105157)(STMT)  %59 = xor i1 %58, true, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105160)(STMT)  br label %60
+  in _iot_net_tls_write ,(105147)(STMT)  %61 = phi i1 [ false, %51 ], [ %59, %55 ]
+  in _iot_net_tls_write ,(105151)(STMT)  br i1 %61, label %16, label %62, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,
+================================
+ vs 
+Node1=264194 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Loc1=ln: 8697 fl: mbedtls/library/ssl_tls.c
+Node2=150111 Inst2=  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Loc2=ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c
+Source svfgnode=264194 0x40e3a00 (AIN)   %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ ln: 8697 fl: mbedtls/library/ssl_tls.c within mbedtls_ssl_write(ID: 264194)
+Dest svfgnode=150111 0x40e06b0 (APAR)   %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c(ID: 150111)
+
+================ICFG PATH================
+(105190)(STMT)  %21 = load %struct.mbedtls_ssl_context.27*, %struct.mbedtls_ssl_context.27** %2, align 8, !dbg !7073
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105192)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Callsite) ,(105193)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Ret) ,(105195)(STMT)  store i32 %22, i32* %ret, align 4, !dbg !7077
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105197)(STMT)  %23 = icmp ne i32 %22, 0, !dbg !7078
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105202)(STMT)  br i1 %23, label %24, label %28, !dbg !7079
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105204)(STMT)  br label %25, !dbg !7080
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105207)(STMT)  br label %26, !dbg !7082
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105209)(STMT)  %27 = load i32, i32* %ret, align 4, !dbg !7084
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105211)(STMT)  store i32 %27, i32* %1, align 4, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105213)(STMT)  br label %37, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105180)(STMT)  %38 = load i32, i32* %1, align 4, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105182)(STMT)  ret i32 %38, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105120)(mbedtls_ssl_write Exit) ,(105118)(  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Ret) ,(105121)(STMT)  store i32 %29, i32* %ret, align 4, !dbg !7056
+ ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105122)(STMT)  %30 = load i32, i32* %ret, align 4, !dbg !7057
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105123)(STMT)  %31 = icmp sgt i32 %30, 0, !dbg !7059
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105124)(STMT)  br i1 %31, label %32, label %36, !dbg !7060
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105125)(STMT)  %33 = load i32, i32* %ret, align 4, !dbg !7061
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105127)(STMT)  %34 = load i32, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105129)(STMT)  %35 = add nsw i32 %34, %33, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105131)(STMT)  store i32 %35, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105134)(STMT)  br label %50, !dbg !7064
+ ln: 501 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105136)(STMT)  br label %51, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105138)(STMT)  %52 = load i32, i32* %sentLen, align 4, !dbg !7080
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105140)(STMT)  %53 = load i32, i32* %4, align 4, !dbg !7081
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105142)(STMT)  %54 = icmp slt i32 %52, %53, !dbg !7082
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105144)(STMT)  br i1 %54, label %55, label %60, !dbg !7083
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105146)(STMT)  %56 = load i8*, i8** %5, align 8, !dbg !7084
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105149)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Callsite) ,(105150)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Ret) ,(105154)(STMT)  %58 = icmp ne i8 %57, 0, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105157)(STMT)  %59 = xor i1 %58, true, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105160)(STMT)  br label %60
+  in _iot_net_tls_write ,(105147)(STMT)  %61 = phi i1 [ false, %51 ], [ %59, %55 ]
+  in _iot_net_tls_write ,(105151)(STMT)  br i1 %61, label %16, label %62, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,
+================================
+ vs 
+Node1=264194 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Loc1=ln: 8697 fl: mbedtls/library/ssl_tls.c
+Node2=150112 Inst2=  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Loc2=ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c
+Source svfgnode=264194 0x40e3a00 (AIN)   %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ ln: 8697 fl: mbedtls/library/ssl_tls.c within mbedtls_ssl_write(ID: 264194)
+Dest svfgnode=150112 0x40e06b0 (APAR)   %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c(ID: 150112)
+
+================ICFG PATH================
+(105190)(STMT)  %21 = load %struct.mbedtls_ssl_context.27*, %struct.mbedtls_ssl_context.27** %2, align 8, !dbg !7073
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105192)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Callsite) ,(105193)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Ret) ,(105195)(STMT)  store i32 %22, i32* %ret, align 4, !dbg !7077
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105197)(STMT)  %23 = icmp ne i32 %22, 0, !dbg !7078
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105202)(STMT)  br i1 %23, label %24, label %28, !dbg !7079
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105204)(STMT)  br label %25, !dbg !7080
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105207)(STMT)  br label %26, !dbg !7082
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105209)(STMT)  %27 = load i32, i32* %ret, align 4, !dbg !7084
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105211)(STMT)  store i32 %27, i32* %1, align 4, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105213)(STMT)  br label %37, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105180)(STMT)  %38 = load i32, i32* %1, align 4, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105182)(STMT)  ret i32 %38, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105120)(mbedtls_ssl_write Exit) ,(105118)(  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Ret) ,(105121)(STMT)  store i32 %29, i32* %ret, align 4, !dbg !7056
+ ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105122)(STMT)  %30 = load i32, i32* %ret, align 4, !dbg !7057
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105123)(STMT)  %31 = icmp sgt i32 %30, 0, !dbg !7059
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105124)(STMT)  br i1 %31, label %32, label %36, !dbg !7060
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105125)(STMT)  %33 = load i32, i32* %ret, align 4, !dbg !7061
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105127)(STMT)  %34 = load i32, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105129)(STMT)  %35 = add nsw i32 %34, %33, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105131)(STMT)  store i32 %35, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105134)(STMT)  br label %50, !dbg !7064
+ ln: 501 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105136)(STMT)  br label %51, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105138)(STMT)  %52 = load i32, i32* %sentLen, align 4, !dbg !7080
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105140)(STMT)  %53 = load i32, i32* %4, align 4, !dbg !7081
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105142)(STMT)  %54 = icmp slt i32 %52, %53, !dbg !7082
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105144)(STMT)  br i1 %54, label %55, label %60, !dbg !7083
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105146)(STMT)  %56 = load i8*, i8** %5, align 8, !dbg !7084
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105149)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Callsite) ,(105150)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Ret) ,(105154)(STMT)  %58 = icmp ne i8 %57, 0, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105157)(STMT)  %59 = xor i1 %58, true, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105160)(STMT)  br label %60
+  in _iot_net_tls_write ,(105147)(STMT)  %61 = phi i1 [ false, %51 ], [ %59, %55 ]
+  in _iot_net_tls_write ,(105151)(STMT)  br i1 %61, label %16, label %62, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,
+================================
+ vs 
+Node1=264194 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Loc1=ln: 8697 fl: mbedtls/library/ssl_tls.c
+Node2=264189 Inst2=  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Loc2=ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c
+Source svfgnode=264194 0x40e3a00 (AIN)   %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ ln: 8697 fl: mbedtls/library/ssl_tls.c within mbedtls_ssl_write(ID: 264194)
+Dest svfgnode=264189 0x40e06b0 (AIN)   %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c within _iot_net_tls_write(ID: 264189)
+
+================ICFG PATH================
+(105190)(STMT)  %21 = load %struct.mbedtls_ssl_context.27*, %struct.mbedtls_ssl_context.27** %2, align 8, !dbg !7073
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105192)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Callsite) ,(105193)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Ret) ,(105195)(STMT)  store i32 %22, i32* %ret, align 4, !dbg !7077
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105197)(STMT)  %23 = icmp ne i32 %22, 0, !dbg !7078
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105202)(STMT)  br i1 %23, label %24, label %28, !dbg !7079
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105204)(STMT)  br label %25, !dbg !7080
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105207)(STMT)  br label %26, !dbg !7082
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105209)(STMT)  %27 = load i32, i32* %ret, align 4, !dbg !7084
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105211)(STMT)  store i32 %27, i32* %1, align 4, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105213)(STMT)  br label %37, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105180)(STMT)  %38 = load i32, i32* %1, align 4, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105182)(STMT)  ret i32 %38, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105120)(mbedtls_ssl_write Exit) ,(105118)(  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Ret) ,(105121)(STMT)  store i32 %29, i32* %ret, align 4, !dbg !7056
+ ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105122)(STMT)  %30 = load i32, i32* %ret, align 4, !dbg !7057
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105123)(STMT)  %31 = icmp sgt i32 %30, 0, !dbg !7059
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105124)(STMT)  br i1 %31, label %32, label %36, !dbg !7060
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105125)(STMT)  %33 = load i32, i32* %ret, align 4, !dbg !7061
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105127)(STMT)  %34 = load i32, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105129)(STMT)  %35 = add nsw i32 %34, %33, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105131)(STMT)  store i32 %35, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105134)(STMT)  br label %50, !dbg !7064
+ ln: 501 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105136)(STMT)  br label %51, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105138)(STMT)  %52 = load i32, i32* %sentLen, align 4, !dbg !7080
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105140)(STMT)  %53 = load i32, i32* %4, align 4, !dbg !7081
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105142)(STMT)  %54 = icmp slt i32 %52, %53, !dbg !7082
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105144)(STMT)  br i1 %54, label %55, label %60, !dbg !7083
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105146)(STMT)  %56 = load i8*, i8** %5, align 8, !dbg !7084
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105149)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Callsite) ,(105150)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Ret) ,(105154)(STMT)  %58 = icmp ne i8 %57, 0, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105157)(STMT)  %59 = xor i1 %58, true, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105160)(STMT)  br label %60
+  in _iot_net_tls_write ,(105147)(STMT)  %61 = phi i1 [ false, %51 ], [ %59, %55 ]
+  in _iot_net_tls_write ,(105151)(STMT)  br i1 %61, label %16, label %62, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,
+================================
+ vs 
+Node1=264194 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Loc1=ln: 8697 fl: mbedtls/library/ssl_tls.c
+Node2=264190 Inst2=  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Loc2=ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c
+Source svfgnode=264194 0x40e3a00 (AIN)   %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ ln: 8697 fl: mbedtls/library/ssl_tls.c within mbedtls_ssl_write(ID: 264194)
+Dest svfgnode=264190 0x40e06b0 (AIN)   %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c within _iot_net_tls_write(ID: 264190)
+
+================ICFG PATH================
+(105190)(STMT)  %21 = load %struct.mbedtls_ssl_context.27*, %struct.mbedtls_ssl_context.27** %2, align 8, !dbg !7073
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105192)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Callsite) ,(105193)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Ret) ,(105195)(STMT)  store i32 %22, i32* %ret, align 4, !dbg !7077
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105197)(STMT)  %23 = icmp ne i32 %22, 0, !dbg !7078
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105202)(STMT)  br i1 %23, label %24, label %28, !dbg !7079
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105204)(STMT)  br label %25, !dbg !7080
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105207)(STMT)  br label %26, !dbg !7082
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105209)(STMT)  %27 = load i32, i32* %ret, align 4, !dbg !7084
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105211)(STMT)  store i32 %27, i32* %1, align 4, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105213)(STMT)  br label %37, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105180)(STMT)  %38 = load i32, i32* %1, align 4, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105182)(STMT)  ret i32 %38, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105120)(mbedtls_ssl_write Exit) ,(105118)(  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Ret) ,(105121)(STMT)  store i32 %29, i32* %ret, align 4, !dbg !7056
+ ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105122)(STMT)  %30 = load i32, i32* %ret, align 4, !dbg !7057
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105123)(STMT)  %31 = icmp sgt i32 %30, 0, !dbg !7059
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105124)(STMT)  br i1 %31, label %32, label %36, !dbg !7060
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105125)(STMT)  %33 = load i32, i32* %ret, align 4, !dbg !7061
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105127)(STMT)  %34 = load i32, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105129)(STMT)  %35 = add nsw i32 %34, %33, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105131)(STMT)  store i32 %35, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105134)(STMT)  br label %50, !dbg !7064
+ ln: 501 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105136)(STMT)  br label %51, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105138)(STMT)  %52 = load i32, i32* %sentLen, align 4, !dbg !7080
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105140)(STMT)  %53 = load i32, i32* %4, align 4, !dbg !7081
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105142)(STMT)  %54 = icmp slt i32 %52, %53, !dbg !7082
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105144)(STMT)  br i1 %54, label %55, label %60, !dbg !7083
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105146)(STMT)  %56 = load i8*, i8** %5, align 8, !dbg !7084
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105149)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Callsite) ,(105150)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Ret) ,(105154)(STMT)  %58 = icmp ne i8 %57, 0, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105157)(STMT)  %59 = xor i1 %58, true, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105160)(STMT)  br label %60
+  in _iot_net_tls_write ,(105147)(STMT)  %61 = phi i1 [ false, %51 ], [ %59, %55 ]
+  in _iot_net_tls_write ,(105151)(STMT)  br i1 %61, label %16, label %62, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,
+================================
+ vs 
+Node1=264194 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Loc1=ln: 8697 fl: mbedtls/library/ssl_tls.c
+Node2=264191 Inst2=  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Loc2=ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c
+Source svfgnode=264194 0x40e3a00 (AIN)   %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ ln: 8697 fl: mbedtls/library/ssl_tls.c within mbedtls_ssl_write(ID: 264194)
+Dest svfgnode=264191 0x40e06b0 (AIN)   %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c within _iot_net_tls_write(ID: 264191)
+
+================ICFG PATH================
+(105190)(STMT)  %21 = load %struct.mbedtls_ssl_context.27*, %struct.mbedtls_ssl_context.27** %2, align 8, !dbg !7073
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105192)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Callsite) ,(105193)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Ret) ,(105195)(STMT)  store i32 %22, i32* %ret, align 4, !dbg !7077
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105197)(STMT)  %23 = icmp ne i32 %22, 0, !dbg !7078
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105202)(STMT)  br i1 %23, label %24, label %28, !dbg !7079
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105204)(STMT)  br label %25, !dbg !7080
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105207)(STMT)  br label %26, !dbg !7082
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105209)(STMT)  %27 = load i32, i32* %ret, align 4, !dbg !7084
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105211)(STMT)  store i32 %27, i32* %1, align 4, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105213)(STMT)  br label %37, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105180)(STMT)  %38 = load i32, i32* %1, align 4, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105182)(STMT)  ret i32 %38, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105120)(mbedtls_ssl_write Exit) ,(105118)(  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Ret) ,(105121)(STMT)  store i32 %29, i32* %ret, align 4, !dbg !7056
+ ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105122)(STMT)  %30 = load i32, i32* %ret, align 4, !dbg !7057
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105123)(STMT)  %31 = icmp sgt i32 %30, 0, !dbg !7059
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105124)(STMT)  br i1 %31, label %32, label %36, !dbg !7060
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105125)(STMT)  %33 = load i32, i32* %ret, align 4, !dbg !7061
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105127)(STMT)  %34 = load i32, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105129)(STMT)  %35 = add nsw i32 %34, %33, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105131)(STMT)  store i32 %35, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105134)(STMT)  br label %50, !dbg !7064
+ ln: 501 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105136)(STMT)  br label %51, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105138)(STMT)  %52 = load i32, i32* %sentLen, align 4, !dbg !7080
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105140)(STMT)  %53 = load i32, i32* %4, align 4, !dbg !7081
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105142)(STMT)  %54 = icmp slt i32 %52, %53, !dbg !7082
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105144)(STMT)  br i1 %54, label %55, label %60, !dbg !7083
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105146)(STMT)  %56 = load i8*, i8** %5, align 8, !dbg !7084
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105149)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Callsite) ,(105150)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Ret) ,(105154)(STMT)  %58 = icmp ne i8 %57, 0, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105157)(STMT)  %59 = xor i1 %58, true, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105160)(STMT)  br label %60
+  in _iot_net_tls_write ,(105147)(STMT)  %61 = phi i1 [ false, %51 ], [ %59, %55 ]
+  in _iot_net_tls_write ,(105151)(STMT)  br i1 %61, label %16, label %62, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,
+================================
+ vs 
+Node1=264195 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Loc1=ln: 8697 fl: mbedtls/library/ssl_tls.c
+Node2=264189 Inst2=  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Loc2=ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c
+Source svfgnode=264195 0x40e3a00 (AIN)   %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ ln: 8697 fl: mbedtls/library/ssl_tls.c within mbedtls_ssl_write(ID: 264195)
+Dest svfgnode=264189 0x40e06b0 (AIN)   %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c within _iot_net_tls_write(ID: 264189)
+
+================ICFG PATH================
+(105190)(STMT)  %21 = load %struct.mbedtls_ssl_context.27*, %struct.mbedtls_ssl_context.27** %2, align 8, !dbg !7073
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105192)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Callsite) ,(105193)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Ret) ,(105195)(STMT)  store i32 %22, i32* %ret, align 4, !dbg !7077
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105197)(STMT)  %23 = icmp ne i32 %22, 0, !dbg !7078
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105202)(STMT)  br i1 %23, label %24, label %28, !dbg !7079
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105204)(STMT)  br label %25, !dbg !7080
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105207)(STMT)  br label %26, !dbg !7082
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105209)(STMT)  %27 = load i32, i32* %ret, align 4, !dbg !7084
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105211)(STMT)  store i32 %27, i32* %1, align 4, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105213)(STMT)  br label %37, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105180)(STMT)  %38 = load i32, i32* %1, align 4, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105182)(STMT)  ret i32 %38, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105120)(mbedtls_ssl_write Exit) ,(105118)(  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Ret) ,(105121)(STMT)  store i32 %29, i32* %ret, align 4, !dbg !7056
+ ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105122)(STMT)  %30 = load i32, i32* %ret, align 4, !dbg !7057
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105123)(STMT)  %31 = icmp sgt i32 %30, 0, !dbg !7059
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105124)(STMT)  br i1 %31, label %32, label %36, !dbg !7060
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105125)(STMT)  %33 = load i32, i32* %ret, align 4, !dbg !7061
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105127)(STMT)  %34 = load i32, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105129)(STMT)  %35 = add nsw i32 %34, %33, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105131)(STMT)  store i32 %35, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105134)(STMT)  br label %50, !dbg !7064
+ ln: 501 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105136)(STMT)  br label %51, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105138)(STMT)  %52 = load i32, i32* %sentLen, align 4, !dbg !7080
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105140)(STMT)  %53 = load i32, i32* %4, align 4, !dbg !7081
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105142)(STMT)  %54 = icmp slt i32 %52, %53, !dbg !7082
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105144)(STMT)  br i1 %54, label %55, label %60, !dbg !7083
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105146)(STMT)  %56 = load i8*, i8** %5, align 8, !dbg !7084
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105149)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Callsite) ,(105150)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Ret) ,(105154)(STMT)  %58 = icmp ne i8 %57, 0, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105157)(STMT)  %59 = xor i1 %58, true, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105160)(STMT)  br label %60
+  in _iot_net_tls_write ,(105147)(STMT)  %61 = phi i1 [ false, %51 ], [ %59, %55 ]
+  in _iot_net_tls_write ,(105151)(STMT)  br i1 %61, label %16, label %62, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,
+================================
+ vs 
+Node1=264195 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Loc1=ln: 8697 fl: mbedtls/library/ssl_tls.c
+Node2=264190 Inst2=  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Loc2=ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c
+Source svfgnode=264195 0x40e3a00 (AIN)   %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ ln: 8697 fl: mbedtls/library/ssl_tls.c within mbedtls_ssl_write(ID: 264195)
+Dest svfgnode=264190 0x40e06b0 (AIN)   %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c within _iot_net_tls_write(ID: 264190)
+
+================ICFG PATH================
+(105190)(STMT)  %21 = load %struct.mbedtls_ssl_context.27*, %struct.mbedtls_ssl_context.27** %2, align 8, !dbg !7073
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105192)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Callsite) ,(105193)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Ret) ,(105195)(STMT)  store i32 %22, i32* %ret, align 4, !dbg !7077
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105197)(STMT)  %23 = icmp ne i32 %22, 0, !dbg !7078
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105202)(STMT)  br i1 %23, label %24, label %28, !dbg !7079
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105204)(STMT)  br label %25, !dbg !7080
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105207)(STMT)  br label %26, !dbg !7082
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105209)(STMT)  %27 = load i32, i32* %ret, align 4, !dbg !7084
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105211)(STMT)  store i32 %27, i32* %1, align 4, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105213)(STMT)  br label %37, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105180)(STMT)  %38 = load i32, i32* %1, align 4, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105182)(STMT)  ret i32 %38, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105120)(mbedtls_ssl_write Exit) ,(105118)(  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Ret) ,(105121)(STMT)  store i32 %29, i32* %ret, align 4, !dbg !7056
+ ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105122)(STMT)  %30 = load i32, i32* %ret, align 4, !dbg !7057
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105123)(STMT)  %31 = icmp sgt i32 %30, 0, !dbg !7059
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105124)(STMT)  br i1 %31, label %32, label %36, !dbg !7060
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105125)(STMT)  %33 = load i32, i32* %ret, align 4, !dbg !7061
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105127)(STMT)  %34 = load i32, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105129)(STMT)  %35 = add nsw i32 %34, %33, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105131)(STMT)  store i32 %35, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105134)(STMT)  br label %50, !dbg !7064
+ ln: 501 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105136)(STMT)  br label %51, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105138)(STMT)  %52 = load i32, i32* %sentLen, align 4, !dbg !7080
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105140)(STMT)  %53 = load i32, i32* %4, align 4, !dbg !7081
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105142)(STMT)  %54 = icmp slt i32 %52, %53, !dbg !7082
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105144)(STMT)  br i1 %54, label %55, label %60, !dbg !7083
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105146)(STMT)  %56 = load i8*, i8** %5, align 8, !dbg !7084
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105149)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Callsite) ,(105150)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Ret) ,(105154)(STMT)  %58 = icmp ne i8 %57, 0, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105157)(STMT)  %59 = xor i1 %58, true, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105160)(STMT)  br label %60
+  in _iot_net_tls_write ,(105147)(STMT)  %61 = phi i1 [ false, %51 ], [ %59, %55 ]
+  in _iot_net_tls_write ,(105151)(STMT)  br i1 %61, label %16, label %62, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,
+================================
+ vs 
+Node1=264195 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Loc1=ln: 8697 fl: mbedtls/library/ssl_tls.c
+Node2=264191 Inst2=  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Loc2=ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c
+Source svfgnode=264195 0x40e3a00 (AIN)   %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ ln: 8697 fl: mbedtls/library/ssl_tls.c within mbedtls_ssl_write(ID: 264195)
+Dest svfgnode=264191 0x40e06b0 (AIN)   %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c within _iot_net_tls_write(ID: 264191)
+
+================ICFG PATH================
+(105190)(STMT)  %21 = load %struct.mbedtls_ssl_context.27*, %struct.mbedtls_ssl_context.27** %2, align 8, !dbg !7073
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105192)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Callsite) ,(105193)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Ret) ,(105195)(STMT)  store i32 %22, i32* %ret, align 4, !dbg !7077
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105197)(STMT)  %23 = icmp ne i32 %22, 0, !dbg !7078
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105202)(STMT)  br i1 %23, label %24, label %28, !dbg !7079
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105204)(STMT)  br label %25, !dbg !7080
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105207)(STMT)  br label %26, !dbg !7082
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105209)(STMT)  %27 = load i32, i32* %ret, align 4, !dbg !7084
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105211)(STMT)  store i32 %27, i32* %1, align 4, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105213)(STMT)  br label %37, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105180)(STMT)  %38 = load i32, i32* %1, align 4, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105182)(STMT)  ret i32 %38, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105120)(mbedtls_ssl_write Exit) ,(105118)(  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Ret) ,(105121)(STMT)  store i32 %29, i32* %ret, align 4, !dbg !7056
+ ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105122)(STMT)  %30 = load i32, i32* %ret, align 4, !dbg !7057
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105123)(STMT)  %31 = icmp sgt i32 %30, 0, !dbg !7059
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105124)(STMT)  br i1 %31, label %32, label %36, !dbg !7060
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105125)(STMT)  %33 = load i32, i32* %ret, align 4, !dbg !7061
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105127)(STMT)  %34 = load i32, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105129)(STMT)  %35 = add nsw i32 %34, %33, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105131)(STMT)  store i32 %35, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105134)(STMT)  br label %50, !dbg !7064
+ ln: 501 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105136)(STMT)  br label %51, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105138)(STMT)  %52 = load i32, i32* %sentLen, align 4, !dbg !7080
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105140)(STMT)  %53 = load i32, i32* %4, align 4, !dbg !7081
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105142)(STMT)  %54 = icmp slt i32 %52, %53, !dbg !7082
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105144)(STMT)  br i1 %54, label %55, label %60, !dbg !7083
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105146)(STMT)  %56 = load i8*, i8** %5, align 8, !dbg !7084
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105149)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Callsite) ,(105150)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Ret) ,(105154)(STMT)  %58 = icmp ne i8 %57, 0, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105157)(STMT)  %59 = xor i1 %58, true, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105160)(STMT)  br label %60
+  in _iot_net_tls_write ,(105147)(STMT)  %61 = phi i1 [ false, %51 ], [ %59, %55 ]
+  in _iot_net_tls_write ,(105151)(STMT)  br i1 %61, label %16, label %62, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,
+================================
+ vs 
+Node1=264196 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Loc1=ln: 8697 fl: mbedtls/library/ssl_tls.c
+Node2=264189 Inst2=  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Loc2=ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c
+Source svfgnode=264196 0x40e3a00 (AIN)   %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ ln: 8697 fl: mbedtls/library/ssl_tls.c within mbedtls_ssl_write(ID: 264196)
+Dest svfgnode=264189 0x40e06b0 (AIN)   %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c within _iot_net_tls_write(ID: 264189)
+
+================ICFG PATH================
+(105190)(STMT)  %21 = load %struct.mbedtls_ssl_context.27*, %struct.mbedtls_ssl_context.27** %2, align 8, !dbg !7073
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105192)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Callsite) ,(105193)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Ret) ,(105195)(STMT)  store i32 %22, i32* %ret, align 4, !dbg !7077
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105197)(STMT)  %23 = icmp ne i32 %22, 0, !dbg !7078
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105202)(STMT)  br i1 %23, label %24, label %28, !dbg !7079
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105204)(STMT)  br label %25, !dbg !7080
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105207)(STMT)  br label %26, !dbg !7082
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105209)(STMT)  %27 = load i32, i32* %ret, align 4, !dbg !7084
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105211)(STMT)  store i32 %27, i32* %1, align 4, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105213)(STMT)  br label %37, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105180)(STMT)  %38 = load i32, i32* %1, align 4, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105182)(STMT)  ret i32 %38, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105120)(mbedtls_ssl_write Exit) ,(105118)(  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Ret) ,(105121)(STMT)  store i32 %29, i32* %ret, align 4, !dbg !7056
+ ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105122)(STMT)  %30 = load i32, i32* %ret, align 4, !dbg !7057
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105123)(STMT)  %31 = icmp sgt i32 %30, 0, !dbg !7059
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105124)(STMT)  br i1 %31, label %32, label %36, !dbg !7060
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105125)(STMT)  %33 = load i32, i32* %ret, align 4, !dbg !7061
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105127)(STMT)  %34 = load i32, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105129)(STMT)  %35 = add nsw i32 %34, %33, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105131)(STMT)  store i32 %35, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105134)(STMT)  br label %50, !dbg !7064
+ ln: 501 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105136)(STMT)  br label %51, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105138)(STMT)  %52 = load i32, i32* %sentLen, align 4, !dbg !7080
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105140)(STMT)  %53 = load i32, i32* %4, align 4, !dbg !7081
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105142)(STMT)  %54 = icmp slt i32 %52, %53, !dbg !7082
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105144)(STMT)  br i1 %54, label %55, label %60, !dbg !7083
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105146)(STMT)  %56 = load i8*, i8** %5, align 8, !dbg !7084
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105149)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Callsite) ,(105150)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Ret) ,(105154)(STMT)  %58 = icmp ne i8 %57, 0, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105157)(STMT)  %59 = xor i1 %58, true, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105160)(STMT)  br label %60
+  in _iot_net_tls_write ,(105147)(STMT)  %61 = phi i1 [ false, %51 ], [ %59, %55 ]
+  in _iot_net_tls_write ,(105151)(STMT)  br i1 %61, label %16, label %62, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,
+================================
+ vs 
+Node1=264196 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Loc1=ln: 8697 fl: mbedtls/library/ssl_tls.c
+Node2=264190 Inst2=  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Loc2=ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c
+Source svfgnode=264196 0x40e3a00 (AIN)   %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ ln: 8697 fl: mbedtls/library/ssl_tls.c within mbedtls_ssl_write(ID: 264196)
+Dest svfgnode=264190 0x40e06b0 (AIN)   %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c within _iot_net_tls_write(ID: 264190)
+
+================ICFG PATH================
+(105190)(STMT)  %21 = load %struct.mbedtls_ssl_context.27*, %struct.mbedtls_ssl_context.27** %2, align 8, !dbg !7073
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105192)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Callsite) ,(105193)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Ret) ,(105195)(STMT)  store i32 %22, i32* %ret, align 4, !dbg !7077
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105197)(STMT)  %23 = icmp ne i32 %22, 0, !dbg !7078
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105202)(STMT)  br i1 %23, label %24, label %28, !dbg !7079
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105204)(STMT)  br label %25, !dbg !7080
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105207)(STMT)  br label %26, !dbg !7082
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105209)(STMT)  %27 = load i32, i32* %ret, align 4, !dbg !7084
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105211)(STMT)  store i32 %27, i32* %1, align 4, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105213)(STMT)  br label %37, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105180)(STMT)  %38 = load i32, i32* %1, align 4, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105182)(STMT)  ret i32 %38, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105120)(mbedtls_ssl_write Exit) ,(105118)(  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Ret) ,(105121)(STMT)  store i32 %29, i32* %ret, align 4, !dbg !7056
+ ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105122)(STMT)  %30 = load i32, i32* %ret, align 4, !dbg !7057
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105123)(STMT)  %31 = icmp sgt i32 %30, 0, !dbg !7059
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105124)(STMT)  br i1 %31, label %32, label %36, !dbg !7060
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105125)(STMT)  %33 = load i32, i32* %ret, align 4, !dbg !7061
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105127)(STMT)  %34 = load i32, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105129)(STMT)  %35 = add nsw i32 %34, %33, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105131)(STMT)  store i32 %35, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105134)(STMT)  br label %50, !dbg !7064
+ ln: 501 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105136)(STMT)  br label %51, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105138)(STMT)  %52 = load i32, i32* %sentLen, align 4, !dbg !7080
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105140)(STMT)  %53 = load i32, i32* %4, align 4, !dbg !7081
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105142)(STMT)  %54 = icmp slt i32 %52, %53, !dbg !7082
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105144)(STMT)  br i1 %54, label %55, label %60, !dbg !7083
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105146)(STMT)  %56 = load i8*, i8** %5, align 8, !dbg !7084
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105149)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Callsite) ,(105150)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Ret) ,(105154)(STMT)  %58 = icmp ne i8 %57, 0, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105157)(STMT)  %59 = xor i1 %58, true, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105160)(STMT)  br label %60
+  in _iot_net_tls_write ,(105147)(STMT)  %61 = phi i1 [ false, %51 ], [ %59, %55 ]
+  in _iot_net_tls_write ,(105151)(STMT)  br i1 %61, label %16, label %62, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,
+================================
+ vs 
+Node1=264196 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Loc1=ln: 8697 fl: mbedtls/library/ssl_tls.c
+Node2=264191 Inst2=  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Loc2=ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c
+Source svfgnode=264196 0x40e3a00 (AIN)   %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ ln: 8697 fl: mbedtls/library/ssl_tls.c within mbedtls_ssl_write(ID: 264196)
+Dest svfgnode=264191 0x40e06b0 (AIN)   %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c within _iot_net_tls_write(ID: 264191)
+
+================ICFG PATH================
+(105190)(STMT)  %21 = load %struct.mbedtls_ssl_context.27*, %struct.mbedtls_ssl_context.27** %2, align 8, !dbg !7073
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105192)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Callsite) ,(105193)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Ret) ,(105195)(STMT)  store i32 %22, i32* %ret, align 4, !dbg !7077
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105197)(STMT)  %23 = icmp ne i32 %22, 0, !dbg !7078
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105202)(STMT)  br i1 %23, label %24, label %28, !dbg !7079
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105204)(STMT)  br label %25, !dbg !7080
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105207)(STMT)  br label %26, !dbg !7082
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105209)(STMT)  %27 = load i32, i32* %ret, align 4, !dbg !7084
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105211)(STMT)  store i32 %27, i32* %1, align 4, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105213)(STMT)  br label %37, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105180)(STMT)  %38 = load i32, i32* %1, align 4, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105182)(STMT)  ret i32 %38, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105120)(mbedtls_ssl_write Exit) ,(105118)(  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Ret) ,(105121)(STMT)  store i32 %29, i32* %ret, align 4, !dbg !7056
+ ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105122)(STMT)  %30 = load i32, i32* %ret, align 4, !dbg !7057
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105123)(STMT)  %31 = icmp sgt i32 %30, 0, !dbg !7059
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105124)(STMT)  br i1 %31, label %32, label %36, !dbg !7060
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105125)(STMT)  %33 = load i32, i32* %ret, align 4, !dbg !7061
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105127)(STMT)  %34 = load i32, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105129)(STMT)  %35 = add nsw i32 %34, %33, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105131)(STMT)  store i32 %35, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105134)(STMT)  br label %50, !dbg !7064
+ ln: 501 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105136)(STMT)  br label %51, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105138)(STMT)  %52 = load i32, i32* %sentLen, align 4, !dbg !7080
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105140)(STMT)  %53 = load i32, i32* %4, align 4, !dbg !7081
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105142)(STMT)  %54 = icmp slt i32 %52, %53, !dbg !7082
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105144)(STMT)  br i1 %54, label %55, label %60, !dbg !7083
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105146)(STMT)  %56 = load i8*, i8** %5, align 8, !dbg !7084
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105149)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Callsite) ,(105150)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Ret) ,(105154)(STMT)  %58 = icmp ne i8 %57, 0, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105157)(STMT)  %59 = xor i1 %58, true, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105160)(STMT)  br label %60
+  in _iot_net_tls_write ,(105147)(STMT)  %61 = phi i1 [ false, %51 ], [ %59, %55 ]
+  in _iot_net_tls_write ,(105151)(STMT)  br i1 %61, label %16, label %62, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,
+================================
+ vs 
+Node1=264197 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Loc1=ln: 8697 fl: mbedtls/library/ssl_tls.c
+Node2=150111 Inst2=  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Loc2=ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c
+Source svfgnode=264197 0x40e3a00 (AIN)   %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ ln: 8697 fl: mbedtls/library/ssl_tls.c within mbedtls_ssl_write(ID: 264197)
+Dest svfgnode=150111 0x40e06b0 (APAR)   %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c(ID: 150111)
+
+================ICFG PATH================
+(105190)(STMT)  %21 = load %struct.mbedtls_ssl_context.27*, %struct.mbedtls_ssl_context.27** %2, align 8, !dbg !7073
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105192)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Callsite) ,(105193)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Ret) ,(105195)(STMT)  store i32 %22, i32* %ret, align 4, !dbg !7077
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105197)(STMT)  %23 = icmp ne i32 %22, 0, !dbg !7078
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105202)(STMT)  br i1 %23, label %24, label %28, !dbg !7079
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105204)(STMT)  br label %25, !dbg !7080
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105207)(STMT)  br label %26, !dbg !7082
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105209)(STMT)  %27 = load i32, i32* %ret, align 4, !dbg !7084
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105211)(STMT)  store i32 %27, i32* %1, align 4, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105213)(STMT)  br label %37, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105180)(STMT)  %38 = load i32, i32* %1, align 4, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105182)(STMT)  ret i32 %38, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105120)(mbedtls_ssl_write Exit) ,(105118)(  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Ret) ,(105121)(STMT)  store i32 %29, i32* %ret, align 4, !dbg !7056
+ ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105122)(STMT)  %30 = load i32, i32* %ret, align 4, !dbg !7057
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105123)(STMT)  %31 = icmp sgt i32 %30, 0, !dbg !7059
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105124)(STMT)  br i1 %31, label %32, label %36, !dbg !7060
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105125)(STMT)  %33 = load i32, i32* %ret, align 4, !dbg !7061
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105127)(STMT)  %34 = load i32, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105129)(STMT)  %35 = add nsw i32 %34, %33, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105131)(STMT)  store i32 %35, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105134)(STMT)  br label %50, !dbg !7064
+ ln: 501 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105136)(STMT)  br label %51, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105138)(STMT)  %52 = load i32, i32* %sentLen, align 4, !dbg !7080
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105140)(STMT)  %53 = load i32, i32* %4, align 4, !dbg !7081
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105142)(STMT)  %54 = icmp slt i32 %52, %53, !dbg !7082
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105144)(STMT)  br i1 %54, label %55, label %60, !dbg !7083
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105146)(STMT)  %56 = load i8*, i8** %5, align 8, !dbg !7084
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105149)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Callsite) ,(105150)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Ret) ,(105154)(STMT)  %58 = icmp ne i8 %57, 0, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105157)(STMT)  %59 = xor i1 %58, true, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105160)(STMT)  br label %60
+  in _iot_net_tls_write ,(105147)(STMT)  %61 = phi i1 [ false, %51 ], [ %59, %55 ]
+  in _iot_net_tls_write ,(105151)(STMT)  br i1 %61, label %16, label %62, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,
+================================
+ vs 
+Node1=264197 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Loc1=ln: 8697 fl: mbedtls/library/ssl_tls.c
+Node2=150112 Inst2=  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Loc2=ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c
+Source svfgnode=264197 0x40e3a00 (AIN)   %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ ln: 8697 fl: mbedtls/library/ssl_tls.c within mbedtls_ssl_write(ID: 264197)
+Dest svfgnode=150112 0x40e06b0 (APAR)   %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c(ID: 150112)
+
+================ICFG PATH================
+(105190)(STMT)  %21 = load %struct.mbedtls_ssl_context.27*, %struct.mbedtls_ssl_context.27** %2, align 8, !dbg !7073
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105192)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Callsite) ,(105193)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Ret) ,(105195)(STMT)  store i32 %22, i32* %ret, align 4, !dbg !7077
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105197)(STMT)  %23 = icmp ne i32 %22, 0, !dbg !7078
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105202)(STMT)  br i1 %23, label %24, label %28, !dbg !7079
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105204)(STMT)  br label %25, !dbg !7080
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105207)(STMT)  br label %26, !dbg !7082
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105209)(STMT)  %27 = load i32, i32* %ret, align 4, !dbg !7084
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105211)(STMT)  store i32 %27, i32* %1, align 4, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105213)(STMT)  br label %37, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105180)(STMT)  %38 = load i32, i32* %1, align 4, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105182)(STMT)  ret i32 %38, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105120)(mbedtls_ssl_write Exit) ,(105118)(  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Ret) ,(105121)(STMT)  store i32 %29, i32* %ret, align 4, !dbg !7056
+ ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105122)(STMT)  %30 = load i32, i32* %ret, align 4, !dbg !7057
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105123)(STMT)  %31 = icmp sgt i32 %30, 0, !dbg !7059
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105124)(STMT)  br i1 %31, label %32, label %36, !dbg !7060
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105125)(STMT)  %33 = load i32, i32* %ret, align 4, !dbg !7061
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105127)(STMT)  %34 = load i32, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105129)(STMT)  %35 = add nsw i32 %34, %33, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105131)(STMT)  store i32 %35, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105134)(STMT)  br label %50, !dbg !7064
+ ln: 501 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105136)(STMT)  br label %51, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105138)(STMT)  %52 = load i32, i32* %sentLen, align 4, !dbg !7080
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105140)(STMT)  %53 = load i32, i32* %4, align 4, !dbg !7081
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105142)(STMT)  %54 = icmp slt i32 %52, %53, !dbg !7082
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105144)(STMT)  br i1 %54, label %55, label %60, !dbg !7083
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105146)(STMT)  %56 = load i8*, i8** %5, align 8, !dbg !7084
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105149)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Callsite) ,(105150)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Ret) ,(105154)(STMT)  %58 = icmp ne i8 %57, 0, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105157)(STMT)  %59 = xor i1 %58, true, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105160)(STMT)  br label %60
+  in _iot_net_tls_write ,(105147)(STMT)  %61 = phi i1 [ false, %51 ], [ %59, %55 ]
+  in _iot_net_tls_write ,(105151)(STMT)  br i1 %61, label %16, label %62, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,
+================================
+ vs 
+Node1=264197 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Loc1=ln: 8697 fl: mbedtls/library/ssl_tls.c
+Node2=264189 Inst2=  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Loc2=ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c
+Source svfgnode=264197 0x40e3a00 (AIN)   %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ ln: 8697 fl: mbedtls/library/ssl_tls.c within mbedtls_ssl_write(ID: 264197)
+Dest svfgnode=264189 0x40e06b0 (AIN)   %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c within _iot_net_tls_write(ID: 264189)
+
+================ICFG PATH================
+(105190)(STMT)  %21 = load %struct.mbedtls_ssl_context.27*, %struct.mbedtls_ssl_context.27** %2, align 8, !dbg !7073
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105192)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Callsite) ,(105193)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Ret) ,(105195)(STMT)  store i32 %22, i32* %ret, align 4, !dbg !7077
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105197)(STMT)  %23 = icmp ne i32 %22, 0, !dbg !7078
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105202)(STMT)  br i1 %23, label %24, label %28, !dbg !7079
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105204)(STMT)  br label %25, !dbg !7080
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105207)(STMT)  br label %26, !dbg !7082
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105209)(STMT)  %27 = load i32, i32* %ret, align 4, !dbg !7084
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105211)(STMT)  store i32 %27, i32* %1, align 4, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105213)(STMT)  br label %37, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105180)(STMT)  %38 = load i32, i32* %1, align 4, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105182)(STMT)  ret i32 %38, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105120)(mbedtls_ssl_write Exit) ,(105118)(  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Ret) ,(105121)(STMT)  store i32 %29, i32* %ret, align 4, !dbg !7056
+ ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105122)(STMT)  %30 = load i32, i32* %ret, align 4, !dbg !7057
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105123)(STMT)  %31 = icmp sgt i32 %30, 0, !dbg !7059
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105124)(STMT)  br i1 %31, label %32, label %36, !dbg !7060
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105125)(STMT)  %33 = load i32, i32* %ret, align 4, !dbg !7061
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105127)(STMT)  %34 = load i32, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105129)(STMT)  %35 = add nsw i32 %34, %33, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105131)(STMT)  store i32 %35, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105134)(STMT)  br label %50, !dbg !7064
+ ln: 501 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105136)(STMT)  br label %51, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105138)(STMT)  %52 = load i32, i32* %sentLen, align 4, !dbg !7080
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105140)(STMT)  %53 = load i32, i32* %4, align 4, !dbg !7081
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105142)(STMT)  %54 = icmp slt i32 %52, %53, !dbg !7082
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105144)(STMT)  br i1 %54, label %55, label %60, !dbg !7083
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105146)(STMT)  %56 = load i8*, i8** %5, align 8, !dbg !7084
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105149)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Callsite) ,(105150)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Ret) ,(105154)(STMT)  %58 = icmp ne i8 %57, 0, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105157)(STMT)  %59 = xor i1 %58, true, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105160)(STMT)  br label %60
+  in _iot_net_tls_write ,(105147)(STMT)  %61 = phi i1 [ false, %51 ], [ %59, %55 ]
+  in _iot_net_tls_write ,(105151)(STMT)  br i1 %61, label %16, label %62, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,
+================================
+ vs 
+Node1=264197 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Loc1=ln: 8697 fl: mbedtls/library/ssl_tls.c
+Node2=264190 Inst2=  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Loc2=ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c
+Source svfgnode=264197 0x40e3a00 (AIN)   %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ ln: 8697 fl: mbedtls/library/ssl_tls.c within mbedtls_ssl_write(ID: 264197)
+Dest svfgnode=264190 0x40e06b0 (AIN)   %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c within _iot_net_tls_write(ID: 264190)
+
+================ICFG PATH================
+(105190)(STMT)  %21 = load %struct.mbedtls_ssl_context.27*, %struct.mbedtls_ssl_context.27** %2, align 8, !dbg !7073
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105192)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Callsite) ,(105193)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Ret) ,(105195)(STMT)  store i32 %22, i32* %ret, align 4, !dbg !7077
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105197)(STMT)  %23 = icmp ne i32 %22, 0, !dbg !7078
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105202)(STMT)  br i1 %23, label %24, label %28, !dbg !7079
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105204)(STMT)  br label %25, !dbg !7080
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105207)(STMT)  br label %26, !dbg !7082
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105209)(STMT)  %27 = load i32, i32* %ret, align 4, !dbg !7084
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105211)(STMT)  store i32 %27, i32* %1, align 4, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105213)(STMT)  br label %37, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105180)(STMT)  %38 = load i32, i32* %1, align 4, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105182)(STMT)  ret i32 %38, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105120)(mbedtls_ssl_write Exit) ,(105118)(  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Ret) ,(105121)(STMT)  store i32 %29, i32* %ret, align 4, !dbg !7056
+ ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105122)(STMT)  %30 = load i32, i32* %ret, align 4, !dbg !7057
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105123)(STMT)  %31 = icmp sgt i32 %30, 0, !dbg !7059
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105124)(STMT)  br i1 %31, label %32, label %36, !dbg !7060
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105125)(STMT)  %33 = load i32, i32* %ret, align 4, !dbg !7061
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105127)(STMT)  %34 = load i32, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105129)(STMT)  %35 = add nsw i32 %34, %33, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105131)(STMT)  store i32 %35, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105134)(STMT)  br label %50, !dbg !7064
+ ln: 501 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105136)(STMT)  br label %51, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105138)(STMT)  %52 = load i32, i32* %sentLen, align 4, !dbg !7080
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105140)(STMT)  %53 = load i32, i32* %4, align 4, !dbg !7081
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105142)(STMT)  %54 = icmp slt i32 %52, %53, !dbg !7082
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105144)(STMT)  br i1 %54, label %55, label %60, !dbg !7083
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105146)(STMT)  %56 = load i8*, i8** %5, align 8, !dbg !7084
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105149)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Callsite) ,(105150)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Ret) ,(105154)(STMT)  %58 = icmp ne i8 %57, 0, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105157)(STMT)  %59 = xor i1 %58, true, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105160)(STMT)  br label %60
+  in _iot_net_tls_write ,(105147)(STMT)  %61 = phi i1 [ false, %51 ], [ %59, %55 ]
+  in _iot_net_tls_write ,(105151)(STMT)  br i1 %61, label %16, label %62, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,
+================================
+ vs 
+Node1=264197 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Loc1=ln: 8697 fl: mbedtls/library/ssl_tls.c
+Node2=264191 Inst2=  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Loc2=ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c
+Source svfgnode=264197 0x40e3a00 (AIN)   %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ ln: 8697 fl: mbedtls/library/ssl_tls.c within mbedtls_ssl_write(ID: 264197)
+Dest svfgnode=264191 0x40e06b0 (AIN)   %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c within _iot_net_tls_write(ID: 264191)
+
+================ICFG PATH================
+(105190)(STMT)  %21 = load %struct.mbedtls_ssl_context.27*, %struct.mbedtls_ssl_context.27** %2, align 8, !dbg !7073
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105192)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Callsite) ,(105193)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context.27* %21), !dbg !7076
+ Ret) ,(105195)(STMT)  store i32 %22, i32* %ret, align 4, !dbg !7077
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105197)(STMT)  %23 = icmp ne i32 %22, 0, !dbg !7078
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105202)(STMT)  br i1 %23, label %24, label %28, !dbg !7079
+ ln: 8697 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105204)(STMT)  br label %25, !dbg !7080
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105207)(STMT)  br label %26, !dbg !7082
+ ln: 8699 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105209)(STMT)  %27 = load i32, i32* %ret, align 4, !dbg !7084
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105211)(STMT)  store i32 %27, i32* %1, align 4, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105213)(STMT)  br label %37, !dbg !7085
+ ln: 8700 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105180)(STMT)  %38 = load i32, i32* %1, align 4, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105182)(STMT)  ret i32 %38, !dbg !7097
+ ln: 8713 fl: mbedtls/library/ssl_tls.c in mbedtls_ssl_write ,(105120)(mbedtls_ssl_write Exit) ,(105118)(  %29 = call i32 bitcast (i32 (%struct.mbedtls_ssl_context.27*, i8*, i64)* @mbedtls_ssl_write to i32 (%struct.mbedtls_ssl_context*, i8*, i64)*)(%struct.mbedtls_ssl_context* %19, i8* %23, i64 %28), !dbg !7055
+ Ret) ,(105121)(STMT)  store i32 %29, i32* %ret, align 4, !dbg !7056
+ ln: 497 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105122)(STMT)  %30 = load i32, i32* %ret, align 4, !dbg !7057
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105123)(STMT)  %31 = icmp sgt i32 %30, 0, !dbg !7059
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105124)(STMT)  br i1 %31, label %32, label %36, !dbg !7060
+ ln: 499 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105125)(STMT)  %33 = load i32, i32* %ret, align 4, !dbg !7061
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105127)(STMT)  %34 = load i32, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105129)(STMT)  %35 = add nsw i32 %34, %33, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105131)(STMT)  store i32 %35, i32* %sentLen, align 4, !dbg !7063
+ ln: 500 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105134)(STMT)  br label %50, !dbg !7064
+ ln: 501 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105136)(STMT)  br label %51, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105138)(STMT)  %52 = load i32, i32* %sentLen, align 4, !dbg !7080
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105140)(STMT)  %53 = load i32, i32* %4, align 4, !dbg !7081
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105142)(STMT)  %54 = icmp slt i32 %52, %53, !dbg !7082
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105144)(STMT)  br i1 %54, label %55, label %60, !dbg !7083
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105146)(STMT)  %56 = load i8*, i8** %5, align 8, !dbg !7084
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105149)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Callsite) ,(105150)(  %57 = call signext i8 @iot_os_timer_isexpired(i8* %56), !dbg !7085
+ Ret) ,(105154)(STMT)  %58 = icmp ne i8 %57, 0, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105157)(STMT)  %59 = xor i1 %58, true, !dbg !7086
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,(105160)(STMT)  br label %60
+  in _iot_net_tls_write ,(105147)(STMT)  %61 = phi i1 [ false, %51 ], [ %59, %55 ]
+  in _iot_net_tls_write ,(105151)(STMT)  br i1 %61, label %16, label %62, !dbg !7079
+ ln: 508 fl: src/port/net/mbedtls/iot_net_mbedtls.c in _iot_net_tls_write ,
+================================
+Label=mbedtls_ssl_handshake_mbedtls_ssl_write_sslctxcorruption solution size=19 time=369
+Total number of solutions=9
+Total number of cached solutions=1
+Total query solving time=967
+Average query solving time=107
+SVFG stats: nodes=287124 edges=433924

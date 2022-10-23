@@ -1,0 +1,15 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=27172
+Total number of formal out/ret w outgoing edge=6440
+Total number of formal out/ret w incoming formalin wo deref=8606
+Total number of formal out/ret w incoming formalin (relaxed)=11965
+Sumarization time=55900
+Query: TernaryForCallsiteWithSourceTaint, source=GGD_SecureConnect_Connect sink=GGD_SecureConnect_Send desc=greengmisuse sanitizeOnReturn=0
+Label=somegeneric_label solution size=0 time=0
+Label=GGD_SecureConnect_Connectarg1_label solution size=0 time=0
+Label=GGD_SecureConnect_Connectcs1_label solution size=2 time=1
+Label=GGD_SecureConnect_Connectargpby1 solution size=323 time=1
+Label=GGD_SecureConnect_Sendarg1_label solution size=0 time=0
+Label=GGD_SecureConnect_Sendcs1_label solution size=1 time=1
+Label=GGD_SecureConnect_Sendargpby1 solution size=159 time=1

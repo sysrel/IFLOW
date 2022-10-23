@@ -1,0 +1,46 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=32
+Total number of formal out/ret w outgoing edge=6
+Total number of formal out/ret w incoming formalin wo deref=9
+Sumarization time=0
+Query: TaintsPtrArgIndirectCallToPrimValArg, data type=Network sink=memcpy desc=taintedlen
+Label=value_label solution size=0 time=0
+Label=srcarg_label solution size=0 time=0
+Label=sourcecs_label solution size=31 time=0
+Label=cb_label solution size=1 time=0
+Label=datast_label solution size=1 time=0
+Label=cbdefin solution size=1 time=0
+Label=indcb solution size=1 time=0
+Label=argsrccs solution size=4 time=0
+Label pbsrcarg results:
+
+================================
+Generic value with node 81 (STMT)  store i8 98, i8* %4, align 1, !dbg !38
+ ln: 16 fl: testcb.c81 [ POINTED BY ]  inside bar arg type=i8* callsite   call void %5(i8* %6, i32* %i), !dbg !41
+ ln: 27 fl: testcb.c
+
+================================
+Label=pbsrcarg solution size=1 time=0
+Label=sinkarg_label solution size=0 time=0
+Label=sinkcs_label solution size=31 time=0
+Label=argsinkcs solution size=8 time=0
+value size=1
+sinkarg size=8
+
+================================
+(STMT)  store i8 98, i8* %4, align 1, !dbg !38
+ ln: 16 fl: testcb.c81 ,(FOUT) iot_receive(FOUT) ,(AOUT)   call void %5(i8* %6, i32* %i), !dbg !41
+ ln: 27 fl: testcb.c within bar ,(FOUT) bar(FOUT) ,(AOUT)   call void @bar(%struct.Network* %3, i8* %4), !dbg !41
+ ln: 32 fl: testcb.c within foo ,(FOUT) foo(FOUT) ,(AOUT)   call void @foo(%struct.Network* %11, i8* %12), !dbg !63
+ ln: 53 fl: testcb.c within main ,(AIN)   call void @copy(i8* %13, i8* %14), !dbg !66
+ ln: 54 fl: testcb.c within main ,(FIN) copy ,(STMT)  %7 = load i8, i8* %6, align 1, !dbg !41
+ ln: 37 fl: testcb.c71 ,(STMT)  %8 = sext i8 %7 to i64, !dbg !41
+ ln: 37 fl: testcb.c48 ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %3, i8* align 1 %4, i64 %8, i1 false), !dbg !42
+ln: 37 fl: testcb.c ,
+================================
+Label=Network_memcpy_taintedlen solution size=1 time=0
+Total number of solutions=13
+Total number of cached solutions=0
+Total query solving time=0
+Average query solving time=0

@@ -1,0 +1,50 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=27172
+Total number of formal out/ret w outgoing edge=6440
+Total number of formal out/ret w incoming formalin wo deref=8606
+Total number of formal out/ret w incoming formalin (relaxed)=11965
+Sumarization time=165
+Query: TaintsDataFieldCallsite, data type= WIFIWPAPassphrase_t field=0 sink=memcpy desc=privkleak
+Label=typeWIFIWPAPassphrase_tfield01_label solution size=6 time=3
+Label=memcpyarg1_label solution size=0 time=0
+Label=memcpycs1_label solution size=273 time=1
+Label=memcpyargpby1 solution size=550 time=1
+typeWIFIWPAPassphrase_tfield01 size=6
+memcpyarg1 size=550
+Source node=52214 Inst1=  %86 = getelementptr inbounds [32 x i8], [32 x i8]* %85, i32 0, i32 0
+ Loc=
+
+================SVFG PATH================
+(STMT)  %86 = getelementptr inbounds [32 x i8], [32 x i8]* %85, i32 0, i32 0
+ (ID: 52214) ,(APAR)   %93 = call i32 @prvByteArrayToString(i8* %81, i8* %86, i32 %92, i32 32)
+(ID: 172323) ,(FPARM) prvByteArrayToString(ID: 194280) ,(STMT)  store i8* %pucSrc, i8** %2, align 4
+ (ID: 143385) ,(STMT)  %24 = load i8*, i8** %2, align 4
+ (ID: 95044) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i32(i8* align 1 %23, i8* align 1 %24, i32 %25, i1 false)
+(ID: 172356) ,
+================================
+Source node=52491 Inst1=  %87 = getelementptr inbounds [32 x i8], [32 x i8]* %86, i32 0, i32 0
+ Loc=
+
+================SVFG PATH================
+(STMT)  %87 = getelementptr inbounds [32 x i8], [32 x i8]* %86, i32 0, i32 0
+ (ID: 52491) ,(APAR)   %94 = call i32 @prvByteArrayToString(i8* %82, i8* %87, i32 %93, i32 32)
+(ID: 172640) ,(FPARM) prvByteArrayToString(ID: 194280) ,(STMT)  store i8* %pucSrc, i8** %2, align 4
+ (ID: 143385) ,(STMT)  %24 = load i8*, i8** %2, align 4
+ (ID: 95044) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i32(i8* align 1 %23, i8* align 1 %24, i32 %25, i1 false)
+(ID: 172356) ,
+================================
+Source node=56903 Inst1=  %46 = getelementptr inbounds [32 x i8], [32 x i8]* %45, i32 0, i32 0
+ Loc=
+
+================SVFG PATH================
+(STMT)  %46 = getelementptr inbounds [32 x i8], [32 x i8]* %45, i32 0, i32 0
+ (ID: 56903) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i32(i8* align 1 %46, i8* align 1 %48, i32 %47, i1 false)
+(ID: 179189) ,
+================================
+Label=WIFIWPAPassphrase_t_memcpy_privkleak solution size=3 time=4
+Total number of solutions=5
+Total number of cached solutions=0
+Total query solving time=9
+Average query solving time=1
+SVFG stats: nodes=363108 edges=540581

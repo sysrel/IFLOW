@@ -1,0 +1,20 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=27172
+Total number of formal out/ret w outgoing edge=6440
+Total number of formal out/ret w incoming formalin wo deref=8606
+Total number of formal out/ret w incoming formalin (relaxed)=11965
+Sumarization time=208
+Query: TaintsDataFieldCallsite, data type= WIFINetworkParams_t field=3 sink=Publish desc=privkleak
+Label=typeWIFINetworkParams_tfield31_label solution size=11 time=3
+Label=Publisharg1_label solution size=0 time=0
+Label=Publishcs1_label solution size=68 time=2
+Label=Publishargpby1 solution size=7554 time=2
+typeWIFINetworkParams_tfield31 size=11
+Publisharg1 size=638
+Label=WIFINetworkParams_t_Publish_privkleak solution size=0 time=5
+Total number of solutions=5
+Total number of cached solutions=0
+Total query solving time=12
+Average query solving time=2
+SVFG stats: nodes=363108 edges=540581

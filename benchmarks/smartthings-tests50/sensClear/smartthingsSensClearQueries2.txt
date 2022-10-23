@@ -1,0 +1,2 @@
+TernaryForCallsiteWithSourceTaint,_es_wifiprovisioninginfo_handler,memset,sensclear,0
+TernaryForCallsiteWithSourceTaint,iot_easysetup_request_handler,memset,sensclear,0

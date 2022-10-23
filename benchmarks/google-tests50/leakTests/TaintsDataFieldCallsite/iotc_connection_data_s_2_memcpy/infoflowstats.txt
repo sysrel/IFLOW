@@ -1,0 +1,35 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=3029
+Total number of formal out/ret w outgoing edge=438
+Total number of formal out/ret w incoming formalin wo deref=787
+Total number of formal out/ret w incoming formalin (relaxed)=1063
+Sumarization time=0
+Query: TaintsDataFieldCallsite, data type= iotc_connection_data_s field=2 sink=memcpy desc=privleak
+Label=typeiotc_connection_data_sfield21_label solution size=15 time=2
+Label=memcpyarg1_label solution size=0 time=0
+Label=memcpycs1_label solution size=47 time=8
+Label=memcpyargpby1 solution size=94 time=8
+typeiotc_connection_data_sfield21 size=15
+memcpyarg1 size=94
+Source node=9433 Inst1=  %87 = getelementptr inbounds %struct.iotc_connection_data_s, %struct.iotc_connection_data_s* %86, i32 0, i32 2, !dbg !5306
+ Loc=ln: 102 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/libiotc/mqtt/logic/iotc_mqtt_logic_layer_connect_command.h
+
+================SVFG PATH================
+(STMT)  %87 = getelementptr inbounds %struct.iotc_connection_data_s, %struct.iotc_connection_data_s* %86, i32 0, i32 2, !dbg !5306
+ ln: 102 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/libiotc/mqtt/logic/iotc_mqtt_logic_layer_connect_command.h(ID: 9433) ,(STMT)  %88 = load i8*, i8** %87, align 8, !dbg !5306, !tbaa !5307
+ ln: 102 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/libiotc/mqtt/logic/iotc_mqtt_logic_layer_connect_command.h(ID: 16749) ,(APAR)   %152 = call i32 @fill_with_connect_data(%union.iotc_mqtt_message_u* %70, i8* %79, i8* %88, i8* %97, i16 zeroext %106, i32 %115, i8* %124, i8* %133, i32 %142, i32 %151) #10, !dbg !5350
+ln: 102 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/libiotc/mqtt/logic/iotc_mqtt_logic_layer_connect_command.h(ID: 27261) ,(FPARM) fill_with_connect_data(ID: 30754) ,(STMT)  store i8* %password, i8** %4, align 8, !tbaa !5206
+ (ID: 22628) ,(STMT)  %151 = load i8*, i8** %4, align 8, !dbg !5377, !tbaa !5206
+ ln: 163 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/libiotc/mqtt/logic/iotc_mqtt_logic_layer_data_helpers.h(ID: 16925) ,(APAR)   %152 = call %struct.data_desc_s* @iotc_make_desc_from_string_copy(i8* %151) #10, !dbg !5379
+ln: 163 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/libiotc/mqtt/logic/iotc_mqtt_logic_layer_data_helpers.h(ID: 26459) ,(FPARM) iotc_make_desc_from_string_copy(ID: 30380) ,(STMT)  store i8* %str, i8** %2, align 8, !tbaa !5199
+ (ID: 20948) ,(STMT)  %44 = load i8*, i8** %2, align 8, !dbg !5261, !tbaa !5199
+ ln: 96 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/libiotc/iotc_data_desc.c(ID: 13520) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %43, i8* align 1 %44, i64 %45, i1 false), !dbg !5263
+ln: 96 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/libiotc/iotc_data_desc.c(ID: 26213) ,
+================================
+Label=iotc_connection_data_s_memcpy_privleak solution size=1 time=10
+Total number of solutions=5
+Total number of cached solutions=0
+Total query solving time=28
+Average query solving time=5
+SVFG stats: nodes=44709 edges=58825

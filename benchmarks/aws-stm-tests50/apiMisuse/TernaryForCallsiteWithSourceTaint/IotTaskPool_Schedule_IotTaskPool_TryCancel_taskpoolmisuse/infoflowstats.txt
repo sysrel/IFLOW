@@ -1,0 +1,20 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=27172
+Total number of formal out/ret w outgoing edge=6440
+Total number of formal out/ret w incoming formalin wo deref=8606
+Total number of formal out/ret w incoming formalin (relaxed)=11965
+Sumarization time=232
+Query: TernaryForCallsiteWithSourceTaint, source=IotTaskPool_Schedule sink=IotTaskPool_TryCancel desc=taskpoolmisuse sanitizeOnReturn=0
+Label=somegeneric_label solution size=0 time=0
+Label=IotTaskPool_Schedulearg1_label solution size=0 time=0
+Label=IotTaskPool_Schedulecs1_label solution size=6 time=1
+Label=IotTaskPool_Scheduleargpby1 solution size=647 time=1
+Label=IotTaskPool_TryCancelarg1_label solution size=0 time=0
+Label=IotTaskPool_TryCancelcs1_label solution size=3 time=1
+Label=IotTaskPool_TryCancelargpby1 solution size=313 time=1
+Label=IotTaskPool_Schedule_IotTaskPool_TryCancel_taskpoolmisuse solution size=0 time=101
+Total number of solutions=9
+Total number of cached solutions=1
+Total query solving time=105
+Average query solving time=11

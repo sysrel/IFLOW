@@ -1,0 +1,20 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=27172
+Total number of formal out/ret w outgoing edge=6440
+Total number of formal out/ret w incoming formalin wo deref=8606
+Total number of formal out/ret w incoming formalin (relaxed)=11965
+Sumarization time=194
+Query: TaintsDataFieldCallsite, data type= IotNetworkCredentials field=7 sink=Publish desc=privleak
+Label=typeIotNetworkCredentialsfield71_label solution size=1 time=4
+Label=Publisharg1_label solution size=0 time=0
+Label=Publishcs1_label solution size=68 time=1
+Label=Publishargpby1 solution size=7554 time=1
+typeIotNetworkCredentialsfield71 size=1
+Publisharg1 size=638
+Label=IotNetworkCredentials_Publish_privleak solution size=0 time=6
+Total number of solutions=5
+Total number of cached solutions=0
+Total query solving time=12
+Average query solving time=2
+SVFG stats: nodes=363108 edges=540581

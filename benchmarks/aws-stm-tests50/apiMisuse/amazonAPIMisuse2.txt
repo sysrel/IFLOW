@@ -1,0 +1,3 @@
+TernaryForCallsiteWithSourceTaint,JSON_Validate,JSON_SearchT,jsonmisuse,1
+TernaryForCallsiteWithSourceTaint,JSON_Validate,JSON_SearchConst,jsonmisuse,1
+TernaryForCallsiteWithSourceTaint,JSON_Validate,JSON_Iterate,jsonmisuse,1

@@ -1,0 +1,1 @@
+/home/tuba/Documents/tools/IFLOW/iflow/Release-build/bin/wpa -ander -stat -svfg -svfgWithIndCall=true -dump-svfg=true -info-flow=true -info-flow-bound=50 -genicfg -dump-icfg=true -info-flow-query-type=TaintsDirectCallPtrArgToPtrArgWithSan -info-flow-query-ops mbedtls_ssl_handshake mbedtls_ssl_write sslctxcorruption 0 smartthings_sdk_wdebug_all.bc

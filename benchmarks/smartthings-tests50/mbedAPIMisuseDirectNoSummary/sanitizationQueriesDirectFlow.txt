@@ -1,0 +1,2 @@
+TaintsDirectCallPtrArgToPtrArgWithSan,mbedtls_ssl_handshake,mbedtls_ssl_read,sslctxcorruption,0
+TaintsDirectCallPtrArgToPtrArgWithSan,mbedtls_ssl_handshake,mbedtls_ssl_write,sslctxcorruption,0

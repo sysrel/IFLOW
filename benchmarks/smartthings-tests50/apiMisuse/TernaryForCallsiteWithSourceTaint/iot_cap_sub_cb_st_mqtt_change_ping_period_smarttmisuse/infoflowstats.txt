@@ -1,0 +1,20 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=20449
+Total number of formal out/ret w outgoing edge=4049
+Total number of formal out/ret w incoming formalin wo deref=6806
+Total number of formal out/ret w incoming formalin (relaxed)=11014
+Sumarization time=26
+Query: TernaryForCallsiteWithSourceTaint, source=iot_cap_sub_cb sink=st_mqtt_change_ping_period desc=smarttmisuse sanitizeOnReturn=0
+Label=somegeneric_label solution size=0 time=0
+Label=iot_cap_sub_cbarg1_label solution size=0 time=0
+Label=iot_cap_sub_cbcs1_label solution size=1 time=190
+Label=iot_cap_sub_cbargpby1 solution size=98 time=190
+Label=st_mqtt_change_ping_periodarg1_label solution size=0 time=0
+Label=st_mqtt_change_ping_periodcs1_label solution size=1 time=176
+Label=st_mqtt_change_ping_periodargpby1 solution size=80 time=176
+Label=iot_cap_sub_cb_st_mqtt_change_ping_period_smarttmisuse solution size=0 time=366
+Total number of solutions=9
+Total number of cached solutions=1
+Total query solving time=1098
+Average query solving time=122

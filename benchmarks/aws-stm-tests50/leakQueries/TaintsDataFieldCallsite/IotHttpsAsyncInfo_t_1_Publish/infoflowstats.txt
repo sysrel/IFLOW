@@ -1,0 +1,20 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=27172
+Total number of formal out/ret w outgoing edge=6440
+Total number of formal out/ret w incoming formalin wo deref=8606
+Total number of formal out/ret w incoming formalin (relaxed)=11965
+Sumarization time=212
+Query: TaintsDataFieldCallsite, data type= IotHttpsAsyncInfo_t field=1 sink=Publish desc=privkleak
+Label=typeIotHttpsAsyncInfo_tfield11_label solution size=0 time=5
+Label=Publisharg1_label solution size=0 time=0
+Label=Publishcs1_label solution size=68 time=1
+Label=Publishargpby1 solution size=7554 time=1
+typeIotHttpsAsyncInfo_tfield11 size=0
+Publisharg1 size=638
+Label=IotHttpsAsyncInfo_t_Publish_privkleak solution size=0 time=7
+Total number of solutions=5
+Total number of cached solutions=0
+Total query solving time=14
+Average query solving time=2
+SVFG stats: nodes=363108 edges=540581

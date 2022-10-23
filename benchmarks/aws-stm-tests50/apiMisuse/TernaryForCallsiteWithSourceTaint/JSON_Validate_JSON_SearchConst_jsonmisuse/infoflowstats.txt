@@ -1,0 +1,765 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=27172
+Total number of formal out/ret w outgoing edge=6440
+Total number of formal out/ret w incoming formalin wo deref=8606
+Total number of formal out/ret w incoming formalin (relaxed)=11965
+Sumarization time=233
+Query: TernaryForCallsiteWithSourceTaint, source=JSON_Validate sink=JSON_SearchConst desc=jsonmisuse sanitizeOnReturn=1
+Label=somegeneric_label solution size=0 time=0
+Label=JSON_Validatearg1_label solution size=0 time=0
+Label=JSON_Validatecs1_label solution size=5 time=0
+Label=JSON_Validateargpby1 solution size=466 time=0
+Label=JSON_SearchConstarg1_label solution size=0 time=0
+Label=JSON_SearchConstcs1_label solution size=1 time=1
+Label=JSON_SearchConstargpby1 solution size=109 time=1
+ vs 
+Node1=178572 Inst1=  %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+ Loc1=
+Node2=177795 Inst2=  %15 = call i32 @JSON_SearchConst(i8* %8, i32 %9, i8* %10, i32 %11, i8** %12, i32* %13, i32* %14)
+ Loc2=
+Source svfgnode=178572 0x2eb78a8 (APAR)   %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+(ID: 178572)
+Dest svfgnode=177795 0x2e3f7a0 (APAR)   %15 = call i32 @JSON_SearchConst(i8* %8, i32 %9, i8* %10, i32 %11, i8** %12, i32* %13, i32* %14)
+(ID: 177795)
+
+================ICFG PATH================
+(164280)(STMT)  %22 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164282)(STMT)  %23 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %22, i32 0, i32 5
+  in prvUpdateDeltaHandler ,(164284)(STMT)  %24 = load i8*, i8** %23, align 4
+  in prvUpdateDeltaHandler ,(164287)(STMT)  %25 = getelementptr [31 x i8], [31 x i8]* @.str.33.15, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164289)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %25, i8* %24)
+ Callsite) ,(164290)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %25, i8* %24)
+ Ret) ,(164291)(STMT)  %26 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164292)(STMT)  %27 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %26, i32 0, i32 5
+  in prvUpdateDeltaHandler ,(164293)(STMT)  %28 = load i8*, i8** %27, align 4
+  in prvUpdateDeltaHandler ,(164294)(STMT)  %29 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164295)(STMT)  %30 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %29, i32 0, i32 6
+  in prvUpdateDeltaHandler ,(164296)(STMT)  %31 = load i32, i32* %30, align 4
+  in prvUpdateDeltaHandler ,(164297)(  %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+ Callsite) ,(164298)(  %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+ Ret) ,(164299)(STMT)  store i32 %32, i32* %result, align 4
+  in prvUpdateDeltaHandler ,(164300)(STMT)  %33 = load i32, i32* %result, align 4
+  in prvUpdateDeltaHandler ,(164301)(STMT)  %34 = icmp eq i32 %33, 1
+  in prvUpdateDeltaHandler ,(164302)(STMT)  br i1 %34, label %35, label %44
+  in prvUpdateDeltaHandler ,(164304)(STMT)  %45 = getelementptr [31 x i8], [31 x i8]* @.str.35.17, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164306)(  call void (i8*, ...) @vLoggingPrintfError(i8* %45)
+ Callsite) ,(164307)(  call void (i8*, ...) @vLoggingPrintfError(i8* %45)
+ Ret) ,(164309)(STMT)  br label %46
+  in prvUpdateDeltaHandler ,(164311)(STMT)  %47 = load i32, i32* %result, align 4
+  in prvUpdateDeltaHandler ,(164313)(STMT)  %48 = icmp eq i32 %47, 1
+  in prvUpdateDeltaHandler ,(164315)(STMT)  br i1 %48, label %49, label %55
+  in prvUpdateDeltaHandler ,(164317)(STMT)  %50 = load i32, i32* %ulOutValueLength, align 4
+  in prvUpdateDeltaHandler ,(164318)(STMT)  %56 = getelementptr [30 x i8], [30 x i8]* @.str.37.19, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164322)(  call void (i8*, ...) @vLoggingPrintfError(i8* %56)
+ Callsite) ,(164323)(  call void (i8*, ...) @vLoggingPrintfError(i8* %56)
+ Ret) ,(164326)(STMT)  br label %57
+  in prvUpdateDeltaHandler ,(164330)(STMT)  %58 = load i32, i32* %ulVersion, align 4
+  in prvUpdateDeltaHandler ,(164332)(STMT)  %59 = load i32, i32* @prvUpdateDeltaHandler.ulCurrentVersion, align 4
+  in prvUpdateDeltaHandler ,(164335)(STMT)  %60 = getelementptr [35 x i8], [35 x i8]* @.str.38.20, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164337)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %60, i32 %58, i32 %59)
+ Callsite) ,(164338)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %60, i32 %58, i32 %59)
+ Ret) ,(164340)(STMT)  %61 = load i32, i32* %ulVersion, align 4
+  in prvUpdateDeltaHandler ,(164341)(STMT)  %62 = load i32, i32* @prvUpdateDeltaHandler.ulCurrentVersion, align 4
+  in prvUpdateDeltaHandler ,(164342)(STMT)  %63 = icmp ugt i32 %61, %62
+  in prvUpdateDeltaHandler ,(164343)(STMT)  br i1 %63, label %64, label %74
+  in prvUpdateDeltaHandler ,(164344)(STMT)  %65 = load i32, i32* %ulVersion, align 4
+  in prvUpdateDeltaHandler ,(164346)(STMT)  store i32 %65, i32* @prvUpdateDeltaHandler.ulCurrentVersion, align 4
+  in prvUpdateDeltaHandler ,(164349)(STMT)  %66 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164351)(STMT)  %67 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %66, i32 0, i32 5
+  in prvUpdateDeltaHandler ,(164353)(STMT)  %68 = load i8*, i8** %67, align 4
+  in prvUpdateDeltaHandler ,(164355)(STMT)  %69 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164357)(STMT)  %70 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %69, i32 0, i32 6
+  in prvUpdateDeltaHandler ,(164360)(STMT)  %71 = load i32, i32* %70, align 4
+  in prvUpdateDeltaHandler ,(164365)(STMT)  %72 = getelementptr [14 x i8], [14 x i8]* @.str.39.21, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164368)(  %73 = call i32 @JSON_SearchT(i8* %68, i32 %71, i8* %72, i32 13, i8** %pcOutValue, i32* %ulOutValueLength, i32* null)
+ Callsite) ,
+================================
+ vs 
+Node1=178572 Inst1=  %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+ Loc1=
+Node2=177799 Inst2=  %15 = call i32 @JSON_SearchConst(i8* %8, i32 %9, i8* %10, i32 %11, i8** %12, i32* %13, i32* %14)
+ Loc2=
+Source svfgnode=178572 0x2eb78a8 (APAR)   %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+(ID: 178572)
+Dest svfgnode=177799 0x2e3f7a0 (APAR)   %15 = call i32 @JSON_SearchConst(i8* %8, i32 %9, i8* %10, i32 %11, i8** %12, i32* %13, i32* %14)
+(ID: 177799)
+
+================ICFG PATH================
+(164280)(STMT)  %22 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164282)(STMT)  %23 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %22, i32 0, i32 5
+  in prvUpdateDeltaHandler ,(164284)(STMT)  %24 = load i8*, i8** %23, align 4
+  in prvUpdateDeltaHandler ,(164287)(STMT)  %25 = getelementptr [31 x i8], [31 x i8]* @.str.33.15, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164289)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %25, i8* %24)
+ Callsite) ,(164290)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %25, i8* %24)
+ Ret) ,(164291)(STMT)  %26 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164292)(STMT)  %27 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %26, i32 0, i32 5
+  in prvUpdateDeltaHandler ,(164293)(STMT)  %28 = load i8*, i8** %27, align 4
+  in prvUpdateDeltaHandler ,(164294)(STMT)  %29 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164295)(STMT)  %30 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %29, i32 0, i32 6
+  in prvUpdateDeltaHandler ,(164296)(STMT)  %31 = load i32, i32* %30, align 4
+  in prvUpdateDeltaHandler ,(164297)(  %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+ Callsite) ,(164298)(  %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+ Ret) ,(164299)(STMT)  store i32 %32, i32* %result, align 4
+  in prvUpdateDeltaHandler ,(164300)(STMT)  %33 = load i32, i32* %result, align 4
+  in prvUpdateDeltaHandler ,(164301)(STMT)  %34 = icmp eq i32 %33, 1
+  in prvUpdateDeltaHandler ,(164302)(STMT)  br i1 %34, label %35, label %44
+  in prvUpdateDeltaHandler ,(164304)(STMT)  %45 = getelementptr [31 x i8], [31 x i8]* @.str.35.17, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164306)(  call void (i8*, ...) @vLoggingPrintfError(i8* %45)
+ Callsite) ,(164307)(  call void (i8*, ...) @vLoggingPrintfError(i8* %45)
+ Ret) ,(164309)(STMT)  br label %46
+  in prvUpdateDeltaHandler ,(164311)(STMT)  %47 = load i32, i32* %result, align 4
+  in prvUpdateDeltaHandler ,(164313)(STMT)  %48 = icmp eq i32 %47, 1
+  in prvUpdateDeltaHandler ,(164315)(STMT)  br i1 %48, label %49, label %55
+  in prvUpdateDeltaHandler ,(164317)(STMT)  %50 = load i32, i32* %ulOutValueLength, align 4
+  in prvUpdateDeltaHandler ,(164318)(STMT)  %56 = getelementptr [30 x i8], [30 x i8]* @.str.37.19, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164322)(  call void (i8*, ...) @vLoggingPrintfError(i8* %56)
+ Callsite) ,(164323)(  call void (i8*, ...) @vLoggingPrintfError(i8* %56)
+ Ret) ,(164326)(STMT)  br label %57
+  in prvUpdateDeltaHandler ,(164330)(STMT)  %58 = load i32, i32* %ulVersion, align 4
+  in prvUpdateDeltaHandler ,(164332)(STMT)  %59 = load i32, i32* @prvUpdateDeltaHandler.ulCurrentVersion, align 4
+  in prvUpdateDeltaHandler ,(164335)(STMT)  %60 = getelementptr [35 x i8], [35 x i8]* @.str.38.20, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164337)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %60, i32 %58, i32 %59)
+ Callsite) ,(164338)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %60, i32 %58, i32 %59)
+ Ret) ,(164340)(STMT)  %61 = load i32, i32* %ulVersion, align 4
+  in prvUpdateDeltaHandler ,(164341)(STMT)  %62 = load i32, i32* @prvUpdateDeltaHandler.ulCurrentVersion, align 4
+  in prvUpdateDeltaHandler ,(164342)(STMT)  %63 = icmp ugt i32 %61, %62
+  in prvUpdateDeltaHandler ,(164343)(STMT)  br i1 %63, label %64, label %74
+  in prvUpdateDeltaHandler ,(164344)(STMT)  %65 = load i32, i32* %ulVersion, align 4
+  in prvUpdateDeltaHandler ,(164346)(STMT)  store i32 %65, i32* @prvUpdateDeltaHandler.ulCurrentVersion, align 4
+  in prvUpdateDeltaHandler ,(164349)(STMT)  %66 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164351)(STMT)  %67 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %66, i32 0, i32 5
+  in prvUpdateDeltaHandler ,(164353)(STMT)  %68 = load i8*, i8** %67, align 4
+  in prvUpdateDeltaHandler ,(164355)(STMT)  %69 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164357)(STMT)  %70 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %69, i32 0, i32 6
+  in prvUpdateDeltaHandler ,(164360)(STMT)  %71 = load i32, i32* %70, align 4
+  in prvUpdateDeltaHandler ,(164365)(STMT)  %72 = getelementptr [14 x i8], [14 x i8]* @.str.39.21, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164368)(  %73 = call i32 @JSON_SearchT(i8* %68, i32 %71, i8* %72, i32 13, i8** %pcOutValue, i32* %ulOutValueLength, i32* null)
+ Callsite) ,
+================================
+ vs 
+Node1=178572 Inst1=  %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+ Loc1=
+Node2=177800 Inst2=  %15 = call i32 @JSON_SearchConst(i8* %8, i32 %9, i8* %10, i32 %11, i8** %12, i32* %13, i32* %14)
+ Loc2=
+Source svfgnode=178572 0x2eb78a8 (APAR)   %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+(ID: 178572)
+Dest svfgnode=177800 0x2e3f7a0 (APAR)   %15 = call i32 @JSON_SearchConst(i8* %8, i32 %9, i8* %10, i32 %11, i8** %12, i32* %13, i32* %14)
+(ID: 177800)
+
+================ICFG PATH================
+(164280)(STMT)  %22 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164282)(STMT)  %23 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %22, i32 0, i32 5
+  in prvUpdateDeltaHandler ,(164284)(STMT)  %24 = load i8*, i8** %23, align 4
+  in prvUpdateDeltaHandler ,(164287)(STMT)  %25 = getelementptr [31 x i8], [31 x i8]* @.str.33.15, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164289)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %25, i8* %24)
+ Callsite) ,(164290)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %25, i8* %24)
+ Ret) ,(164291)(STMT)  %26 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164292)(STMT)  %27 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %26, i32 0, i32 5
+  in prvUpdateDeltaHandler ,(164293)(STMT)  %28 = load i8*, i8** %27, align 4
+  in prvUpdateDeltaHandler ,(164294)(STMT)  %29 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164295)(STMT)  %30 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %29, i32 0, i32 6
+  in prvUpdateDeltaHandler ,(164296)(STMT)  %31 = load i32, i32* %30, align 4
+  in prvUpdateDeltaHandler ,(164297)(  %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+ Callsite) ,(164298)(  %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+ Ret) ,(164299)(STMT)  store i32 %32, i32* %result, align 4
+  in prvUpdateDeltaHandler ,(164300)(STMT)  %33 = load i32, i32* %result, align 4
+  in prvUpdateDeltaHandler ,(164301)(STMT)  %34 = icmp eq i32 %33, 1
+  in prvUpdateDeltaHandler ,(164302)(STMT)  br i1 %34, label %35, label %44
+  in prvUpdateDeltaHandler ,(164304)(STMT)  %45 = getelementptr [31 x i8], [31 x i8]* @.str.35.17, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164306)(  call void (i8*, ...) @vLoggingPrintfError(i8* %45)
+ Callsite) ,(164307)(  call void (i8*, ...) @vLoggingPrintfError(i8* %45)
+ Ret) ,(164309)(STMT)  br label %46
+  in prvUpdateDeltaHandler ,(164311)(STMT)  %47 = load i32, i32* %result, align 4
+  in prvUpdateDeltaHandler ,(164313)(STMT)  %48 = icmp eq i32 %47, 1
+  in prvUpdateDeltaHandler ,(164315)(STMT)  br i1 %48, label %49, label %55
+  in prvUpdateDeltaHandler ,(164317)(STMT)  %50 = load i32, i32* %ulOutValueLength, align 4
+  in prvUpdateDeltaHandler ,(164318)(STMT)  %56 = getelementptr [30 x i8], [30 x i8]* @.str.37.19, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164322)(  call void (i8*, ...) @vLoggingPrintfError(i8* %56)
+ Callsite) ,(164323)(  call void (i8*, ...) @vLoggingPrintfError(i8* %56)
+ Ret) ,(164326)(STMT)  br label %57
+  in prvUpdateDeltaHandler ,(164330)(STMT)  %58 = load i32, i32* %ulVersion, align 4
+  in prvUpdateDeltaHandler ,(164332)(STMT)  %59 = load i32, i32* @prvUpdateDeltaHandler.ulCurrentVersion, align 4
+  in prvUpdateDeltaHandler ,(164335)(STMT)  %60 = getelementptr [35 x i8], [35 x i8]* @.str.38.20, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164337)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %60, i32 %58, i32 %59)
+ Callsite) ,(164338)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %60, i32 %58, i32 %59)
+ Ret) ,(164340)(STMT)  %61 = load i32, i32* %ulVersion, align 4
+  in prvUpdateDeltaHandler ,(164341)(STMT)  %62 = load i32, i32* @prvUpdateDeltaHandler.ulCurrentVersion, align 4
+  in prvUpdateDeltaHandler ,(164342)(STMT)  %63 = icmp ugt i32 %61, %62
+  in prvUpdateDeltaHandler ,(164343)(STMT)  br i1 %63, label %64, label %74
+  in prvUpdateDeltaHandler ,(164344)(STMT)  %65 = load i32, i32* %ulVersion, align 4
+  in prvUpdateDeltaHandler ,(164346)(STMT)  store i32 %65, i32* @prvUpdateDeltaHandler.ulCurrentVersion, align 4
+  in prvUpdateDeltaHandler ,(164349)(STMT)  %66 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164351)(STMT)  %67 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %66, i32 0, i32 5
+  in prvUpdateDeltaHandler ,(164353)(STMT)  %68 = load i8*, i8** %67, align 4
+  in prvUpdateDeltaHandler ,(164355)(STMT)  %69 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164357)(STMT)  %70 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %69, i32 0, i32 6
+  in prvUpdateDeltaHandler ,(164360)(STMT)  %71 = load i32, i32* %70, align 4
+  in prvUpdateDeltaHandler ,(164365)(STMT)  %72 = getelementptr [14 x i8], [14 x i8]* @.str.39.21, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164368)(  %73 = call i32 @JSON_SearchT(i8* %68, i32 %71, i8* %72, i32 13, i8** %pcOutValue, i32* %ulOutValueLength, i32* null)
+ Callsite) ,
+================================
+ vs 
+Node1=178572 Inst1=  %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+ Loc1=
+Node2=177801 Inst2=  %15 = call i32 @JSON_SearchConst(i8* %8, i32 %9, i8* %10, i32 %11, i8** %12, i32* %13, i32* %14)
+ Loc2=
+Source svfgnode=178572 0x2eb78a8 (APAR)   %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+(ID: 178572)
+Dest svfgnode=177801 0x2e3f7a0 (APAR)   %15 = call i32 @JSON_SearchConst(i8* %8, i32 %9, i8* %10, i32 %11, i8** %12, i32* %13, i32* %14)
+(ID: 177801)
+
+================ICFG PATH================
+(164280)(STMT)  %22 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164282)(STMT)  %23 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %22, i32 0, i32 5
+  in prvUpdateDeltaHandler ,(164284)(STMT)  %24 = load i8*, i8** %23, align 4
+  in prvUpdateDeltaHandler ,(164287)(STMT)  %25 = getelementptr [31 x i8], [31 x i8]* @.str.33.15, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164289)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %25, i8* %24)
+ Callsite) ,(164290)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %25, i8* %24)
+ Ret) ,(164291)(STMT)  %26 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164292)(STMT)  %27 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %26, i32 0, i32 5
+  in prvUpdateDeltaHandler ,(164293)(STMT)  %28 = load i8*, i8** %27, align 4
+  in prvUpdateDeltaHandler ,(164294)(STMT)  %29 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164295)(STMT)  %30 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %29, i32 0, i32 6
+  in prvUpdateDeltaHandler ,(164296)(STMT)  %31 = load i32, i32* %30, align 4
+  in prvUpdateDeltaHandler ,(164297)(  %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+ Callsite) ,(164298)(  %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+ Ret) ,(164299)(STMT)  store i32 %32, i32* %result, align 4
+  in prvUpdateDeltaHandler ,(164300)(STMT)  %33 = load i32, i32* %result, align 4
+  in prvUpdateDeltaHandler ,(164301)(STMT)  %34 = icmp eq i32 %33, 1
+  in prvUpdateDeltaHandler ,(164302)(STMT)  br i1 %34, label %35, label %44
+  in prvUpdateDeltaHandler ,(164304)(STMT)  %45 = getelementptr [31 x i8], [31 x i8]* @.str.35.17, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164306)(  call void (i8*, ...) @vLoggingPrintfError(i8* %45)
+ Callsite) ,(164307)(  call void (i8*, ...) @vLoggingPrintfError(i8* %45)
+ Ret) ,(164309)(STMT)  br label %46
+  in prvUpdateDeltaHandler ,(164311)(STMT)  %47 = load i32, i32* %result, align 4
+  in prvUpdateDeltaHandler ,(164313)(STMT)  %48 = icmp eq i32 %47, 1
+  in prvUpdateDeltaHandler ,(164315)(STMT)  br i1 %48, label %49, label %55
+  in prvUpdateDeltaHandler ,(164317)(STMT)  %50 = load i32, i32* %ulOutValueLength, align 4
+  in prvUpdateDeltaHandler ,(164318)(STMT)  %56 = getelementptr [30 x i8], [30 x i8]* @.str.37.19, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164322)(  call void (i8*, ...) @vLoggingPrintfError(i8* %56)
+ Callsite) ,(164323)(  call void (i8*, ...) @vLoggingPrintfError(i8* %56)
+ Ret) ,(164326)(STMT)  br label %57
+  in prvUpdateDeltaHandler ,(164330)(STMT)  %58 = load i32, i32* %ulVersion, align 4
+  in prvUpdateDeltaHandler ,(164332)(STMT)  %59 = load i32, i32* @prvUpdateDeltaHandler.ulCurrentVersion, align 4
+  in prvUpdateDeltaHandler ,(164335)(STMT)  %60 = getelementptr [35 x i8], [35 x i8]* @.str.38.20, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164337)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %60, i32 %58, i32 %59)
+ Callsite) ,(164338)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %60, i32 %58, i32 %59)
+ Ret) ,(164340)(STMT)  %61 = load i32, i32* %ulVersion, align 4
+  in prvUpdateDeltaHandler ,(164341)(STMT)  %62 = load i32, i32* @prvUpdateDeltaHandler.ulCurrentVersion, align 4
+  in prvUpdateDeltaHandler ,(164342)(STMT)  %63 = icmp ugt i32 %61, %62
+  in prvUpdateDeltaHandler ,(164343)(STMT)  br i1 %63, label %64, label %74
+  in prvUpdateDeltaHandler ,(164344)(STMT)  %65 = load i32, i32* %ulVersion, align 4
+  in prvUpdateDeltaHandler ,(164346)(STMT)  store i32 %65, i32* @prvUpdateDeltaHandler.ulCurrentVersion, align 4
+  in prvUpdateDeltaHandler ,(164349)(STMT)  %66 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164351)(STMT)  %67 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %66, i32 0, i32 5
+  in prvUpdateDeltaHandler ,(164353)(STMT)  %68 = load i8*, i8** %67, align 4
+  in prvUpdateDeltaHandler ,(164355)(STMT)  %69 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164357)(STMT)  %70 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %69, i32 0, i32 6
+  in prvUpdateDeltaHandler ,(164360)(STMT)  %71 = load i32, i32* %70, align 4
+  in prvUpdateDeltaHandler ,(164365)(STMT)  %72 = getelementptr [14 x i8], [14 x i8]* @.str.39.21, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164368)(  %73 = call i32 @JSON_SearchT(i8* %68, i32 %71, i8* %72, i32 13, i8** %pcOutValue, i32* %ulOutValueLength, i32* null)
+ Callsite) ,
+================================
+ vs 
+Node1=178572 Inst1=  %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+ Loc1=
+Node2=330169 Inst2=  %15 = call i32 @JSON_SearchConst(i8* %8, i32 %9, i8* %10, i32 %11, i8** %12, i32* %13, i32* %14)
+ Loc2=
+Source svfgnode=178572 0x2eb78a8 (APAR)   %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+(ID: 178572)
+Dest svfgnode=330169 0x2e3f7a0 (AIN)   %15 = call i32 @JSON_SearchConst(i8* %8, i32 %9, i8* %10, i32 %11, i8** %12, i32* %13, i32* %14)
+  within JSON_SearchT(ID: 330169)
+
+================ICFG PATH================
+(164280)(STMT)  %22 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164282)(STMT)  %23 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %22, i32 0, i32 5
+  in prvUpdateDeltaHandler ,(164284)(STMT)  %24 = load i8*, i8** %23, align 4
+  in prvUpdateDeltaHandler ,(164287)(STMT)  %25 = getelementptr [31 x i8], [31 x i8]* @.str.33.15, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164289)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %25, i8* %24)
+ Callsite) ,(164290)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %25, i8* %24)
+ Ret) ,(164291)(STMT)  %26 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164292)(STMT)  %27 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %26, i32 0, i32 5
+  in prvUpdateDeltaHandler ,(164293)(STMT)  %28 = load i8*, i8** %27, align 4
+  in prvUpdateDeltaHandler ,(164294)(STMT)  %29 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164295)(STMT)  %30 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %29, i32 0, i32 6
+  in prvUpdateDeltaHandler ,(164296)(STMT)  %31 = load i32, i32* %30, align 4
+  in prvUpdateDeltaHandler ,(164297)(  %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+ Callsite) ,(164298)(  %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+ Ret) ,(164299)(STMT)  store i32 %32, i32* %result, align 4
+  in prvUpdateDeltaHandler ,(164300)(STMT)  %33 = load i32, i32* %result, align 4
+  in prvUpdateDeltaHandler ,(164301)(STMT)  %34 = icmp eq i32 %33, 1
+  in prvUpdateDeltaHandler ,(164302)(STMT)  br i1 %34, label %35, label %44
+  in prvUpdateDeltaHandler ,(164304)(STMT)  %45 = getelementptr [31 x i8], [31 x i8]* @.str.35.17, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164306)(  call void (i8*, ...) @vLoggingPrintfError(i8* %45)
+ Callsite) ,(164307)(  call void (i8*, ...) @vLoggingPrintfError(i8* %45)
+ Ret) ,(164309)(STMT)  br label %46
+  in prvUpdateDeltaHandler ,(164311)(STMT)  %47 = load i32, i32* %result, align 4
+  in prvUpdateDeltaHandler ,(164313)(STMT)  %48 = icmp eq i32 %47, 1
+  in prvUpdateDeltaHandler ,(164315)(STMT)  br i1 %48, label %49, label %55
+  in prvUpdateDeltaHandler ,(164317)(STMT)  %50 = load i32, i32* %ulOutValueLength, align 4
+  in prvUpdateDeltaHandler ,(164318)(STMT)  %56 = getelementptr [30 x i8], [30 x i8]* @.str.37.19, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164322)(  call void (i8*, ...) @vLoggingPrintfError(i8* %56)
+ Callsite) ,(164323)(  call void (i8*, ...) @vLoggingPrintfError(i8* %56)
+ Ret) ,(164326)(STMT)  br label %57
+  in prvUpdateDeltaHandler ,(164330)(STMT)  %58 = load i32, i32* %ulVersion, align 4
+  in prvUpdateDeltaHandler ,(164332)(STMT)  %59 = load i32, i32* @prvUpdateDeltaHandler.ulCurrentVersion, align 4
+  in prvUpdateDeltaHandler ,(164335)(STMT)  %60 = getelementptr [35 x i8], [35 x i8]* @.str.38.20, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164337)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %60, i32 %58, i32 %59)
+ Callsite) ,(164338)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %60, i32 %58, i32 %59)
+ Ret) ,(164340)(STMT)  %61 = load i32, i32* %ulVersion, align 4
+  in prvUpdateDeltaHandler ,(164341)(STMT)  %62 = load i32, i32* @prvUpdateDeltaHandler.ulCurrentVersion, align 4
+  in prvUpdateDeltaHandler ,(164342)(STMT)  %63 = icmp ugt i32 %61, %62
+  in prvUpdateDeltaHandler ,(164343)(STMT)  br i1 %63, label %64, label %74
+  in prvUpdateDeltaHandler ,(164344)(STMT)  %65 = load i32, i32* %ulVersion, align 4
+  in prvUpdateDeltaHandler ,(164346)(STMT)  store i32 %65, i32* @prvUpdateDeltaHandler.ulCurrentVersion, align 4
+  in prvUpdateDeltaHandler ,(164349)(STMT)  %66 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164351)(STMT)  %67 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %66, i32 0, i32 5
+  in prvUpdateDeltaHandler ,(164353)(STMT)  %68 = load i8*, i8** %67, align 4
+  in prvUpdateDeltaHandler ,(164355)(STMT)  %69 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164357)(STMT)  %70 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %69, i32 0, i32 6
+  in prvUpdateDeltaHandler ,(164360)(STMT)  %71 = load i32, i32* %70, align 4
+  in prvUpdateDeltaHandler ,(164365)(STMT)  %72 = getelementptr [14 x i8], [14 x i8]* @.str.39.21, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164368)(  %73 = call i32 @JSON_SearchT(i8* %68, i32 %71, i8* %72, i32 13, i8** %pcOutValue, i32* %ulOutValueLength, i32* null)
+ Callsite) ,
+================================
+ vs 
+Node1=178572 Inst1=  %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+ Loc1=
+Node2=330170 Inst2=  %15 = call i32 @JSON_SearchConst(i8* %8, i32 %9, i8* %10, i32 %11, i8** %12, i32* %13, i32* %14)
+ Loc2=
+Source svfgnode=178572 0x2eb78a8 (APAR)   %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+(ID: 178572)
+Dest svfgnode=330170 0x2e3f7a0 (AIN)   %15 = call i32 @JSON_SearchConst(i8* %8, i32 %9, i8* %10, i32 %11, i8** %12, i32* %13, i32* %14)
+  within JSON_SearchT(ID: 330170)
+
+================ICFG PATH================
+(164280)(STMT)  %22 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164282)(STMT)  %23 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %22, i32 0, i32 5
+  in prvUpdateDeltaHandler ,(164284)(STMT)  %24 = load i8*, i8** %23, align 4
+  in prvUpdateDeltaHandler ,(164287)(STMT)  %25 = getelementptr [31 x i8], [31 x i8]* @.str.33.15, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164289)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %25, i8* %24)
+ Callsite) ,(164290)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %25, i8* %24)
+ Ret) ,(164291)(STMT)  %26 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164292)(STMT)  %27 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %26, i32 0, i32 5
+  in prvUpdateDeltaHandler ,(164293)(STMT)  %28 = load i8*, i8** %27, align 4
+  in prvUpdateDeltaHandler ,(164294)(STMT)  %29 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164295)(STMT)  %30 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %29, i32 0, i32 6
+  in prvUpdateDeltaHandler ,(164296)(STMT)  %31 = load i32, i32* %30, align 4
+  in prvUpdateDeltaHandler ,(164297)(  %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+ Callsite) ,(164298)(  %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+ Ret) ,(164299)(STMT)  store i32 %32, i32* %result, align 4
+  in prvUpdateDeltaHandler ,(164300)(STMT)  %33 = load i32, i32* %result, align 4
+  in prvUpdateDeltaHandler ,(164301)(STMT)  %34 = icmp eq i32 %33, 1
+  in prvUpdateDeltaHandler ,(164302)(STMT)  br i1 %34, label %35, label %44
+  in prvUpdateDeltaHandler ,(164304)(STMT)  %45 = getelementptr [31 x i8], [31 x i8]* @.str.35.17, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164306)(  call void (i8*, ...) @vLoggingPrintfError(i8* %45)
+ Callsite) ,(164307)(  call void (i8*, ...) @vLoggingPrintfError(i8* %45)
+ Ret) ,(164309)(STMT)  br label %46
+  in prvUpdateDeltaHandler ,(164311)(STMT)  %47 = load i32, i32* %result, align 4
+  in prvUpdateDeltaHandler ,(164313)(STMT)  %48 = icmp eq i32 %47, 1
+  in prvUpdateDeltaHandler ,(164315)(STMT)  br i1 %48, label %49, label %55
+  in prvUpdateDeltaHandler ,(164317)(STMT)  %50 = load i32, i32* %ulOutValueLength, align 4
+  in prvUpdateDeltaHandler ,(164318)(STMT)  %56 = getelementptr [30 x i8], [30 x i8]* @.str.37.19, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164322)(  call void (i8*, ...) @vLoggingPrintfError(i8* %56)
+ Callsite) ,(164323)(  call void (i8*, ...) @vLoggingPrintfError(i8* %56)
+ Ret) ,(164326)(STMT)  br label %57
+  in prvUpdateDeltaHandler ,(164330)(STMT)  %58 = load i32, i32* %ulVersion, align 4
+  in prvUpdateDeltaHandler ,(164332)(STMT)  %59 = load i32, i32* @prvUpdateDeltaHandler.ulCurrentVersion, align 4
+  in prvUpdateDeltaHandler ,(164335)(STMT)  %60 = getelementptr [35 x i8], [35 x i8]* @.str.38.20, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164337)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %60, i32 %58, i32 %59)
+ Callsite) ,(164338)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %60, i32 %58, i32 %59)
+ Ret) ,(164340)(STMT)  %61 = load i32, i32* %ulVersion, align 4
+  in prvUpdateDeltaHandler ,(164341)(STMT)  %62 = load i32, i32* @prvUpdateDeltaHandler.ulCurrentVersion, align 4
+  in prvUpdateDeltaHandler ,(164342)(STMT)  %63 = icmp ugt i32 %61, %62
+  in prvUpdateDeltaHandler ,(164343)(STMT)  br i1 %63, label %64, label %74
+  in prvUpdateDeltaHandler ,(164344)(STMT)  %65 = load i32, i32* %ulVersion, align 4
+  in prvUpdateDeltaHandler ,(164346)(STMT)  store i32 %65, i32* @prvUpdateDeltaHandler.ulCurrentVersion, align 4
+  in prvUpdateDeltaHandler ,(164349)(STMT)  %66 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164351)(STMT)  %67 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %66, i32 0, i32 5
+  in prvUpdateDeltaHandler ,(164353)(STMT)  %68 = load i8*, i8** %67, align 4
+  in prvUpdateDeltaHandler ,(164355)(STMT)  %69 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164357)(STMT)  %70 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %69, i32 0, i32 6
+  in prvUpdateDeltaHandler ,(164360)(STMT)  %71 = load i32, i32* %70, align 4
+  in prvUpdateDeltaHandler ,(164365)(STMT)  %72 = getelementptr [14 x i8], [14 x i8]* @.str.39.21, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164368)(  %73 = call i32 @JSON_SearchT(i8* %68, i32 %71, i8* %72, i32 13, i8** %pcOutValue, i32* %ulOutValueLength, i32* null)
+ Callsite) ,
+================================
+ vs 
+Node1=331352 Inst1=  %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+ Loc1=
+Node2=177795 Inst2=  %15 = call i32 @JSON_SearchConst(i8* %8, i32 %9, i8* %10, i32 %11, i8** %12, i32* %13, i32* %14)
+ Loc2=
+Source svfgnode=331352 0x2eb78a8 (AIN)   %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+  within prvUpdateDeltaHandler(ID: 331352)
+Dest svfgnode=177795 0x2e3f7a0 (APAR)   %15 = call i32 @JSON_SearchConst(i8* %8, i32 %9, i8* %10, i32 %11, i8** %12, i32* %13, i32* %14)
+(ID: 177795)
+
+================ICFG PATH================
+(164280)(STMT)  %22 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164282)(STMT)  %23 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %22, i32 0, i32 5
+  in prvUpdateDeltaHandler ,(164284)(STMT)  %24 = load i8*, i8** %23, align 4
+  in prvUpdateDeltaHandler ,(164287)(STMT)  %25 = getelementptr [31 x i8], [31 x i8]* @.str.33.15, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164289)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %25, i8* %24)
+ Callsite) ,(164290)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %25, i8* %24)
+ Ret) ,(164291)(STMT)  %26 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164292)(STMT)  %27 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %26, i32 0, i32 5
+  in prvUpdateDeltaHandler ,(164293)(STMT)  %28 = load i8*, i8** %27, align 4
+  in prvUpdateDeltaHandler ,(164294)(STMT)  %29 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164295)(STMT)  %30 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %29, i32 0, i32 6
+  in prvUpdateDeltaHandler ,(164296)(STMT)  %31 = load i32, i32* %30, align 4
+  in prvUpdateDeltaHandler ,(164297)(  %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+ Callsite) ,(164298)(  %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+ Ret) ,(164299)(STMT)  store i32 %32, i32* %result, align 4
+  in prvUpdateDeltaHandler ,(164300)(STMT)  %33 = load i32, i32* %result, align 4
+  in prvUpdateDeltaHandler ,(164301)(STMT)  %34 = icmp eq i32 %33, 1
+  in prvUpdateDeltaHandler ,(164302)(STMT)  br i1 %34, label %35, label %44
+  in prvUpdateDeltaHandler ,(164304)(STMT)  %45 = getelementptr [31 x i8], [31 x i8]* @.str.35.17, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164306)(  call void (i8*, ...) @vLoggingPrintfError(i8* %45)
+ Callsite) ,(164307)(  call void (i8*, ...) @vLoggingPrintfError(i8* %45)
+ Ret) ,(164309)(STMT)  br label %46
+  in prvUpdateDeltaHandler ,(164311)(STMT)  %47 = load i32, i32* %result, align 4
+  in prvUpdateDeltaHandler ,(164313)(STMT)  %48 = icmp eq i32 %47, 1
+  in prvUpdateDeltaHandler ,(164315)(STMT)  br i1 %48, label %49, label %55
+  in prvUpdateDeltaHandler ,(164317)(STMT)  %50 = load i32, i32* %ulOutValueLength, align 4
+  in prvUpdateDeltaHandler ,(164318)(STMT)  %56 = getelementptr [30 x i8], [30 x i8]* @.str.37.19, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164322)(  call void (i8*, ...) @vLoggingPrintfError(i8* %56)
+ Callsite) ,(164323)(  call void (i8*, ...) @vLoggingPrintfError(i8* %56)
+ Ret) ,(164326)(STMT)  br label %57
+  in prvUpdateDeltaHandler ,(164330)(STMT)  %58 = load i32, i32* %ulVersion, align 4
+  in prvUpdateDeltaHandler ,(164332)(STMT)  %59 = load i32, i32* @prvUpdateDeltaHandler.ulCurrentVersion, align 4
+  in prvUpdateDeltaHandler ,(164335)(STMT)  %60 = getelementptr [35 x i8], [35 x i8]* @.str.38.20, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164337)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %60, i32 %58, i32 %59)
+ Callsite) ,(164338)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %60, i32 %58, i32 %59)
+ Ret) ,(164340)(STMT)  %61 = load i32, i32* %ulVersion, align 4
+  in prvUpdateDeltaHandler ,(164341)(STMT)  %62 = load i32, i32* @prvUpdateDeltaHandler.ulCurrentVersion, align 4
+  in prvUpdateDeltaHandler ,(164342)(STMT)  %63 = icmp ugt i32 %61, %62
+  in prvUpdateDeltaHandler ,(164343)(STMT)  br i1 %63, label %64, label %74
+  in prvUpdateDeltaHandler ,(164344)(STMT)  %65 = load i32, i32* %ulVersion, align 4
+  in prvUpdateDeltaHandler ,(164346)(STMT)  store i32 %65, i32* @prvUpdateDeltaHandler.ulCurrentVersion, align 4
+  in prvUpdateDeltaHandler ,(164349)(STMT)  %66 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164351)(STMT)  %67 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %66, i32 0, i32 5
+  in prvUpdateDeltaHandler ,(164353)(STMT)  %68 = load i8*, i8** %67, align 4
+  in prvUpdateDeltaHandler ,(164355)(STMT)  %69 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164357)(STMT)  %70 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %69, i32 0, i32 6
+  in prvUpdateDeltaHandler ,(164360)(STMT)  %71 = load i32, i32* %70, align 4
+  in prvUpdateDeltaHandler ,(164365)(STMT)  %72 = getelementptr [14 x i8], [14 x i8]* @.str.39.21, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164368)(  %73 = call i32 @JSON_SearchT(i8* %68, i32 %71, i8* %72, i32 13, i8** %pcOutValue, i32* %ulOutValueLength, i32* null)
+ Callsite) ,
+================================
+ vs 
+Node1=331352 Inst1=  %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+ Loc1=
+Node2=177799 Inst2=  %15 = call i32 @JSON_SearchConst(i8* %8, i32 %9, i8* %10, i32 %11, i8** %12, i32* %13, i32* %14)
+ Loc2=
+Source svfgnode=331352 0x2eb78a8 (AIN)   %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+  within prvUpdateDeltaHandler(ID: 331352)
+Dest svfgnode=177799 0x2e3f7a0 (APAR)   %15 = call i32 @JSON_SearchConst(i8* %8, i32 %9, i8* %10, i32 %11, i8** %12, i32* %13, i32* %14)
+(ID: 177799)
+
+================ICFG PATH================
+(164280)(STMT)  %22 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164282)(STMT)  %23 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %22, i32 0, i32 5
+  in prvUpdateDeltaHandler ,(164284)(STMT)  %24 = load i8*, i8** %23, align 4
+  in prvUpdateDeltaHandler ,(164287)(STMT)  %25 = getelementptr [31 x i8], [31 x i8]* @.str.33.15, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164289)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %25, i8* %24)
+ Callsite) ,(164290)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %25, i8* %24)
+ Ret) ,(164291)(STMT)  %26 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164292)(STMT)  %27 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %26, i32 0, i32 5
+  in prvUpdateDeltaHandler ,(164293)(STMT)  %28 = load i8*, i8** %27, align 4
+  in prvUpdateDeltaHandler ,(164294)(STMT)  %29 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164295)(STMT)  %30 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %29, i32 0, i32 6
+  in prvUpdateDeltaHandler ,(164296)(STMT)  %31 = load i32, i32* %30, align 4
+  in prvUpdateDeltaHandler ,(164297)(  %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+ Callsite) ,(164298)(  %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+ Ret) ,(164299)(STMT)  store i32 %32, i32* %result, align 4
+  in prvUpdateDeltaHandler ,(164300)(STMT)  %33 = load i32, i32* %result, align 4
+  in prvUpdateDeltaHandler ,(164301)(STMT)  %34 = icmp eq i32 %33, 1
+  in prvUpdateDeltaHandler ,(164302)(STMT)  br i1 %34, label %35, label %44
+  in prvUpdateDeltaHandler ,(164304)(STMT)  %45 = getelementptr [31 x i8], [31 x i8]* @.str.35.17, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164306)(  call void (i8*, ...) @vLoggingPrintfError(i8* %45)
+ Callsite) ,(164307)(  call void (i8*, ...) @vLoggingPrintfError(i8* %45)
+ Ret) ,(164309)(STMT)  br label %46
+  in prvUpdateDeltaHandler ,(164311)(STMT)  %47 = load i32, i32* %result, align 4
+  in prvUpdateDeltaHandler ,(164313)(STMT)  %48 = icmp eq i32 %47, 1
+  in prvUpdateDeltaHandler ,(164315)(STMT)  br i1 %48, label %49, label %55
+  in prvUpdateDeltaHandler ,(164317)(STMT)  %50 = load i32, i32* %ulOutValueLength, align 4
+  in prvUpdateDeltaHandler ,(164318)(STMT)  %56 = getelementptr [30 x i8], [30 x i8]* @.str.37.19, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164322)(  call void (i8*, ...) @vLoggingPrintfError(i8* %56)
+ Callsite) ,(164323)(  call void (i8*, ...) @vLoggingPrintfError(i8* %56)
+ Ret) ,(164326)(STMT)  br label %57
+  in prvUpdateDeltaHandler ,(164330)(STMT)  %58 = load i32, i32* %ulVersion, align 4
+  in prvUpdateDeltaHandler ,(164332)(STMT)  %59 = load i32, i32* @prvUpdateDeltaHandler.ulCurrentVersion, align 4
+  in prvUpdateDeltaHandler ,(164335)(STMT)  %60 = getelementptr [35 x i8], [35 x i8]* @.str.38.20, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164337)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %60, i32 %58, i32 %59)
+ Callsite) ,(164338)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %60, i32 %58, i32 %59)
+ Ret) ,(164340)(STMT)  %61 = load i32, i32* %ulVersion, align 4
+  in prvUpdateDeltaHandler ,(164341)(STMT)  %62 = load i32, i32* @prvUpdateDeltaHandler.ulCurrentVersion, align 4
+  in prvUpdateDeltaHandler ,(164342)(STMT)  %63 = icmp ugt i32 %61, %62
+  in prvUpdateDeltaHandler ,(164343)(STMT)  br i1 %63, label %64, label %74
+  in prvUpdateDeltaHandler ,(164344)(STMT)  %65 = load i32, i32* %ulVersion, align 4
+  in prvUpdateDeltaHandler ,(164346)(STMT)  store i32 %65, i32* @prvUpdateDeltaHandler.ulCurrentVersion, align 4
+  in prvUpdateDeltaHandler ,(164349)(STMT)  %66 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164351)(STMT)  %67 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %66, i32 0, i32 5
+  in prvUpdateDeltaHandler ,(164353)(STMT)  %68 = load i8*, i8** %67, align 4
+  in prvUpdateDeltaHandler ,(164355)(STMT)  %69 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164357)(STMT)  %70 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %69, i32 0, i32 6
+  in prvUpdateDeltaHandler ,(164360)(STMT)  %71 = load i32, i32* %70, align 4
+  in prvUpdateDeltaHandler ,(164365)(STMT)  %72 = getelementptr [14 x i8], [14 x i8]* @.str.39.21, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164368)(  %73 = call i32 @JSON_SearchT(i8* %68, i32 %71, i8* %72, i32 13, i8** %pcOutValue, i32* %ulOutValueLength, i32* null)
+ Callsite) ,
+================================
+ vs 
+Node1=331352 Inst1=  %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+ Loc1=
+Node2=177800 Inst2=  %15 = call i32 @JSON_SearchConst(i8* %8, i32 %9, i8* %10, i32 %11, i8** %12, i32* %13, i32* %14)
+ Loc2=
+Source svfgnode=331352 0x2eb78a8 (AIN)   %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+  within prvUpdateDeltaHandler(ID: 331352)
+Dest svfgnode=177800 0x2e3f7a0 (APAR)   %15 = call i32 @JSON_SearchConst(i8* %8, i32 %9, i8* %10, i32 %11, i8** %12, i32* %13, i32* %14)
+(ID: 177800)
+
+================ICFG PATH================
+(164280)(STMT)  %22 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164282)(STMT)  %23 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %22, i32 0, i32 5
+  in prvUpdateDeltaHandler ,(164284)(STMT)  %24 = load i8*, i8** %23, align 4
+  in prvUpdateDeltaHandler ,(164287)(STMT)  %25 = getelementptr [31 x i8], [31 x i8]* @.str.33.15, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164289)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %25, i8* %24)
+ Callsite) ,(164290)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %25, i8* %24)
+ Ret) ,(164291)(STMT)  %26 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164292)(STMT)  %27 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %26, i32 0, i32 5
+  in prvUpdateDeltaHandler ,(164293)(STMT)  %28 = load i8*, i8** %27, align 4
+  in prvUpdateDeltaHandler ,(164294)(STMT)  %29 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164295)(STMT)  %30 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %29, i32 0, i32 6
+  in prvUpdateDeltaHandler ,(164296)(STMT)  %31 = load i32, i32* %30, align 4
+  in prvUpdateDeltaHandler ,(164297)(  %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+ Callsite) ,(164298)(  %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+ Ret) ,(164299)(STMT)  store i32 %32, i32* %result, align 4
+  in prvUpdateDeltaHandler ,(164300)(STMT)  %33 = load i32, i32* %result, align 4
+  in prvUpdateDeltaHandler ,(164301)(STMT)  %34 = icmp eq i32 %33, 1
+  in prvUpdateDeltaHandler ,(164302)(STMT)  br i1 %34, label %35, label %44
+  in prvUpdateDeltaHandler ,(164304)(STMT)  %45 = getelementptr [31 x i8], [31 x i8]* @.str.35.17, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164306)(  call void (i8*, ...) @vLoggingPrintfError(i8* %45)
+ Callsite) ,(164307)(  call void (i8*, ...) @vLoggingPrintfError(i8* %45)
+ Ret) ,(164309)(STMT)  br label %46
+  in prvUpdateDeltaHandler ,(164311)(STMT)  %47 = load i32, i32* %result, align 4
+  in prvUpdateDeltaHandler ,(164313)(STMT)  %48 = icmp eq i32 %47, 1
+  in prvUpdateDeltaHandler ,(164315)(STMT)  br i1 %48, label %49, label %55
+  in prvUpdateDeltaHandler ,(164317)(STMT)  %50 = load i32, i32* %ulOutValueLength, align 4
+  in prvUpdateDeltaHandler ,(164318)(STMT)  %56 = getelementptr [30 x i8], [30 x i8]* @.str.37.19, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164322)(  call void (i8*, ...) @vLoggingPrintfError(i8* %56)
+ Callsite) ,(164323)(  call void (i8*, ...) @vLoggingPrintfError(i8* %56)
+ Ret) ,(164326)(STMT)  br label %57
+  in prvUpdateDeltaHandler ,(164330)(STMT)  %58 = load i32, i32* %ulVersion, align 4
+  in prvUpdateDeltaHandler ,(164332)(STMT)  %59 = load i32, i32* @prvUpdateDeltaHandler.ulCurrentVersion, align 4
+  in prvUpdateDeltaHandler ,(164335)(STMT)  %60 = getelementptr [35 x i8], [35 x i8]* @.str.38.20, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164337)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %60, i32 %58, i32 %59)
+ Callsite) ,(164338)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %60, i32 %58, i32 %59)
+ Ret) ,(164340)(STMT)  %61 = load i32, i32* %ulVersion, align 4
+  in prvUpdateDeltaHandler ,(164341)(STMT)  %62 = load i32, i32* @prvUpdateDeltaHandler.ulCurrentVersion, align 4
+  in prvUpdateDeltaHandler ,(164342)(STMT)  %63 = icmp ugt i32 %61, %62
+  in prvUpdateDeltaHandler ,(164343)(STMT)  br i1 %63, label %64, label %74
+  in prvUpdateDeltaHandler ,(164344)(STMT)  %65 = load i32, i32* %ulVersion, align 4
+  in prvUpdateDeltaHandler ,(164346)(STMT)  store i32 %65, i32* @prvUpdateDeltaHandler.ulCurrentVersion, align 4
+  in prvUpdateDeltaHandler ,(164349)(STMT)  %66 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164351)(STMT)  %67 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %66, i32 0, i32 5
+  in prvUpdateDeltaHandler ,(164353)(STMT)  %68 = load i8*, i8** %67, align 4
+  in prvUpdateDeltaHandler ,(164355)(STMT)  %69 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164357)(STMT)  %70 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %69, i32 0, i32 6
+  in prvUpdateDeltaHandler ,(164360)(STMT)  %71 = load i32, i32* %70, align 4
+  in prvUpdateDeltaHandler ,(164365)(STMT)  %72 = getelementptr [14 x i8], [14 x i8]* @.str.39.21, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164368)(  %73 = call i32 @JSON_SearchT(i8* %68, i32 %71, i8* %72, i32 13, i8** %pcOutValue, i32* %ulOutValueLength, i32* null)
+ Callsite) ,
+================================
+ vs 
+Node1=331352 Inst1=  %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+ Loc1=
+Node2=177801 Inst2=  %15 = call i32 @JSON_SearchConst(i8* %8, i32 %9, i8* %10, i32 %11, i8** %12, i32* %13, i32* %14)
+ Loc2=
+Source svfgnode=331352 0x2eb78a8 (AIN)   %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+  within prvUpdateDeltaHandler(ID: 331352)
+Dest svfgnode=177801 0x2e3f7a0 (APAR)   %15 = call i32 @JSON_SearchConst(i8* %8, i32 %9, i8* %10, i32 %11, i8** %12, i32* %13, i32* %14)
+(ID: 177801)
+
+================ICFG PATH================
+(164280)(STMT)  %22 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164282)(STMT)  %23 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %22, i32 0, i32 5
+  in prvUpdateDeltaHandler ,(164284)(STMT)  %24 = load i8*, i8** %23, align 4
+  in prvUpdateDeltaHandler ,(164287)(STMT)  %25 = getelementptr [31 x i8], [31 x i8]* @.str.33.15, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164289)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %25, i8* %24)
+ Callsite) ,(164290)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %25, i8* %24)
+ Ret) ,(164291)(STMT)  %26 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164292)(STMT)  %27 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %26, i32 0, i32 5
+  in prvUpdateDeltaHandler ,(164293)(STMT)  %28 = load i8*, i8** %27, align 4
+  in prvUpdateDeltaHandler ,(164294)(STMT)  %29 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164295)(STMT)  %30 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %29, i32 0, i32 6
+  in prvUpdateDeltaHandler ,(164296)(STMT)  %31 = load i32, i32* %30, align 4
+  in prvUpdateDeltaHandler ,(164297)(  %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+ Callsite) ,(164298)(  %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+ Ret) ,(164299)(STMT)  store i32 %32, i32* %result, align 4
+  in prvUpdateDeltaHandler ,(164300)(STMT)  %33 = load i32, i32* %result, align 4
+  in prvUpdateDeltaHandler ,(164301)(STMT)  %34 = icmp eq i32 %33, 1
+  in prvUpdateDeltaHandler ,(164302)(STMT)  br i1 %34, label %35, label %44
+  in prvUpdateDeltaHandler ,(164304)(STMT)  %45 = getelementptr [31 x i8], [31 x i8]* @.str.35.17, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164306)(  call void (i8*, ...) @vLoggingPrintfError(i8* %45)
+ Callsite) ,(164307)(  call void (i8*, ...) @vLoggingPrintfError(i8* %45)
+ Ret) ,(164309)(STMT)  br label %46
+  in prvUpdateDeltaHandler ,(164311)(STMT)  %47 = load i32, i32* %result, align 4
+  in prvUpdateDeltaHandler ,(164313)(STMT)  %48 = icmp eq i32 %47, 1
+  in prvUpdateDeltaHandler ,(164315)(STMT)  br i1 %48, label %49, label %55
+  in prvUpdateDeltaHandler ,(164317)(STMT)  %50 = load i32, i32* %ulOutValueLength, align 4
+  in prvUpdateDeltaHandler ,(164318)(STMT)  %56 = getelementptr [30 x i8], [30 x i8]* @.str.37.19, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164322)(  call void (i8*, ...) @vLoggingPrintfError(i8* %56)
+ Callsite) ,(164323)(  call void (i8*, ...) @vLoggingPrintfError(i8* %56)
+ Ret) ,(164326)(STMT)  br label %57
+  in prvUpdateDeltaHandler ,(164330)(STMT)  %58 = load i32, i32* %ulVersion, align 4
+  in prvUpdateDeltaHandler ,(164332)(STMT)  %59 = load i32, i32* @prvUpdateDeltaHandler.ulCurrentVersion, align 4
+  in prvUpdateDeltaHandler ,(164335)(STMT)  %60 = getelementptr [35 x i8], [35 x i8]* @.str.38.20, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164337)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %60, i32 %58, i32 %59)
+ Callsite) ,(164338)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %60, i32 %58, i32 %59)
+ Ret) ,(164340)(STMT)  %61 = load i32, i32* %ulVersion, align 4
+  in prvUpdateDeltaHandler ,(164341)(STMT)  %62 = load i32, i32* @prvUpdateDeltaHandler.ulCurrentVersion, align 4
+  in prvUpdateDeltaHandler ,(164342)(STMT)  %63 = icmp ugt i32 %61, %62
+  in prvUpdateDeltaHandler ,(164343)(STMT)  br i1 %63, label %64, label %74
+  in prvUpdateDeltaHandler ,(164344)(STMT)  %65 = load i32, i32* %ulVersion, align 4
+  in prvUpdateDeltaHandler ,(164346)(STMT)  store i32 %65, i32* @prvUpdateDeltaHandler.ulCurrentVersion, align 4
+  in prvUpdateDeltaHandler ,(164349)(STMT)  %66 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164351)(STMT)  %67 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %66, i32 0, i32 5
+  in prvUpdateDeltaHandler ,(164353)(STMT)  %68 = load i8*, i8** %67, align 4
+  in prvUpdateDeltaHandler ,(164355)(STMT)  %69 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164357)(STMT)  %70 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %69, i32 0, i32 6
+  in prvUpdateDeltaHandler ,(164360)(STMT)  %71 = load i32, i32* %70, align 4
+  in prvUpdateDeltaHandler ,(164365)(STMT)  %72 = getelementptr [14 x i8], [14 x i8]* @.str.39.21, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164368)(  %73 = call i32 @JSON_SearchT(i8* %68, i32 %71, i8* %72, i32 13, i8** %pcOutValue, i32* %ulOutValueLength, i32* null)
+ Callsite) ,
+================================
+ vs 
+Node1=331352 Inst1=  %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+ Loc1=
+Node2=330169 Inst2=  %15 = call i32 @JSON_SearchConst(i8* %8, i32 %9, i8* %10, i32 %11, i8** %12, i32* %13, i32* %14)
+ Loc2=
+Source svfgnode=331352 0x2eb78a8 (AIN)   %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+  within prvUpdateDeltaHandler(ID: 331352)
+Dest svfgnode=330169 0x2e3f7a0 (AIN)   %15 = call i32 @JSON_SearchConst(i8* %8, i32 %9, i8* %10, i32 %11, i8** %12, i32* %13, i32* %14)
+  within JSON_SearchT(ID: 330169)
+
+================ICFG PATH================
+(164280)(STMT)  %22 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164282)(STMT)  %23 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %22, i32 0, i32 5
+  in prvUpdateDeltaHandler ,(164284)(STMT)  %24 = load i8*, i8** %23, align 4
+  in prvUpdateDeltaHandler ,(164287)(STMT)  %25 = getelementptr [31 x i8], [31 x i8]* @.str.33.15, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164289)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %25, i8* %24)
+ Callsite) ,(164290)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %25, i8* %24)
+ Ret) ,(164291)(STMT)  %26 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164292)(STMT)  %27 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %26, i32 0, i32 5
+  in prvUpdateDeltaHandler ,(164293)(STMT)  %28 = load i8*, i8** %27, align 4
+  in prvUpdateDeltaHandler ,(164294)(STMT)  %29 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164295)(STMT)  %30 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %29, i32 0, i32 6
+  in prvUpdateDeltaHandler ,(164296)(STMT)  %31 = load i32, i32* %30, align 4
+  in prvUpdateDeltaHandler ,(164297)(  %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+ Callsite) ,(164298)(  %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+ Ret) ,(164299)(STMT)  store i32 %32, i32* %result, align 4
+  in prvUpdateDeltaHandler ,(164300)(STMT)  %33 = load i32, i32* %result, align 4
+  in prvUpdateDeltaHandler ,(164301)(STMT)  %34 = icmp eq i32 %33, 1
+  in prvUpdateDeltaHandler ,(164302)(STMT)  br i1 %34, label %35, label %44
+  in prvUpdateDeltaHandler ,(164304)(STMT)  %45 = getelementptr [31 x i8], [31 x i8]* @.str.35.17, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164306)(  call void (i8*, ...) @vLoggingPrintfError(i8* %45)
+ Callsite) ,(164307)(  call void (i8*, ...) @vLoggingPrintfError(i8* %45)
+ Ret) ,(164309)(STMT)  br label %46
+  in prvUpdateDeltaHandler ,(164311)(STMT)  %47 = load i32, i32* %result, align 4
+  in prvUpdateDeltaHandler ,(164313)(STMT)  %48 = icmp eq i32 %47, 1
+  in prvUpdateDeltaHandler ,(164315)(STMT)  br i1 %48, label %49, label %55
+  in prvUpdateDeltaHandler ,(164317)(STMT)  %50 = load i32, i32* %ulOutValueLength, align 4
+  in prvUpdateDeltaHandler ,(164318)(STMT)  %56 = getelementptr [30 x i8], [30 x i8]* @.str.37.19, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164322)(  call void (i8*, ...) @vLoggingPrintfError(i8* %56)
+ Callsite) ,(164323)(  call void (i8*, ...) @vLoggingPrintfError(i8* %56)
+ Ret) ,(164326)(STMT)  br label %57
+  in prvUpdateDeltaHandler ,(164330)(STMT)  %58 = load i32, i32* %ulVersion, align 4
+  in prvUpdateDeltaHandler ,(164332)(STMT)  %59 = load i32, i32* @prvUpdateDeltaHandler.ulCurrentVersion, align 4
+  in prvUpdateDeltaHandler ,(164335)(STMT)  %60 = getelementptr [35 x i8], [35 x i8]* @.str.38.20, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164337)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %60, i32 %58, i32 %59)
+ Callsite) ,(164338)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %60, i32 %58, i32 %59)
+ Ret) ,(164340)(STMT)  %61 = load i32, i32* %ulVersion, align 4
+  in prvUpdateDeltaHandler ,(164341)(STMT)  %62 = load i32, i32* @prvUpdateDeltaHandler.ulCurrentVersion, align 4
+  in prvUpdateDeltaHandler ,(164342)(STMT)  %63 = icmp ugt i32 %61, %62
+  in prvUpdateDeltaHandler ,(164343)(STMT)  br i1 %63, label %64, label %74
+  in prvUpdateDeltaHandler ,(164344)(STMT)  %65 = load i32, i32* %ulVersion, align 4
+  in prvUpdateDeltaHandler ,(164346)(STMT)  store i32 %65, i32* @prvUpdateDeltaHandler.ulCurrentVersion, align 4
+  in prvUpdateDeltaHandler ,(164349)(STMT)  %66 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164351)(STMT)  %67 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %66, i32 0, i32 5
+  in prvUpdateDeltaHandler ,(164353)(STMT)  %68 = load i8*, i8** %67, align 4
+  in prvUpdateDeltaHandler ,(164355)(STMT)  %69 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164357)(STMT)  %70 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %69, i32 0, i32 6
+  in prvUpdateDeltaHandler ,(164360)(STMT)  %71 = load i32, i32* %70, align 4
+  in prvUpdateDeltaHandler ,(164365)(STMT)  %72 = getelementptr [14 x i8], [14 x i8]* @.str.39.21, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164368)(  %73 = call i32 @JSON_SearchT(i8* %68, i32 %71, i8* %72, i32 13, i8** %pcOutValue, i32* %ulOutValueLength, i32* null)
+ Callsite) ,
+================================
+ vs 
+Node1=331352 Inst1=  %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+ Loc1=
+Node2=330170 Inst2=  %15 = call i32 @JSON_SearchConst(i8* %8, i32 %9, i8* %10, i32 %11, i8** %12, i32* %13, i32* %14)
+ Loc2=
+Source svfgnode=331352 0x2eb78a8 (AIN)   %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+  within prvUpdateDeltaHandler(ID: 331352)
+Dest svfgnode=330170 0x2e3f7a0 (AIN)   %15 = call i32 @JSON_SearchConst(i8* %8, i32 %9, i8* %10, i32 %11, i8** %12, i32* %13, i32* %14)
+  within JSON_SearchT(ID: 330170)
+
+================ICFG PATH================
+(164280)(STMT)  %22 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164282)(STMT)  %23 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %22, i32 0, i32 5
+  in prvUpdateDeltaHandler ,(164284)(STMT)  %24 = load i8*, i8** %23, align 4
+  in prvUpdateDeltaHandler ,(164287)(STMT)  %25 = getelementptr [31 x i8], [31 x i8]* @.str.33.15, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164289)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %25, i8* %24)
+ Callsite) ,(164290)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %25, i8* %24)
+ Ret) ,(164291)(STMT)  %26 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164292)(STMT)  %27 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %26, i32 0, i32 5
+  in prvUpdateDeltaHandler ,(164293)(STMT)  %28 = load i8*, i8** %27, align 4
+  in prvUpdateDeltaHandler ,(164294)(STMT)  %29 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164295)(STMT)  %30 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %29, i32 0, i32 6
+  in prvUpdateDeltaHandler ,(164296)(STMT)  %31 = load i32, i32* %30, align 4
+  in prvUpdateDeltaHandler ,(164297)(  %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+ Callsite) ,(164298)(  %32 = call i32 @JSON_Validate(i8* %28, i32 %31)
+ Ret) ,(164299)(STMT)  store i32 %32, i32* %result, align 4
+  in prvUpdateDeltaHandler ,(164300)(STMT)  %33 = load i32, i32* %result, align 4
+  in prvUpdateDeltaHandler ,(164301)(STMT)  %34 = icmp eq i32 %33, 1
+  in prvUpdateDeltaHandler ,(164302)(STMT)  br i1 %34, label %35, label %44
+  in prvUpdateDeltaHandler ,(164304)(STMT)  %45 = getelementptr [31 x i8], [31 x i8]* @.str.35.17, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164306)(  call void (i8*, ...) @vLoggingPrintfError(i8* %45)
+ Callsite) ,(164307)(  call void (i8*, ...) @vLoggingPrintfError(i8* %45)
+ Ret) ,(164309)(STMT)  br label %46
+  in prvUpdateDeltaHandler ,(164311)(STMT)  %47 = load i32, i32* %result, align 4
+  in prvUpdateDeltaHandler ,(164313)(STMT)  %48 = icmp eq i32 %47, 1
+  in prvUpdateDeltaHandler ,(164315)(STMT)  br i1 %48, label %49, label %55
+  in prvUpdateDeltaHandler ,(164317)(STMT)  %50 = load i32, i32* %ulOutValueLength, align 4
+  in prvUpdateDeltaHandler ,(164318)(STMT)  %56 = getelementptr [30 x i8], [30 x i8]* @.str.37.19, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164322)(  call void (i8*, ...) @vLoggingPrintfError(i8* %56)
+ Callsite) ,(164323)(  call void (i8*, ...) @vLoggingPrintfError(i8* %56)
+ Ret) ,(164326)(STMT)  br label %57
+  in prvUpdateDeltaHandler ,(164330)(STMT)  %58 = load i32, i32* %ulVersion, align 4
+  in prvUpdateDeltaHandler ,(164332)(STMT)  %59 = load i32, i32* @prvUpdateDeltaHandler.ulCurrentVersion, align 4
+  in prvUpdateDeltaHandler ,(164335)(STMT)  %60 = getelementptr [35 x i8], [35 x i8]* @.str.38.20, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164337)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %60, i32 %58, i32 %59)
+ Callsite) ,(164338)(  call void (i8*, ...) @vLoggingPrintfInfo(i8* %60, i32 %58, i32 %59)
+ Ret) ,(164340)(STMT)  %61 = load i32, i32* %ulVersion, align 4
+  in prvUpdateDeltaHandler ,(164341)(STMT)  %62 = load i32, i32* @prvUpdateDeltaHandler.ulCurrentVersion, align 4
+  in prvUpdateDeltaHandler ,(164342)(STMT)  %63 = icmp ugt i32 %61, %62
+  in prvUpdateDeltaHandler ,(164343)(STMT)  br i1 %63, label %64, label %74
+  in prvUpdateDeltaHandler ,(164344)(STMT)  %65 = load i32, i32* %ulVersion, align 4
+  in prvUpdateDeltaHandler ,(164346)(STMT)  store i32 %65, i32* @prvUpdateDeltaHandler.ulCurrentVersion, align 4
+  in prvUpdateDeltaHandler ,(164349)(STMT)  %66 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164351)(STMT)  %67 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %66, i32 0, i32 5
+  in prvUpdateDeltaHandler ,(164353)(STMT)  %68 = load i8*, i8** %67, align 4
+  in prvUpdateDeltaHandler ,(164355)(STMT)  %69 = load %struct.MQTTPublishInfo*, %struct.MQTTPublishInfo** %1, align 4
+  in prvUpdateDeltaHandler ,(164357)(STMT)  %70 = getelementptr inbounds %struct.MQTTPublishInfo, %struct.MQTTPublishInfo* %69, i32 0, i32 6
+  in prvUpdateDeltaHandler ,(164360)(STMT)  %71 = load i32, i32* %70, align 4
+  in prvUpdateDeltaHandler ,(164365)(STMT)  %72 = getelementptr [14 x i8], [14 x i8]* @.str.39.21, i32 0, i32 0
+  in prvUpdateDeltaHandler ,(164368)(  %73 = call i32 @JSON_SearchT(i8* %68, i32 %71, i8* %72, i32 13, i8** %pcOutValue, i32* %ulOutValueLength, i32* null)
+ Callsite) ,
+================================
+Label=JSON_Validate_JSON_SearchConst_jsonmisuse solution size=12 time=9
+Total number of solutions=9
+Total number of cached solutions=1
+Total query solving time=11
+Average query solving time=1
+SVFG stats: nodes=363108 edges=540581

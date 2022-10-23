@@ -1,0 +1,20 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=3029
+Total number of formal out/ret w outgoing edge=438
+Total number of formal out/ret w incoming formalin wo deref=787
+Total number of formal out/ret w incoming formalin (relaxed)=1063
+Sumarization time=0
+Query: TaintsDataFieldCallsite, data type= iotc_crypto_key_data_t field=1 sink=Send desc=privleak
+Label=typeiotc_crypto_key_data_tfield11_label solution size=3 time=2
+Label=Sendarg1_label solution size=0 time=0
+Label=Sendcs1_label solution size=4 time=7
+Label=Sendargpby1 solution size=10 time=7
+typeiotc_crypto_key_data_tfield11 size=3
+Sendarg1 size=9
+Label=iotc_crypto_key_data_t_Send_privleak solution size=0 time=9
+Total number of solutions=5
+Total number of cached solutions=0
+Total query solving time=25
+Average query solving time=5
+SVFG stats: nodes=44709 edges=58825

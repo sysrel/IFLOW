@@ -1,0 +1,2170 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=9410
+Total number of formal out/ret w outgoing edge=1548
+Total number of formal out/ret w incoming formalin wo deref=2596
+Total number of formal out/ret w incoming formalin (relaxed)=4354
+Sumarization time=2
+Query: TernaryForCallsiteWithSourceTaint, source=mbedtls_ssl_handshake sink=mbedtls_ssl_read desc=sslctxcorruption sanitizeOnReturn=0
+Label=somegeneric_label solution size=0 time=0
+Label=mbedtls_ssl_handshakearg1_label solution size=0 time=0
+Label=mbedtls_ssl_handshakecs1_label solution size=9 time=8
+Label=mbedtls_ssl_handshakeargpby1 solution size=122 time=8
+Label=mbedtls_ssl_readarg1_label solution size=0 time=0
+Label=mbedtls_ssl_readcs1_label solution size=12 time=7
+Label=mbedtls_ssl_readargpby1 solution size=115 time=7
+ vs 
+Node1=76446 Inst1=  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Loc1=
+Node2=76455 Inst2=  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ Loc2=
+Source svfgnode=76446 0x21e44c0 (APAR)   %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ in mbedtls_ssl_handshake (ID: 76446)
+Dest svfgnode=76455 0x21e8488 (APAR)   %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ in mbedtls_ssl_read (ID: 76455)
+
+================ICFG PATH================
+(68064)(STMT)  %20 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_handshake ,(68066)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Callsite) ,(68067)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Ret) ,(68069)(STMT)  store i32 %21, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68071)(STMT)  %22 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68073)(STMT)  %23 = icmp ne i32 %22, 0
+  in mbedtls_ssl_handshake ,(68075)(STMT)  br i1 %23, label %24, label %25
+  in mbedtls_ssl_handshake ,(68076)(STMT)  br label %26
+  in mbedtls_ssl_handshake ,(68065)(STMT)  br label %27
+  in mbedtls_ssl_handshake ,(68068)(STMT)  br label %28
+  in mbedtls_ssl_handshake ,(68070)(STMT)  %29 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68072)(STMT)  store i32 %29, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68074)(STMT)  br label %30
+  in mbedtls_ssl_handshake ,(68050)(STMT)  %31 = load i32, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68052)(STMT)  ret i32 %31
+  in mbedtls_ssl_handshake ,(68054)(mbedtls_ssl_handshake Exit) ,(68111)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ Ret) ,(68113)(STMT)  store i32 %22, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68115)(STMT)  %23 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68117)(STMT)  %24 = icmp ne i32 %23, -27392
+  in mbedtls_ssl_read ,(68119)(STMT)  br i1 %24, label %25, label %32
+  in mbedtls_ssl_read ,(68122)(STMT)  br label %33
+  in mbedtls_ssl_read ,(68109)(STMT)  br label %34
+  in mbedtls_ssl_read ,(68112)(STMT)  %35 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68114)(STMT)  %36 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %35, i32 0, i32 26
+  in mbedtls_ssl_read ,(68116)(STMT)  %37 = load i8*, i8** %36, align 4
+  in mbedtls_ssl_read ,(68118)(STMT)  %38 = icmp eq i8* %37, null
+  in mbedtls_ssl_read ,(68120)(STMT)  br i1 %38, label %39, label %176
+  in mbedtls_ssl_read ,(68123)(STMT)  %40 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68126)(STMT)  %41 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %40, i32 0, i32 19
+  in mbedtls_ssl_read ,(68129)(STMT)  %42 = load i32 (i8*)*, i32 (i8*)** %41, align 4
+  in mbedtls_ssl_read ,(68132)(STMT)  %43 = icmp ne i32 (i8*)* %42, null
+  in mbedtls_ssl_read ,(68135)(STMT)  br i1 %43, label %44, label %60
+  in mbedtls_ssl_read ,(68138)(STMT)  %45 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68142)(STMT)  %46 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %45, i32 0, i32 19
+  in mbedtls_ssl_read ,(68148)(STMT)  %47 = load i32 (i8*)*, i32 (i8*)** %46, align 4
+  in mbedtls_ssl_read ,(68152)(STMT)  %48 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68156)(STMT)  %49 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %48, i32 0, i32 17
+  in mbedtls_ssl_read ,(68160)(STMT)  %50 = load i8*, i8** %49, align 4
+  in mbedtls_ssl_read ,(68164)(  %51 = call i32 %47(i8* %50)
+ Callsite) ,(68165)(  %51 = call i32 %47(i8* %50)
+ Ret) ,(68169)(STMT)  %52 = icmp eq i32 %51, -1
+  in mbedtls_ssl_read ,(68173)(STMT)  br i1 %52, label %53, label %60
+  in mbedtls_ssl_read ,
+================================
+ vs 
+Node1=76446 Inst1=  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Loc1=
+Node2=76457 Inst2=  %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+ Loc2=
+Source svfgnode=76446 0x21e44c0 (APAR)   %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ in mbedtls_ssl_handshake (ID: 76446)
+Dest svfgnode=76457 0x21e9008 (APAR)   %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+ in mbedtls_ssl_read (ID: 76457)
+
+================ICFG PATH================
+(68064)(STMT)  %20 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_handshake ,(68066)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Callsite) ,(68067)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Ret) ,(68069)(STMT)  store i32 %21, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68071)(STMT)  %22 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68073)(STMT)  %23 = icmp ne i32 %22, 0
+  in mbedtls_ssl_handshake ,(68075)(STMT)  br i1 %23, label %24, label %25
+  in mbedtls_ssl_handshake ,(68076)(STMT)  br label %26
+  in mbedtls_ssl_handshake ,(68065)(STMT)  br label %27
+  in mbedtls_ssl_handshake ,(68068)(STMT)  br label %28
+  in mbedtls_ssl_handshake ,(68070)(STMT)  %29 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68072)(STMT)  store i32 %29, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68074)(STMT)  br label %30
+  in mbedtls_ssl_handshake ,(68050)(STMT)  %31 = load i32, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68052)(STMT)  ret i32 %31
+  in mbedtls_ssl_handshake ,(68054)(mbedtls_ssl_handshake Exit) ,(68111)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ Ret) ,(68113)(STMT)  store i32 %22, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68115)(STMT)  %23 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68117)(STMT)  %24 = icmp ne i32 %23, -27392
+  in mbedtls_ssl_read ,(68119)(STMT)  br i1 %24, label %25, label %32
+  in mbedtls_ssl_read ,(68122)(STMT)  br label %33
+  in mbedtls_ssl_read ,(68109)(STMT)  br label %34
+  in mbedtls_ssl_read ,(68112)(STMT)  %35 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68114)(STMT)  %36 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %35, i32 0, i32 26
+  in mbedtls_ssl_read ,(68116)(STMT)  %37 = load i8*, i8** %36, align 4
+  in mbedtls_ssl_read ,(68118)(STMT)  %38 = icmp eq i8* %37, null
+  in mbedtls_ssl_read ,(68120)(STMT)  br i1 %38, label %39, label %176
+  in mbedtls_ssl_read ,(68123)(STMT)  %40 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68126)(STMT)  %41 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %40, i32 0, i32 19
+  in mbedtls_ssl_read ,(68129)(STMT)  %42 = load i32 (i8*)*, i32 (i8*)** %41, align 4
+  in mbedtls_ssl_read ,(68132)(STMT)  %43 = icmp ne i32 (i8*)* %42, null
+  in mbedtls_ssl_read ,(68135)(STMT)  br i1 %43, label %44, label %60
+  in mbedtls_ssl_read ,(68139)(STMT)  %61 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68143)(  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ Callsite) ,(68144)(  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ Ret) ,(68149)(STMT)  store i32 %62, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68153)(STMT)  %63 = icmp ne i32 %62, 0
+  in mbedtls_ssl_read ,(68157)(STMT)  br i1 %63, label %64, label %72
+  in mbedtls_ssl_read ,(68161)(STMT)  %65 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68166)(STMT)  %66 = icmp eq i32 %65, -29312
+  in mbedtls_ssl_read ,(68162)(STMT)  %73 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68167)(STMT)  %74 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %73, i32 0, i32 28
+  in mbedtls_ssl_read ,(68171)(STMT)  %75 = load i32, i32* %74, align 4
+  in mbedtls_ssl_read ,(68176)(STMT)  %76 = icmp eq i32 %75, 0
+  in mbedtls_ssl_read ,(68181)(STMT)  br i1 %76, label %77, label %95
+  in mbedtls_ssl_read ,(68185)(STMT)  %78 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68191)(STMT)  %79 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %78, i32 0, i32 27
+  in mbedtls_ssl_read ,(68196)(STMT)  %80 = load i32, i32* %79, align 4
+  in mbedtls_ssl_read ,(68200)(STMT)  %81 = icmp eq i32 %80, 23
+  in mbedtls_ssl_read ,(68204)(STMT)  br i1 %81, label %82, label %95
+  in mbedtls_ssl_read ,
+================================
+ vs 
+Node1=76446 Inst1=  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Loc1=
+Node2=130044 Inst2=  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ Loc2=
+Source svfgnode=76446 0x21e44c0 (APAR)   %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ in mbedtls_ssl_handshake (ID: 76446)
+Dest svfgnode=130044 0x21e8488 (AIN)   %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+  within mbedtls_ssl_read(ID: 130044)
+
+================ICFG PATH================
+(68064)(STMT)  %20 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_handshake ,(68066)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Callsite) ,(68067)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Ret) ,(68069)(STMT)  store i32 %21, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68071)(STMT)  %22 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68073)(STMT)  %23 = icmp ne i32 %22, 0
+  in mbedtls_ssl_handshake ,(68075)(STMT)  br i1 %23, label %24, label %25
+  in mbedtls_ssl_handshake ,(68076)(STMT)  br label %26
+  in mbedtls_ssl_handshake ,(68065)(STMT)  br label %27
+  in mbedtls_ssl_handshake ,(68068)(STMT)  br label %28
+  in mbedtls_ssl_handshake ,(68070)(STMT)  %29 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68072)(STMT)  store i32 %29, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68074)(STMT)  br label %30
+  in mbedtls_ssl_handshake ,(68050)(STMT)  %31 = load i32, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68052)(STMT)  ret i32 %31
+  in mbedtls_ssl_handshake ,(68054)(mbedtls_ssl_handshake Exit) ,(68111)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ Ret) ,(68113)(STMT)  store i32 %22, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68115)(STMT)  %23 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68117)(STMT)  %24 = icmp ne i32 %23, -27392
+  in mbedtls_ssl_read ,(68119)(STMT)  br i1 %24, label %25, label %32
+  in mbedtls_ssl_read ,(68122)(STMT)  br label %33
+  in mbedtls_ssl_read ,(68109)(STMT)  br label %34
+  in mbedtls_ssl_read ,(68112)(STMT)  %35 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68114)(STMT)  %36 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %35, i32 0, i32 26
+  in mbedtls_ssl_read ,(68116)(STMT)  %37 = load i8*, i8** %36, align 4
+  in mbedtls_ssl_read ,(68118)(STMT)  %38 = icmp eq i8* %37, null
+  in mbedtls_ssl_read ,(68120)(STMT)  br i1 %38, label %39, label %176
+  in mbedtls_ssl_read ,(68123)(STMT)  %40 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68126)(STMT)  %41 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %40, i32 0, i32 19
+  in mbedtls_ssl_read ,(68129)(STMT)  %42 = load i32 (i8*)*, i32 (i8*)** %41, align 4
+  in mbedtls_ssl_read ,(68132)(STMT)  %43 = icmp ne i32 (i8*)* %42, null
+  in mbedtls_ssl_read ,(68135)(STMT)  br i1 %43, label %44, label %60
+  in mbedtls_ssl_read ,(68138)(STMT)  %45 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68142)(STMT)  %46 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %45, i32 0, i32 19
+  in mbedtls_ssl_read ,(68148)(STMT)  %47 = load i32 (i8*)*, i32 (i8*)** %46, align 4
+  in mbedtls_ssl_read ,(68152)(STMT)  %48 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68156)(STMT)  %49 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %48, i32 0, i32 17
+  in mbedtls_ssl_read ,(68160)(STMT)  %50 = load i8*, i8** %49, align 4
+  in mbedtls_ssl_read ,(68164)(  %51 = call i32 %47(i8* %50)
+ Callsite) ,(68165)(  %51 = call i32 %47(i8* %50)
+ Ret) ,(68169)(STMT)  %52 = icmp eq i32 %51, -1
+  in mbedtls_ssl_read ,(68173)(STMT)  br i1 %52, label %53, label %60
+  in mbedtls_ssl_read ,
+================================
+ vs 
+Node1=76446 Inst1=  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Loc1=
+Node2=130048 Inst2=  %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+ Loc2=
+Source svfgnode=76446 0x21e44c0 (APAR)   %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ in mbedtls_ssl_handshake (ID: 76446)
+Dest svfgnode=130048 0x21e9008 (AIN)   %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+  within mbedtls_ssl_read(ID: 130048)
+
+================ICFG PATH================
+(68064)(STMT)  %20 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_handshake ,(68066)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Callsite) ,(68067)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Ret) ,(68069)(STMT)  store i32 %21, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68071)(STMT)  %22 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68073)(STMT)  %23 = icmp ne i32 %22, 0
+  in mbedtls_ssl_handshake ,(68075)(STMT)  br i1 %23, label %24, label %25
+  in mbedtls_ssl_handshake ,(68076)(STMT)  br label %26
+  in mbedtls_ssl_handshake ,(68065)(STMT)  br label %27
+  in mbedtls_ssl_handshake ,(68068)(STMT)  br label %28
+  in mbedtls_ssl_handshake ,(68070)(STMT)  %29 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68072)(STMT)  store i32 %29, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68074)(STMT)  br label %30
+  in mbedtls_ssl_handshake ,(68050)(STMT)  %31 = load i32, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68052)(STMT)  ret i32 %31
+  in mbedtls_ssl_handshake ,(68054)(mbedtls_ssl_handshake Exit) ,(68111)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ Ret) ,(68113)(STMT)  store i32 %22, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68115)(STMT)  %23 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68117)(STMT)  %24 = icmp ne i32 %23, -27392
+  in mbedtls_ssl_read ,(68119)(STMT)  br i1 %24, label %25, label %32
+  in mbedtls_ssl_read ,(68122)(STMT)  br label %33
+  in mbedtls_ssl_read ,(68109)(STMT)  br label %34
+  in mbedtls_ssl_read ,(68112)(STMT)  %35 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68114)(STMT)  %36 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %35, i32 0, i32 26
+  in mbedtls_ssl_read ,(68116)(STMT)  %37 = load i8*, i8** %36, align 4
+  in mbedtls_ssl_read ,(68118)(STMT)  %38 = icmp eq i8* %37, null
+  in mbedtls_ssl_read ,(68120)(STMT)  br i1 %38, label %39, label %176
+  in mbedtls_ssl_read ,(68123)(STMT)  %40 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68126)(STMT)  %41 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %40, i32 0, i32 19
+  in mbedtls_ssl_read ,(68129)(STMT)  %42 = load i32 (i8*)*, i32 (i8*)** %41, align 4
+  in mbedtls_ssl_read ,(68132)(STMT)  %43 = icmp ne i32 (i8*)* %42, null
+  in mbedtls_ssl_read ,(68135)(STMT)  br i1 %43, label %44, label %60
+  in mbedtls_ssl_read ,(68139)(STMT)  %61 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68143)(  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ Callsite) ,(68144)(  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ Ret) ,(68149)(STMT)  store i32 %62, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68153)(STMT)  %63 = icmp ne i32 %62, 0
+  in mbedtls_ssl_read ,(68157)(STMT)  br i1 %63, label %64, label %72
+  in mbedtls_ssl_read ,(68161)(STMT)  %65 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68166)(STMT)  %66 = icmp eq i32 %65, -29312
+  in mbedtls_ssl_read ,(68162)(STMT)  %73 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68167)(STMT)  %74 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %73, i32 0, i32 28
+  in mbedtls_ssl_read ,(68171)(STMT)  %75 = load i32, i32* %74, align 4
+  in mbedtls_ssl_read ,(68176)(STMT)  %76 = icmp eq i32 %75, 0
+  in mbedtls_ssl_read ,(68181)(STMT)  br i1 %76, label %77, label %95
+  in mbedtls_ssl_read ,(68185)(STMT)  %78 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68191)(STMT)  %79 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %78, i32 0, i32 27
+  in mbedtls_ssl_read ,(68196)(STMT)  %80 = load i32, i32* %79, align 4
+  in mbedtls_ssl_read ,(68200)(STMT)  %81 = icmp eq i32 %80, 23
+  in mbedtls_ssl_read ,(68204)(STMT)  br i1 %81, label %82, label %95
+  in mbedtls_ssl_read ,
+================================
+ vs 
+Node1=76451 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=76455 Inst2=  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,
+================================
+ vs 
+Node1=76451 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=76457 Inst2=  %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,  br i1 %76, label %77, label %95
+  ,  br i1 %81, label %82, label %95
+  ,  br i1 %85, label %86, label %94
+  ,
+================================
+ vs 
+Node1=76451 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130044 Inst2=  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,
+================================
+ vs 
+Node1=76451 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130048 Inst2=  %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,  br i1 %76, label %77, label %95
+  ,  br i1 %81, label %82, label %95
+  ,  br i1 %85, label %86, label %94
+  ,
+================================
+ vs 
+Node1=130036 Inst1=  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Loc1=
+Node2=76455 Inst2=  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ Loc2=
+Source svfgnode=130036 0x21e44c0 (AIN)   %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+  within mbedtls_ssl_handshake(ID: 130036)
+Dest svfgnode=76455 0x21e8488 (APAR)   %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ in mbedtls_ssl_read (ID: 76455)
+
+================ICFG PATH================
+(68064)(STMT)  %20 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_handshake ,(68066)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Callsite) ,(68067)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Ret) ,(68069)(STMT)  store i32 %21, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68071)(STMT)  %22 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68073)(STMT)  %23 = icmp ne i32 %22, 0
+  in mbedtls_ssl_handshake ,(68075)(STMT)  br i1 %23, label %24, label %25
+  in mbedtls_ssl_handshake ,(68076)(STMT)  br label %26
+  in mbedtls_ssl_handshake ,(68065)(STMT)  br label %27
+  in mbedtls_ssl_handshake ,(68068)(STMT)  br label %28
+  in mbedtls_ssl_handshake ,(68070)(STMT)  %29 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68072)(STMT)  store i32 %29, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68074)(STMT)  br label %30
+  in mbedtls_ssl_handshake ,(68050)(STMT)  %31 = load i32, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68052)(STMT)  ret i32 %31
+  in mbedtls_ssl_handshake ,(68054)(mbedtls_ssl_handshake Exit) ,(68111)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ Ret) ,(68113)(STMT)  store i32 %22, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68115)(STMT)  %23 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68117)(STMT)  %24 = icmp ne i32 %23, -27392
+  in mbedtls_ssl_read ,(68119)(STMT)  br i1 %24, label %25, label %32
+  in mbedtls_ssl_read ,(68122)(STMT)  br label %33
+  in mbedtls_ssl_read ,(68109)(STMT)  br label %34
+  in mbedtls_ssl_read ,(68112)(STMT)  %35 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68114)(STMT)  %36 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %35, i32 0, i32 26
+  in mbedtls_ssl_read ,(68116)(STMT)  %37 = load i8*, i8** %36, align 4
+  in mbedtls_ssl_read ,(68118)(STMT)  %38 = icmp eq i8* %37, null
+  in mbedtls_ssl_read ,(68120)(STMT)  br i1 %38, label %39, label %176
+  in mbedtls_ssl_read ,(68123)(STMT)  %40 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68126)(STMT)  %41 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %40, i32 0, i32 19
+  in mbedtls_ssl_read ,(68129)(STMT)  %42 = load i32 (i8*)*, i32 (i8*)** %41, align 4
+  in mbedtls_ssl_read ,(68132)(STMT)  %43 = icmp ne i32 (i8*)* %42, null
+  in mbedtls_ssl_read ,(68135)(STMT)  br i1 %43, label %44, label %60
+  in mbedtls_ssl_read ,(68138)(STMT)  %45 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68142)(STMT)  %46 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %45, i32 0, i32 19
+  in mbedtls_ssl_read ,(68148)(STMT)  %47 = load i32 (i8*)*, i32 (i8*)** %46, align 4
+  in mbedtls_ssl_read ,(68152)(STMT)  %48 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68156)(STMT)  %49 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %48, i32 0, i32 17
+  in mbedtls_ssl_read ,(68160)(STMT)  %50 = load i8*, i8** %49, align 4
+  in mbedtls_ssl_read ,(68164)(  %51 = call i32 %47(i8* %50)
+ Callsite) ,(68165)(  %51 = call i32 %47(i8* %50)
+ Ret) ,(68169)(STMT)  %52 = icmp eq i32 %51, -1
+  in mbedtls_ssl_read ,(68173)(STMT)  br i1 %52, label %53, label %60
+  in mbedtls_ssl_read ,
+================================
+ vs 
+Node1=130036 Inst1=  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Loc1=
+Node2=76457 Inst2=  %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+ Loc2=
+Source svfgnode=130036 0x21e44c0 (AIN)   %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+  within mbedtls_ssl_handshake(ID: 130036)
+Dest svfgnode=76457 0x21e9008 (APAR)   %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+ in mbedtls_ssl_read (ID: 76457)
+
+================ICFG PATH================
+(68064)(STMT)  %20 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_handshake ,(68066)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Callsite) ,(68067)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Ret) ,(68069)(STMT)  store i32 %21, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68071)(STMT)  %22 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68073)(STMT)  %23 = icmp ne i32 %22, 0
+  in mbedtls_ssl_handshake ,(68075)(STMT)  br i1 %23, label %24, label %25
+  in mbedtls_ssl_handshake ,(68076)(STMT)  br label %26
+  in mbedtls_ssl_handshake ,(68065)(STMT)  br label %27
+  in mbedtls_ssl_handshake ,(68068)(STMT)  br label %28
+  in mbedtls_ssl_handshake ,(68070)(STMT)  %29 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68072)(STMT)  store i32 %29, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68074)(STMT)  br label %30
+  in mbedtls_ssl_handshake ,(68050)(STMT)  %31 = load i32, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68052)(STMT)  ret i32 %31
+  in mbedtls_ssl_handshake ,(68054)(mbedtls_ssl_handshake Exit) ,(68111)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ Ret) ,(68113)(STMT)  store i32 %22, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68115)(STMT)  %23 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68117)(STMT)  %24 = icmp ne i32 %23, -27392
+  in mbedtls_ssl_read ,(68119)(STMT)  br i1 %24, label %25, label %32
+  in mbedtls_ssl_read ,(68122)(STMT)  br label %33
+  in mbedtls_ssl_read ,(68109)(STMT)  br label %34
+  in mbedtls_ssl_read ,(68112)(STMT)  %35 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68114)(STMT)  %36 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %35, i32 0, i32 26
+  in mbedtls_ssl_read ,(68116)(STMT)  %37 = load i8*, i8** %36, align 4
+  in mbedtls_ssl_read ,(68118)(STMT)  %38 = icmp eq i8* %37, null
+  in mbedtls_ssl_read ,(68120)(STMT)  br i1 %38, label %39, label %176
+  in mbedtls_ssl_read ,(68123)(STMT)  %40 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68126)(STMT)  %41 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %40, i32 0, i32 19
+  in mbedtls_ssl_read ,(68129)(STMT)  %42 = load i32 (i8*)*, i32 (i8*)** %41, align 4
+  in mbedtls_ssl_read ,(68132)(STMT)  %43 = icmp ne i32 (i8*)* %42, null
+  in mbedtls_ssl_read ,(68135)(STMT)  br i1 %43, label %44, label %60
+  in mbedtls_ssl_read ,(68139)(STMT)  %61 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68143)(  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ Callsite) ,(68144)(  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ Ret) ,(68149)(STMT)  store i32 %62, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68153)(STMT)  %63 = icmp ne i32 %62, 0
+  in mbedtls_ssl_read ,(68157)(STMT)  br i1 %63, label %64, label %72
+  in mbedtls_ssl_read ,(68161)(STMT)  %65 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68166)(STMT)  %66 = icmp eq i32 %65, -29312
+  in mbedtls_ssl_read ,(68162)(STMT)  %73 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68167)(STMT)  %74 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %73, i32 0, i32 28
+  in mbedtls_ssl_read ,(68171)(STMT)  %75 = load i32, i32* %74, align 4
+  in mbedtls_ssl_read ,(68176)(STMT)  %76 = icmp eq i32 %75, 0
+  in mbedtls_ssl_read ,(68181)(STMT)  br i1 %76, label %77, label %95
+  in mbedtls_ssl_read ,(68185)(STMT)  %78 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68191)(STMT)  %79 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %78, i32 0, i32 27
+  in mbedtls_ssl_read ,(68196)(STMT)  %80 = load i32, i32* %79, align 4
+  in mbedtls_ssl_read ,(68200)(STMT)  %81 = icmp eq i32 %80, 23
+  in mbedtls_ssl_read ,(68204)(STMT)  br i1 %81, label %82, label %95
+  in mbedtls_ssl_read ,
+================================
+ vs 
+Node1=130036 Inst1=  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Loc1=
+Node2=130043 Inst2=  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ Loc2=
+Source svfgnode=130036 0x21e44c0 (AIN)   %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+  within mbedtls_ssl_handshake(ID: 130036)
+Dest svfgnode=130043 0x21e8488 (AIN)   %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+  within mbedtls_ssl_read(ID: 130043)
+
+================ICFG PATH================
+(68064)(STMT)  %20 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_handshake ,(68066)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Callsite) ,(68067)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Ret) ,(68069)(STMT)  store i32 %21, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68071)(STMT)  %22 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68073)(STMT)  %23 = icmp ne i32 %22, 0
+  in mbedtls_ssl_handshake ,(68075)(STMT)  br i1 %23, label %24, label %25
+  in mbedtls_ssl_handshake ,(68076)(STMT)  br label %26
+  in mbedtls_ssl_handshake ,(68065)(STMT)  br label %27
+  in mbedtls_ssl_handshake ,(68068)(STMT)  br label %28
+  in mbedtls_ssl_handshake ,(68070)(STMT)  %29 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68072)(STMT)  store i32 %29, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68074)(STMT)  br label %30
+  in mbedtls_ssl_handshake ,(68050)(STMT)  %31 = load i32, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68052)(STMT)  ret i32 %31
+  in mbedtls_ssl_handshake ,(68054)(mbedtls_ssl_handshake Exit) ,(68111)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ Ret) ,(68113)(STMT)  store i32 %22, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68115)(STMT)  %23 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68117)(STMT)  %24 = icmp ne i32 %23, -27392
+  in mbedtls_ssl_read ,(68119)(STMT)  br i1 %24, label %25, label %32
+  in mbedtls_ssl_read ,(68122)(STMT)  br label %33
+  in mbedtls_ssl_read ,(68109)(STMT)  br label %34
+  in mbedtls_ssl_read ,(68112)(STMT)  %35 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68114)(STMT)  %36 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %35, i32 0, i32 26
+  in mbedtls_ssl_read ,(68116)(STMT)  %37 = load i8*, i8** %36, align 4
+  in mbedtls_ssl_read ,(68118)(STMT)  %38 = icmp eq i8* %37, null
+  in mbedtls_ssl_read ,(68120)(STMT)  br i1 %38, label %39, label %176
+  in mbedtls_ssl_read ,(68123)(STMT)  %40 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68126)(STMT)  %41 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %40, i32 0, i32 19
+  in mbedtls_ssl_read ,(68129)(STMT)  %42 = load i32 (i8*)*, i32 (i8*)** %41, align 4
+  in mbedtls_ssl_read ,(68132)(STMT)  %43 = icmp ne i32 (i8*)* %42, null
+  in mbedtls_ssl_read ,(68135)(STMT)  br i1 %43, label %44, label %60
+  in mbedtls_ssl_read ,(68138)(STMT)  %45 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68142)(STMT)  %46 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %45, i32 0, i32 19
+  in mbedtls_ssl_read ,(68148)(STMT)  %47 = load i32 (i8*)*, i32 (i8*)** %46, align 4
+  in mbedtls_ssl_read ,(68152)(STMT)  %48 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68156)(STMT)  %49 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %48, i32 0, i32 17
+  in mbedtls_ssl_read ,(68160)(STMT)  %50 = load i8*, i8** %49, align 4
+  in mbedtls_ssl_read ,(68164)(  %51 = call i32 %47(i8* %50)
+ Callsite) ,(68165)(  %51 = call i32 %47(i8* %50)
+ Ret) ,(68169)(STMT)  %52 = icmp eq i32 %51, -1
+  in mbedtls_ssl_read ,(68173)(STMT)  br i1 %52, label %53, label %60
+  in mbedtls_ssl_read ,
+================================
+ vs 
+Node1=130036 Inst1=  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Loc1=
+Node2=130044 Inst2=  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ Loc2=
+Source svfgnode=130036 0x21e44c0 (AIN)   %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+  within mbedtls_ssl_handshake(ID: 130036)
+Dest svfgnode=130044 0x21e8488 (AIN)   %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+  within mbedtls_ssl_read(ID: 130044)
+
+================ICFG PATH================
+(68064)(STMT)  %20 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_handshake ,(68066)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Callsite) ,(68067)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Ret) ,(68069)(STMT)  store i32 %21, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68071)(STMT)  %22 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68073)(STMT)  %23 = icmp ne i32 %22, 0
+  in mbedtls_ssl_handshake ,(68075)(STMT)  br i1 %23, label %24, label %25
+  in mbedtls_ssl_handshake ,(68076)(STMT)  br label %26
+  in mbedtls_ssl_handshake ,(68065)(STMT)  br label %27
+  in mbedtls_ssl_handshake ,(68068)(STMT)  br label %28
+  in mbedtls_ssl_handshake ,(68070)(STMT)  %29 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68072)(STMT)  store i32 %29, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68074)(STMT)  br label %30
+  in mbedtls_ssl_handshake ,(68050)(STMT)  %31 = load i32, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68052)(STMT)  ret i32 %31
+  in mbedtls_ssl_handshake ,(68054)(mbedtls_ssl_handshake Exit) ,(68111)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ Ret) ,(68113)(STMT)  store i32 %22, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68115)(STMT)  %23 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68117)(STMT)  %24 = icmp ne i32 %23, -27392
+  in mbedtls_ssl_read ,(68119)(STMT)  br i1 %24, label %25, label %32
+  in mbedtls_ssl_read ,(68122)(STMT)  br label %33
+  in mbedtls_ssl_read ,(68109)(STMT)  br label %34
+  in mbedtls_ssl_read ,(68112)(STMT)  %35 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68114)(STMT)  %36 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %35, i32 0, i32 26
+  in mbedtls_ssl_read ,(68116)(STMT)  %37 = load i8*, i8** %36, align 4
+  in mbedtls_ssl_read ,(68118)(STMT)  %38 = icmp eq i8* %37, null
+  in mbedtls_ssl_read ,(68120)(STMT)  br i1 %38, label %39, label %176
+  in mbedtls_ssl_read ,(68123)(STMT)  %40 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68126)(STMT)  %41 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %40, i32 0, i32 19
+  in mbedtls_ssl_read ,(68129)(STMT)  %42 = load i32 (i8*)*, i32 (i8*)** %41, align 4
+  in mbedtls_ssl_read ,(68132)(STMT)  %43 = icmp ne i32 (i8*)* %42, null
+  in mbedtls_ssl_read ,(68135)(STMT)  br i1 %43, label %44, label %60
+  in mbedtls_ssl_read ,(68138)(STMT)  %45 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68142)(STMT)  %46 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %45, i32 0, i32 19
+  in mbedtls_ssl_read ,(68148)(STMT)  %47 = load i32 (i8*)*, i32 (i8*)** %46, align 4
+  in mbedtls_ssl_read ,(68152)(STMT)  %48 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68156)(STMT)  %49 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %48, i32 0, i32 17
+  in mbedtls_ssl_read ,(68160)(STMT)  %50 = load i8*, i8** %49, align 4
+  in mbedtls_ssl_read ,(68164)(  %51 = call i32 %47(i8* %50)
+ Callsite) ,(68165)(  %51 = call i32 %47(i8* %50)
+ Ret) ,(68169)(STMT)  %52 = icmp eq i32 %51, -1
+  in mbedtls_ssl_read ,(68173)(STMT)  br i1 %52, label %53, label %60
+  in mbedtls_ssl_read ,
+================================
+ vs 
+Node1=130036 Inst1=  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Loc1=
+Node2=130045 Inst2=  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ Loc2=
+Source svfgnode=130036 0x21e44c0 (AIN)   %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+  within mbedtls_ssl_handshake(ID: 130036)
+Dest svfgnode=130045 0x21e8488 (AIN)   %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+  within mbedtls_ssl_read(ID: 130045)
+
+================ICFG PATH================
+(68064)(STMT)  %20 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_handshake ,(68066)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Callsite) ,(68067)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Ret) ,(68069)(STMT)  store i32 %21, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68071)(STMT)  %22 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68073)(STMT)  %23 = icmp ne i32 %22, 0
+  in mbedtls_ssl_handshake ,(68075)(STMT)  br i1 %23, label %24, label %25
+  in mbedtls_ssl_handshake ,(68076)(STMT)  br label %26
+  in mbedtls_ssl_handshake ,(68065)(STMT)  br label %27
+  in mbedtls_ssl_handshake ,(68068)(STMT)  br label %28
+  in mbedtls_ssl_handshake ,(68070)(STMT)  %29 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68072)(STMT)  store i32 %29, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68074)(STMT)  br label %30
+  in mbedtls_ssl_handshake ,(68050)(STMT)  %31 = load i32, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68052)(STMT)  ret i32 %31
+  in mbedtls_ssl_handshake ,(68054)(mbedtls_ssl_handshake Exit) ,(68111)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ Ret) ,(68113)(STMT)  store i32 %22, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68115)(STMT)  %23 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68117)(STMT)  %24 = icmp ne i32 %23, -27392
+  in mbedtls_ssl_read ,(68119)(STMT)  br i1 %24, label %25, label %32
+  in mbedtls_ssl_read ,(68122)(STMT)  br label %33
+  in mbedtls_ssl_read ,(68109)(STMT)  br label %34
+  in mbedtls_ssl_read ,(68112)(STMT)  %35 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68114)(STMT)  %36 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %35, i32 0, i32 26
+  in mbedtls_ssl_read ,(68116)(STMT)  %37 = load i8*, i8** %36, align 4
+  in mbedtls_ssl_read ,(68118)(STMT)  %38 = icmp eq i8* %37, null
+  in mbedtls_ssl_read ,(68120)(STMT)  br i1 %38, label %39, label %176
+  in mbedtls_ssl_read ,(68123)(STMT)  %40 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68126)(STMT)  %41 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %40, i32 0, i32 19
+  in mbedtls_ssl_read ,(68129)(STMT)  %42 = load i32 (i8*)*, i32 (i8*)** %41, align 4
+  in mbedtls_ssl_read ,(68132)(STMT)  %43 = icmp ne i32 (i8*)* %42, null
+  in mbedtls_ssl_read ,(68135)(STMT)  br i1 %43, label %44, label %60
+  in mbedtls_ssl_read ,(68138)(STMT)  %45 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68142)(STMT)  %46 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %45, i32 0, i32 19
+  in mbedtls_ssl_read ,(68148)(STMT)  %47 = load i32 (i8*)*, i32 (i8*)** %46, align 4
+  in mbedtls_ssl_read ,(68152)(STMT)  %48 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68156)(STMT)  %49 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %48, i32 0, i32 17
+  in mbedtls_ssl_read ,(68160)(STMT)  %50 = load i8*, i8** %49, align 4
+  in mbedtls_ssl_read ,(68164)(  %51 = call i32 %47(i8* %50)
+ Callsite) ,(68165)(  %51 = call i32 %47(i8* %50)
+ Ret) ,(68169)(STMT)  %52 = icmp eq i32 %51, -1
+  in mbedtls_ssl_read ,(68173)(STMT)  br i1 %52, label %53, label %60
+  in mbedtls_ssl_read ,
+================================
+ vs 
+Node1=130036 Inst1=  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Loc1=
+Node2=130046 Inst2=  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ Loc2=
+Source svfgnode=130036 0x21e44c0 (AIN)   %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+  within mbedtls_ssl_handshake(ID: 130036)
+Dest svfgnode=130046 0x21e8488 (AIN)   %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+  within mbedtls_ssl_read(ID: 130046)
+
+================ICFG PATH================
+(68064)(STMT)  %20 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_handshake ,(68066)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Callsite) ,(68067)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Ret) ,(68069)(STMT)  store i32 %21, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68071)(STMT)  %22 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68073)(STMT)  %23 = icmp ne i32 %22, 0
+  in mbedtls_ssl_handshake ,(68075)(STMT)  br i1 %23, label %24, label %25
+  in mbedtls_ssl_handshake ,(68076)(STMT)  br label %26
+  in mbedtls_ssl_handshake ,(68065)(STMT)  br label %27
+  in mbedtls_ssl_handshake ,(68068)(STMT)  br label %28
+  in mbedtls_ssl_handshake ,(68070)(STMT)  %29 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68072)(STMT)  store i32 %29, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68074)(STMT)  br label %30
+  in mbedtls_ssl_handshake ,(68050)(STMT)  %31 = load i32, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68052)(STMT)  ret i32 %31
+  in mbedtls_ssl_handshake ,(68054)(mbedtls_ssl_handshake Exit) ,(68111)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ Ret) ,(68113)(STMT)  store i32 %22, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68115)(STMT)  %23 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68117)(STMT)  %24 = icmp ne i32 %23, -27392
+  in mbedtls_ssl_read ,(68119)(STMT)  br i1 %24, label %25, label %32
+  in mbedtls_ssl_read ,(68122)(STMT)  br label %33
+  in mbedtls_ssl_read ,(68109)(STMT)  br label %34
+  in mbedtls_ssl_read ,(68112)(STMT)  %35 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68114)(STMT)  %36 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %35, i32 0, i32 26
+  in mbedtls_ssl_read ,(68116)(STMT)  %37 = load i8*, i8** %36, align 4
+  in mbedtls_ssl_read ,(68118)(STMT)  %38 = icmp eq i8* %37, null
+  in mbedtls_ssl_read ,(68120)(STMT)  br i1 %38, label %39, label %176
+  in mbedtls_ssl_read ,(68123)(STMT)  %40 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68126)(STMT)  %41 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %40, i32 0, i32 19
+  in mbedtls_ssl_read ,(68129)(STMT)  %42 = load i32 (i8*)*, i32 (i8*)** %41, align 4
+  in mbedtls_ssl_read ,(68132)(STMT)  %43 = icmp ne i32 (i8*)* %42, null
+  in mbedtls_ssl_read ,(68135)(STMT)  br i1 %43, label %44, label %60
+  in mbedtls_ssl_read ,(68138)(STMT)  %45 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68142)(STMT)  %46 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %45, i32 0, i32 19
+  in mbedtls_ssl_read ,(68148)(STMT)  %47 = load i32 (i8*)*, i32 (i8*)** %46, align 4
+  in mbedtls_ssl_read ,(68152)(STMT)  %48 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68156)(STMT)  %49 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %48, i32 0, i32 17
+  in mbedtls_ssl_read ,(68160)(STMT)  %50 = load i8*, i8** %49, align 4
+  in mbedtls_ssl_read ,(68164)(  %51 = call i32 %47(i8* %50)
+ Callsite) ,(68165)(  %51 = call i32 %47(i8* %50)
+ Ret) ,(68169)(STMT)  %52 = icmp eq i32 %51, -1
+  in mbedtls_ssl_read ,(68173)(STMT)  br i1 %52, label %53, label %60
+  in mbedtls_ssl_read ,
+================================
+ vs 
+Node1=130036 Inst1=  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Loc1=
+Node2=130047 Inst2=  %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+ Loc2=
+Source svfgnode=130036 0x21e44c0 (AIN)   %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+  within mbedtls_ssl_handshake(ID: 130036)
+Dest svfgnode=130047 0x21e9008 (AIN)   %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+  within mbedtls_ssl_read(ID: 130047)
+
+================ICFG PATH================
+(68064)(STMT)  %20 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_handshake ,(68066)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Callsite) ,(68067)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Ret) ,(68069)(STMT)  store i32 %21, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68071)(STMT)  %22 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68073)(STMT)  %23 = icmp ne i32 %22, 0
+  in mbedtls_ssl_handshake ,(68075)(STMT)  br i1 %23, label %24, label %25
+  in mbedtls_ssl_handshake ,(68076)(STMT)  br label %26
+  in mbedtls_ssl_handshake ,(68065)(STMT)  br label %27
+  in mbedtls_ssl_handshake ,(68068)(STMT)  br label %28
+  in mbedtls_ssl_handshake ,(68070)(STMT)  %29 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68072)(STMT)  store i32 %29, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68074)(STMT)  br label %30
+  in mbedtls_ssl_handshake ,(68050)(STMT)  %31 = load i32, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68052)(STMT)  ret i32 %31
+  in mbedtls_ssl_handshake ,(68054)(mbedtls_ssl_handshake Exit) ,(68111)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ Ret) ,(68113)(STMT)  store i32 %22, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68115)(STMT)  %23 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68117)(STMT)  %24 = icmp ne i32 %23, -27392
+  in mbedtls_ssl_read ,(68119)(STMT)  br i1 %24, label %25, label %32
+  in mbedtls_ssl_read ,(68122)(STMT)  br label %33
+  in mbedtls_ssl_read ,(68109)(STMT)  br label %34
+  in mbedtls_ssl_read ,(68112)(STMT)  %35 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68114)(STMT)  %36 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %35, i32 0, i32 26
+  in mbedtls_ssl_read ,(68116)(STMT)  %37 = load i8*, i8** %36, align 4
+  in mbedtls_ssl_read ,(68118)(STMT)  %38 = icmp eq i8* %37, null
+  in mbedtls_ssl_read ,(68120)(STMT)  br i1 %38, label %39, label %176
+  in mbedtls_ssl_read ,(68123)(STMT)  %40 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68126)(STMT)  %41 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %40, i32 0, i32 19
+  in mbedtls_ssl_read ,(68129)(STMT)  %42 = load i32 (i8*)*, i32 (i8*)** %41, align 4
+  in mbedtls_ssl_read ,(68132)(STMT)  %43 = icmp ne i32 (i8*)* %42, null
+  in mbedtls_ssl_read ,(68135)(STMT)  br i1 %43, label %44, label %60
+  in mbedtls_ssl_read ,(68139)(STMT)  %61 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68143)(  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ Callsite) ,(68144)(  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ Ret) ,(68149)(STMT)  store i32 %62, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68153)(STMT)  %63 = icmp ne i32 %62, 0
+  in mbedtls_ssl_read ,(68157)(STMT)  br i1 %63, label %64, label %72
+  in mbedtls_ssl_read ,(68161)(STMT)  %65 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68166)(STMT)  %66 = icmp eq i32 %65, -29312
+  in mbedtls_ssl_read ,(68162)(STMT)  %73 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68167)(STMT)  %74 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %73, i32 0, i32 28
+  in mbedtls_ssl_read ,(68171)(STMT)  %75 = load i32, i32* %74, align 4
+  in mbedtls_ssl_read ,(68176)(STMT)  %76 = icmp eq i32 %75, 0
+  in mbedtls_ssl_read ,(68181)(STMT)  br i1 %76, label %77, label %95
+  in mbedtls_ssl_read ,(68185)(STMT)  %78 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68191)(STMT)  %79 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %78, i32 0, i32 27
+  in mbedtls_ssl_read ,(68196)(STMT)  %80 = load i32, i32* %79, align 4
+  in mbedtls_ssl_read ,(68200)(STMT)  %81 = icmp eq i32 %80, 23
+  in mbedtls_ssl_read ,(68204)(STMT)  br i1 %81, label %82, label %95
+  in mbedtls_ssl_read ,
+================================
+ vs 
+Node1=130036 Inst1=  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Loc1=
+Node2=130048 Inst2=  %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+ Loc2=
+Source svfgnode=130036 0x21e44c0 (AIN)   %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+  within mbedtls_ssl_handshake(ID: 130036)
+Dest svfgnode=130048 0x21e9008 (AIN)   %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+  within mbedtls_ssl_read(ID: 130048)
+
+================ICFG PATH================
+(68064)(STMT)  %20 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_handshake ,(68066)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Callsite) ,(68067)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Ret) ,(68069)(STMT)  store i32 %21, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68071)(STMT)  %22 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68073)(STMT)  %23 = icmp ne i32 %22, 0
+  in mbedtls_ssl_handshake ,(68075)(STMT)  br i1 %23, label %24, label %25
+  in mbedtls_ssl_handshake ,(68076)(STMT)  br label %26
+  in mbedtls_ssl_handshake ,(68065)(STMT)  br label %27
+  in mbedtls_ssl_handshake ,(68068)(STMT)  br label %28
+  in mbedtls_ssl_handshake ,(68070)(STMT)  %29 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68072)(STMT)  store i32 %29, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68074)(STMT)  br label %30
+  in mbedtls_ssl_handshake ,(68050)(STMT)  %31 = load i32, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68052)(STMT)  ret i32 %31
+  in mbedtls_ssl_handshake ,(68054)(mbedtls_ssl_handshake Exit) ,(68111)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ Ret) ,(68113)(STMT)  store i32 %22, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68115)(STMT)  %23 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68117)(STMT)  %24 = icmp ne i32 %23, -27392
+  in mbedtls_ssl_read ,(68119)(STMT)  br i1 %24, label %25, label %32
+  in mbedtls_ssl_read ,(68122)(STMT)  br label %33
+  in mbedtls_ssl_read ,(68109)(STMT)  br label %34
+  in mbedtls_ssl_read ,(68112)(STMT)  %35 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68114)(STMT)  %36 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %35, i32 0, i32 26
+  in mbedtls_ssl_read ,(68116)(STMT)  %37 = load i8*, i8** %36, align 4
+  in mbedtls_ssl_read ,(68118)(STMT)  %38 = icmp eq i8* %37, null
+  in mbedtls_ssl_read ,(68120)(STMT)  br i1 %38, label %39, label %176
+  in mbedtls_ssl_read ,(68123)(STMT)  %40 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68126)(STMT)  %41 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %40, i32 0, i32 19
+  in mbedtls_ssl_read ,(68129)(STMT)  %42 = load i32 (i8*)*, i32 (i8*)** %41, align 4
+  in mbedtls_ssl_read ,(68132)(STMT)  %43 = icmp ne i32 (i8*)* %42, null
+  in mbedtls_ssl_read ,(68135)(STMT)  br i1 %43, label %44, label %60
+  in mbedtls_ssl_read ,(68139)(STMT)  %61 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68143)(  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ Callsite) ,(68144)(  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ Ret) ,(68149)(STMT)  store i32 %62, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68153)(STMT)  %63 = icmp ne i32 %62, 0
+  in mbedtls_ssl_read ,(68157)(STMT)  br i1 %63, label %64, label %72
+  in mbedtls_ssl_read ,(68161)(STMT)  %65 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68166)(STMT)  %66 = icmp eq i32 %65, -29312
+  in mbedtls_ssl_read ,(68162)(STMT)  %73 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68167)(STMT)  %74 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %73, i32 0, i32 28
+  in mbedtls_ssl_read ,(68171)(STMT)  %75 = load i32, i32* %74, align 4
+  in mbedtls_ssl_read ,(68176)(STMT)  %76 = icmp eq i32 %75, 0
+  in mbedtls_ssl_read ,(68181)(STMT)  br i1 %76, label %77, label %95
+  in mbedtls_ssl_read ,(68185)(STMT)  %78 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68191)(STMT)  %79 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %78, i32 0, i32 27
+  in mbedtls_ssl_read ,(68196)(STMT)  %80 = load i32, i32* %79, align 4
+  in mbedtls_ssl_read ,(68200)(STMT)  %81 = icmp eq i32 %80, 23
+  in mbedtls_ssl_read ,(68204)(STMT)  br i1 %81, label %82, label %95
+  in mbedtls_ssl_read ,
+================================
+ vs 
+Node1=130036 Inst1=  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Loc1=
+Node2=130049 Inst2=  %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+ Loc2=
+Source svfgnode=130036 0x21e44c0 (AIN)   %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+  within mbedtls_ssl_handshake(ID: 130036)
+Dest svfgnode=130049 0x21e9008 (AIN)   %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+  within mbedtls_ssl_read(ID: 130049)
+
+================ICFG PATH================
+(68064)(STMT)  %20 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_handshake ,(68066)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Callsite) ,(68067)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Ret) ,(68069)(STMT)  store i32 %21, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68071)(STMT)  %22 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68073)(STMT)  %23 = icmp ne i32 %22, 0
+  in mbedtls_ssl_handshake ,(68075)(STMT)  br i1 %23, label %24, label %25
+  in mbedtls_ssl_handshake ,(68076)(STMT)  br label %26
+  in mbedtls_ssl_handshake ,(68065)(STMT)  br label %27
+  in mbedtls_ssl_handshake ,(68068)(STMT)  br label %28
+  in mbedtls_ssl_handshake ,(68070)(STMT)  %29 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68072)(STMT)  store i32 %29, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68074)(STMT)  br label %30
+  in mbedtls_ssl_handshake ,(68050)(STMT)  %31 = load i32, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68052)(STMT)  ret i32 %31
+  in mbedtls_ssl_handshake ,(68054)(mbedtls_ssl_handshake Exit) ,(68111)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ Ret) ,(68113)(STMT)  store i32 %22, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68115)(STMT)  %23 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68117)(STMT)  %24 = icmp ne i32 %23, -27392
+  in mbedtls_ssl_read ,(68119)(STMT)  br i1 %24, label %25, label %32
+  in mbedtls_ssl_read ,(68122)(STMT)  br label %33
+  in mbedtls_ssl_read ,(68109)(STMT)  br label %34
+  in mbedtls_ssl_read ,(68112)(STMT)  %35 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68114)(STMT)  %36 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %35, i32 0, i32 26
+  in mbedtls_ssl_read ,(68116)(STMT)  %37 = load i8*, i8** %36, align 4
+  in mbedtls_ssl_read ,(68118)(STMT)  %38 = icmp eq i8* %37, null
+  in mbedtls_ssl_read ,(68120)(STMT)  br i1 %38, label %39, label %176
+  in mbedtls_ssl_read ,(68123)(STMT)  %40 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68126)(STMT)  %41 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %40, i32 0, i32 19
+  in mbedtls_ssl_read ,(68129)(STMT)  %42 = load i32 (i8*)*, i32 (i8*)** %41, align 4
+  in mbedtls_ssl_read ,(68132)(STMT)  %43 = icmp ne i32 (i8*)* %42, null
+  in mbedtls_ssl_read ,(68135)(STMT)  br i1 %43, label %44, label %60
+  in mbedtls_ssl_read ,(68139)(STMT)  %61 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68143)(  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ Callsite) ,(68144)(  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ Ret) ,(68149)(STMT)  store i32 %62, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68153)(STMT)  %63 = icmp ne i32 %62, 0
+  in mbedtls_ssl_read ,(68157)(STMT)  br i1 %63, label %64, label %72
+  in mbedtls_ssl_read ,(68161)(STMT)  %65 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68166)(STMT)  %66 = icmp eq i32 %65, -29312
+  in mbedtls_ssl_read ,(68162)(STMT)  %73 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68167)(STMT)  %74 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %73, i32 0, i32 28
+  in mbedtls_ssl_read ,(68171)(STMT)  %75 = load i32, i32* %74, align 4
+  in mbedtls_ssl_read ,(68176)(STMT)  %76 = icmp eq i32 %75, 0
+  in mbedtls_ssl_read ,(68181)(STMT)  br i1 %76, label %77, label %95
+  in mbedtls_ssl_read ,(68185)(STMT)  %78 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68191)(STMT)  %79 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %78, i32 0, i32 27
+  in mbedtls_ssl_read ,(68196)(STMT)  %80 = load i32, i32* %79, align 4
+  in mbedtls_ssl_read ,(68200)(STMT)  %81 = icmp eq i32 %80, 23
+  in mbedtls_ssl_read ,(68204)(STMT)  br i1 %81, label %82, label %95
+  in mbedtls_ssl_read ,
+================================
+ vs 
+Node1=130036 Inst1=  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Loc1=
+Node2=130050 Inst2=  %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+ Loc2=
+Source svfgnode=130036 0x21e44c0 (AIN)   %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+  within mbedtls_ssl_handshake(ID: 130036)
+Dest svfgnode=130050 0x21e9008 (AIN)   %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+  within mbedtls_ssl_read(ID: 130050)
+
+================ICFG PATH================
+(68064)(STMT)  %20 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_handshake ,(68066)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Callsite) ,(68067)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Ret) ,(68069)(STMT)  store i32 %21, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68071)(STMT)  %22 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68073)(STMT)  %23 = icmp ne i32 %22, 0
+  in mbedtls_ssl_handshake ,(68075)(STMT)  br i1 %23, label %24, label %25
+  in mbedtls_ssl_handshake ,(68076)(STMT)  br label %26
+  in mbedtls_ssl_handshake ,(68065)(STMT)  br label %27
+  in mbedtls_ssl_handshake ,(68068)(STMT)  br label %28
+  in mbedtls_ssl_handshake ,(68070)(STMT)  %29 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68072)(STMT)  store i32 %29, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68074)(STMT)  br label %30
+  in mbedtls_ssl_handshake ,(68050)(STMT)  %31 = load i32, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68052)(STMT)  ret i32 %31
+  in mbedtls_ssl_handshake ,(68054)(mbedtls_ssl_handshake Exit) ,(68111)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ Ret) ,(68113)(STMT)  store i32 %22, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68115)(STMT)  %23 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68117)(STMT)  %24 = icmp ne i32 %23, -27392
+  in mbedtls_ssl_read ,(68119)(STMT)  br i1 %24, label %25, label %32
+  in mbedtls_ssl_read ,(68122)(STMT)  br label %33
+  in mbedtls_ssl_read ,(68109)(STMT)  br label %34
+  in mbedtls_ssl_read ,(68112)(STMT)  %35 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68114)(STMT)  %36 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %35, i32 0, i32 26
+  in mbedtls_ssl_read ,(68116)(STMT)  %37 = load i8*, i8** %36, align 4
+  in mbedtls_ssl_read ,(68118)(STMT)  %38 = icmp eq i8* %37, null
+  in mbedtls_ssl_read ,(68120)(STMT)  br i1 %38, label %39, label %176
+  in mbedtls_ssl_read ,(68123)(STMT)  %40 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68126)(STMT)  %41 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %40, i32 0, i32 19
+  in mbedtls_ssl_read ,(68129)(STMT)  %42 = load i32 (i8*)*, i32 (i8*)** %41, align 4
+  in mbedtls_ssl_read ,(68132)(STMT)  %43 = icmp ne i32 (i8*)* %42, null
+  in mbedtls_ssl_read ,(68135)(STMT)  br i1 %43, label %44, label %60
+  in mbedtls_ssl_read ,(68139)(STMT)  %61 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68143)(  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ Callsite) ,(68144)(  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ Ret) ,(68149)(STMT)  store i32 %62, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68153)(STMT)  %63 = icmp ne i32 %62, 0
+  in mbedtls_ssl_read ,(68157)(STMT)  br i1 %63, label %64, label %72
+  in mbedtls_ssl_read ,(68161)(STMT)  %65 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68166)(STMT)  %66 = icmp eq i32 %65, -29312
+  in mbedtls_ssl_read ,(68162)(STMT)  %73 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68167)(STMT)  %74 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %73, i32 0, i32 28
+  in mbedtls_ssl_read ,(68171)(STMT)  %75 = load i32, i32* %74, align 4
+  in mbedtls_ssl_read ,(68176)(STMT)  %76 = icmp eq i32 %75, 0
+  in mbedtls_ssl_read ,(68181)(STMT)  br i1 %76, label %77, label %95
+  in mbedtls_ssl_read ,(68185)(STMT)  %78 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68191)(STMT)  %79 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %78, i32 0, i32 27
+  in mbedtls_ssl_read ,(68196)(STMT)  %80 = load i32, i32* %79, align 4
+  in mbedtls_ssl_read ,(68200)(STMT)  %81 = icmp eq i32 %80, 23
+  in mbedtls_ssl_read ,(68204)(STMT)  br i1 %81, label %82, label %95
+  in mbedtls_ssl_read ,
+================================
+ vs 
+Node1=130037 Inst1=  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Loc1=
+Node2=130043 Inst2=  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ Loc2=
+Source svfgnode=130037 0x21e44c0 (AIN)   %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+  within mbedtls_ssl_handshake(ID: 130037)
+Dest svfgnode=130043 0x21e8488 (AIN)   %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+  within mbedtls_ssl_read(ID: 130043)
+
+================ICFG PATH================
+(68064)(STMT)  %20 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_handshake ,(68066)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Callsite) ,(68067)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Ret) ,(68069)(STMT)  store i32 %21, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68071)(STMT)  %22 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68073)(STMT)  %23 = icmp ne i32 %22, 0
+  in mbedtls_ssl_handshake ,(68075)(STMT)  br i1 %23, label %24, label %25
+  in mbedtls_ssl_handshake ,(68076)(STMT)  br label %26
+  in mbedtls_ssl_handshake ,(68065)(STMT)  br label %27
+  in mbedtls_ssl_handshake ,(68068)(STMT)  br label %28
+  in mbedtls_ssl_handshake ,(68070)(STMT)  %29 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68072)(STMT)  store i32 %29, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68074)(STMT)  br label %30
+  in mbedtls_ssl_handshake ,(68050)(STMT)  %31 = load i32, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68052)(STMT)  ret i32 %31
+  in mbedtls_ssl_handshake ,(68054)(mbedtls_ssl_handshake Exit) ,(68111)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ Ret) ,(68113)(STMT)  store i32 %22, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68115)(STMT)  %23 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68117)(STMT)  %24 = icmp ne i32 %23, -27392
+  in mbedtls_ssl_read ,(68119)(STMT)  br i1 %24, label %25, label %32
+  in mbedtls_ssl_read ,(68122)(STMT)  br label %33
+  in mbedtls_ssl_read ,(68109)(STMT)  br label %34
+  in mbedtls_ssl_read ,(68112)(STMT)  %35 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68114)(STMT)  %36 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %35, i32 0, i32 26
+  in mbedtls_ssl_read ,(68116)(STMT)  %37 = load i8*, i8** %36, align 4
+  in mbedtls_ssl_read ,(68118)(STMT)  %38 = icmp eq i8* %37, null
+  in mbedtls_ssl_read ,(68120)(STMT)  br i1 %38, label %39, label %176
+  in mbedtls_ssl_read ,(68123)(STMT)  %40 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68126)(STMT)  %41 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %40, i32 0, i32 19
+  in mbedtls_ssl_read ,(68129)(STMT)  %42 = load i32 (i8*)*, i32 (i8*)** %41, align 4
+  in mbedtls_ssl_read ,(68132)(STMT)  %43 = icmp ne i32 (i8*)* %42, null
+  in mbedtls_ssl_read ,(68135)(STMT)  br i1 %43, label %44, label %60
+  in mbedtls_ssl_read ,(68138)(STMT)  %45 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68142)(STMT)  %46 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %45, i32 0, i32 19
+  in mbedtls_ssl_read ,(68148)(STMT)  %47 = load i32 (i8*)*, i32 (i8*)** %46, align 4
+  in mbedtls_ssl_read ,(68152)(STMT)  %48 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68156)(STMT)  %49 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %48, i32 0, i32 17
+  in mbedtls_ssl_read ,(68160)(STMT)  %50 = load i8*, i8** %49, align 4
+  in mbedtls_ssl_read ,(68164)(  %51 = call i32 %47(i8* %50)
+ Callsite) ,(68165)(  %51 = call i32 %47(i8* %50)
+ Ret) ,(68169)(STMT)  %52 = icmp eq i32 %51, -1
+  in mbedtls_ssl_read ,(68173)(STMT)  br i1 %52, label %53, label %60
+  in mbedtls_ssl_read ,
+================================
+ vs 
+Node1=130037 Inst1=  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Loc1=
+Node2=130044 Inst2=  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ Loc2=
+Source svfgnode=130037 0x21e44c0 (AIN)   %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+  within mbedtls_ssl_handshake(ID: 130037)
+Dest svfgnode=130044 0x21e8488 (AIN)   %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+  within mbedtls_ssl_read(ID: 130044)
+
+================ICFG PATH================
+(68064)(STMT)  %20 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_handshake ,(68066)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Callsite) ,(68067)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Ret) ,(68069)(STMT)  store i32 %21, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68071)(STMT)  %22 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68073)(STMT)  %23 = icmp ne i32 %22, 0
+  in mbedtls_ssl_handshake ,(68075)(STMT)  br i1 %23, label %24, label %25
+  in mbedtls_ssl_handshake ,(68076)(STMT)  br label %26
+  in mbedtls_ssl_handshake ,(68065)(STMT)  br label %27
+  in mbedtls_ssl_handshake ,(68068)(STMT)  br label %28
+  in mbedtls_ssl_handshake ,(68070)(STMT)  %29 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68072)(STMT)  store i32 %29, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68074)(STMT)  br label %30
+  in mbedtls_ssl_handshake ,(68050)(STMT)  %31 = load i32, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68052)(STMT)  ret i32 %31
+  in mbedtls_ssl_handshake ,(68054)(mbedtls_ssl_handshake Exit) ,(68111)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ Ret) ,(68113)(STMT)  store i32 %22, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68115)(STMT)  %23 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68117)(STMT)  %24 = icmp ne i32 %23, -27392
+  in mbedtls_ssl_read ,(68119)(STMT)  br i1 %24, label %25, label %32
+  in mbedtls_ssl_read ,(68122)(STMT)  br label %33
+  in mbedtls_ssl_read ,(68109)(STMT)  br label %34
+  in mbedtls_ssl_read ,(68112)(STMT)  %35 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68114)(STMT)  %36 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %35, i32 0, i32 26
+  in mbedtls_ssl_read ,(68116)(STMT)  %37 = load i8*, i8** %36, align 4
+  in mbedtls_ssl_read ,(68118)(STMT)  %38 = icmp eq i8* %37, null
+  in mbedtls_ssl_read ,(68120)(STMT)  br i1 %38, label %39, label %176
+  in mbedtls_ssl_read ,(68123)(STMT)  %40 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68126)(STMT)  %41 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %40, i32 0, i32 19
+  in mbedtls_ssl_read ,(68129)(STMT)  %42 = load i32 (i8*)*, i32 (i8*)** %41, align 4
+  in mbedtls_ssl_read ,(68132)(STMT)  %43 = icmp ne i32 (i8*)* %42, null
+  in mbedtls_ssl_read ,(68135)(STMT)  br i1 %43, label %44, label %60
+  in mbedtls_ssl_read ,(68138)(STMT)  %45 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68142)(STMT)  %46 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %45, i32 0, i32 19
+  in mbedtls_ssl_read ,(68148)(STMT)  %47 = load i32 (i8*)*, i32 (i8*)** %46, align 4
+  in mbedtls_ssl_read ,(68152)(STMT)  %48 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68156)(STMT)  %49 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %48, i32 0, i32 17
+  in mbedtls_ssl_read ,(68160)(STMT)  %50 = load i8*, i8** %49, align 4
+  in mbedtls_ssl_read ,(68164)(  %51 = call i32 %47(i8* %50)
+ Callsite) ,(68165)(  %51 = call i32 %47(i8* %50)
+ Ret) ,(68169)(STMT)  %52 = icmp eq i32 %51, -1
+  in mbedtls_ssl_read ,(68173)(STMT)  br i1 %52, label %53, label %60
+  in mbedtls_ssl_read ,
+================================
+ vs 
+Node1=130037 Inst1=  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Loc1=
+Node2=130045 Inst2=  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ Loc2=
+Source svfgnode=130037 0x21e44c0 (AIN)   %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+  within mbedtls_ssl_handshake(ID: 130037)
+Dest svfgnode=130045 0x21e8488 (AIN)   %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+  within mbedtls_ssl_read(ID: 130045)
+
+================ICFG PATH================
+(68064)(STMT)  %20 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_handshake ,(68066)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Callsite) ,(68067)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Ret) ,(68069)(STMT)  store i32 %21, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68071)(STMT)  %22 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68073)(STMT)  %23 = icmp ne i32 %22, 0
+  in mbedtls_ssl_handshake ,(68075)(STMT)  br i1 %23, label %24, label %25
+  in mbedtls_ssl_handshake ,(68076)(STMT)  br label %26
+  in mbedtls_ssl_handshake ,(68065)(STMT)  br label %27
+  in mbedtls_ssl_handshake ,(68068)(STMT)  br label %28
+  in mbedtls_ssl_handshake ,(68070)(STMT)  %29 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68072)(STMT)  store i32 %29, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68074)(STMT)  br label %30
+  in mbedtls_ssl_handshake ,(68050)(STMT)  %31 = load i32, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68052)(STMT)  ret i32 %31
+  in mbedtls_ssl_handshake ,(68054)(mbedtls_ssl_handshake Exit) ,(68111)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ Ret) ,(68113)(STMT)  store i32 %22, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68115)(STMT)  %23 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68117)(STMT)  %24 = icmp ne i32 %23, -27392
+  in mbedtls_ssl_read ,(68119)(STMT)  br i1 %24, label %25, label %32
+  in mbedtls_ssl_read ,(68122)(STMT)  br label %33
+  in mbedtls_ssl_read ,(68109)(STMT)  br label %34
+  in mbedtls_ssl_read ,(68112)(STMT)  %35 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68114)(STMT)  %36 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %35, i32 0, i32 26
+  in mbedtls_ssl_read ,(68116)(STMT)  %37 = load i8*, i8** %36, align 4
+  in mbedtls_ssl_read ,(68118)(STMT)  %38 = icmp eq i8* %37, null
+  in mbedtls_ssl_read ,(68120)(STMT)  br i1 %38, label %39, label %176
+  in mbedtls_ssl_read ,(68123)(STMT)  %40 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68126)(STMT)  %41 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %40, i32 0, i32 19
+  in mbedtls_ssl_read ,(68129)(STMT)  %42 = load i32 (i8*)*, i32 (i8*)** %41, align 4
+  in mbedtls_ssl_read ,(68132)(STMT)  %43 = icmp ne i32 (i8*)* %42, null
+  in mbedtls_ssl_read ,(68135)(STMT)  br i1 %43, label %44, label %60
+  in mbedtls_ssl_read ,(68138)(STMT)  %45 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68142)(STMT)  %46 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %45, i32 0, i32 19
+  in mbedtls_ssl_read ,(68148)(STMT)  %47 = load i32 (i8*)*, i32 (i8*)** %46, align 4
+  in mbedtls_ssl_read ,(68152)(STMT)  %48 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68156)(STMT)  %49 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %48, i32 0, i32 17
+  in mbedtls_ssl_read ,(68160)(STMT)  %50 = load i8*, i8** %49, align 4
+  in mbedtls_ssl_read ,(68164)(  %51 = call i32 %47(i8* %50)
+ Callsite) ,(68165)(  %51 = call i32 %47(i8* %50)
+ Ret) ,(68169)(STMT)  %52 = icmp eq i32 %51, -1
+  in mbedtls_ssl_read ,(68173)(STMT)  br i1 %52, label %53, label %60
+  in mbedtls_ssl_read ,
+================================
+ vs 
+Node1=130037 Inst1=  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Loc1=
+Node2=130046 Inst2=  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ Loc2=
+Source svfgnode=130037 0x21e44c0 (AIN)   %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+  within mbedtls_ssl_handshake(ID: 130037)
+Dest svfgnode=130046 0x21e8488 (AIN)   %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+  within mbedtls_ssl_read(ID: 130046)
+
+================ICFG PATH================
+(68064)(STMT)  %20 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_handshake ,(68066)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Callsite) ,(68067)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Ret) ,(68069)(STMT)  store i32 %21, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68071)(STMT)  %22 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68073)(STMT)  %23 = icmp ne i32 %22, 0
+  in mbedtls_ssl_handshake ,(68075)(STMT)  br i1 %23, label %24, label %25
+  in mbedtls_ssl_handshake ,(68076)(STMT)  br label %26
+  in mbedtls_ssl_handshake ,(68065)(STMT)  br label %27
+  in mbedtls_ssl_handshake ,(68068)(STMT)  br label %28
+  in mbedtls_ssl_handshake ,(68070)(STMT)  %29 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68072)(STMT)  store i32 %29, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68074)(STMT)  br label %30
+  in mbedtls_ssl_handshake ,(68050)(STMT)  %31 = load i32, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68052)(STMT)  ret i32 %31
+  in mbedtls_ssl_handshake ,(68054)(mbedtls_ssl_handshake Exit) ,(68111)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ Ret) ,(68113)(STMT)  store i32 %22, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68115)(STMT)  %23 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68117)(STMT)  %24 = icmp ne i32 %23, -27392
+  in mbedtls_ssl_read ,(68119)(STMT)  br i1 %24, label %25, label %32
+  in mbedtls_ssl_read ,(68122)(STMT)  br label %33
+  in mbedtls_ssl_read ,(68109)(STMT)  br label %34
+  in mbedtls_ssl_read ,(68112)(STMT)  %35 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68114)(STMT)  %36 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %35, i32 0, i32 26
+  in mbedtls_ssl_read ,(68116)(STMT)  %37 = load i8*, i8** %36, align 4
+  in mbedtls_ssl_read ,(68118)(STMT)  %38 = icmp eq i8* %37, null
+  in mbedtls_ssl_read ,(68120)(STMT)  br i1 %38, label %39, label %176
+  in mbedtls_ssl_read ,(68123)(STMT)  %40 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68126)(STMT)  %41 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %40, i32 0, i32 19
+  in mbedtls_ssl_read ,(68129)(STMT)  %42 = load i32 (i8*)*, i32 (i8*)** %41, align 4
+  in mbedtls_ssl_read ,(68132)(STMT)  %43 = icmp ne i32 (i8*)* %42, null
+  in mbedtls_ssl_read ,(68135)(STMT)  br i1 %43, label %44, label %60
+  in mbedtls_ssl_read ,(68138)(STMT)  %45 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68142)(STMT)  %46 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %45, i32 0, i32 19
+  in mbedtls_ssl_read ,(68148)(STMT)  %47 = load i32 (i8*)*, i32 (i8*)** %46, align 4
+  in mbedtls_ssl_read ,(68152)(STMT)  %48 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68156)(STMT)  %49 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %48, i32 0, i32 17
+  in mbedtls_ssl_read ,(68160)(STMT)  %50 = load i8*, i8** %49, align 4
+  in mbedtls_ssl_read ,(68164)(  %51 = call i32 %47(i8* %50)
+ Callsite) ,(68165)(  %51 = call i32 %47(i8* %50)
+ Ret) ,(68169)(STMT)  %52 = icmp eq i32 %51, -1
+  in mbedtls_ssl_read ,(68173)(STMT)  br i1 %52, label %53, label %60
+  in mbedtls_ssl_read ,
+================================
+ vs 
+Node1=130037 Inst1=  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Loc1=
+Node2=130047 Inst2=  %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+ Loc2=
+Source svfgnode=130037 0x21e44c0 (AIN)   %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+  within mbedtls_ssl_handshake(ID: 130037)
+Dest svfgnode=130047 0x21e9008 (AIN)   %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+  within mbedtls_ssl_read(ID: 130047)
+
+================ICFG PATH================
+(68064)(STMT)  %20 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_handshake ,(68066)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Callsite) ,(68067)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Ret) ,(68069)(STMT)  store i32 %21, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68071)(STMT)  %22 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68073)(STMT)  %23 = icmp ne i32 %22, 0
+  in mbedtls_ssl_handshake ,(68075)(STMT)  br i1 %23, label %24, label %25
+  in mbedtls_ssl_handshake ,(68076)(STMT)  br label %26
+  in mbedtls_ssl_handshake ,(68065)(STMT)  br label %27
+  in mbedtls_ssl_handshake ,(68068)(STMT)  br label %28
+  in mbedtls_ssl_handshake ,(68070)(STMT)  %29 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68072)(STMT)  store i32 %29, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68074)(STMT)  br label %30
+  in mbedtls_ssl_handshake ,(68050)(STMT)  %31 = load i32, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68052)(STMT)  ret i32 %31
+  in mbedtls_ssl_handshake ,(68054)(mbedtls_ssl_handshake Exit) ,(68111)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ Ret) ,(68113)(STMT)  store i32 %22, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68115)(STMT)  %23 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68117)(STMT)  %24 = icmp ne i32 %23, -27392
+  in mbedtls_ssl_read ,(68119)(STMT)  br i1 %24, label %25, label %32
+  in mbedtls_ssl_read ,(68122)(STMT)  br label %33
+  in mbedtls_ssl_read ,(68109)(STMT)  br label %34
+  in mbedtls_ssl_read ,(68112)(STMT)  %35 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68114)(STMT)  %36 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %35, i32 0, i32 26
+  in mbedtls_ssl_read ,(68116)(STMT)  %37 = load i8*, i8** %36, align 4
+  in mbedtls_ssl_read ,(68118)(STMT)  %38 = icmp eq i8* %37, null
+  in mbedtls_ssl_read ,(68120)(STMT)  br i1 %38, label %39, label %176
+  in mbedtls_ssl_read ,(68123)(STMT)  %40 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68126)(STMT)  %41 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %40, i32 0, i32 19
+  in mbedtls_ssl_read ,(68129)(STMT)  %42 = load i32 (i8*)*, i32 (i8*)** %41, align 4
+  in mbedtls_ssl_read ,(68132)(STMT)  %43 = icmp ne i32 (i8*)* %42, null
+  in mbedtls_ssl_read ,(68135)(STMT)  br i1 %43, label %44, label %60
+  in mbedtls_ssl_read ,(68139)(STMT)  %61 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68143)(  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ Callsite) ,(68144)(  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ Ret) ,(68149)(STMT)  store i32 %62, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68153)(STMT)  %63 = icmp ne i32 %62, 0
+  in mbedtls_ssl_read ,(68157)(STMT)  br i1 %63, label %64, label %72
+  in mbedtls_ssl_read ,(68161)(STMT)  %65 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68166)(STMT)  %66 = icmp eq i32 %65, -29312
+  in mbedtls_ssl_read ,(68162)(STMT)  %73 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68167)(STMT)  %74 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %73, i32 0, i32 28
+  in mbedtls_ssl_read ,(68171)(STMT)  %75 = load i32, i32* %74, align 4
+  in mbedtls_ssl_read ,(68176)(STMT)  %76 = icmp eq i32 %75, 0
+  in mbedtls_ssl_read ,(68181)(STMT)  br i1 %76, label %77, label %95
+  in mbedtls_ssl_read ,(68185)(STMT)  %78 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68191)(STMT)  %79 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %78, i32 0, i32 27
+  in mbedtls_ssl_read ,(68196)(STMT)  %80 = load i32, i32* %79, align 4
+  in mbedtls_ssl_read ,(68200)(STMT)  %81 = icmp eq i32 %80, 23
+  in mbedtls_ssl_read ,(68204)(STMT)  br i1 %81, label %82, label %95
+  in mbedtls_ssl_read ,
+================================
+ vs 
+Node1=130037 Inst1=  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Loc1=
+Node2=130048 Inst2=  %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+ Loc2=
+Source svfgnode=130037 0x21e44c0 (AIN)   %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+  within mbedtls_ssl_handshake(ID: 130037)
+Dest svfgnode=130048 0x21e9008 (AIN)   %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+  within mbedtls_ssl_read(ID: 130048)
+
+================ICFG PATH================
+(68064)(STMT)  %20 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_handshake ,(68066)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Callsite) ,(68067)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Ret) ,(68069)(STMT)  store i32 %21, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68071)(STMT)  %22 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68073)(STMT)  %23 = icmp ne i32 %22, 0
+  in mbedtls_ssl_handshake ,(68075)(STMT)  br i1 %23, label %24, label %25
+  in mbedtls_ssl_handshake ,(68076)(STMT)  br label %26
+  in mbedtls_ssl_handshake ,(68065)(STMT)  br label %27
+  in mbedtls_ssl_handshake ,(68068)(STMT)  br label %28
+  in mbedtls_ssl_handshake ,(68070)(STMT)  %29 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68072)(STMT)  store i32 %29, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68074)(STMT)  br label %30
+  in mbedtls_ssl_handshake ,(68050)(STMT)  %31 = load i32, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68052)(STMT)  ret i32 %31
+  in mbedtls_ssl_handshake ,(68054)(mbedtls_ssl_handshake Exit) ,(68111)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ Ret) ,(68113)(STMT)  store i32 %22, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68115)(STMT)  %23 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68117)(STMT)  %24 = icmp ne i32 %23, -27392
+  in mbedtls_ssl_read ,(68119)(STMT)  br i1 %24, label %25, label %32
+  in mbedtls_ssl_read ,(68122)(STMT)  br label %33
+  in mbedtls_ssl_read ,(68109)(STMT)  br label %34
+  in mbedtls_ssl_read ,(68112)(STMT)  %35 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68114)(STMT)  %36 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %35, i32 0, i32 26
+  in mbedtls_ssl_read ,(68116)(STMT)  %37 = load i8*, i8** %36, align 4
+  in mbedtls_ssl_read ,(68118)(STMT)  %38 = icmp eq i8* %37, null
+  in mbedtls_ssl_read ,(68120)(STMT)  br i1 %38, label %39, label %176
+  in mbedtls_ssl_read ,(68123)(STMT)  %40 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68126)(STMT)  %41 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %40, i32 0, i32 19
+  in mbedtls_ssl_read ,(68129)(STMT)  %42 = load i32 (i8*)*, i32 (i8*)** %41, align 4
+  in mbedtls_ssl_read ,(68132)(STMT)  %43 = icmp ne i32 (i8*)* %42, null
+  in mbedtls_ssl_read ,(68135)(STMT)  br i1 %43, label %44, label %60
+  in mbedtls_ssl_read ,(68139)(STMT)  %61 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68143)(  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ Callsite) ,(68144)(  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ Ret) ,(68149)(STMT)  store i32 %62, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68153)(STMT)  %63 = icmp ne i32 %62, 0
+  in mbedtls_ssl_read ,(68157)(STMT)  br i1 %63, label %64, label %72
+  in mbedtls_ssl_read ,(68161)(STMT)  %65 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68166)(STMT)  %66 = icmp eq i32 %65, -29312
+  in mbedtls_ssl_read ,(68162)(STMT)  %73 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68167)(STMT)  %74 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %73, i32 0, i32 28
+  in mbedtls_ssl_read ,(68171)(STMT)  %75 = load i32, i32* %74, align 4
+  in mbedtls_ssl_read ,(68176)(STMT)  %76 = icmp eq i32 %75, 0
+  in mbedtls_ssl_read ,(68181)(STMT)  br i1 %76, label %77, label %95
+  in mbedtls_ssl_read ,(68185)(STMT)  %78 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68191)(STMT)  %79 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %78, i32 0, i32 27
+  in mbedtls_ssl_read ,(68196)(STMT)  %80 = load i32, i32* %79, align 4
+  in mbedtls_ssl_read ,(68200)(STMT)  %81 = icmp eq i32 %80, 23
+  in mbedtls_ssl_read ,(68204)(STMT)  br i1 %81, label %82, label %95
+  in mbedtls_ssl_read ,
+================================
+ vs 
+Node1=130037 Inst1=  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Loc1=
+Node2=130049 Inst2=  %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+ Loc2=
+Source svfgnode=130037 0x21e44c0 (AIN)   %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+  within mbedtls_ssl_handshake(ID: 130037)
+Dest svfgnode=130049 0x21e9008 (AIN)   %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+  within mbedtls_ssl_read(ID: 130049)
+
+================ICFG PATH================
+(68064)(STMT)  %20 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_handshake ,(68066)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Callsite) ,(68067)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Ret) ,(68069)(STMT)  store i32 %21, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68071)(STMT)  %22 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68073)(STMT)  %23 = icmp ne i32 %22, 0
+  in mbedtls_ssl_handshake ,(68075)(STMT)  br i1 %23, label %24, label %25
+  in mbedtls_ssl_handshake ,(68076)(STMT)  br label %26
+  in mbedtls_ssl_handshake ,(68065)(STMT)  br label %27
+  in mbedtls_ssl_handshake ,(68068)(STMT)  br label %28
+  in mbedtls_ssl_handshake ,(68070)(STMT)  %29 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68072)(STMT)  store i32 %29, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68074)(STMT)  br label %30
+  in mbedtls_ssl_handshake ,(68050)(STMT)  %31 = load i32, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68052)(STMT)  ret i32 %31
+  in mbedtls_ssl_handshake ,(68054)(mbedtls_ssl_handshake Exit) ,(68111)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ Ret) ,(68113)(STMT)  store i32 %22, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68115)(STMT)  %23 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68117)(STMT)  %24 = icmp ne i32 %23, -27392
+  in mbedtls_ssl_read ,(68119)(STMT)  br i1 %24, label %25, label %32
+  in mbedtls_ssl_read ,(68122)(STMT)  br label %33
+  in mbedtls_ssl_read ,(68109)(STMT)  br label %34
+  in mbedtls_ssl_read ,(68112)(STMT)  %35 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68114)(STMT)  %36 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %35, i32 0, i32 26
+  in mbedtls_ssl_read ,(68116)(STMT)  %37 = load i8*, i8** %36, align 4
+  in mbedtls_ssl_read ,(68118)(STMT)  %38 = icmp eq i8* %37, null
+  in mbedtls_ssl_read ,(68120)(STMT)  br i1 %38, label %39, label %176
+  in mbedtls_ssl_read ,(68123)(STMT)  %40 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68126)(STMT)  %41 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %40, i32 0, i32 19
+  in mbedtls_ssl_read ,(68129)(STMT)  %42 = load i32 (i8*)*, i32 (i8*)** %41, align 4
+  in mbedtls_ssl_read ,(68132)(STMT)  %43 = icmp ne i32 (i8*)* %42, null
+  in mbedtls_ssl_read ,(68135)(STMT)  br i1 %43, label %44, label %60
+  in mbedtls_ssl_read ,(68139)(STMT)  %61 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68143)(  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ Callsite) ,(68144)(  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ Ret) ,(68149)(STMT)  store i32 %62, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68153)(STMT)  %63 = icmp ne i32 %62, 0
+  in mbedtls_ssl_read ,(68157)(STMT)  br i1 %63, label %64, label %72
+  in mbedtls_ssl_read ,(68161)(STMT)  %65 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68166)(STMT)  %66 = icmp eq i32 %65, -29312
+  in mbedtls_ssl_read ,(68162)(STMT)  %73 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68167)(STMT)  %74 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %73, i32 0, i32 28
+  in mbedtls_ssl_read ,(68171)(STMT)  %75 = load i32, i32* %74, align 4
+  in mbedtls_ssl_read ,(68176)(STMT)  %76 = icmp eq i32 %75, 0
+  in mbedtls_ssl_read ,(68181)(STMT)  br i1 %76, label %77, label %95
+  in mbedtls_ssl_read ,(68185)(STMT)  %78 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68191)(STMT)  %79 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %78, i32 0, i32 27
+  in mbedtls_ssl_read ,(68196)(STMT)  %80 = load i32, i32* %79, align 4
+  in mbedtls_ssl_read ,(68200)(STMT)  %81 = icmp eq i32 %80, 23
+  in mbedtls_ssl_read ,(68204)(STMT)  br i1 %81, label %82, label %95
+  in mbedtls_ssl_read ,
+================================
+ vs 
+Node1=130037 Inst1=  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Loc1=
+Node2=130050 Inst2=  %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+ Loc2=
+Source svfgnode=130037 0x21e44c0 (AIN)   %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+  within mbedtls_ssl_handshake(ID: 130037)
+Dest svfgnode=130050 0x21e9008 (AIN)   %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+  within mbedtls_ssl_read(ID: 130050)
+
+================ICFG PATH================
+(68064)(STMT)  %20 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_handshake ,(68066)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Callsite) ,(68067)(  %21 = call i32 @mbedtls_ssl_handshake_step(%struct.mbedtls_ssl_context* %20)
+ Ret) ,(68069)(STMT)  store i32 %21, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68071)(STMT)  %22 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68073)(STMT)  %23 = icmp ne i32 %22, 0
+  in mbedtls_ssl_handshake ,(68075)(STMT)  br i1 %23, label %24, label %25
+  in mbedtls_ssl_handshake ,(68076)(STMT)  br label %26
+  in mbedtls_ssl_handshake ,(68065)(STMT)  br label %27
+  in mbedtls_ssl_handshake ,(68068)(STMT)  br label %28
+  in mbedtls_ssl_handshake ,(68070)(STMT)  %29 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_handshake ,(68072)(STMT)  store i32 %29, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68074)(STMT)  br label %30
+  in mbedtls_ssl_handshake ,(68050)(STMT)  %31 = load i32, i32* %1, align 4
+  in mbedtls_ssl_handshake ,(68052)(STMT)  ret i32 %31
+  in mbedtls_ssl_handshake ,(68054)(mbedtls_ssl_handshake Exit) ,(68111)(  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ Ret) ,(68113)(STMT)  store i32 %22, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68115)(STMT)  %23 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68117)(STMT)  %24 = icmp ne i32 %23, -27392
+  in mbedtls_ssl_read ,(68119)(STMT)  br i1 %24, label %25, label %32
+  in mbedtls_ssl_read ,(68122)(STMT)  br label %33
+  in mbedtls_ssl_read ,(68109)(STMT)  br label %34
+  in mbedtls_ssl_read ,(68112)(STMT)  %35 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68114)(STMT)  %36 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %35, i32 0, i32 26
+  in mbedtls_ssl_read ,(68116)(STMT)  %37 = load i8*, i8** %36, align 4
+  in mbedtls_ssl_read ,(68118)(STMT)  %38 = icmp eq i8* %37, null
+  in mbedtls_ssl_read ,(68120)(STMT)  br i1 %38, label %39, label %176
+  in mbedtls_ssl_read ,(68123)(STMT)  %40 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68126)(STMT)  %41 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %40, i32 0, i32 19
+  in mbedtls_ssl_read ,(68129)(STMT)  %42 = load i32 (i8*)*, i32 (i8*)** %41, align 4
+  in mbedtls_ssl_read ,(68132)(STMT)  %43 = icmp ne i32 (i8*)* %42, null
+  in mbedtls_ssl_read ,(68135)(STMT)  br i1 %43, label %44, label %60
+  in mbedtls_ssl_read ,(68139)(STMT)  %61 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68143)(  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ Callsite) ,(68144)(  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ Ret) ,(68149)(STMT)  store i32 %62, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68153)(STMT)  %63 = icmp ne i32 %62, 0
+  in mbedtls_ssl_read ,(68157)(STMT)  br i1 %63, label %64, label %72
+  in mbedtls_ssl_read ,(68161)(STMT)  %65 = load i32, i32* %ret, align 4
+  in mbedtls_ssl_read ,(68166)(STMT)  %66 = icmp eq i32 %65, -29312
+  in mbedtls_ssl_read ,(68162)(STMT)  %73 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68167)(STMT)  %74 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %73, i32 0, i32 28
+  in mbedtls_ssl_read ,(68171)(STMT)  %75 = load i32, i32* %74, align 4
+  in mbedtls_ssl_read ,(68176)(STMT)  %76 = icmp eq i32 %75, 0
+  in mbedtls_ssl_read ,(68181)(STMT)  br i1 %76, label %77, label %95
+  in mbedtls_ssl_read ,(68185)(STMT)  %78 = load %struct.mbedtls_ssl_context*, %struct.mbedtls_ssl_context** %2, align 4
+  in mbedtls_ssl_read ,(68191)(STMT)  %79 = getelementptr inbounds %struct.mbedtls_ssl_context, %struct.mbedtls_ssl_context* %78, i32 0, i32 27
+  in mbedtls_ssl_read ,(68196)(STMT)  %80 = load i32, i32* %79, align 4
+  in mbedtls_ssl_read ,(68200)(STMT)  %81 = icmp eq i32 %80, 23
+  in mbedtls_ssl_read ,(68204)(STMT)  br i1 %81, label %82, label %95
+  in mbedtls_ssl_read ,
+================================
+ vs 
+Node1=130038 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130043 Inst2=  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,
+================================
+ vs 
+Node1=130038 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130044 Inst2=  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,
+================================
+ vs 
+Node1=130038 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130045 Inst2=  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,
+================================
+ vs 
+Node1=130038 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130046 Inst2=  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,
+================================
+ vs 
+Node1=130038 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130047 Inst2=  %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,  br i1 %76, label %77, label %95
+  ,  br i1 %81, label %82, label %95
+  ,  br i1 %85, label %86, label %94
+  ,
+================================
+ vs 
+Node1=130038 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130048 Inst2=  %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,  br i1 %76, label %77, label %95
+  ,  br i1 %81, label %82, label %95
+  ,  br i1 %85, label %86, label %94
+  ,
+================================
+ vs 
+Node1=130038 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130049 Inst2=  %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,  br i1 %76, label %77, label %95
+  ,  br i1 %81, label %82, label %95
+  ,  br i1 %85, label %86, label %94
+  ,
+================================
+ vs 
+Node1=130038 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130050 Inst2=  %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,  br i1 %76, label %77, label %95
+  ,  br i1 %81, label %82, label %95
+  ,  br i1 %85, label %86, label %94
+  ,
+================================
+ vs 
+Node1=130039 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=76455 Inst2=  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,
+================================
+ vs 
+Node1=130039 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=76457 Inst2=  %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,  br i1 %76, label %77, label %95
+  ,  br i1 %81, label %82, label %95
+  ,  br i1 %85, label %86, label %94
+  ,
+================================
+ vs 
+Node1=130039 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130043 Inst2=  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,
+================================
+ vs 
+Node1=130039 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130044 Inst2=  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,
+================================
+ vs 
+Node1=130039 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130045 Inst2=  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,
+================================
+ vs 
+Node1=130039 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130046 Inst2=  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,
+================================
+ vs 
+Node1=130039 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130047 Inst2=  %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,  br i1 %76, label %77, label %95
+  ,  br i1 %81, label %82, label %95
+  ,  br i1 %85, label %86, label %94
+  ,
+================================
+ vs 
+Node1=130039 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130048 Inst2=  %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,  br i1 %76, label %77, label %95
+  ,  br i1 %81, label %82, label %95
+  ,  br i1 %85, label %86, label %94
+  ,
+================================
+ vs 
+Node1=130039 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130049 Inst2=  %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,  br i1 %76, label %77, label %95
+  ,  br i1 %81, label %82, label %95
+  ,  br i1 %85, label %86, label %94
+  ,
+================================
+ vs 
+Node1=130039 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130050 Inst2=  %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,  br i1 %76, label %77, label %95
+  ,  br i1 %81, label %82, label %95
+  ,  br i1 %85, label %86, label %94
+  ,
+================================
+ vs 
+Node1=130040 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130043 Inst2=  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,
+================================
+ vs 
+Node1=130040 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130044 Inst2=  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,
+================================
+ vs 
+Node1=130040 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130045 Inst2=  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,
+================================
+ vs 
+Node1=130040 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130046 Inst2=  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,
+================================
+ vs 
+Node1=130040 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130047 Inst2=  %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,  br i1 %76, label %77, label %95
+  ,  br i1 %81, label %82, label %95
+  ,  br i1 %85, label %86, label %94
+  ,
+================================
+ vs 
+Node1=130040 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130048 Inst2=  %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,  br i1 %76, label %77, label %95
+  ,  br i1 %81, label %82, label %95
+  ,  br i1 %85, label %86, label %94
+  ,
+================================
+ vs 
+Node1=130040 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130049 Inst2=  %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,  br i1 %76, label %77, label %95
+  ,  br i1 %81, label %82, label %95
+  ,  br i1 %85, label %86, label %94
+  ,
+================================
+ vs 
+Node1=130040 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130050 Inst2=  %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,  br i1 %76, label %77, label %95
+  ,  br i1 %81, label %82, label %95
+  ,  br i1 %85, label %86, label %94
+  ,
+================================
+ vs 
+Node1=130041 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130043 Inst2=  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,
+================================
+ vs 
+Node1=130041 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130044 Inst2=  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,
+================================
+ vs 
+Node1=130041 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130045 Inst2=  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,
+================================
+ vs 
+Node1=130041 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130046 Inst2=  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,
+================================
+ vs 
+Node1=130041 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130047 Inst2=  %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,  br i1 %76, label %77, label %95
+  ,  br i1 %81, label %82, label %95
+  ,  br i1 %85, label %86, label %94
+  ,
+================================
+ vs 
+Node1=130041 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130048 Inst2=  %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,  br i1 %76, label %77, label %95
+  ,  br i1 %81, label %82, label %95
+  ,  br i1 %85, label %86, label %94
+  ,
+================================
+ vs 
+Node1=130041 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130049 Inst2=  %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,  br i1 %76, label %77, label %95
+  ,  br i1 %81, label %82, label %95
+  ,  br i1 %85, label %86, label %94
+  ,
+================================
+ vs 
+Node1=130041 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130050 Inst2=  %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,  br i1 %76, label %77, label %95
+  ,  br i1 %81, label %82, label %95
+  ,  br i1 %85, label %86, label %94
+  ,
+================================
+ vs 
+Node1=130042 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130043 Inst2=  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,
+================================
+ vs 
+Node1=130042 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130044 Inst2=  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,
+================================
+ vs 
+Node1=130042 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130045 Inst2=  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,
+================================
+ vs 
+Node1=130042 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130046 Inst2=  %62 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %61, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,
+================================
+ vs 
+Node1=130042 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130047 Inst2=  %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,  br i1 %76, label %77, label %95
+  ,  br i1 %81, label %82, label %95
+  ,  br i1 %85, label %86, label %94
+  ,
+================================
+ vs 
+Node1=130042 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130048 Inst2=  %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,  br i1 %76, label %77, label %95
+  ,  br i1 %81, label %82, label %95
+  ,  br i1 %85, label %86, label %94
+  ,
+================================
+ vs 
+Node1=130042 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130049 Inst2=  %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,  br i1 %76, label %77, label %95
+  ,  br i1 %81, label %82, label %95
+  ,  br i1 %85, label %86, label %94
+  ,
+================================
+ vs 
+Node1=130042 Inst1=  %22 = call i32 @mbedtls_ssl_handshake(%struct.mbedtls_ssl_context* %21)
+ in mbedtls_ssl_read Loc1=
+Node2=130050 Inst2=  %84 = call i32 @mbedtls_ssl_read_record(%struct.mbedtls_ssl_context* %83, i32 1)
+ in mbedtls_ssl_read Loc2=
+
+================INTRAPROC PATH================
+  br i1 %27, label %28, label %32
+  ,  br label %33
+  ,  br label %34
+  ,  br i1 %38, label %39, label %176
+  ,  br i1 %43, label %44, label %60
+  ,  br i1 %52, label %53, label %60
+  ,  br label %60
+  ,  br i1 %63, label %64, label %72
+  ,  br i1 %76, label %77, label %95
+  ,  br i1 %81, label %82, label %95
+  ,  br i1 %85, label %86, label %94
+  ,
+================================
+Label=mbedtls_ssl_handshake_mbedtls_ssl_read_sslctxcorruption solution size=68 time=35
+Total number of solutions=9
+Total number of cached solutions=1
+Total query solving time=65
+Average query solving time=7
+SVFG stats: nodes=137452 edges=202328

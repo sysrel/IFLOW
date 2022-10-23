@@ -1,0 +1,22 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=9410
+Total number of formal out/ret w outgoing edge=1548
+Total number of formal out/ret w incoming formalin wo deref=2596
+Total number of formal out/ret w incoming formalin (relaxed)=4354
+Sumarization time=2
+Query: TaintsDirectCallPtrArgToPtrArgWithSan, source=mbedtls_ssl_handshake sink=mbedtls_ssl_write desc=sslctxcorruption sanitizeOnReturn=0
+Label=srcarg_label solution size=0 time=0
+Label=sourcecs_label solution size=9 time=7
+Label=argsrccs solution size=122 time=7
+Label=sinkarg_label solution size=0 time=0
+Label=sinkcs_label solution size=17 time=7
+Label=argsinkcs solution size=128 time=7
+srcarg size=31
+sinkarg size=52
+Label=mbedtls_ssl_handshake_mbedtls_ssl_write_sslctxcorruption solution size=0 time=23
+Total number of solutions=8
+Total number of cached solutions=1
+Total query solving time=51
+Average query solving time=6
+SVFG stats: nodes=137452 edges=202328

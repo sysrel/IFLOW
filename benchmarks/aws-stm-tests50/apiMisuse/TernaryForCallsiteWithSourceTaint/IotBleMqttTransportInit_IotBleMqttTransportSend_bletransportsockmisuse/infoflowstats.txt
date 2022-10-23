@@ -1,0 +1,20 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=27172
+Total number of formal out/ret w outgoing edge=6440
+Total number of formal out/ret w incoming formalin wo deref=8606
+Total number of formal out/ret w incoming formalin (relaxed)=11965
+Sumarization time=1304
+Query: TernaryForCallsiteWithSourceTaint, source=IotBleMqttTransportInit sink=IotBleMqttTransportSend desc=bletransportsockmisuse sanitizeOnReturn=1
+Label=somegeneric_label solution size=0 time=0
+Label=IotBleMqttTransportInitarg1_label solution size=0 time=0
+Label=IotBleMqttTransportInitcs1_label solution size=0 time=1
+Label=IotBleMqttTransportInitargpby1 solution size=0 time=1
+Label=IotBleMqttTransportSendarg1_label solution size=0 time=0
+Label=IotBleMqttTransportSendcs1_label solution size=0 time=1
+Label=IotBleMqttTransportSendargpby1 solution size=0 time=1
+Label=IotBleMqttTransportInit_IotBleMqttTransportSend_bletransportsockmisuse solution size=0 time=2
+Total number of solutions=9
+Total number of cached solutions=1
+Total query solving time=6
+Average query solving time=0

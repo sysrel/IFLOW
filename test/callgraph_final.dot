@@ -1,0 +1,14 @@
+digraph "Call Graph" {
+	label="Call Graph";
+
+	Node0x1404800 [shape=record,shape=circle,label="{foo|{<s0>1}}"];
+	Node0x1404800:s0 -> Node0x14050a0[color=black];
+	Node0x1405120 [shape=record,shape=circle,label="{run|{<s0>2|<s1>3}}"];
+	Node0x1405120:s0 -> Node0x14051a0[color=black];
+	Node0x1405120:s1 -> Node0x1405220[color=black];
+	Node0x1405220 [shape=record,shape=Mrecord,label="{free}"];
+	Node0x14050a0 [shape=record,shape=Mrecord,label="{llvm.memcpy.p0i8.p0i8.i64}"];
+	Node0x14051a0 [shape=record,shape=Mrecord,label="{malloc}"];
+	Node0x14052a0 [shape=record,shape=circle,label="{main|{<s0>4}}"];
+	Node0x14052a0:s0 -> Node0x1405120[color=black];
+}

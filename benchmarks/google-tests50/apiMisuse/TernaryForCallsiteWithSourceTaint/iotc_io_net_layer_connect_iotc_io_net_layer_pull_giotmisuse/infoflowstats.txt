@@ -1,0 +1,20 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=3029
+Total number of formal out/ret w outgoing edge=438
+Total number of formal out/ret w incoming formalin wo deref=787
+Total number of formal out/ret w incoming formalin (relaxed)=1063
+Sumarization time=0
+Query: TernaryForCallsiteWithSourceTaint, source=iotc_io_net_layer_connect sink=iotc_io_net_layer_pull desc=giotmisuse sanitizeOnReturn=0
+Label=somegeneric_label solution size=0 time=0
+Label=iotc_io_net_layer_connectarg1_label solution size=0 time=0
+Label=iotc_io_net_layer_connectcs1_label solution size=0 time=5
+Label=iotc_io_net_layer_connectargpby1 solution size=0 time=5
+Label=iotc_io_net_layer_pullarg1_label solution size=0 time=0
+Label=iotc_io_net_layer_pullcs1_label solution size=0 time=6
+Label=iotc_io_net_layer_pullargpby1 solution size=0 time=6
+Label=iotc_io_net_layer_connect_iotc_io_net_layer_pull_giotmisuse solution size=0 time=11
+Total number of solutions=9
+Total number of cached solutions=1
+Total query solving time=33
+Average query solving time=3

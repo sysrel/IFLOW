@@ -1,0 +1,507 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=20449
+Total number of formal out/ret w outgoing edge=4049
+Total number of formal out/ret w incoming formalin wo deref=6806
+Total number of formal out/ret w incoming formalin (relaxed)=11014
+Sumarization time=21
+Query: TaintsDataFieldCallsite, data type= iot_security_buffer field=1 sink=memcpy desc=sbufleak
+Label=typeiot_security_bufferfield11_label solution size=176 time=15
+Label=memcpyarg1_label solution size=0 time=0
+Label=memcpycs1_label solution size=316 time=144
+Label=memcpyargpby1 solution size=632 time=144
+typeiot_security_bufferfield11 size=176
+memcpyarg1 size=632
+Source node=35371 Inst1=  %136 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %135, i32 0, i32 1, !dbg !6767
+ Loc=ln: 503 fl: src/security/backend/software/iot_security_be_software.c
+
+================SVFG PATH================
+(STMT)  %136 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %135, i32 0, i32 1, !dbg !6767
+ line no ln: 503 fl: src/security/backend/software/iot_security_be_software.c (ID: 35371) ,(STMT)  %137 = load i8*, i8** %136, align 8, !dbg !6767
+ line no ln: 503 fl: src/security/backend/software/iot_security_be_software.c (ID: 57997) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %133, i8* align 1 %137, i64 %141, i1 false), !dbg !6764
+ line no ln: 503 fl: src/security/backend/software/iot_security_be_software.c (ID: 140489) ,
+================================
+Source node=35376 Inst1=  %147 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %146, i32 0, i32 1, !dbg !6776
+ Loc=ln: 504 fl: src/security/backend/software/iot_security_be_software.c
+
+================SVFG PATH================
+(STMT)  %147 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %146, i32 0, i32 1, !dbg !6776
+ line no ln: 504 fl: src/security/backend/software/iot_security_be_software.c (ID: 35376) ,(STMT)  %148 = load i8*, i8** %147, align 8, !dbg !6776
+ line no ln: 504 fl: src/security/backend/software/iot_security_be_software.c (ID: 57999) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %144, i8* align 1 %148, i64 %152, i1 false), !dbg !6780
+ line no ln: 504 fl: src/security/backend/software/iot_security_be_software.c (ID: 140002) ,
+================================
+Source node=36543 Inst1=  %32 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %31, i32 0, i32 1, !dbg !6673
+ Loc=ln: 1010 fl: src/security/backend/software/iot_security_be_software.c
+
+================SVFG PATH================
+(STMT)  %32 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %31, i32 0, i32 1, !dbg !6673
+ line no ln: 1010 fl: src/security/backend/software/iot_security_be_software.c (ID: 36543) ,(STMT)  store i8* %30, i8** %32, align 8, !dbg !6674
+ line no ln: 1010 fl: src/security/backend/software/iot_security_be_software.c (ID: 112459) ,(STMT)  %46 = load i8*, i8** %45, align 8, !dbg !6686
+ line no ln: 1016 fl: src/security/backend/software/iot_security_be_software.c (ID: 62535) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %46, i8* align 1 %49, i64 %52, i1 false), !dbg !6691
+ line no ln: 1016 fl: src/security/backend/software/iot_security_be_software.c (ID: 140353) ,
+================================
+Source node=36545 Inst1=  %45 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %44, i32 0, i32 1, !dbg !6686
+ Loc=ln: 1016 fl: src/security/backend/software/iot_security_be_software.c
+
+================SVFG PATH================
+(STMT)  %45 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %44, i32 0, i32 1, !dbg !6686
+ line no ln: 1016 fl: src/security/backend/software/iot_security_be_software.c (ID: 36545) ,(STMT)  %46 = load i8*, i8** %45, align 8, !dbg !6686
+ line no ln: 1016 fl: src/security/backend/software/iot_security_be_software.c (ID: 62535) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %46, i8* align 1 %49, i64 %52, i1 false), !dbg !6691
+ line no ln: 1016 fl: src/security/backend/software/iot_security_be_software.c (ID: 140353) ,
+================================
+Source node=36547 Inst1=  %48 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %47, i32 0, i32 1, !dbg !6688
+ Loc=ln: 1016 fl: src/security/backend/software/iot_security_be_software.c
+
+================SVFG PATH================
+(STMT)  %48 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %47, i32 0, i32 1, !dbg !6688
+ line no ln: 1016 fl: src/security/backend/software/iot_security_be_software.c (ID: 36547) ,(STMT)  %49 = load i8*, i8** %48, align 8, !dbg !6688
+ line no ln: 1016 fl: src/security/backend/software/iot_security_be_software.c (ID: 62536) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %46, i8* align 1 %49, i64 %52, i1 false), !dbg !6691
+ line no ln: 1016 fl: src/security/backend/software/iot_security_be_software.c (ID: 140354) ,
+================================
+Source node=36586 Inst1=  %201 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %200, i32 0, i32 1, !dbg !6891
+ Loc=ln: 1157 fl: src/security/backend/software/iot_security_be_software.c
+
+================SVFG PATH================
+(STMT)  %201 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %200, i32 0, i32 1, !dbg !6891
+ line no ln: 1157 fl: src/security/backend/software/iot_security_be_software.c (ID: 36586) ,(STMT)  store i8* %199, i8** %201, align 8, !dbg !6892
+ line no ln: 1157 fl: src/security/backend/software/iot_security_be_software.c (ID: 112491) ,(STMT)  %247 = load i8*, i8** %246, align 8, !dbg !6936
+ line no ln: 1183 fl: src/security/backend/software/iot_security_be_software.c (ID: 62640) ,(APAR)   %263 = call i32 @mbedtls_cipher_crypt(%struct.mbedtls_cipher_context_t* %mbed_cipher_ctx, i8* %247, i64 %251, i8* %254, i64 %257, i8* %260, i64* %262), !dbg !6948
+ line no ln: 1183 fl: src/security/backend/software/iot_security_be_software.c (ID: 136799) ,(FPARM) mbedtls_cipher_crypt(ID: 172748) ,(STMT)  store i8* %iv, i8** %3, align 8
+ in mbedtls_cipher_crypt (ID: 112925) ,(STMT)  %20 = load i8*, i8** %3, align 8, !dbg !6721
+ line no ln: 1014 fl: mbedtls/library/cipher.c (ID: 63771) ,(APAR)   %22 = call i32 @mbedtls_cipher_set_iv(%struct.mbedtls_cipher_context_t* %19, i8* %20, i64 %21), !dbg !6723
+ line no ln: 1014 fl: mbedtls/library/cipher.c (ID: 136713) ,(FPARM) mbedtls_cipher_set_iv(ID: 172739) ,(STMT)  store i8* %iv, i8** %3, align 8
+ in mbedtls_cipher_set_iv (ID: 112942) ,(STMT)  %47 = load i8*, i8** %3, align 8, !dbg !6740
+ line no ln: 289 fl: mbedtls/library/cipher.c (ID: 63793) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %46, i8* align 1 %47, i64 %48, i1 false), !dbg !6739
+ line no ln: 289 fl: mbedtls/library/cipher.c (ID: 139971) ,
+================================
+Source node=36593 Inst1=  %246 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %245, i32 0, i32 1, !dbg !6936
+ Loc=ln: 1183 fl: src/security/backend/software/iot_security_be_software.c
+
+================SVFG PATH================
+(STMT)  %246 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %245, i32 0, i32 1, !dbg !6936
+ line no ln: 1183 fl: src/security/backend/software/iot_security_be_software.c (ID: 36593) ,(STMT)  %247 = load i8*, i8** %246, align 8, !dbg !6936
+ line no ln: 1183 fl: src/security/backend/software/iot_security_be_software.c (ID: 62640) ,(APAR)   %263 = call i32 @mbedtls_cipher_crypt(%struct.mbedtls_cipher_context_t* %mbed_cipher_ctx, i8* %247, i64 %251, i8* %254, i64 %257, i8* %260, i64* %262), !dbg !6948
+ line no ln: 1183 fl: src/security/backend/software/iot_security_be_software.c (ID: 136799) ,(FPARM) mbedtls_cipher_crypt(ID: 172748) ,(STMT)  store i8* %iv, i8** %3, align 8
+ in mbedtls_cipher_crypt (ID: 112925) ,(STMT)  %20 = load i8*, i8** %3, align 8, !dbg !6721
+ line no ln: 1014 fl: mbedtls/library/cipher.c (ID: 63771) ,(APAR)   %22 = call i32 @mbedtls_cipher_set_iv(%struct.mbedtls_cipher_context_t* %19, i8* %20, i64 %21), !dbg !6723
+ line no ln: 1014 fl: mbedtls/library/cipher.c (ID: 136713) ,(FPARM) mbedtls_cipher_set_iv(ID: 172739) ,(STMT)  store i8* %iv, i8** %3, align 8
+ in mbedtls_cipher_set_iv (ID: 112942) ,(STMT)  %47 = load i8*, i8** %3, align 8, !dbg !6740
+ line no ln: 289 fl: mbedtls/library/cipher.c (ID: 63793) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %46, i8* align 1 %47, i64 %48, i1 false), !dbg !6739
+ line no ln: 289 fl: mbedtls/library/cipher.c (ID: 139971) ,
+================================
+Source node=36596 Inst1=  %253 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %252, i32 0, i32 1, !dbg !6941
+ Loc=ln: 1184 fl: src/security/backend/software/iot_security_be_software.c
+
+================SVFG PATH================
+(STMT)  %253 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %252, i32 0, i32 1, !dbg !6941
+ line no ln: 1184 fl: src/security/backend/software/iot_security_be_software.c (ID: 36596) ,(STMT)  %254 = load i8*, i8** %253, align 8, !dbg !6941
+ line no ln: 1184 fl: src/security/backend/software/iot_security_be_software.c (ID: 62642) ,(APAR)   %263 = call i32 @mbedtls_cipher_crypt(%struct.mbedtls_cipher_context_t* %mbed_cipher_ctx, i8* %247, i64 %251, i8* %254, i64 %257, i8* %260, i64* %262), !dbg !6948
+ line no ln: 1183 fl: src/security/backend/software/iot_security_be_software.c (ID: 136801) ,(FPARM) mbedtls_cipher_crypt(ID: 172750) ,(STMT)  store i8* %input, i8** %5, align 8
+ in mbedtls_cipher_crypt (ID: 112927) ,(STMT)  %34 = load i8*, i8** %5, align 8, !dbg !6739
+ line no ln: 1020 fl: mbedtls/library/cipher.c (ID: 63773) ,(APAR)   %38 = call i32 @mbedtls_cipher_update(%struct.mbedtls_cipher_context_t* %33, i8* %34, i64 %35, i8* %36, i64* %37), !dbg !6743
+ line no ln: 1020 fl: mbedtls/library/cipher.c (ID: 136595) ,(FPARM) mbedtls_cipher_update(ID: 172494) ,(STMT)  store i8* %input, i8** %3, align 8
+ in mbedtls_cipher_update (ID: 112957) ,(STMT)  %141 = load i8*, i8** %3, align 8, !dbg !6834
+ line no ln: 425 fl: mbedtls/library/cipher.c (ID: 63850) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %140, i8* align 1 %141, i64 %142, i1 false), !dbg !6836
+ line no ln: 425 fl: mbedtls/library/cipher.c (ID: 137749) ,
+================================
+Source node=36598 Inst1=  %259 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %258, i32 0, i32 1, !dbg !6945
+ Loc=ln: 1184 fl: src/security/backend/software/iot_security_be_software.c
+
+================SVFG PATH================
+(STMT)  %259 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %258, i32 0, i32 1, !dbg !6945
+ line no ln: 1184 fl: src/security/backend/software/iot_security_be_software.c (ID: 36598) ,(STMT)  %260 = load i8*, i8** %259, align 8, !dbg !6945
+ line no ln: 1184 fl: src/security/backend/software/iot_security_be_software.c (ID: 62644) ,(APAR)   %263 = call i32 @mbedtls_cipher_crypt(%struct.mbedtls_cipher_context_t* %mbed_cipher_ctx, i8* %247, i64 %251, i8* %254, i64 %257, i8* %260, i64* %262), !dbg !6948
+ line no ln: 1183 fl: src/security/backend/software/iot_security_be_software.c (ID: 136803) ,(FPARM) mbedtls_cipher_crypt(ID: 172752) ,(STMT)  store i8* %output, i8** %7, align 8
+ in mbedtls_cipher_crypt (ID: 112929) ,(STMT)  %36 = load i8*, i8** %7, align 8, !dbg !6741
+ line no ln: 1020 fl: mbedtls/library/cipher.c (ID: 63775) ,(APAR)   %38 = call i32 @mbedtls_cipher_update(%struct.mbedtls_cipher_context_t* %33, i8* %34, i64 %35, i8* %36, i64* %37), !dbg !6743
+ line no ln: 1020 fl: mbedtls/library/cipher.c (ID: 136597) ,(FPARM) mbedtls_cipher_update(ID: 172496) ,(STMT)  store i8* %output, i8** %5, align 8
+ in mbedtls_cipher_update (ID: 112959) ,(STMT)  %187 = load i8*, i8** %5, align 8, !dbg !6874
+ line no ln: 444 fl: mbedtls/library/cipher.c (ID: 63873) ,(APAR)   %188 = call i32 %173(i8* %176, i32 %179, i64 %180, i8* %183, i8* %186, i8* %187), !dbg !6860
+ line no ln: 442 fl: mbedtls/library/cipher.c (ID: 138145) ,(PHISTMTRES) 5th arg aes_crypt_cbc_wrap in line: 135 file: mbedtls/library/cipher_wrap.c(ID: 283158) ,(STMT)  store i8* %output, i8** %6, align 8
+ in aes_crypt_cbc_wrap (ID: 112662) ,(STMT)  %13 = load i8*, i8** %6, align 8, !dbg !6657
+ line no ln: 139 fl: mbedtls/library/cipher_wrap.c (ID: 63171) ,(APAR)   %14 = call i32 @mbedtls_aes_crypt_cbc(%struct.mbedtls_aes_context* %8, i32 %9, i64 %10, i8* %11, i8* %12, i8* %13), !dbg !6658
+ line no ln: 138 fl: mbedtls/library/cipher_wrap.c (ID: 136483) ,(FPARM) mbedtls_aes_crypt_cbc(ID: 174192) ,(STMT)  store i8* %output, i8** %7, align 8
+ in mbedtls_aes_crypt_cbc (ID: 112668) ,(PHI) in mbedtls_aes_crypt_cbc   br i1 %75, label %76, label %116, !dbg !6724
+ line no ln: 1092 fl: mbedtls/library/aes.c (ID: 215765) ,(STMT)  %109 = load i8*, i8** %7, align 8, !dbg !6753
+ line no ln: 1098 fl: mbedtls/library/aes.c (ID: 63199) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %108, i8* align 1 %109, i64 16, i1 false), !dbg !6754
+ line no ln: 1098 fl: mbedtls/library/aes.c (ID: 136485) ,
+================================
+Source node=37091 Inst1=  %32 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %31, i32 0, i32 1, !dbg !6673
+ Loc=ln: 1651 fl: src/security/backend/software/iot_security_be_software.c
+
+================SVFG PATH================
+(STMT)  %32 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %31, i32 0, i32 1, !dbg !6673
+ line no ln: 1651 fl: src/security/backend/software/iot_security_be_software.c (ID: 37091) ,(STMT)  store i8* %30, i8** %32, align 8, !dbg !6674
+ line no ln: 1651 fl: src/security/backend/software/iot_security_be_software.c (ID: 113091) ,(STMT)  %46 = load i8*, i8** %45, align 8, !dbg !6686
+ line no ln: 1657 fl: src/security/backend/software/iot_security_be_software.c (ID: 64161) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %46, i8* align 1 %49, i64 %52, i1 false), !dbg !6691
+ line no ln: 1657 fl: src/security/backend/software/iot_security_be_software.c (ID: 140133) ,
+================================
+Source node=37093 Inst1=  %45 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %44, i32 0, i32 1, !dbg !6686
+ Loc=ln: 1657 fl: src/security/backend/software/iot_security_be_software.c
+
+================SVFG PATH================
+(STMT)  %45 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %44, i32 0, i32 1, !dbg !6686
+ line no ln: 1657 fl: src/security/backend/software/iot_security_be_software.c (ID: 37093) ,(STMT)  %46 = load i8*, i8** %45, align 8, !dbg !6686
+ line no ln: 1657 fl: src/security/backend/software/iot_security_be_software.c (ID: 64161) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %46, i8* align 1 %49, i64 %52, i1 false), !dbg !6691
+ line no ln: 1657 fl: src/security/backend/software/iot_security_be_software.c (ID: 140133) ,
+================================
+Source node=37095 Inst1=  %48 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %47, i32 0, i32 1, !dbg !6688
+ Loc=ln: 1657 fl: src/security/backend/software/iot_security_be_software.c
+
+================SVFG PATH================
+(STMT)  %48 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %47, i32 0, i32 1, !dbg !6688
+ line no ln: 1657 fl: src/security/backend/software/iot_security_be_software.c (ID: 37095) ,(STMT)  %49 = load i8*, i8** %48, align 8, !dbg !6688
+ line no ln: 1657 fl: src/security/backend/software/iot_security_be_software.c (ID: 64162) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %46, i8* align 1 %49, i64 %52, i1 false), !dbg !6691
+ line no ln: 1657 fl: src/security/backend/software/iot_security_be_software.c (ID: 140134) ,
+================================
+Source node=37101 Inst1=  %48 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %pmsecret_buf, i32 0, i32 1, !dbg !6696
+ Loc=ln: 1727 fl: src/security/backend/software/iot_security_be_software.c
+
+================SVFG PATH================
+(STMT)  %48 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %pmsecret_buf, i32 0, i32 1, !dbg !6696
+ line no ln: 1727 fl: src/security/backend/software/iot_security_be_software.c (ID: 37101) ,(STMT)  %49 = load i8*, i8** %48, align 8, !dbg !6696
+ line no ln: 1727 fl: src/security/backend/software/iot_security_be_software.c (ID: 64189) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %47, i8* align 1 %49, i64 %51, i1 false), !dbg !6698
+ line no ln: 1727 fl: src/security/backend/software/iot_security_be_software.c (ID: 138152) ,
+================================
+Source node=37106 Inst1=  %37 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %secret_buf, i32 0, i32 1, !dbg !6685
+ Loc=ln: 1719 fl: src/security/backend/software/iot_security_be_software.c
+
+================SVFG PATH================
+(STMT)  %37 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %secret_buf, i32 0, i32 1, !dbg !6685
+ line no ln: 1719 fl: src/security/backend/software/iot_security_be_software.c (ID: 37106) ,(STMT)  store i8* %36, i8** %37, align 8, !dbg !6686
+ line no ln: 1719 fl: src/security/backend/software/iot_security_be_software.c (ID: 113103) ,(STMT)  %47 = load i8*, i8** %46, align 8, !dbg !6695
+ line no ln: 1727 fl: src/security/backend/software/iot_security_be_software.c (ID: 64188) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %47, i8* align 1 %49, i64 %51, i1 false), !dbg !6698
+ line no ln: 1727 fl: src/security/backend/software/iot_security_be_software.c (ID: 138151) ,
+================================
+Source node=37108 Inst1=  %46 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %secret_buf, i32 0, i32 1, !dbg !6695
+ Loc=ln: 1727 fl: src/security/backend/software/iot_security_be_software.c
+
+================SVFG PATH================
+(STMT)  %46 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %secret_buf, i32 0, i32 1, !dbg !6695
+ line no ln: 1727 fl: src/security/backend/software/iot_security_be_software.c (ID: 37108) ,(STMT)  %47 = load i8*, i8** %46, align 8, !dbg !6695
+ line no ln: 1727 fl: src/security/backend/software/iot_security_be_software.c (ID: 64188) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %47, i8* align 1 %49, i64 %51, i1 false), !dbg !6698
+ line no ln: 1727 fl: src/security/backend/software/iot_security_be_software.c (ID: 138151) ,
+================================
+Source node=37109 Inst1=  %52 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %secret_buf, i32 0, i32 1, !dbg !6699
+ Loc=ln: 1728 fl: src/security/backend/software/iot_security_be_software.c
+
+================SVFG PATH================
+(STMT)  %52 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %secret_buf, i32 0, i32 1, !dbg !6699
+ line no ln: 1728 fl: src/security/backend/software/iot_security_be_software.c (ID: 37109) ,(STMT)  %53 = load i8*, i8** %52, align 8, !dbg !6699
+ line no ln: 1728 fl: src/security/backend/software/iot_security_be_software.c (ID: 64191) ,(STMT)  %56 = getelementptr inbounds i8, i8* %53, i64 %55, !dbg !6701
+ line no ln: 1728 fl: src/security/backend/software/iot_security_be_software.c (ID: 56135) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %56, i8* align 1 %60, i64 %64, i1 false), !dbg !6708
+ line no ln: 1728 fl: src/security/backend/software/iot_security_be_software.c (ID: 138240) ,
+================================
+Source node=37110 Inst1=  %78 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %secret_buf, i32 0, i32 1, !dbg !6723
+ Loc=ln: 1739 fl: src/security/backend/software/iot_security_be_software.c
+
+================SVFG PATH================
+(STMT)  %78 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %secret_buf, i32 0, i32 1, !dbg !6723
+ line no ln: 1739 fl: src/security/backend/software/iot_security_be_software.c (ID: 37110) ,(STMT)  %79 = load i8*, i8** %78, align 8, !dbg !6723
+ line no ln: 1739 fl: src/security/backend/software/iot_security_be_software.c (ID: 64197) ,(APAR)   %86 = call i32 @iot_security_sha256(i8* %79, i64 %81, i8* %83, i64 %85), !dbg !6727
+ line no ln: 1739 fl: src/security/backend/software/iot_security_be_software.c (ID: 140202) ,(FPARM) iot_security_sha256(ID: 173249) ,(STMT)  store i8* %input, i8** %2, align 8
+ in iot_security_sha256 (ID: 114688) ,(STMT)  %36 = load i8*, i8** %2, align 8, !dbg !6681
+ line no ln: 271 fl: src/security/helper/mbedtls/iot_security_helper_mbedtls.c (ID: 67234) ,(APAR)   %39 = call i32 @mbedtls_sha256_ret(i8* %36, i64 %37, i8* %38, i32 0), !dbg !6684
+ line no ln: 271 fl: src/security/helper/mbedtls/iot_security_helper_mbedtls.c (ID: 139630) ,(FPARM) mbedtls_sha256_ret(ID: 173254) ,(STMT)  store i8* %input, i8** %1, align 8
+ in mbedtls_sha256_ret (ID: 114697) ,(STMT)  %16 = load i8*, i8** %1, align 8, !dbg !6677
+ line no ln: 428 fl: mbedtls/library/sha256.c (ID: 67245) ,(APAR)   %18 = call i32 @mbedtls_sha256_update_ret(%struct.mbedtls_sha256_context* %ctx, i8* %16, i64 %17), !dbg !6680
+ line no ln: 428 fl: mbedtls/library/sha256.c (ID: 139644) ,(FPARM) mbedtls_sha256_update_ret(ID: 172482) ,(STMT)  store i8* %input, i8** %3, align 8
+ in mbedtls_sha256_update_ret (ID: 114727) ,(STMT)  %59 = load i8*, i8** %3, align 8, !dbg !6710
+ line no ln: 298 fl: mbedtls/library/sha256.c (ID: 67283) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %58, i8* align 1 %59, i64 %60, i1 false), !dbg !6712
+ line no ln: 298 fl: mbedtls/library/sha256.c (ID: 137165) ,
+================================
+Source node=37129 Inst1=  %59 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %58, i32 0, i32 1, !dbg !6704
+ Loc=ln: 1728 fl: src/security/backend/software/iot_security_be_software.c
+
+================SVFG PATH================
+(STMT)  %59 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %58, i32 0, i32 1, !dbg !6704
+ line no ln: 1728 fl: src/security/backend/software/iot_security_be_software.c (ID: 37129) ,(STMT)  %60 = load i8*, i8** %59, align 8, !dbg !6704
+ line no ln: 1728 fl: src/security/backend/software/iot_security_be_software.c (ID: 64193) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %56, i8* align 1 %60, i64 %64, i1 false), !dbg !6708
+ line no ln: 1728 fl: src/security/backend/software/iot_security_be_software.c (ID: 138241) ,
+================================
+Source node=37164 Inst1=  %179 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %swap_buf, i32 0, i32 1, !dbg !6946
+ Loc=ln: 1625 fl: src/security/backend/software/iot_security_be_software.c
+
+================SVFG PATH================
+(STMT)  %179 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %swap_buf, i32 0, i32 1, !dbg !6946
+ line no ln: 1625 fl: src/security/backend/software/iot_security_be_software.c (ID: 37164) ,(STMT)  %180 = load i8*, i8** %179, align 8, !dbg !6946
+ line no ln: 1625 fl: src/security/backend/software/iot_security_be_software.c (ID: 64246) ,(STMT)  store i8* %180, i8** %182, align 8, !dbg !6949
+ line no ln: 1625 fl: src/security/backend/software/iot_security_be_software.c (ID: 113149) ,(PHI) in _iot_security_be_software_ecdh_compute_premaster_secret   br label %189, !dbg !6961
+ line no ln: 1635 fl: src/security/backend/software/iot_security_be_software.c (ID: 213571) ,(PHI) in _iot_security_be_software_ecdh_compute_premaster_secret   ret i32 %190, !dbg !6962
+ line no ln: 1636 fl: src/security/backend/software/iot_security_be_software.c (ID: 213542) ,(FOUT) _iot_security_be_software_ecdh_compute_premaster_secret(FOUT)(ID: 237247) ,(AOUT)   %21 = call i32 @_iot_security_be_software_ecdh_compute_premaster_secret(%struct.iot_security_buffer* %18, %struct.iot_security_buffer* %20, %struct.iot_security_buffer* %pmsecret_buf), !dbg !6669
+ ln: 1713 fl: src/security/backend/software/iot_security_be_software.c within _iot_security_be_software_ecdh_compute_shared_secret(ID: 275715) ,(STMT)  %49 = load i8*, i8** %48, align 8, !dbg !6696
+ line no ln: 1727 fl: src/security/backend/software/iot_security_be_software.c (ID: 64189) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %47, i8* align 1 %49, i64 %51, i1 false), !dbg !6698
+ line no ln: 1727 fl: src/security/backend/software/iot_security_be_software.c (ID: 138152) ,
+================================
+Source node=37168 Inst1=  %182 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %181, i32 0, i32 1, !dbg !6948
+ Loc=ln: 1625 fl: src/security/backend/software/iot_security_be_software.c
+
+================SVFG PATH================
+(STMT)  %182 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %181, i32 0, i32 1, !dbg !6948
+ line no ln: 1625 fl: src/security/backend/software/iot_security_be_software.c (ID: 37168) ,(STMT)  store i8* %180, i8** %182, align 8, !dbg !6949
+ line no ln: 1625 fl: src/security/backend/software/iot_security_be_software.c (ID: 113149) ,(PHI) in _iot_security_be_software_ecdh_compute_premaster_secret   br label %189, !dbg !6961
+ line no ln: 1635 fl: src/security/backend/software/iot_security_be_software.c (ID: 213571) ,(PHI) in _iot_security_be_software_ecdh_compute_premaster_secret   ret i32 %190, !dbg !6962
+ line no ln: 1636 fl: src/security/backend/software/iot_security_be_software.c (ID: 213542) ,(FOUT) _iot_security_be_software_ecdh_compute_premaster_secret(FOUT)(ID: 237247) ,(AOUT)   %21 = call i32 @_iot_security_be_software_ecdh_compute_premaster_secret(%struct.iot_security_buffer* %18, %struct.iot_security_buffer* %20, %struct.iot_security_buffer* %pmsecret_buf), !dbg !6669
+ ln: 1713 fl: src/security/backend/software/iot_security_be_software.c within _iot_security_be_software_ecdh_compute_shared_secret(ID: 275715) ,(STMT)  %49 = load i8*, i8** %48, align 8, !dbg !6696
+ line no ln: 1727 fl: src/security/backend/software/iot_security_be_software.c (ID: 64189) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %47, i8* align 1 %49, i64 %51, i1 false), !dbg !6698
+ line no ln: 1727 fl: src/security/backend/software/iot_security_be_software.c (ID: 138152) ,
+================================
+Source node=39090 Inst1=  %70 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %69, i32 0, i32 1, !dbg !6714
+ Loc=ln: 1292 fl: src/security/backend/software/iot_security_be_software.c
+
+================SVFG PATH================
+(STMT)  %70 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %69, i32 0, i32 1, !dbg !6714
+ line no ln: 1292 fl: src/security/backend/software/iot_security_be_software.c (ID: 39090) ,(STMT)  store i8* %68, i8** %70, align 8, !dbg !6715
+ line no ln: 1292 fl: src/security/backend/software/iot_security_be_software.c (ID: 114911) ,(STMT)  %86 = load i8*, i8** %85, align 8, !dbg !6730
+ line no ln: 1298 fl: src/security/backend/software/iot_security_be_software.c (ID: 68210) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %86, i8* align 1 %92, i64 %95, i1 false), !dbg !6737
+ line no ln: 1298 fl: src/security/backend/software/iot_security_be_software.c (ID: 139678) ,
+================================
+Source node=39093 Inst1=  %85 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %84, i32 0, i32 1, !dbg !6730
+ Loc=ln: 1298 fl: src/security/backend/software/iot_security_be_software.c
+
+================SVFG PATH================
+(STMT)  %85 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %84, i32 0, i32 1, !dbg !6730
+ line no ln: 1298 fl: src/security/backend/software/iot_security_be_software.c (ID: 39093) ,(STMT)  %86 = load i8*, i8** %85, align 8, !dbg !6730
+ line no ln: 1298 fl: src/security/backend/software/iot_security_be_software.c (ID: 68210) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %86, i8* align 1 %92, i64 %95, i1 false), !dbg !6737
+ line no ln: 1298 fl: src/security/backend/software/iot_security_be_software.c (ID: 139678) ,
+================================
+Source node=39097 Inst1=  %91 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %90, i32 0, i32 1, !dbg !6734
+ Loc=ln: 1298 fl: src/security/backend/software/iot_security_be_software.c
+
+================SVFG PATH================
+(STMT)  %91 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %90, i32 0, i32 1, !dbg !6734
+ line no ln: 1298 fl: src/security/backend/software/iot_security_be_software.c (ID: 39097) ,(STMT)  %92 = load i8*, i8** %91, align 8, !dbg !6734
+ line no ln: 1298 fl: src/security/backend/software/iot_security_be_software.c (ID: 68212) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %86, i8* align 1 %92, i64 %95, i1 false), !dbg !6737
+ line no ln: 1298 fl: src/security/backend/software/iot_security_be_software.c (ID: 139679) ,
+================================
+Source node=41754 Inst1=  %83 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %data_buf, i32 0, i32 1, !dbg !6778
+ Loc=ln: 139 fl: src/iot_nv_data.c
+
+================SVFG PATH================
+(STMT)  %83 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %data_buf, i32 0, i32 1, !dbg !6778
+ line no ln: 139 fl: src/iot_nv_data.c (ID: 41754) ,(STMT)  %84 = load i8*, i8** %83, align 8, !dbg !6778
+ line no ln: 139 fl: src/iot_nv_data.c (ID: 76361) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %82, i8* align 1 %84, i64 %86, i1 false), !dbg !6780
+ line no ln: 139 fl: src/iot_nv_data.c (ID: 144749) ,
+================================
+Source node=42683 Inst1=  %119 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %token_buf, i32 0, i32 1, !dbg !6767
+ Loc=ln: 967 fl: src/easysetup/iot_easysetup_st_mqtt.c
+
+================SVFG PATH================
+(STMT)  %119 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %token_buf, i32 0, i32 1, !dbg !6767
+ line no ln: 967 fl: src/easysetup/iot_easysetup_st_mqtt.c (ID: 42683) ,(STMT)  %120 = load i8*, i8** %119, align 8, !dbg !6767
+ line no ln: 967 fl: src/easysetup/iot_easysetup_st_mqtt.c (ID: 79004) ,(APAR)   %121 = call i32 @_iot_es_mqtt_connect(%struct.iot_context* %113, i8* %114, i8* %118, i8* %120), !dbg !6768
+ line no ln: 967 fl: src/easysetup/iot_easysetup_st_mqtt.c (ID: 146683) ,(FPARM) _iot_es_mqtt_connect(ID: 174704) ,(STMT)  store i8* %sign_data, i8** %5, align 8
+ in _iot_es_mqtt_connect (ID: 120856) ,(STMT)  %69 = load i8*, i8** %5, align 8, !dbg !6749
+ line no ln: 831 fl: src/easysetup/iot_easysetup_st_mqtt.c (ID: 79970) ,(STMT)  store i8* %69, i8** %70, align 8, !dbg !6751
+ line no ln: 831 fl: src/easysetup/iot_easysetup_st_mqtt.c (ID: 120874) ,(AIN)   %81 = call i32 @st_mqtt_connect(i8* %80, %struct.st_mqtt_broker_info* %broker_info, %struct.st_mqtt_connect_data* %conn_data), !dbg !6757
+ ln: 838 fl: src/easysetup/iot_easysetup_st_mqtt.c within _iot_es_mqtt_connect(ID: 262228) ,(FIN) st_mqtt_connect(ID: 231052) ,(STMT)  %64 = load i8*, i8** %63, align 8, !dbg !6776
+ line no ln: 1173 fl: src/mqtt/client/iot_mqtt_client.c (ID: 80146) ,(STMT)  store i8* %64, i8** %66, align 8, !dbg !6779
+ line no ln: 1173 fl: src/mqtt/client/iot_mqtt_client.c (ID: 120983) ,(AIN)   %75 = call i32 @MQTTSerialize_connect_size(%struct.MQTTPacket_connectData* %options), !dbg !6788
+ ln: 1177 fl: src/mqtt/client/iot_mqtt_client.c within st_mqtt_connect(ID: 262292) ,(FIN) MQTTSerialize_connect_size(ID: 226670) ,(AIN)   %90 = call i32 @MQTTSerialize_connect(i8* %88, i32 %89, %struct.MQTTPacket_connectData* %options), !dbg !6804
+ ln: 1184 fl: src/mqtt/client/iot_mqtt_client.c within st_mqtt_connect(ID: 262315) ,(FIN) MQTTSerialize_connect(ID: 226879) ,(AIN)   call void @writeMQTTString(i8** %ptr, %struct.MQTTString* byval align 8 %151), !dbg !6818
+ ln: 106 fl: src/mqtt/packet/iot_mqtt_connect_client.c within MQTTSerialize_connect(ID: 264262) ,(FIN) writeMQTTString(ID: 226991) ,(STMT)  %34 = load i8*, i8** %33, align 8, !dbg !6683
+ line no ln: 202 fl: src/mqtt/packet/iot_mqtt_packet.c (ID: 85975) ,(APAR)   call void @writeCString(i8** %32, i8* %34), !dbg !6684
+ line no ln: 202 fl: src/mqtt/packet/iot_mqtt_packet.c (ID: 150237) ,(FPARM) writeCString(ID: 173528) ,(STMT)  store i8* %string, i8** %2, align 8
+ in writeCString (ID: 123676) ,(STMT)  %10 = load i8*, i8** %2, align 8, !dbg !6654
+ line no ln: 181 fl: src/mqtt/packet/iot_mqtt_packet.c (ID: 85956) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %9, i8* align 1 %10, i64 %12, i1 false), !dbg !6656
+ line no ln: 181 fl: src/mqtt/packet/iot_mqtt_packet.c (ID: 150231) ,
+================================
+Source node=42684 Inst1=  %254 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %token_buf, i32 0, i32 1, !dbg !6888
+ Loc=ln: 1024 fl: src/easysetup/iot_easysetup_st_mqtt.c
+
+================SVFG PATH================
+(STMT)  %254 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %token_buf, i32 0, i32 1, !dbg !6888
+ line no ln: 1024 fl: src/easysetup/iot_easysetup_st_mqtt.c (ID: 42684) ,(STMT)  %255 = load i8*, i8** %254, align 8, !dbg !6888
+ line no ln: 1024 fl: src/easysetup/iot_easysetup_st_mqtt.c (ID: 79013) ,(APAR)   %256 = call i32 @_iot_es_mqtt_connect(%struct.iot_context* %250, i8* %251, i8* %253, i8* %255), !dbg !6889
+ line no ln: 1024 fl: src/easysetup/iot_easysetup_st_mqtt.c (ID: 146777) ,(FPARM) _iot_es_mqtt_connect(ID: 174704) ,(STMT)  store i8* %sign_data, i8** %5, align 8
+ in _iot_es_mqtt_connect (ID: 120856) ,(STMT)  %69 = load i8*, i8** %5, align 8, !dbg !6749
+ line no ln: 831 fl: src/easysetup/iot_easysetup_st_mqtt.c (ID: 79970) ,(STMT)  store i8* %69, i8** %70, align 8, !dbg !6751
+ line no ln: 831 fl: src/easysetup/iot_easysetup_st_mqtt.c (ID: 120874) ,(AIN)   %81 = call i32 @st_mqtt_connect(i8* %80, %struct.st_mqtt_broker_info* %broker_info, %struct.st_mqtt_connect_data* %conn_data), !dbg !6757
+ ln: 838 fl: src/easysetup/iot_easysetup_st_mqtt.c within _iot_es_mqtt_connect(ID: 262228) ,(FIN) st_mqtt_connect(ID: 231052) ,(STMT)  %64 = load i8*, i8** %63, align 8, !dbg !6776
+ line no ln: 1173 fl: src/mqtt/client/iot_mqtt_client.c (ID: 80146) ,(STMT)  store i8* %64, i8** %66, align 8, !dbg !6779
+ line no ln: 1173 fl: src/mqtt/client/iot_mqtt_client.c (ID: 120983) ,(AIN)   %75 = call i32 @MQTTSerialize_connect_size(%struct.MQTTPacket_connectData* %options), !dbg !6788
+ ln: 1177 fl: src/mqtt/client/iot_mqtt_client.c within st_mqtt_connect(ID: 262292) ,(FIN) MQTTSerialize_connect_size(ID: 226670) ,(AIN)   %90 = call i32 @MQTTSerialize_connect(i8* %88, i32 %89, %struct.MQTTPacket_connectData* %options), !dbg !6804
+ ln: 1184 fl: src/mqtt/client/iot_mqtt_client.c within st_mqtt_connect(ID: 262315) ,(FIN) MQTTSerialize_connect(ID: 226879) ,(AIN)   call void @writeMQTTString(i8** %ptr, %struct.MQTTString* byval align 8 %151), !dbg !6818
+ ln: 106 fl: src/mqtt/packet/iot_mqtt_connect_client.c within MQTTSerialize_connect(ID: 264262) ,(FIN) writeMQTTString(ID: 226991) ,(STMT)  %34 = load i8*, i8** %33, align 8, !dbg !6683
+ line no ln: 202 fl: src/mqtt/packet/iot_mqtt_packet.c (ID: 85975) ,(APAR)   call void @writeCString(i8** %32, i8* %34), !dbg !6684
+ line no ln: 202 fl: src/mqtt/packet/iot_mqtt_packet.c (ID: 150237) ,(FPARM) writeCString(ID: 173528) ,(STMT)  store i8* %string, i8** %2, align 8
+ in writeCString (ID: 123676) ,(STMT)  %10 = load i8*, i8** %2, align 8, !dbg !6654
+ line no ln: 181 fl: src/mqtt/packet/iot_mqtt_packet.c (ID: 85956) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %9, i8* align 1 %10, i64 %12, i1 false), !dbg !6656
+ line no ln: 181 fl: src/mqtt/packet/iot_mqtt_packet.c (ID: 150231) ,
+================================
+Source node=42738 Inst1=  %77 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %b64h_buf, i32 0, i32 1, !dbg !6784
+ Loc=ln: 1000 fl: src/iot_wt.c
+
+================SVFG PATH================
+(STMT)  %77 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %b64h_buf, i32 0, i32 1, !dbg !6784
+ line no ln: 1000 fl: src/iot_wt.c (ID: 42738) ,(STMT)  %78 = load i8*, i8** %77, align 8, !dbg !6784
+ line no ln: 1000 fl: src/iot_wt.c (ID: 79102) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %76, i8* align 1 %78, i64 %80, i1 false), !dbg !6786
+ line no ln: 1000 fl: src/iot_wt.c (ID: 146910) ,
+================================
+Source node=42743 Inst1=  %92 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %b64p_buf, i32 0, i32 1, !dbg !6795
+ Loc=ln: 1005 fl: src/iot_wt.c
+
+================SVFG PATH================
+(STMT)  %92 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %b64p_buf, i32 0, i32 1, !dbg !6795
+ line no ln: 1005 fl: src/iot_wt.c (ID: 42743) ,(STMT)  %93 = load i8*, i8** %92, align 8, !dbg !6795
+ line no ln: 1005 fl: src/iot_wt.c (ID: 79105) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %91, i8* align 1 %93, i64 %95, i1 false), !dbg !6797
+ line no ln: 1005 fl: src/iot_wt.c (ID: 146925) ,
+================================
+Source node=42747 Inst1=  %120 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %b64s_buf, i32 0, i32 1, !dbg !6820
+ Loc=ln: 1021 fl: src/iot_wt.c
+
+================SVFG PATH================
+(STMT)  %120 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %b64s_buf, i32 0, i32 1, !dbg !6820
+ line no ln: 1021 fl: src/iot_wt.c (ID: 42747) ,(STMT)  %121 = load i8*, i8** %120, align 8, !dbg !6820
+ line no ln: 1021 fl: src/iot_wt.c (ID: 79108) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %119, i8* align 1 %121, i64 %123, i1 false), !dbg !6822
+ line no ln: 1021 fl: src/iot_wt.c (ID: 146941) ,
+================================
+Source node=42757 Inst1=  %138 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %137, i32 0, i32 1, !dbg !6833
+ Loc=ln: 1028 fl: src/iot_wt.c
+
+================SVFG PATH================
+(STMT)  %138 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %137, i32 0, i32 1, !dbg !6833
+ line no ln: 1028 fl: src/iot_wt.c (ID: 42757) ,(STMT)  store i8* %136, i8** %138, align 8, !dbg !6834
+ line no ln: 1028 fl: src/iot_wt.c (ID: 120401) ,(PHI) in _iot_jwt_create   br label %148, !dbg !6844
+ line no ln: 1036 fl: src/iot_wt.c (ID: 215264) ,(PHI) in _iot_jwt_create   br label %151, !dbg !6846
+ line no ln: 1038 fl: src/iot_wt.c (ID: 215244) ,(PHI) in _iot_jwt_create   br label %157, !dbg !6852
+ line no ln: 1043 fl: src/iot_wt.c (ID: 215290) ,(PHI) in _iot_jwt_create   ret i32 %158, !dbg !6853
+ line no ln: 1044 fl: src/iot_wt.c (ID: 215220) ,(FOUT) _iot_jwt_create(FOUT)(ID: 241926) ,(AOUT)   %5 = call i32 @_iot_jwt_create(%struct.iot_wt_params* %3, %struct.iot_security_buffer* %4), !dbg !6656
+ ln: 1053 fl: src/iot_wt.c within iot_wt_create(ID: 277621) ,(FOUT) iot_wt_create(FOUT)(ID: 241873) ,(AOUT)   %67 = call i32 @iot_wt_create(%struct.iot_wt_params* %wt_params, %struct.iot_security_buffer* %token_buf), !dbg !6718
+ ln: 940 fl: src/easysetup/iot_easysetup_st_mqtt.c within iot_es_connect(ID: 277569) ,(STMT)  %120 = load i8*, i8** %119, align 8, !dbg !6767
+ line no ln: 967 fl: src/easysetup/iot_easysetup_st_mqtt.c (ID: 79004) ,(APAR)   %121 = call i32 @_iot_es_mqtt_connect(%struct.iot_context* %113, i8* %114, i8* %118, i8* %120), !dbg !6768
+ line no ln: 967 fl: src/easysetup/iot_easysetup_st_mqtt.c (ID: 146683) ,(FPARM) _iot_es_mqtt_connect(ID: 174704) ,(STMT)  store i8* %sign_data, i8** %5, align 8
+ in _iot_es_mqtt_connect (ID: 120856) ,(STMT)  %69 = load i8*, i8** %5, align 8, !dbg !6749
+ line no ln: 831 fl: src/easysetup/iot_easysetup_st_mqtt.c (ID: 79970) ,(STMT)  store i8* %69, i8** %70, align 8, !dbg !6751
+ line no ln: 831 fl: src/easysetup/iot_easysetup_st_mqtt.c (ID: 120874) ,(AIN)   %81 = call i32 @st_mqtt_connect(i8* %80, %struct.st_mqtt_broker_info* %broker_info, %struct.st_mqtt_connect_data* %conn_data), !dbg !6757
+ ln: 838 fl: src/easysetup/iot_easysetup_st_mqtt.c within _iot_es_mqtt_connect(ID: 262228) ,(FIN) st_mqtt_connect(ID: 231052) ,(STMT)  %64 = load i8*, i8** %63, align 8, !dbg !6776
+ line no ln: 1173 fl: src/mqtt/client/iot_mqtt_client.c (ID: 80146) ,(STMT)  store i8* %64, i8** %66, align 8, !dbg !6779
+ line no ln: 1173 fl: src/mqtt/client/iot_mqtt_client.c (ID: 120983) ,(AIN)   %75 = call i32 @MQTTSerialize_connect_size(%struct.MQTTPacket_connectData* %options), !dbg !6788
+ ln: 1177 fl: src/mqtt/client/iot_mqtt_client.c within st_mqtt_connect(ID: 262292) ,(FIN) MQTTSerialize_connect_size(ID: 226670) ,(AIN)   %90 = call i32 @MQTTSerialize_connect(i8* %88, i32 %89, %struct.MQTTPacket_connectData* %options), !dbg !6804
+ ln: 1184 fl: src/mqtt/client/iot_mqtt_client.c within st_mqtt_connect(ID: 262315) ,(FIN) MQTTSerialize_connect(ID: 226879) ,(AIN)   call void @writeMQTTString(i8** %ptr, %struct.MQTTString* byval align 8 %151), !dbg !6818
+ ln: 106 fl: src/mqtt/packet/iot_mqtt_connect_client.c within MQTTSerialize_connect(ID: 264262) ,(FIN) writeMQTTString(ID: 226991) ,(STMT)  %34 = load i8*, i8** %33, align 8, !dbg !6683
+ line no ln: 202 fl: src/mqtt/packet/iot_mqtt_packet.c (ID: 85975) ,(APAR)   call void @writeCString(i8** %32, i8* %34), !dbg !6684
+ line no ln: 202 fl: src/mqtt/packet/iot_mqtt_packet.c (ID: 150237) ,(FPARM) writeCString(ID: 173528) ,(STMT)  store i8* %string, i8** %2, align 8
+ in writeCString (ID: 123676) ,(STMT)  %10 = load i8*, i8** %2, align 8, !dbg !6654
+ line no ln: 181 fl: src/mqtt/packet/iot_mqtt_packet.c (ID: 85956) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %9, i8* align 1 %10, i64 %12, i1 false), !dbg !6656
+ line no ln: 181 fl: src/mqtt/packet/iot_mqtt_packet.c (ID: 150231) ,
+================================
+Source node=42780 Inst1=  %51 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %50, i32 0, i32 1, !dbg !6712
+ Loc=ln: 747 fl: src/iot_wt.c
+
+================SVFG PATH================
+(STMT)  %51 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %50, i32 0, i32 1, !dbg !6712
+ line no ln: 747 fl: src/iot_wt.c (ID: 42780) ,(STMT)  %52 = load i8*, i8** %51, align 8, !dbg !6712
+ line no ln: 747 fl: src/iot_wt.c (ID: 79185) ,(STMT)  store i8* %52, i8** %54, align 8, !dbg !6715
+ line no ln: 747 fl: src/iot_wt.c (ID: 120434) ,(PHI) in _iot_jwt_create_b64h   br label %65, !dbg !6725
+ line no ln: 754 fl: src/iot_wt.c (ID: 203746) ,(PHI) in _iot_jwt_create_b64h   br label %67, !dbg !6727
+ line no ln: 756 fl: src/iot_wt.c (ID: 203731) ,(PHI) in _iot_jwt_create_b64h   br label %69, !dbg !6729
+ line no ln: 758 fl: src/iot_wt.c (ID: 203574) ,(PHI) in _iot_jwt_create_b64h   ret i32 %70, !dbg !6730
+ line no ln: 759 fl: src/iot_wt.c (ID: 203591) ,(FOUT) _iot_jwt_create_b64h(FOUT)(ID: 242121) ,(AOUT)   %34 = call i32 @_iot_jwt_create_b64h(%struct.iot_wt_params* %32, i32 %33, %struct.iot_security_buffer* %b64h_buf), !dbg !6739
+ ln: 973 fl: src/iot_wt.c within _iot_jwt_create(ID: 277635) ,(STMT)  %78 = load i8*, i8** %77, align 8, !dbg !6784
+ line no ln: 1000 fl: src/iot_wt.c (ID: 79102) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %76, i8* align 1 %78, i64 %80, i1 false), !dbg !6786
+ line no ln: 1000 fl: src/iot_wt.c (ID: 146910) ,
+================================
+Source node=42781 Inst1=  %54 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %53, i32 0, i32 1, !dbg !6714
+ Loc=ln: 747 fl: src/iot_wt.c
+
+================SVFG PATH================
+(STMT)  %54 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %53, i32 0, i32 1, !dbg !6714
+ line no ln: 747 fl: src/iot_wt.c (ID: 42781) ,(STMT)  store i8* %52, i8** %54, align 8, !dbg !6715
+ line no ln: 747 fl: src/iot_wt.c (ID: 120434) ,(PHI) in _iot_jwt_create_b64h   br label %65, !dbg !6725
+ line no ln: 754 fl: src/iot_wt.c (ID: 203746) ,(PHI) in _iot_jwt_create_b64h   br label %67, !dbg !6727
+ line no ln: 756 fl: src/iot_wt.c (ID: 203731) ,(PHI) in _iot_jwt_create_b64h   br label %69, !dbg !6729
+ line no ln: 758 fl: src/iot_wt.c (ID: 203574) ,(PHI) in _iot_jwt_create_b64h   ret i32 %70, !dbg !6730
+ line no ln: 759 fl: src/iot_wt.c (ID: 203591) ,(FOUT) _iot_jwt_create_b64h(FOUT)(ID: 242121) ,(AOUT)   %34 = call i32 @_iot_jwt_create_b64h(%struct.iot_wt_params* %32, i32 %33, %struct.iot_security_buffer* %b64h_buf), !dbg !6739
+ ln: 973 fl: src/iot_wt.c within _iot_jwt_create(ID: 277635) ,(STMT)  %78 = load i8*, i8** %77, align 8, !dbg !6784
+ line no ln: 1000 fl: src/iot_wt.c (ID: 79102) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %76, i8* align 1 %78, i64 %80, i1 false), !dbg !6786
+ line no ln: 1000 fl: src/iot_wt.c (ID: 146910) ,
+================================
+Source node=42811 Inst1=  %49 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %48, i32 0, i32 1, !dbg !6709
+ Loc=ln: 855 fl: src/iot_wt.c
+
+================SVFG PATH================
+(STMT)  %49 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %48, i32 0, i32 1, !dbg !6709
+ line no ln: 855 fl: src/iot_wt.c (ID: 42811) ,(STMT)  %50 = load i8*, i8** %49, align 8, !dbg !6709
+ line no ln: 855 fl: src/iot_wt.c (ID: 79386) ,(STMT)  store i8* %50, i8** %52, align 8, !dbg !6712
+ line no ln: 855 fl: src/iot_wt.c (ID: 120556) ,(PHI) in _iot_jwt_create_b64p   br label %63, !dbg !6722
+ line no ln: 862 fl: src/iot_wt.c (ID: 213961) ,(PHI) in _iot_jwt_create_b64p   br label %65, !dbg !6724
+ line no ln: 864 fl: src/iot_wt.c (ID: 213980) ,(PHI) in _iot_jwt_create_b64p   br label %67, !dbg !6726
+ line no ln: 866 fl: src/iot_wt.c (ID: 213998) ,(PHI) in _iot_jwt_create_b64p   ret i32 %68, !dbg !6727
+ line no ln: 867 fl: src/iot_wt.c (ID: 214024) ,(FOUT) _iot_jwt_create_b64p(FOUT)(ID: 242676) ,(AOUT)   %44 = call i32 @_iot_jwt_create_b64p(%struct.iot_wt_params* %43, %struct.iot_security_buffer* %b64p_buf), !dbg !6749
+ ln: 981 fl: src/iot_wt.c within _iot_jwt_create(ID: 277643) ,(STMT)  %93 = load i8*, i8** %92, align 8, !dbg !6795
+ line no ln: 1005 fl: src/iot_wt.c (ID: 79105) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %91, i8* align 1 %93, i64 %95, i1 false), !dbg !6797
+ line no ln: 1005 fl: src/iot_wt.c (ID: 146925) ,
+================================
+Source node=42812 Inst1=  %52 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %51, i32 0, i32 1, !dbg !6711
+ Loc=ln: 855 fl: src/iot_wt.c
+
+================SVFG PATH================
+(STMT)  %52 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %51, i32 0, i32 1, !dbg !6711
+ line no ln: 855 fl: src/iot_wt.c (ID: 42812) ,(STMT)  store i8* %50, i8** %52, align 8, !dbg !6712
+ line no ln: 855 fl: src/iot_wt.c (ID: 120556) ,(PHI) in _iot_jwt_create_b64p   br label %63, !dbg !6722
+ line no ln: 862 fl: src/iot_wt.c (ID: 213961) ,(PHI) in _iot_jwt_create_b64p   br label %65, !dbg !6724
+ line no ln: 864 fl: src/iot_wt.c (ID: 213980) ,(PHI) in _iot_jwt_create_b64p   br label %67, !dbg !6726
+ line no ln: 866 fl: src/iot_wt.c (ID: 213998) ,(PHI) in _iot_jwt_create_b64p   ret i32 %68, !dbg !6727
+ line no ln: 867 fl: src/iot_wt.c (ID: 214024) ,(FOUT) _iot_jwt_create_b64p(FOUT)(ID: 242676) ,(AOUT)   %44 = call i32 @_iot_jwt_create_b64p(%struct.iot_wt_params* %43, %struct.iot_security_buffer* %b64p_buf), !dbg !6749
+ ln: 981 fl: src/iot_wt.c within _iot_jwt_create(ID: 277643) ,(STMT)  %93 = load i8*, i8** %92, align 8, !dbg !6795
+ line no ln: 1005 fl: src/iot_wt.c (ID: 79105) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %91, i8* align 1 %93, i64 %95, i1 false), !dbg !6797
+ line no ln: 1005 fl: src/iot_wt.c (ID: 146925) ,
+================================
+Source node=42842 Inst1=  %88 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %87, i32 0, i32 1, !dbg !6777
+ Loc=ln: 925 fl: src/iot_wt.c
+
+================SVFG PATH================
+(STMT)  %88 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %87, i32 0, i32 1, !dbg !6777
+ line no ln: 925 fl: src/iot_wt.c (ID: 42842) ,(STMT)  %89 = load i8*, i8** %88, align 8, !dbg !6777
+ line no ln: 925 fl: src/iot_wt.c (ID: 79462) ,(STMT)  store i8* %89, i8** %91, align 8, !dbg !6780
+ line no ln: 925 fl: src/iot_wt.c (ID: 120603) ,(PHI) in _iot_jwt_create_b64s   br label %102, !dbg !6790
+ line no ln: 932 fl: src/iot_wt.c (ID: 212756) ,(PHI) in _iot_jwt_create_b64s   br label %105, !dbg !6792
+ line no ln: 934 fl: src/iot_wt.c (ID: 212787) ,(PHI) in _iot_jwt_create_b64s   ret i32 %106, !dbg !6794
+ line no ln: 936 fl: src/iot_wt.c (ID: 212803) ,(FOUT) _iot_jwt_create_b64s(FOUT)(ID: 242839) ,(AOUT)   %103 = call i32 @_iot_jwt_create_b64s(%struct.iot_security_context.10* %100, i8* %101, i64 %102, %struct.iot_security_buffer* %b64s_buf), !dbg !6803
+ ln: 1010 fl: src/iot_wt.c within _iot_jwt_create(ID: 277648) ,(STMT)  %121 = load i8*, i8** %120, align 8, !dbg !6820
+ line no ln: 1021 fl: src/iot_wt.c (ID: 79108) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %119, i8* align 1 %121, i64 %123, i1 false), !dbg !6822
+ line no ln: 1021 fl: src/iot_wt.c (ID: 146941) ,
+================================
+Source node=42843 Inst1=  %91 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %90, i32 0, i32 1, !dbg !6779
+ Loc=ln: 925 fl: src/iot_wt.c
+
+================SVFG PATH================
+(STMT)  %91 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %90, i32 0, i32 1, !dbg !6779
+ line no ln: 925 fl: src/iot_wt.c (ID: 42843) ,(STMT)  store i8* %89, i8** %91, align 8, !dbg !6780
+ line no ln: 925 fl: src/iot_wt.c (ID: 120603) ,(PHI) in _iot_jwt_create_b64s   br label %102, !dbg !6790
+ line no ln: 932 fl: src/iot_wt.c (ID: 212756) ,(PHI) in _iot_jwt_create_b64s   br label %105, !dbg !6792
+ line no ln: 934 fl: src/iot_wt.c (ID: 212787) ,(PHI) in _iot_jwt_create_b64s   ret i32 %106, !dbg !6794
+ line no ln: 936 fl: src/iot_wt.c (ID: 212803) ,(FOUT) _iot_jwt_create_b64s(FOUT)(ID: 242839) ,(AOUT)   %103 = call i32 @_iot_jwt_create_b64s(%struct.iot_security_context.10* %100, i8* %101, i64 %102, %struct.iot_security_buffer* %b64s_buf), !dbg !6803
+ ln: 1010 fl: src/iot_wt.c within _iot_jwt_create(ID: 277648) ,(STMT)  %121 = load i8*, i8** %120, align 8, !dbg !6820
+ line no ln: 1021 fl: src/iot_wt.c (ID: 79108) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %119, i8* align 1 %121, i64 %123, i1 false), !dbg !6822
+ line no ln: 1021 fl: src/iot_wt.c (ID: 146941) ,
+================================
+Source node=45828 Inst1=  %71 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %encrypt_b64url_buf, i32 0, i32 1, !dbg !6723
+ Loc=ln: 162 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c
+
+================SVFG PATH================
+(STMT)  %71 = getelementptr inbounds %struct.iot_security_buffer, %struct.iot_security_buffer* %encrypt_b64url_buf, i32 0, i32 1, !dbg !6723
+ line no ln: 162 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c (ID: 45828) ,(STMT)  %72 = load i8*, i8** %71, align 8, !dbg !6723
+ line no ln: 162 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c (ID: 86813) ,(STMT)  store i8* %72, i8** %73, align 8, !dbg !6725
+ line no ln: 162 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c (ID: 124138) ,(PHI) in _encrypt_and_encode   ret i32 %91, !dbg !6745
+ line no ln: 173 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c (ID: 209734) ,(FOUT) _encrypt_and_encode(FOUT)(ID: 249404) ,(AOUT)   %18 = call i32 @_encrypt_and_encode(%struct.iot_security_context* %14, i8* %15, i64 %17, i8** %encrypted_message), !dbg !6680
+ ln: 335 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c within _es_build_output_data(ID: 279215) ,(STMT)  %36 = load i8*, i8** %encrypted_message, align 8, !dbg !6699
+ line no ln: 347 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c (ID: 86783) ,(APAR)   %37 = call %struct.cJSON* @JSON_CREATE_STRING.253(i8* %36), !dbg !6700
+ line no ln: 347 fl: src/easysetup/http/tcp/iot_easysetup_d2d_tcp.c (ID: 150949) ,(FPARM) JSON_CREATE_STRING.253(ID: 174312) ,(STMT)  store i8* %string, i8** %1, align 8
+ in JSON_CREATE_STRING.253 (ID: 124032) ,(STMT)  %2 = load i8*, i8** %1, align 8, !dbg !6658
+ line no ln: 74 fl: src/include/external/JSON.h (ID: 86594) ,(APAR)   %3 = call %struct.cJSON* @cJSON_CreateString(i8* %2), !dbg !6659
+ line no ln: 74 fl: src/include/external/JSON.h (ID: 150744) ,(FPARM) cJSON_CreateString(ID: 172680) ,(STMT)  store i8* %string, i8** %2, align 8
+ in cJSON_CreateString (ID: 120452) ,(STMT)  %9 = load i8*, i8** %2, align 8, !dbg !6653
+ line no ln: 2336 fl: cJSON/cJSON.c (ID: 79213) ,(APAR)   %10 = call i8* @cJSON_strdup(i8* %9, %struct.internal_hooks* @global_hooks), !dbg !6654
+ line no ln: 2336 fl: cJSON/cJSON.c (ID: 147061) ,(FPARM) cJSON_strdup(ID: 173087) ,(STMT)  store i8* %string, i8** %2, align 8
+ in cJSON_strdup (ID: 119752) ,(STMT)  %21 = load i8*, i8** %2, align 8, !dbg !6670
+ line no ln: 175 fl: cJSON/cJSON.c (ID: 78082) ,(APAR)   call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %20, i8* align 1 %21, i64 %22, i1 false), !dbg !6672
+ line no ln: 175 fl: cJSON/cJSON.c (ID: 145798) ,
+================================
+Label=iot_security_buffer_memcpy_sbufleak solution size=37 time=160
+Total number of solutions=5
+Total number of cached solutions=0
+Total query solving time=463
+Average query solving time=92
+SVFG stats: nodes=287124 edges=433924

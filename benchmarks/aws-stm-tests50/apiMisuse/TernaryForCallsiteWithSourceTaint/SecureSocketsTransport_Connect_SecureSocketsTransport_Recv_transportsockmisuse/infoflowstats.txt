@@ -1,0 +1,20 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=27172
+Total number of formal out/ret w outgoing edge=6440
+Total number of formal out/ret w incoming formalin wo deref=8606
+Total number of formal out/ret w incoming formalin (relaxed)=11965
+Sumarization time=234
+Query: TernaryForCallsiteWithSourceTaint, source=SecureSocketsTransport_Connect sink=SecureSocketsTransport_Recv desc=transportsockmisuse sanitizeOnReturn=0
+Label=somegeneric_label solution size=0 time=0
+Label=SecureSocketsTransport_Connectarg1_label solution size=0 time=0
+Label=SecureSocketsTransport_Connectcs1_label solution size=8 time=1
+Label=SecureSocketsTransport_Connectargpby1 solution size=1358 time=1
+Label=SecureSocketsTransport_Recvarg1_label solution size=0 time=0
+Label=SecureSocketsTransport_Recvcs1_label solution size=0 time=1
+Label=SecureSocketsTransport_Recvargpby1 solution size=0 time=1
+Label=SecureSocketsTransport_Connect_SecureSocketsTransport_Recv_transportsockmisuse solution size=0 time=18
+Total number of solutions=9
+Total number of cached solutions=1
+Total query solving time=22
+Average query solving time=2

@@ -1,0 +1,23 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=21
+Total number of formal out/ret w outgoing edge=3
+Total number of formal out/ret w incoming formalin wo deref=8
+Total number of formal out/ret w incoming formalin (relaxed)=8
+Sumarization time=0
+Query: TaintsPtrArgDirectCallToPrimValArg, source=receive sink=memcpy desc=taintedlen
+Label=value_label solution size=0 time=0
+Label=srcarg_label solution size=0 time=0
+Label=sourcecs_label solution size=1 time=0
+Label=argsrccs solution size=4 time=0
+Label=pbsrcarg solution size=2 time=0
+Label=sinkarg_label solution size=0 time=0
+Label=sinkcs_label solution size=3 time=0
+Label=argsinkcs solution size=6 time=0
+value size=2
+sinkarg size=6
+Label=receive_memcpy_taintedlen solution size=0 time=0
+Total number of solutions=9
+Total number of cached solutions=0
+Total query solving time=0
+Average query solving time=0

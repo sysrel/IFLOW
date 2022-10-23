@@ -1,0 +1,1 @@
+/home/tuba/Documents/tools/IFLOW/iflow/Release-build/bin/wpa -ander -stat -svfg -svfgWithIndCall=true -dump-svfg=true -info-flow=true -info-flow-bound=50 -genicfg -dump-icfg=true -info-flow-query-type=TaintsDataFieldCallsite -info-flow-query-ops connect 9 Publish privleak google_iot_all.bc

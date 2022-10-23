@@ -1,0 +1,120 @@
+class Label;
+class Constraint;
+class LabeledEntity;
+
+enumerated QTYPE {regexp, binary, noneqt};
+enumerated UTYPE {call, taint, execute, parameterpass, noneutype};
+enumerated ETYPE {structT, fieldT, function, callsite, noneet};
+
+
+class Identifier {
+   std::string name; 
+  public:
+    Identifier();
+    Identifier(std::string name);
+};
+
+class QueryExp {
+   protected:
+      QTYPE type; 
+      Label label;
+   public:
+      QueryExp();
+      QueryExp(QTYPE type, std::string labelstr); 
+};
+
+class RegExpQueryExp : public QueryExp {
+  protected:
+    std::string endsWith;
+    std::string doesnotendWith;
+    std::string beginsWith;
+    std::string doesnotbeginWith;
+    std::string includes;
+    std::string excludes;
+  public:
+    RegExpQueryExp();
+    void setEndsWith(std::string);
+    void setDoesNotEndWith(std::string);
+    void setBeginsWith(std::string);
+    void setDoesNotBeginWith(std::string); 
+    void setIncludes(std::string);
+    void setExcludes(std::string);
+    bool satisy(std::string);
+};
+
+
+class BinaryQueryExp : public QueryExp {
+   protected:
+      Entity *e1;
+      Entity *e2;       
+      UTYPE type;
+   public: 
+      BinaryQueryExp();
+      BinaryQueryExp(Entity *e1, Entity *e2, UTYPE type);
+
+
+     
+};
+
+
+class Query {
+   protected:
+     QueryExp *exp;
+     std::map<std::string, Constraint*> constraints;     
+   public:
+     Query();
+     Query(QueryExp *qexp);
+     void addConstraint(std::string id, Constraint *cons); 
+};
+
+
+class Label {
+   protected:
+     std::string desc;
+     QueryExp *query; 
+   public: 
+     Label();
+     Label(std::string desc, QueryExp *query); 
+     bool isAMember(Entity *); 
+};
+
+class Constraint {
+   protected:
+      Entity *entity;
+      Label *label;
+   public: 
+      Constraint();
+      Constraint(Entity *, Label *label);       
+};
+
+
+class Entity {
+ protected:
+    llvm::Value *value;
+    SVFGNode *node;
+    ETYPE type;
+ public: 
+    Entity();
+    Entity(Value *value, ETYPE type); 
+};
+
+
+class DataEntity : Entity {
+};
+
+class FieldEntity : Entity {
+};
+
+class FunctionEntity : Entity {
+};
+
+class CallsiteEntity : Entity {
+};
+
+class InfoFlowEngine {
+  protected:
+   std::map<Query*, std::set<Entity*> > solutionCache;
+  public:
+    void solve(Query *query, std::set<Entity*> &solution);
+};
+

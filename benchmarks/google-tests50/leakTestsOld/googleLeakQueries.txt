@@ -1,0 +1,10 @@
+TaintsDataFieldCallsite,iotc_connection_data_s,2,write,privleak
+TaintsDataFieldCallsite,iotc_connection_data_s,2,send,privleak
+TaintsDataFieldCallsite,iotc_connection_data_s,2,print,privleak
+TaintsDataFieldCallsite,iotc_connection_data_s,2,dump,privleak
+TaintsDataFieldCallsite,iotc_connection_data_s,2,log,privleak
+TaintsDataFieldCallsite,iotc_crypto_key_data_t,1,write,privleak
+TaintsDataFieldCallsite,iotc_crypto_key_data_t,1,send,privleak
+TaintsDataFieldCallsite,iotc_crypto_key_data_t,1,print,privleak
+TaintsDataFieldCallsite,iotc_crypto_key_data_t,1,dump,privleak
+TaintsDataFieldCallsite,iotc_crypto_key_data_t,1,log,privleak

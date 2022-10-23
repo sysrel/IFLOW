@@ -1,0 +1,20 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=20449
+Total number of formal out/ret w outgoing edge=4049
+Total number of formal out/ret w incoming formalin wo deref=6806
+Total number of formal out/ret w incoming formalin (relaxed)=11014
+Sumarization time=24
+Query: TaintsDataFieldCallsite, data type= st_mqtt_connect_data field=2 sink=Publish desc=mqttleak
+Label=typest_mqtt_connect_datafield21_label solution size=3 time=18
+Label=Publisharg1_label solution size=0 time=0
+Label=Publishcs1_label solution size=17 time=173
+Label=Publishargpby1 solution size=1187 time=173
+typest_mqtt_connect_datafield21 size=3
+Publisharg1 size=118
+Label=st_mqtt_connect_data_Publish_mqttleak solution size=0 time=192
+Total number of solutions=5
+Total number of cached solutions=0
+Total query solving time=556
+Average query solving time=111
+SVFG stats: nodes=287124 edges=433924

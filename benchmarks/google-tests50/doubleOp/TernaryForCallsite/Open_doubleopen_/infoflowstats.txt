@@ -1,0 +1,127 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=3029
+Total number of formal out/ret w outgoing edge=438
+Total number of formal out/ret w incoming formalin wo deref=792
+Sumarization time=0
+Query: TernaryForCallsite, source=Open sink=Open desc=doubleopen
+Label=somegeneric_label solution size=0 time=0
+Label=Openarg1_label solution size=0 time=0
+Label=Opencs1_label solution size=3 time=14
+Label=Openargpby1 solution size=15 time=14
+
+================================
+(213)(iotc_fs_open Entry) ,(214)(STMT)  %1 = alloca i8*, align 8
+ ln: 45 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/libiotc/io/fs/posix/iotc_fs_posix.c in iotc_fs_open ,(215)(STMT)  %2 = alloca i32, align 4
+ ln: 46 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/libiotc/io/fs/posix/iotc_fs_posix.c in iotc_fs_open ,(216)(STMT)  %3 = alloca i8*, align 8
+ ln: 47 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/libiotc/io/fs/posix/iotc_fs_posix.c in iotc_fs_open ,(217)(STMT)  %4 = alloca i32, align 4
+ ln: 48 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/libiotc/io/fs/posix/iotc_fs_posix.c in iotc_fs_open ,(218)(STMT)  %5 = alloca i64*, align 8
+ ln: 49 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/libiotc/io/fs/posix/iotc_fs_posix.c in iotc_fs_open ,(219)(STMT)  store i8* %context, i8** %1, align 8, !tbaa !5197
+  in iotc_fs_open ,(220)(STMT)  store i32 %resource_type, i32* %2, align 4, !tbaa !5202
+  in iotc_fs_open ,(221)(STMT)  store i8* %resource_name, i8** %3, align 8, !tbaa !5197
+  in iotc_fs_open ,(222)(STMT)  store i32 %open_flags, i32* %4, align 4, !tbaa !5202
+  in iotc_fs_open ,(223)(STMT)  store i64* %resource_handle, i64** %5, align 8, !tbaa !5197
+  in iotc_fs_open ,(224)(STMT)  %6 = load i8*, i8** %1, align 8, !dbg !5207, !tbaa !5197
+ ln: 50 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/libiotc/io/fs/posix/iotc_fs_posix.c in iotc_fs_open ,(225)(STMT)  %7 = load i32, i32* %2, align 4, !dbg !5208, !tbaa !5202
+ ln: 51 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/libiotc/io/fs/posix/iotc_fs_posix.c in iotc_fs_open ,(226)(STMT)  %8 = load i8*, i8** %3, align 8, !dbg !5209, !tbaa !5197
+ ln: 54 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/libiotc/io/fs/posix/iotc_fs_posix.c in iotc_fs_open ,(227)(STMT)  %9 = load i32, i32* %4, align 4, !dbg !5210, !tbaa !5202
+ ln: 55 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/libiotc/io/fs/posix/iotc_fs_posix.c in iotc_fs_open ,(228)(STMT)  %10 = load i64*, i64** %5, align 8, !dbg !5211, !tbaa !5197
+ ln: 55 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/libiotc/io/fs/posix/iotc_fs_posix.c in iotc_fs_open ,(229)(  %11 = call i32 @iotc_bsp_io_fs_open(i8* %8, i64 0, i32 %9, i64* %10) #10, !dbg !5212
+ Callsite) ,(230)(  %11 = call i32 @iotc_bsp_io_fs_open(i8* %8, i64 0, i32 %9, i64* %10) #10, !dbg !5212
+ Ret) ,(231)(iotc_bsp_io_fs_open Entry) ,(237)(STMT)  %1 = alloca i32, align 4
+  in iotc_bsp_io_fs_open ,(238)(STMT)  %2 = alloca i8*, align 8
+ ln: 142 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/bsp/platform/posix/iotc_bsp_io_fs_posix.c in iotc_bsp_io_fs_open ,(239)(STMT)  %3 = alloca i64, align 8
+ ln: 142 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/bsp/platform/posix/iotc_bsp_io_fs_posix.c in iotc_bsp_io_fs_open ,(240)(STMT)  %4 = alloca i32, align 4
+ ln: 143 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/bsp/platform/posix/iotc_bsp_io_fs_posix.c in iotc_bsp_io_fs_open ,(241)(STMT)  %5 = alloca i64*, align 8
+ ln: 144 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/bsp/platform/posix/iotc_bsp_io_fs_posix.c in iotc_bsp_io_fs_open ,(242)(STMT)  %new_entry = alloca %struct.iotc_bsp_io_fs_posix_file_handle_container_s*, align 8
+ ln: 156 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/bsp/platform/posix/iotc_bsp_io_fs_posix.c in iotc_bsp_io_fs_open ,(243)(STMT)  %ret = alloca i32, align 4
+ ln: 157 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/bsp/platform/posix/iotc_bsp_io_fs_posix.c in iotc_bsp_io_fs_open ,(244)(STMT)  %fd = alloca i32, align 4
+ ln: 159 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/bsp/platform/posix/iotc_bsp_io_fs_posix.c in iotc_bsp_io_fs_open ,(245)(STMT)  %prev = alloca %struct.iotc_bsp_io_fs_posix_file_handle_container_s*, align 8
+ ln: 176 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/bsp/platform/posix/iotc_bsp_io_fs_posix.c in iotc_bsp_io_fs_open ,(246)(STMT)  %curr = alloca %struct.iotc_bsp_io_fs_posix_file_handle_container_s*, align 8
+ ln: 176 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/bsp/platform/posix/iotc_bsp_io_fs_posix.c in iotc_bsp_io_fs_open ,(247)(STMT)  %6 = alloca i32
+  in iotc_bsp_io_fs_open ,(248)(STMT)  store i8* %resource_name, i8** %2, align 8, !tbaa !5207
+  in iotc_bsp_io_fs_open ,(249)(STMT)  store i64 %size, i64* %3, align 8, !tbaa !5212
+  in iotc_bsp_io_fs_open ,(250)(STMT)  store i32 %open_flags, i32* %4, align 4, !tbaa !5215
+  in iotc_bsp_io_fs_open ,(251)(STMT)  store i64* %resource_handle_out, i64** %5, align 8, !tbaa !5207
+  in iotc_bsp_io_fs_open ,(252)(STMT)  %7 = load i64, i64* %3, align 8, !dbg !5218, !tbaa !5212
+ ln: 145 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/bsp/platform/posix/iotc_bsp_io_fs_posix.c in iotc_bsp_io_fs_open ,(253)(STMT)  %8 = load i8*, i8** %2, align 8, !dbg !5219, !tbaa !5207
+ ln: 147 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/bsp/platform/posix/iotc_bsp_io_fs_posix.c in iotc_bsp_io_fs_open ,(254)(STMT)  %9 = icmp eq i8* null, %8, !dbg !5221
+ ln: 147 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/bsp/platform/posix/iotc_bsp_io_fs_posix.c in iotc_bsp_io_fs_open ,(255)(STMT)  br i1 %9, label %13, label %10, !dbg !5222
+ ln: 147 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/bsp/platform/posix/iotc_bsp_io_fs_posix.c in iotc_bsp_io_fs_open ,(257)(STMT)  %11 = load i64*, i64** %5, align 8, !dbg !5223, !tbaa !5207
+ ln: 147 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/bsp/platform/posix/iotc_bsp_io_fs_posix.c in iotc_bsp_io_fs_open ,(259)(STMT)  %12 = icmp eq i64* null, %11, !dbg !5224
+ ln: 147 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/bsp/platform/posix/iotc_bsp_io_fs_posix.c in iotc_bsp_io_fs_open ,(261)(STMT)  br i1 %12, label %13, label %14, !dbg !5225
+ ln: 147 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/bsp/platform/posix/iotc_bsp_io_fs_posix.c in iotc_bsp_io_fs_open ,(263)(STMT)  %15 = load i32, i32* %4, align 4, !dbg !5228, !tbaa !5215
+ ln: 152 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/bsp/platform/posix/iotc_bsp_io_fs_posix.c in iotc_bsp_io_fs_open ,(264)(STMT)  %16 = and i32 %15, 4, !dbg !5230
+ ln: 152 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/bsp/platform/posix/iotc_bsp_io_fs_posix.c in iotc_bsp_io_fs_open ,(265)(STMT)  %17 = icmp eq i32 4, %16, !dbg !5231
+ ln: 152 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/bsp/platform/posix/iotc_bsp_io_fs_posix.c in iotc_bsp_io_fs_open ,(266)(STMT)  br i1 %17, label %18, label %19, !dbg !5232
+ ln: 152 fl: /home/tuba/Documents/IOT/iot-device-sdk-embedded-c/src/bsp/platform/posix/iotc_bsp_io_fs_posix.c in iotc_bsp_io_fs_open ,
+================================
+
+================================
+
+================================
+
+================================
+
+================================
+
+================================
+
+================================
+
+================================
+
+================================
+
+================================
+
+================================
+
+================================
+
+================================
+
+================================
+
+================================
+
+================================
+
+================================
+
+================================
+
+================================
+
+================================
+
+================================
+
+================================
+
+================================
+
+================================
+
+================================
+
+================================
+
+================================
+
+================================
+
+================================
+
+================================
+
+================================
+
+================================
+
+================================
+Label=Opendoubleopen solution size=17 time=14
+Total number of solutions=6
+Total number of cached solutions=1
+Total query solving time=42
+Average query solving time=7

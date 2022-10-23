@@ -1,0 +1,20 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=20449
+Total number of formal out/ret w outgoing edge=4049
+Total number of formal out/ret w incoming formalin wo deref=6806
+Total number of formal out/ret w incoming formalin (relaxed)=11014
+Sumarization time=27
+Query: TernaryForCallsiteWithSourceTaint, source=iot_security_pk_init sink=iot_security_pk_get_signature_len desc=smarttmisuse sanitizeOnReturn=0
+Label=somegeneric_label solution size=0 time=0
+Label=iot_security_pk_initarg1_label solution size=0 time=0
+Label=iot_security_pk_initcs1_label solution size=1 time=213
+Label=iot_security_pk_initargpby1 solution size=96 time=213
+Label=iot_security_pk_get_signature_lenarg1_label solution size=0 time=0
+Label=iot_security_pk_get_signature_lencs1_label solution size=2 time=189
+Label=iot_security_pk_get_signature_lenargpby1 solution size=0 time=189
+Label=iot_security_pk_init_iot_security_pk_get_signature_len_smarttmisuse solution size=0 time=403
+Total number of solutions=9
+Total number of cached solutions=1
+Total query solving time=1207
+Average query solving time=134

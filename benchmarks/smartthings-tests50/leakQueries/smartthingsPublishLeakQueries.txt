@@ -1,0 +1,8 @@
+TaintsDataFieldCallsite,iot_wifi_prov_data,1,Publish,wpleak
+TaintsDataFieldCallsite,iot_wifi_conf,2,Publish,wpleak
+TaintsDataFieldCallsite,iot_security_pk_params,2,Publish,privleak
+TaintsDataFieldCallsite,iot_security_cipher_params,1,Publish,privleak
+TaintsDataFieldCallsite,iot_security_ecdh_params,0,Publish,privleak
+TaintsDataFieldCallsite,iot_net_connection,6,Publish,privleak
+TaintsDataFieldCallsite,iot_security_buffer,1,Publish,sbufleak
+TaintsDataFieldCallsite,st_mqtt_connect_data,2,Publish,mqttleak

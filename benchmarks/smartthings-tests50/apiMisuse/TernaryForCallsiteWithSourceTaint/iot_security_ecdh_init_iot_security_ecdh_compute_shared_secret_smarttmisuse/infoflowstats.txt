@@ -1,0 +1,21 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=20449
+Total number of formal out/ret w outgoing edge=4049
+Total number of formal out/ret w incoming formalin wo deref=6806
+Total number of formal out/ret w incoming formalin (relaxed)=11014
+Sumarization time=28
+Query: TernaryForCallsiteWithSourceTaint, source=iot_security_ecdh_init sink=iot_security_ecdh_compute_shared_secret desc=smarttmisuse sanitizeOnReturn=0
+Label=somegeneric_label solution size=0 time=0
+Label=iot_security_ecdh_initarg1_label solution size=0 time=0
+Label=iot_security_ecdh_initcs1_label solution size=1 time=171
+Label=iot_security_ecdh_initargpby1 solution size=1 time=171
+Label=iot_security_ecdh_compute_shared_secretarg1_label solution size=0 time=0
+Label=iot_security_ecdh_compute_shared_secretcs1_label solution size=1 time=184
+Label=iot_security_ecdh_compute_shared_secretargpby1 solution size=81 time=184
+Label=iot_security_ecdh_init_iot_security_ecdh_compute_shared_secret_smarttmisuse solution size=0 time=355
+Total number of solutions=9
+Total number of cached solutions=1
+Total query solving time=1065
+Average query solving time=118
+SVFG stats: nodes=287124 edges=433924

@@ -1,0 +1,191 @@
+class Label;
+class Constraint;
+class LabeledEntity;
+
+enumerated QTYPE {regexp, binary, noneqt};
+enumerated UTYPE {call, calledby, taint, taintedby, parameterpass, parameterpassedby, noneutype};
+enumerated ETYPE {structT, fieldT, function, callsite, noneet};
+
+
+class Identifier {
+   std::string name; 
+  public:
+    Identifier();
+    Identifier(std::string name);
+};
+
+class QueryExp {
+   protected:
+      QTYPE type; 
+      Label label;
+   public:
+      QueryExp();
+      QueryExp(QTYPE type, std::string labelstr); 
+};
+
+class RegExpQueryExp : public QueryExp {
+  protected:
+    std::string endsWith;
+    std::set<std::string> doesnotendWith;
+    std::string beginsWith;
+    std::set<std::string> doesnotbeginWith;
+    std::set<std::string> includes;
+    std::set<std::string> excludes;
+  public:
+    RegExpQueryExp();
+    void setEndsWith(std::string);
+    void setDoesNotEndWith(std::set<std::string>);
+    void setBeginsWith(std::string);
+    void setDoesNotBeginWith(std::set<std::string>); 
+    void setIncludes(std::set<std::string>);
+    void setExcludes(std::set<std::string>);
+    bool matches(std::string);
+};
+
+
+class RelationalQueryExp : public QueryExp {
+   protected:
+      Entity *e1;
+      Entity *e2;       
+      UTYPE type;
+   public: 
+      RelationalQueryExp();
+      RelationalQueryExp(Entity *e1, Entity *e2, UTYPE type);
+     
+};
+
+
+
+
+class Query {
+   protected:
+     QueryExp *exp;
+     std::map<std::string, Constraint*> constraints;     
+   public:
+     Query();
+     Query(QueryExp *qexp);
+     void addConstraint(std::string id, Constraint *cons); 
+};
+
+
+
+
+class Label {
+   protected:
+     std::string desc;
+     Query *query;
+     Solution *solution; 
+   public: 
+     Label();
+     Label(std::string desc, Query *query);
+     void setSolution(Solution *);
+     Solution *getSolution(); 
+     bool isAMember(Entity *);  
+     Label *reverse();
+};
+
+class CompositeLabel : public Label {
+   protected:
+
+};
+
+
+
+class Constraint {
+   protected:
+      Entity *entity;
+      Label *label;
+   public: 
+      Constraint();
+      Constraint(Entity *, Label *label);       
+};
+
+
+class Entity {
+ protected:
+    llvm::Value *value;
+    SVFGNode *node;
+    ETYPE type;
+ public: 
+    Entity();
+    Entity(Value *value, ETYPE type); 
+};
+
+
+class DataEntity : Entity {
+   protected:
+     std::string tname;
+   public:
+    DataEntity();
+    DataEntity(llv::Type *value);   
+};
+
+class FieldEntity : Entity {
+   protected:
+     std::string tname;
+     int index;
+     std::string fname;
+   public:
+     FieldEntity();
+     FieldEntity(llvm::Type *value, int index, std::string fname);
+};
+
+
+class FunctionEntity : Entity {
+   protected:
+     std::string name;
+   public:
+     FunctionEntity();
+     FunctionEntity(llvm::Function *value);
+};
+
+class CallsiteEntity : Entity {
+  protected:
+     std::string context;
+     std::string targetname;
+     bool direct;
+  public:
+     CallsiteEntity();
+     CallsiteEntity(llvm::CallSite *value);
+      
+};
+
+class Solution {
+  protected:
+    Query *q;
+  public:
+     Solution();
+     Solution(QueryExp *exp);
+     virtual void print();
+     Query *getQuery();
+     virtual bool isAMember(Entity *entity); 
+};
+
+class UnarySolution : Solution {
+  protected:
+    std::set<Entity*> results;
+  public:
+     UnarySolution();
+     UnarySolution(Query *query);
+};
+
+class BinarySolution : Solution {
+  protected:
+    std::set<std::pair<Entity*,Entity*> > results;
+  public:
+    BinarySolution();
+    BinarySolution(Query *query); 
+    Solution *reverse();
+};
+
+
+class InfoFlowEngine {
+  protected:
+   // label name to Label map
+   std::map<std::string, Label*> labelmap;
+   // label name to solution map
+   std::map<std::string, Solution*> solutionCache;
+  public:
+    void pupulate(Label *label);
+};
+

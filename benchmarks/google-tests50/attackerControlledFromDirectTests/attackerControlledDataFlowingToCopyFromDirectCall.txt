@@ -1,0 +1,2 @@
+TaintsPtrArgDirectCallToPrimValArg,Recv,memcpy,taintedlen
+TaintsPtrArgDirectCallToPrimValArg,Receive,memcpy,taintedlen

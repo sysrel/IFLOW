@@ -1,0 +1,20 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=27172
+Total number of formal out/ret w outgoing edge=6440
+Total number of formal out/ret w incoming formalin wo deref=8606
+Total number of formal out/ret w incoming formalin (relaxed)=11965
+Sumarization time=230
+Query: TernaryForCallsiteWithSourceTaint, source=SOCKETS_Connect sink=SOCKETS_Recv desc=securesockmisuse sanitizeOnReturn=0
+Label=somegeneric_label solution size=0 time=0
+Label=SOCKETS_Connectarg1_label solution size=0 time=0
+Label=SOCKETS_Connectcs1_label solution size=1 time=1
+Label=SOCKETS_Connectargpby1 solution size=158 time=1
+Label=SOCKETS_Recvarg1_label solution size=0 time=0
+Label=SOCKETS_Recvcs1_label solution size=8 time=1
+Label=SOCKETS_Recvargpby1 solution size=1262 time=1
+Label=SOCKETS_Connect_SOCKETS_Recv_securesockmisuse solution size=0 time=68
+Total number of solutions=9
+Total number of cached solutions=1
+Total query solving time=72
+Average query solving time=8

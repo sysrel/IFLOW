@@ -1,0 +1,20 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=20449
+Total number of formal out/ret w outgoing edge=4049
+Total number of formal out/ret w incoming formalin wo deref=6806
+Total number of formal out/ret w incoming formalin (relaxed)=11014
+Sumarization time=35
+Query: TernaryForCallsiteWithSourceTaint, source=iot_wt_create sink=_iot_es_mqtt_connect desc=smarttmisuse sanitizeOnReturn=0
+Label=somegeneric_label solution size=0 time=0
+Label=iot_wt_createarg1_label solution size=0 time=0
+Label=iot_wt_createcs1_label solution size=1 time=235
+Label=iot_wt_createargpby1 solution size=105 time=235
+Label=_iot_es_mqtt_connectarg1_label solution size=0 time=0
+Label=_iot_es_mqtt_connectcs1_label solution size=2 time=207
+Label=_iot_es_mqtt_connectargpby1 solution size=208 time=207
+Label=iot_wt_create__iot_es_mqtt_connect_smarttmisuse solution size=0 time=446
+Total number of solutions=9
+Total number of cached solutions=1
+Total query solving time=1330
+Average query solving time=147

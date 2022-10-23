@@ -1,0 +1,1 @@
+/home/tuba/Documents/tools/IFLOW/iflow/Release-build/bin/wpa -ander -stat -svfg -svfgWithIndCall=true -dump-svfg=true -info-flow=true -info-flow-bound=50 -genicfg -dump-icfg=true -info-flow-query-type=TernaryForCallsiteWithSourceTaint -info-flow-query-ops iot_nv_set_device_id iot_nv_get_device_id smarttmisuse 0 smartthings_sdk_wdebug_all.bc

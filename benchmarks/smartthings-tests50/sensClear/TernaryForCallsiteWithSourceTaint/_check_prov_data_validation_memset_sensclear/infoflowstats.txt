@@ -1,0 +1,20 @@
+Summarizing SVFG
+Statistics on summarization
+Total number of formal out/ret=20449
+Total number of formal out/ret w outgoing edge=4049
+Total number of formal out/ret w incoming formalin wo deref=6806
+Total number of formal out/ret w incoming formalin (relaxed)=11014
+Sumarization time=37
+Query: TernaryForCallsiteWithSourceTaint, source=_check_prov_data_validation sink=memset desc=sensclear sanitizeOnReturn=0
+Label=somegeneric_label solution size=0 time=0
+Label=_check_prov_data_validationarg1_label solution size=0 time=0
+Label=_check_prov_data_validationcs1_label solution size=1 time=239
+Label=_check_prov_data_validationargpby1 solution size=1 time=239
+Label=memsetarg1_label solution size=0 time=0
+Label=memsetcs1_label solution size=294 time=230
+Label=memsetargpby1 solution size=294 time=230
+Label=_check_prov_data_validation_memset_sensclear solution size=0 time=477
+Total number of solutions=9
+Total number of cached solutions=1
+Total query solving time=1415
+Average query solving time=157
