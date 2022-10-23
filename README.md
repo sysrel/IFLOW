@@ -1,7 +1,7 @@
 <p>IFLOW is a tool that is built on top of SVF, which enables scalable and precise interprocedural dependence analysis 
 for C and C++ programs. 
 IFLOW allows users to write queries that refer to fine-grain code elements such as function parameters of 
-certain type when defining sources and sinks for data-flow analysis. Also, IFLOW control-flow sanitization to filter 
+certain type when defining sources and sinks for data-flow analysis. Also, IFLOW provides control-flow sanitization to filter 
 data-flow paths that use certain values of API return values. So, IFLOW is suitable for scalable API rule conformance 
 checking and has been applied to IoT Framework APIs. If you se IFLOW, please cite our paper:
 </p>
@@ -27,4 +27,4 @@ We recommend you to build IFLOW using cmake by consulting the
 
 IFLOW implements a set of query types. In this version, the queries are specified on the commandline (We will push a version 
 with a grammar-based input file later). Please check out the examples directory for more information. 
-The real-world IoT framework benchmarks are locates under the benchmarks directory.
+The real-world IoT framework benchmarks are located under the benchmarks directory.
